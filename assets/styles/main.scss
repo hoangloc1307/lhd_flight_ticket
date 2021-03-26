@@ -1,0 +1,21 @@
+@import "./font";
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	font-family: "Nunito", sans-serif;
+}
+html {
+	scroll-behavior: smooth;
+}
+@import "./variable";
+@import "./grid";
+@import "./animation";
+@import "./other-css";
+@import "./home/header";
+@import "./home/page-home";
+@import "./page-login";
+@import "./home/page-finding";
+@import "./home/footer";
+@import "./home/responsive";

@@ -1,0 +1,80 @@
+/*==================== Menu PC ====================*/
+header {
+	position: sticky;
+	top: 0;
+	z-index: 99;
+	background: $cl-white-2;
+}
+.menu-pc {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100px;
+
+	.logo {
+		a {
+			display: block;
+			height: 50px;
+			position: relative;
+
+			&:hover img {
+				left: calc(100% - 55px);
+				transition: 1s ease-in-out;
+			}
+		}
+
+		h1 {
+			font-family: "Lobster", cursive;
+			color: $cl-blue-3;
+			font-size: $fs-main-title;
+		}
+
+		img {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 55px;
+			transition: 0s ease-in-out;
+		}
+	}
+
+	.links {
+		ul {
+			display: flex;
+			list-style: none;
+
+			li {
+				margin-left: 10px;
+
+				a {
+					color: $cl-blue-3;
+					padding: 10px 15px;
+					text-decoration: none;
+					font-weight: 800;
+					border-radius: 20px;
+					transition: 0.2s ease-in-out;
+
+					&:hover,
+					&.active {
+						background: $cl-blue-3;
+						color: $cl-white-2;
+					}
+				}
+				&.user a {
+					border-radius: 25px;
+					border: 1px solid $cl-blue-3;
+
+					span {
+						max-width: 100px;
+						text-overflow: ellipsis;
+						overflow: hidden;
+					}
+				}
+			}
+		}
+	}
+}
+/*==================== Menu Mobile ====================*/
+.menu-mobile {
+	display: none;
+}

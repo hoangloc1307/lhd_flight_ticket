@@ -1,0 +1,103 @@
+/*==================== Button back to top ====================*/
+.to-top {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  width: 50px;
+  height: 50px;
+  background: $cl-black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $fs-title;
+  z-index: 99;
+  color: $cl-white-2;
+  border: none;
+  outline: none;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  transform: translateY(20px);
+
+  &:hover {
+    background: $cl-blue-3;
+  }
+
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+/*==================== End Button back to top ====================*/
+
+/*==================== Loader ====================*/
+.loader-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  z-index: 9999;
+
+  &.hide {
+    display: none;
+  }
+
+  .loader {
+    position: relative;
+    width: 120px;
+    height: 120px;
+
+    span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: rotate(calc(var(--i) * 18deg));
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 15px;
+        height: 15px;
+        background: $cl-blue-3;
+        border-radius: 50%;
+        animation: loading 2s linear infinite;
+        animation-delay: calc(0.1s * var(--i));
+        transform: scale(0);
+      }
+    }
+
+    .plane {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      animation: loading_plane 2s linear infinite -1s;
+
+      &::before {
+        content: "\f072";
+        font-family: "Font Awesome 5 Free";
+        position: absolute;
+        top: 70px;
+        left: 80px;
+        color: $cl-blue-3;
+        font-size: 60px;
+        font-weight: 900;
+        transform: rotate(135deg);
+      }
+    }
+  }
+}
+/*==================== End Loader ====================*/
