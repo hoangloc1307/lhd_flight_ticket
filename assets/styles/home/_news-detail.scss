@@ -22,7 +22,29 @@
 	}
 
 	.news-related {
-		
-		
+		.related-title {
+
+			padding-bottom: 24px;
+			font-size: $fs-sub-title;
+			color: $cl-blue-3;
+			font-weight: 600;
+			text-transform: uppercase;
+		}
+		.related-list {
+			list-style: none;
+
+			.related-item {
+				padding: 8px 0;
+
+				a {
+					text-decoration: none;
+					color: $cl-black;
+
+					&:hover {
+						color: $cl-blue-3;
+					}
+				}
+			}
+		}
 	}
 }

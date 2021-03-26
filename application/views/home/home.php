@@ -122,6 +122,7 @@
 								placeholder="Select date" />
 						</label>
 					</div>
+
 					<!-- <div class="class">
 						<p class="heading">Class</p>
 						<label>
