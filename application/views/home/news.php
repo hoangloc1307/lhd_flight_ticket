@@ -26,7 +26,7 @@
 			<div class="col l-4 m-4 s-6 news-item">
 				<div class="news-wrap">
 					<a href="#" title="DaLat" class="img-wrap">
-						<img src="<?= base_url() ?>assets/images/favorite/dalat.jpg">
+						<img src="<?= base_url() ?>assets/images/favorite/hoian.jpg">
 					</a>
 					<div class="heading-description">
 						<a href="#" class="news-heading">
@@ -36,9 +36,17 @@
 							Đài Loan là điểm đến gần như hoàn hảo, với thành phố nhộn nhịp, thiên nhiên hùng vĩ,
 							văn hóa lâu đời và ẩm thực đời.
 						</p>
-						<p class="news-date">
-							13/01/1999
-						</p>
+						<div class="date-view">
+
+							<p class="news-date">
+								<i class="far fa-calendar-alt"></i>
+								13/01/1999
+							</p>
+							<div class="news-view">
+								<i class="far fa-eye"></i>
+								123
+							</div>
+						</div>
 					</div>
 
 				</div>
@@ -56,9 +64,17 @@
 							Đài Loan là điểm đến gần như hoàn hảo, với thành phố nhộn nhịp, thiên nhiên hùng vĩ,
 							văn hóa lâu đời và ẩm thực đời.
 						</p>
-						<p class="news-date">
-							13/01/1999
-						</p>
+						<div class="date-view">
+
+							<p class="news-date">
+								<i class="far fa-calendar-alt"></i>
+								13/01/1999
+							</p>
+							<div class="news-view">
+								<i class="far fa-eye"></i>
+								123
+							</div>
+						</div>
 					</div>
 
 				</div>
@@ -76,9 +92,17 @@
 							Đài Loan là điểm đến gần như hoàn hảo, với thành phố nhộn nhịp, thiên nhiên hùng vĩ,
 							văn hóa lâu đời và ẩm thực đời.
 						</p>
-						<p class="news-date">
-							13/01/1999
-						</p>
+						<div class="date-view">
+
+							<p class="news-date">
+								<i class="far fa-calendar-alt"></i>
+								13/01/1999
+							</p>
+							<div class="news-view">
+								<i class="far fa-eye"></i>
+								123
+							</div>
+						</div>
 					</div>
 
 				</div>
@@ -96,9 +120,17 @@
 							Đài Loan là điểm đến gần như hoàn hảo, với thành phố nhộn nhịp, thiên nhiên hùng vĩ,
 							văn hóa lâu đời và ẩm thực đời.
 						</p>
-						<p class="news-date">
-							13/01/1999
-						</p>
+						<div class="date-view">
+
+							<p class="news-date">
+								<i class="far fa-calendar-alt"></i>
+								13/01/1999
+							</p>
+							<div class="news-view">
+								<i class="far fa-eye"></i>
+								123
+							</div>
+						</div>
 					</div>
 
 				</div>

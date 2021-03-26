@@ -857,6 +857,8 @@ header {
 #news .news-item .news-wrap .img-wrap {
   display: block;
   text-decoration: none;
+  width: 100%;
+  height: 250px;
 }
 
 #news .news-item .news-wrap .img-wrap img {
@@ -898,8 +900,14 @@ header {
   height: 80px;
 }
 
-#news .news-item .news-wrap .heading-description .news-date {
-  color: #777777;
+#news .news-item .news-wrap .heading-description .date-view {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  opacity: 0.5;
   font-weight: 600;
   font-size: 14px;
 }
@@ -929,6 +937,31 @@ header {
   padding-top: 24px;
   color: #dddddd;
   font-size: 14px;
+}
+
+#news-detail .news-related .related-title {
+  padding-bottom: 24px;
+  font-size: 18px;
+  color: #17699a;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+#news-detail .news-related .related-list {
+  list-style: none;
+}
+
+#news-detail .news-related .related-list .related-item {
+  padding: 8px 0;
+}
+
+#news-detail .news-related .related-list .related-item a {
+  text-decoration: none;
+  color: #333;
+}
+
+#news-detail .news-related .related-list .related-item a:hover {
+  color: #17699a;
 }
 
 /*==================== Section Hero ====================*/

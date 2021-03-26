@@ -30,9 +30,15 @@
 						Tin tức liên quan
 					</h4>
 					<ul class="related-list">
-						<li class="related-item">Tư vấn hỗ trợ đặt vé</li>
-						<li class="related-item">Ta đa</li>
-						<li class="related-item">abcxyz</li>
+						<li class="related-item">
+							<a href="#">Tư vấn hỗ trợ đặt vé</a>
+						</li>
+						<li class="related-item">
+							<a href="#">Tư vấn hỗ trợ đặt vé</a>
+						</li>
+						<li class="related-item">
+							<a href="#">Tư vấn hỗ trợ đặt vé</a>
+						</li>
 					</ul>
 				</div>
 			</div>
