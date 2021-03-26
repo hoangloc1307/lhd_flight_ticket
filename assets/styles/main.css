@@ -693,6 +693,8 @@ header {
   top: 0;
   z-index: 99;
   background: #fff;
+  -webkit-box-shadow: 0 0 5px #034166;
+          box-shadow: 0 0 5px #034166;
 }
 
 .menu-pc {
@@ -775,6 +777,158 @@ header {
 /*==================== Menu Mobile ====================*/
 .menu-mobile {
   display: none;
+}
+
+#news {
+  padding: 50px 0;
+}
+
+#news .news-header {
+  margin-bottom: 24px;
+}
+
+#news .news-header .news-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#news .news-header .news-title h2 {
+  font-size: 32px;
+  color: #17699a;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-decoration: none;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  padding: 0 12px;
+  width: 100%;
+  text-align: center;
+}
+
+#news .news-header .news-icon {
+  position: relative;
+  text-align: center;
+}
+
+#news .news-header .news-icon i {
+  color: #034166;
+}
+
+#news .news-header .news-icon::after, #news .news-header .news-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+  height: 1px;
+  width: 10%;
+  background: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(#034166), to(transparent));
+  background: linear-gradient(90deg, transparent, #034166, transparent);
+}
+
+#news .news-header .news-icon::after {
+  left: 50%;
+}
+
+#news .news-header .news-icon::before {
+  right: 50%;
+}
+
+#news .news-item {
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+#news .news-item:hover {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+}
+
+#news .news-item .news-wrap {
+  padding: 12px;
+}
+
+#news .news-item .news-wrap .img-wrap {
+  display: block;
+  text-decoration: none;
+}
+
+#news .news-item .news-wrap .img-wrap img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+
+#news .news-item .news-wrap .heading-description .news-heading {
+  display: block;
+  color: #034166;
+  font-weight: 700;
+  font-size: 24px;
+  text-decoration: none;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+#news .news-item .news-wrap .heading-description .news-heading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0%;
+  height: 2px;
+  width: 30%;
+  background: #034166;
+}
+
+#news .news-item .news-wrap .heading-description .news-description {
+  margin-top: 10px;
+  padding: 10px 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  height: 80px;
+}
+
+#news .news-item .news-wrap .heading-description .news-date {
+  color: #777777;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+#news-detail {
+  padding: 50px 0;
+}
+
+#news-detail .news-detail {
+  border-right: 1px solid #dddddd;
+}
+
+#news-detail .news-detail .title {
+  padding-bottom: 24px;
+  font-size: 32px;
+  color: #034166;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+#news-detail .news-detail .detail {
+  padding: 24px 10px;
+  text-align: justify;
+}
+
+#news-detail .news-detail .date {
+  padding-top: 24px;
+  color: #dddddd;
+  font-size: 14px;
 }
 
 /*==================== Section Hero ====================*/
@@ -1077,7 +1231,7 @@ header {
           box-shadow: 0 0 3px #17699a;
 }
 
-.booking-form form input[type="submit"] {
+.booking-form form button[type="submit"] {
   color: #fff;
   background: -webkit-gradient(linear, right top, left top, from(#17699a), to(#06527f));
   background: linear-gradient(to left, #17699a, #06527f);
@@ -1088,6 +1242,33 @@ header {
   border: none;
   cursor: pointer;
   letter-spacing: 0.5px;
+  position: relative;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-box-shadow: 0px 0px 10px #3e789b;
+          box-shadow: 0px 0px 10px #3e789b;
+  overflow: hidden;
+}
+
+.booking-form form button[type="submit"]::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -100%;
+  top: 0;
+  background: -webkit-gradient(linear, right top, left top, from(transparent), color-stop(rgba(255, 255, 255, 0.5)), to(transparent));
+  background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.5), transparent);
+  -webkit-transform: skew(-10deg);
+          transform: skew(-10deg);
+  -webkit-transition: 0s;
+  transition: 0s;
+}
+
+.booking-form form button[type="submit"]:hover::before {
+  left: 100%;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .hero-content .content {
