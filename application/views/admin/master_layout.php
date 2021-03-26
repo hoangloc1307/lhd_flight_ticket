@@ -5,26 +5,77 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title ?></title>
+    <title>Flight Ticket Admin - <?= $title ?></title>
+    <link rel="icon" href="<?= base_url() ?>assets/images/icon.png" type="image/icon type">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/styles/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
 </head>
 
-<body>
-    <header>
-        <ul>
-            <li>
-                <a href="<?= base_url() ?>admin/whychooseus">Tại sao chọn chúng tôi</a>
-            </li>
-            <li>
-                <a href="<?= base_url() ?>admin/news">Bài viết</a>
-                <ul>
-                    <li>
-                        <a href="<?= base_url() ?>admin/news/insert">Thêm mới</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </header>
-    <?php $this->load->view($view); ?>
+<body id="admin-page">
+    <nav>
+        <div class="logo">
+            <a href="">
+                <h1>Flick ticket</h1>
+            </a>
+        </div>
+        <div class="link-list">
+            <ul class="links top">
+                <li>
+                    <a href="#"><i class="fas fa-home"></i> Dashboard</a>
+                </li>
+                <li>
+                    <span><i class="fas fa-newspaper"></i> Bài viết <i class="fas fa-chevron-down arrow"></i></span>
+                    <ul class="sub-links">
+                        <li>
+                            <a href="#"><i class="fas fa-caret-right"></i> Tất cả bài viết</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-caret-right"></i> Thêm mới</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span><i class="fas fa-user"></i> Tài khoản <i class="fas fa-chevron-down arrow"></i></span>
+                    <ul class="sub-links">
+                        <li>
+                            <a href="#"><i class="fas fa-caret-right"></i> Thông tin tài khoản</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-caret-right"></i> Đăng xuất</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="links bottom">
+                <li>
+                    <a href="#"><i class="fas fa-info-circle"></i> Thông tin website</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-cog"></i> Cài đặt</a>
+                </li>
+            </ul>
+        </div>
+        <div class="copyright">
+            <p><i class="far fa-copyright"></i> 2021 - Bản quyền của LHD.
+                <br><span>Dự án website bán vé máy bay để ra trường 2017-2021.</span>
+            </p>
+        </div>
+    </nav>
+    <main>
+        <?php $this->load->view($view); ?>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $('.links > li > span').click(function() {
+        $('.links > li').not($(this).parent()).removeClass("active");
+        $('span .arrow').not($(this).find('.arrow')).removeClass("active");
+
+        $(this).parent().toggleClass("active");
+        $(this).find('.arrow').toggleClass("active");
+    });
+    </script>
 </body>
 
 </html>
