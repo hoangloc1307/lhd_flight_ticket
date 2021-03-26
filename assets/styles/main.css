@@ -2563,6 +2563,128 @@ header {
   padding-left: 10px;
 }
 
+#admin-page nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: #17699a;
+}
+
+#admin-page nav .logo {
+  margin: 15px;
+  background-color: #fff;
+}
+
+#admin-page nav .logo h1 {
+  color: #f3f4f8;
+  text-transform: capitalize;
+  font-family: "Lobster", cursive;
+  text-align: center;
+  color: #17699a;
+  padding: 10px;
+  letter-spacing: 2px;
+  font-size: 32px;
+}
+
+#admin-page nav .link-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: calc(100% - 190px);
+  padding: 10px 0;
+}
+
+#admin-page nav .link-list .links {
+  list-style: none;
+}
+
+#admin-page nav .link-list .links a,
+#admin-page nav .link-list .links span {
+  color: #f3f4f8;
+  display: block;
+  padding: 5px 15px;
+  text-transform: capitalize;
+  font-weight: 600;
+  letter-spacing: 1px;
+  position: relative;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#admin-page nav .link-list .links a i.arrow,
+#admin-page nav .link-list .links span i.arrow {
+  font-size: 12px;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(0);
+          transform: translateY(-50%) rotate(0);
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+#admin-page nav .link-list .links a i.arrow.active,
+#admin-page nav .link-list .links span i.arrow.active {
+  -webkit-transform: translateY(-50%) rotate(-180deg);
+          transform: translateY(-50%) rotate(-180deg);
+}
+
+#admin-page nav .link-list .links a:hover,
+#admin-page nav .link-list .links span:hover {
+  background: #f3f4f8;
+  color: #17699a;
+}
+
+#admin-page nav .link-list .links .sub-links {
+  list-style: none;
+  overflow: hidden;
+  height: 0;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+#admin-page nav .link-list .links .sub-links a {
+  font-weight: 500;
+  padding-left: 30px;
+  letter-spacing: 0px;
+  text-transform: capitalize;
+}
+
+#admin-page nav .link-list .links li.active .sub-links {
+  height: 64px;
+}
+
+#admin-page nav .copyright {
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#admin-page nav .copyright p {
+  text-align: center;
+}
+
+#admin-page main {
+  margin-left: 250px;
+  padding: 20px;
+}
+
 .news-letter {
   padding: 30px 0;
   background: #f29018;
