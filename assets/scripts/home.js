@@ -1,6 +1,20 @@
-$(document).ready(function () {
-	/* Input điểm đi, điểm đến focus */
+$(document).ready(function () {	
 
+	/* Chọn một chiều */
+	$("#date-return").prop("disabled", true);
+
+	$("#one-way").click(function () {
+		$("#date-return").prop("disabled", true);
+	});
+
+	/* Chọn khứ hồi */
+	$("#round-trip").click(function () {
+		$("#date-return").prop("disabled", false);
+	});
+
+	/*===== End ===== */
+
+	/* Input điểm đi, điểm đến focus */
 	$(".close").click(function () {
 		$(".way-popup").removeClass("show");
 	});
@@ -9,8 +23,7 @@ $(document).ready(function () {
 		$(".way-popup").not(this).removeClass("show");
 		$(this).next(".way-popup").addClass("show");
 	});
-
-	/* End */
+	/*===== End ===== */
 
 	/* Tab điểm đi, điểm đến */
 	$("label:first-child .tab-container > li").click(function () {
@@ -36,12 +49,11 @@ $(document).ready(function () {
 			.removeClass("tab-active");
 		$(this).addClass("tab-active");
 	});
-	/* End */
+	/*===== End ===== */
 
 	/* Chọn điểm di, điểm đến */
 	$(".list-point li").click(function () {
 		$(this).parents(".way-popup").prev(".choose").val($(this).text());
 	});
-
-	/* End */
+	/*===== End ===== */
 });

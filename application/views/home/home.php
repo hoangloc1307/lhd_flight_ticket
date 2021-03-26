@@ -7,18 +7,18 @@
 				<form action="">
 					<div class="type">
 						<label>
-							<input type="radio" name="ftype" value="" /> Round Trip
+							<input id="one-way" type="radio" name="ftype" value="" checked /> Một chiều
 							<span class="radiobtn"></span>
 						</label>
 						<label>
-							<input type="radio" name="ftype" value="" /> One Way
+							<input id="round-trip" type="radio" name="ftype" value="" /> Khứ hồi
 							<span class="radiobtn"></span>
 						</label>
-						<label>
+						<!-- <label>
 							<input type="radio" name="ftype" value="" />
 							Multiple Destinations
 							<span class="radiobtn"></span>
-						</label>
+						</label> -->
 					</div>
 					<div class="way">
 						<label>
@@ -113,14 +113,16 @@
 					</div>
 					<div class="date">
 						<label>
-							Ngày đi<br /><input type="date" name="fdate" value="" placeholder="Select date" />
+							Ngày đi<br /><input id="date-department" type="date" name="fdate" value=""
+								placeholder="Select date" />
 						</label>
 						<i class="fas fa-arrows-alt-h"></i>
 						<label>
-							Ngày về<br /><input type="date" name="fdate" value="" placeholder="Select date" />
+							Ngày về<br /><input id="date-return" type="date" name="fdate" value=""
+								placeholder="Select date" />
 						</label>
 					</div>
-					<div class="class">
+					<!-- <div class="class">
 						<p class="heading">Class</p>
 						<label>
 							<input type="radio" name="fclass" value="" />
@@ -146,15 +148,15 @@
 								<option value="USD">USD</option>
 							</select>
 						</label>
-					</div>
-					<input type="submit" value="Search flight" />
+					</div> -->
+					<button type="submit" value="Search flight"> Tìm Chuyến Bay </button>
 				</form>
 			</div>
 			<div class="col l-7 hero-content">
 				<div class="content">
 					<h2>It's lovely to feel welcome</h2>
 					<p>The whole world on the platter</p>
-					<a href="#">Find out more</a>
+					<a href="#">Tìm chuyến bay</a>
 				</div>
 				<div class="imgBx">
 					<img src="<?= base_url() ?>assets/images/plane.png" alt="Hero Image" />

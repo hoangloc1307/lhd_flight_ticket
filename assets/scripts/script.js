@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+
 	/*Ẩn hiện nút back to top*/
 	$(this).scroll(function () {
 		if ($(this).scrollTop() > 1000) {
