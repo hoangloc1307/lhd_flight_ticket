@@ -10,8 +10,9 @@ class Manage_News extends CI_Controller
         parent::__construct();
         $this->load->model('admin/News_model');
     }
-    public function index($add = null)
+    public function index($add = NULL)
     {
+        //Load trang tất cả tin tức hoặc trang thêm mới tin tức
         if (is_null($add)) {
             $data['title'] = 'Bài viết';
             $data['view'] = 'admin/news';
@@ -24,9 +25,9 @@ class Manage_News extends CI_Controller
         }
     }
 
-    public function view($slug = NULL)
+    public function view($link = NULL)
     {
-        $data['news_item'] = $this->News_model->getNews($slug);
+        $data['news_item'] = $this->News_model->getNews($link);
 
         if (empty($data['news_item'])) {
             show_404();

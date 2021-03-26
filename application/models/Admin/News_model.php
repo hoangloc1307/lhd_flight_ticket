@@ -6,11 +6,13 @@ class News_model extends CI_Model
 {
     public function getNews($link = null)
     {
+        //Không chỉnh định link thì trả về toàn bộ bài viết
         if (is_null($link)) {
             $query = $this->db->get('tbl_news');
             return $query->result_array();
         }
 
+        //Trả về bài viết giống với link chỉ định
         $where = "LinkCustom = '" . $link . "' OR LinkDefault = '" . $link . "'";
         $this->db->where($where);
         $query = $this->db->get('tbl_news');
