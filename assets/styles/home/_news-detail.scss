@@ -1,0 +1,28 @@
+#news-detail {
+	padding: 50px 0;
+
+	.news-detail {
+		border-right: 1px solid $cl-grey;
+		.title {
+			padding-bottom: 24px;
+			font-size: $fs-main-title;
+			color: $cl-blue-5;
+			font-weight: 400;
+			text-transform: capitalize;
+		}
+		.detail {
+			padding: 24px 10px;
+			text-align: justify;
+		}
+		.date {
+			padding-top: 24px;
+			color: $cl-grey;
+			font-size: $fs-detail;
+		}
+	}
+
+	.news-related {
+		
+		
+	}
+}
