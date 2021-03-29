@@ -1,0 +1,47 @@
+h2 {
+	text-transform: uppercase;
+	font-size: $fs-sub-title;
+	font-weight: 700;
+	margin-bottom: 20px;
+}
+.news {
+	padding: 20px;
+	background: $cl-white-2;
+
+	.heading {
+		text-transform: uppercase;
+		font-weight: 600;
+		font-size: $fs-text;
+		padding-bottom: 20px;
+		border-bottom: 1px solid $cl-grey;
+		text-align: center;
+	}
+
+	.item {
+		padding: 5px 0;
+		border-bottom: 1px solid $cl-grey;
+		align-items: center;
+		text-align: center;
+
+		.action {
+			display: flex;
+			justify-content: space-around;
+
+			.button {
+				display: block;
+				width: 30px;
+				height: 30px;
+				padding: 5px;
+				border-radius: 5px;
+
+				&.edit {
+					color: #2ecc71;
+				}
+
+				&.delete {
+					color: #e74c3c;
+				}
+			}
+		}
+	}
+}
