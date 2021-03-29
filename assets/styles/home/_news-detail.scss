@@ -23,12 +23,14 @@
 
 	.news-related {
 		.related-title {
-
-			padding-bottom: 24px;
+			padding-bottom: 12px;
 			font-size: $fs-sub-title;
 			color: $cl-blue-3;
 			font-weight: 600;
 			text-transform: uppercase;
+			margin-bottom: 12px;
+			border-bottom: 2px solid $cl-blue-3;
+			letter-spacing: 1px;
 		}
 		.related-list {
 			list-style: none;
