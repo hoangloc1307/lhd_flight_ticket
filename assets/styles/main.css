@@ -940,11 +940,14 @@ header {
 }
 
 #news-detail .news-related .related-title {
-  padding-bottom: 24px;
+  padding-bottom: 12px;
   font-size: 18px;
   color: #17699a;
   font-weight: 600;
   text-transform: uppercase;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #17699a;
+  letter-spacing: 1px;
 }
 
 #news-detail .news-related .related-list {
