@@ -33,6 +33,9 @@
                             <a href="<?= base_url() ?>admin/news"><i class="fas fa-caret-right"></i>Tất cả bài viết</a>
                         </li>
                         <li>
+                            <a href="<?= base_url() ?>admin/news"><i class="fas fa-caret-right"></i>Tất cả bài viết</a>
+                        </li>
+                        <li>
                             <a href="<?= base_url() ?>admin/news/insert"><i class="fas fa-caret-right"></i>Thêm mới</a>
                         </li>
                     </ul>

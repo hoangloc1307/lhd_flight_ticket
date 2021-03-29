@@ -6,13 +6,11 @@ class News_model extends CI_Model
 {
     public function getNews($link = null)
     {
-        //Không chỉnh định link thì trả về toàn bộ bài viết
         if (is_null($link)) {
             $query = $this->db->get('tbl_news');
             return $query->result_array();
         }
 
-        //Trả về bài viết giống với link chỉ định
         $where = "LinkCustom = '" . $link . "' OR LinkDefault = '" . $link . "'";
         $this->db->where($where);
         $query = $this->db->get('tbl_news');
@@ -30,7 +28,7 @@ class News_model extends CI_Model
             'Content' => $content,
             'Image' => $image,
             'Date' => $datetime,
-            'LinkDefault' =>  url_title($name, 'dash', TRUE),
+            'LinkDefault' =>  vietdecode($name),
             'LinkCustom' => $linkcustom,
             'View' => 0
         ];
@@ -44,6 +42,18 @@ class News_model extends CI_Model
         $this->db->where('News_ID', $id);
         $data = ['View' => $view];
         $this->db->update('tbl_news', $data);
+    }
+
+    public function getNewsCategory($id = NULL)
+    {
+        if (is_null($id)) {
+            $query = $this->db->get('tbl_news_category');
+            return $query->result_array();
+        }
+
+        $this->db->where($id, 'News_Category_ID ');
+        $query = $this->db->get('tbl_news_category');
+        return $query->row_array();
     }
 }
                         

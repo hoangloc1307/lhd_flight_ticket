@@ -30,7 +30,7 @@
                     <li><a href="<?= base_url() ?>news">Tin tức</a></li>
                     <li class="user">
                         <a
-                            href="<?php echo $this->session->userdata('username') == NULL ? 'login' : 'login/logout'; ?>">
+                            href="<?php echo $this->session->userdata('username') == NULL ? base_url() . 'login' : base_url() . 'login/logout'; ?>">
                             <i class="fas fa-user"></i>
                             <span><?= $this->session->userdata("username") ?></span>
                         </a>
