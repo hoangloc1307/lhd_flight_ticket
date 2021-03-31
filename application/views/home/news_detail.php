@@ -14,7 +14,7 @@
 	<div class="grid wide">
 		<div class="row">
 			<div class="col l-8 m-8 c-12 news-detail">
-				<h2 class="title" title="<?= $new['Name'] ?>">
+				<h2 class="title">
 					<?= $new['Name'] ?>
 				</h2>
 				<div class="detail">
@@ -40,10 +40,22 @@
 							</h4>
 						</li>
 						<li class="related-item">
-							<a href="#">Tư vấn hỗ trợ đặt vé </a>
+							<a href="#" class="related-thumb">
+								<img src="<?= base_url() ?>assets/images/favorite/hoian.jpg" alt="">
+							</a>
+							<h4 class="related-heading">
+								<a href="#" target="_blank" title="">Tư vấn hỗ trợ đặt vé Tư vấn hỗ trợ đặt
+									vé</a>
+							</h4>
 						</li>
 						<li class="related-item">
-							<a href="#">Tư vấn hỗ trợ đặt vé</a>
+							<a href="#" class="related-thumb">
+								<img src="<?= base_url() ?>assets/images/favorite/hoian.jpg" alt="">
+							</a>
+							<h4 class="related-heading">
+								<a href="#" target="_blank" title="">Tư vấn hỗ trợ đặt vé Tư vấn hỗ trợ đặt
+									vé</a>
+							</h4>
 						</li>
 					</ul>
 				</div>

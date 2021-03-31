@@ -53,12 +53,6 @@
 	}
 
 	.news-item {
-		transition: 0.3s ease-in-out;
-
-		&:hover {
-			transform: translateY(-5px);
-			// box-shadow: 1px 3px 5px $cl-grey-2;
-		}
 		.news-wrap {
 			padding: 12px;
 
@@ -67,12 +61,18 @@
 				text-decoration: none;
 				width: 100%;
 				height: 250px;
+				border-radius: 10px;
+				overflow: hidden;
 
 				img {
 					width: 100%;
 					height: 100%;
 					object-fit: cover;
-					border-radius: 10px;
+					transition: 0.5s ease-in-out;
+
+					&:hover {
+						transform: scale(1.05);
+					}
 				}
 			}
 

@@ -43,9 +43,12 @@
 										<li>
 											<span>Thái lan</span>
 										</li>
+										<li>
+											<span>Quốc Tế</span>
+										</li>
 									</ul>
 									<div class="list-city-wrap">
-										<div id="tab-1" class="list-city list-active">
+										<div class="list-city list-active">
 											<ul class="list-point">
 												<li>Hồ Chí Minh (SGN)</li>
 												<li>Hà Nội (HAN)</li>
@@ -53,11 +56,18 @@
 											</ul>
 										</div>
 
-										<div id="tab-2" class="list-city">
+										<div class="list-city">
 											<ul class="list-point">
 												<li>Băng Cốc (BKK)</li>
 												<li>Jakarta (JKT)</li>
 												<li>Kuala Lumpur (KUL)</li>
+											</ul>
+										</div>
+
+										<div class="list-city">
+											<ul class="list-point">
+												<li>Seoul (BKK)</li>
+												<li>Singapore</li>
 											</ul>
 										</div>
 									</div>
@@ -87,9 +97,12 @@
 										<li>
 											<span>Thái lan</span>
 										</li>
+										<li>
+											<span>Quốc Tế</span>
+										</li>
 									</ul>
 									<div class="list-city-wrap">
-										<div id="tab-1" class="list-city list-active">
+										<div class="list-city list-active">
 											<ul class="list-point">
 												<li>Hồ Chí Minh (SGN)</li>
 												<li>Hà Nội (HAN)</li>
@@ -97,11 +110,18 @@
 											</ul>
 										</div>
 
-										<div id="tab-2" class="list-city">
+										<div class="list-city">
 											<ul class="list-point">
 												<li>Băng Cốc (BKK)</li>
 												<li>Jakarta (JKT)</li>
 												<li>Kuala Lumpur (KUL)</li>
+											</ul>
+										</div>
+
+										<div class="list-city">
+											<ul class="list-point">
+												<li>Seoul (BKK)</li>
+												<li>Singapore</li>
 											</ul>
 										</div>
 									</div>
@@ -121,6 +141,56 @@
 							Ngày về<br /><input id="date-return" type="date" name="fdate" value=""
 								placeholder="Select date" />
 						</label>
+					</div>
+
+					<div class="passenger">
+						<div class="adults">
+							<div class="passenger-name">
+								<p>Người lớn</p>
+								<p>12 tuổi trở lên</p>
+							</div>
+							<div class="passenger-number">
+								<button type="button" class="minus-button unactive">
+									<i class="fas fa-minus"></i>
+								</button>
+								<span class="amount">0</span>
+								<button type="button" class="plus-button active">
+									<i class="fas fa-plus"></i>
+								</button>
+							</div>
+						</div>
+						<div class="children">
+							<div class="passenger-name">
+								<p>Trẻ em</p>
+								<p>2 - 12 tuổi</p>
+							</div>
+							<div class="passenger-number">
+								<button type="button" class="minus-button unactive">
+									<i class="fas fa-minus"></i>
+								</button>
+								<span class="amount">0</span>
+								<button type="button" class="plus-button active">
+									<i class="fas fa-plus"></i>
+								</button>
+							</div>
+						</div>
+
+						<div class="infants">
+							<div class="passenger-name">
+								<p>Trẻ sơ sinh</p>
+								<p>0 - 2 tuổi</p>
+							</div>
+							<div class="passenger-number">
+								<button type="button" class="minus-button unactive">
+									<i class="fas fa-minus"></i>
+								</button>
+								<span class="amount">0</span>
+								<button type="button" class="plus-button active">
+									<i class="fas fa-plus"></i>
+								</button>
+							</div>
+						</div>
+
 					</div>
 
 					<!-- <div class="class">

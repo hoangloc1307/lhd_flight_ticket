@@ -36,14 +36,47 @@
 			list-style: none;
 
 			.related-item {
+				display: flex;
+				align-items: center;
 				padding: 8px 0;
+				border-bottom: 1px solid $cl-white-1;
 
-				a {
-					text-decoration: none;
-					color: $cl-black;
+				&:last-child {
+					border-bottom: 0;
+				}
 
-					&:hover {
-						color: $cl-blue-3;
+				.related-thumb {
+					display: block;
+					width: 70px;
+					height: 63px;
+					overflow: hidden;
+					border-radius: 5px;
+
+					img {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+						transition: 0.5s ease-in-out;
+
+						&:hover {
+							transform: scale(1.05);
+						}
+					}
+				}
+
+				.related-heading {
+					margin: 0 12px;
+
+					a {
+						display: block;
+						text-decoration: none;
+						color: $cl-black;
+						font-weight: 400;
+						font-size: $fs-sub-title;
+
+						&:hover {
+							color: $cl-blue-3;
+						}
 					}
 				}
 			}

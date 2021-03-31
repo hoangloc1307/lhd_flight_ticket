@@ -1,5 +1,4 @@
-$(document).ready(function () {	
-
+$(document).ready(function () {
 	/* Chọn một chiều */
 	$("#date-return").prop("disabled", true);
 
@@ -55,5 +54,62 @@ $(document).ready(function () {
 	$(".list-point li").click(function () {
 		$(this).parents(".way-popup").prev(".choose").val($(this).text());
 	});
+	/*===== End ===== */
+
+	/* Tăng - Giảm số lượng hành khách */
+
+	$(".plus-button").click(function () {
+		var amount = parseInt($(this).prev(".amount").text());
+
+		if (amount < 9) {
+			$(this)
+				.prev(".amount")
+				.text(++amount);
+
+			if (
+				$(this).parents(".infants").attr("class") == "infants" &&
+				amount > 1
+			) {
+				$(this).removeClass("active");
+				$(this).addClass("unactive");
+			}
+		}
+		if (amount > 0) {
+			$(this).prevAll(".minus-button").removeClass("unactive");
+			$(this).prevAll(".minus-button").addClass("active");
+		}
+
+		if (amount > 8) {
+			$(this).removeClass("active");
+			$(this).addClass("unactive");
+		}
+	});
+
+	$(".minus-button").click(function () {
+		var amount = parseInt($(this).next(".amount").text());
+		if (amount > 0) {
+			$(this)
+				.next(".amount")
+				.text(--amount);
+
+			if (
+				$(this).parents(".infants").attr("class") == "infants" &&
+				amount < 2
+			) {
+				$(this).nextAll(".plus-button").removeClass("unactive");
+				$(this).nextAll(".plus-button").addClass("active");
+			}
+		}
+		if (amount == 0) {
+			$(this).removeClass("active");
+			$(this).addClass("unactive");
+		}
+
+		if (amount < 9) {
+			$(this).nextAll(".plus-button").removeClass("unactive");
+			$(this).nextAll(".plus-button").addClass("active");
+		}
+	});
+
 	/*===== End ===== */
 });
