@@ -247,6 +247,74 @@
 			}
 		}
 
+		.passenger {
+			max-width: 100%;
+			display: flex;
+
+			align-items: center;
+
+			.adults,
+			.children {
+				margin-right: 30px;
+			}
+
+			.passenger-name {
+				display: flex;
+				align-items: center;
+				margin-bottom: 12px;
+				justify-content: center;
+
+				p:first-child {
+					font-size: $fs-detail;
+					padding-right: 4px;
+					color: $cl-blue-3;
+				}
+				p:last-child {
+					color: $cl-grey-2;
+					font-size: $fs-detail;
+					opacity: 0.6;
+				}
+			}
+			.passenger-number {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				.minus-button,
+				.plus-button {
+					margin: 0 12px;
+					&.active,
+					&.unactive {
+						padding: 3px 6px;
+						border-radius: 50%;
+						background: transparent;
+						outline: none;
+					}
+					&.active {
+						cursor: pointer;
+						color: $cl-blue-3;
+						border: 1px solid $cl-blue-3;
+						transition: 0.3s ease-in-out;
+
+						&:hover {
+							background: $cl-blue-3;
+							color: $cl-white-2;
+						}
+					}
+					&.unactive {
+						color: $cl-grey-2;
+						border: 1px solid $cl-grey-2;
+						opacity: 0.5;
+						pointer-events: none;
+					}
+				}
+				.amount {
+					font-size: $fs-detail;
+					cursor: default;
+				}
+			}
+		}
+
 		.currency {
 			label {
 				color: $cl-black;
@@ -285,7 +353,7 @@
 			transition: 0.5s;
 			box-shadow: 0px 0px 10px $cl-blue-2;
 			overflow: hidden;
-			
+
 			@include button_hover();
 		}
 	}
