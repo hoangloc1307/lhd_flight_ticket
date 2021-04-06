@@ -1,15 +1,3 @@
-<?php /*?>
-
-<h2><?= $news['Name'] ?></h2>
-<img src="<?= $new['Image'] ?>" alt="">
-<p><?= $new['Description'] ?></p>
-<p><?= $new['Content'] ?></p>
-<p>Ngày đăng: <?= $new['Date'] ?></p>
-<p>Lượt xem: <?= $new['View'] ?></p>
-<p><?php var_dump($new['LinkCustom']); ?></p>
-
-*/ ?>
-
 <section id="news-detail">
     <div class="grid wide">
         <div class="row">
@@ -26,37 +14,22 @@
             </div>
             <div class="col l-4 m-4 c-12 news-related">
                 <div class="news-related-wrap">
-                    <h4 class="related-title">
-                        Tin tức liên quan
-                    </h4>
+                    <h3 class="related-title">
+                        Bài viết liên quan
+                    </h3>
                     <ul class="related-list">
+                        <?php foreach ($related_news as $item) : ?>
                         <li class="related-item">
-                            <a href="#" class="related-thumb">
-                                <img src="<?= base_url() ?>assets/images/favorite/hoian.jpg" alt="">
+                            <a href="<?= base_url() . 'news/' . ($item['LinkCustom'] != '' ? $item['LinkCustom'] : $item['LinkDefault']) ?>"
+                                class="related-thumb">
+                                <img src="<?= base_url() . $item['Image'] ?>">
                             </a>
                             <h4 class="related-heading">
-                                <a href="#" target="_blank" title="">Tư vấn hỗ trợ đặt vé Tư vấn hỗ trợ đặt
-                                    vé</a>
+                                <a href="<?= base_url() . 'news/' . ($item['LinkCustom'] != '' ? $item['LinkCustom'] : $item['LinkDefault']) ?>"
+                                    title=""><?= $item['Name'] ?></a>
                             </h4>
                         </li>
-                        <li class="related-item">
-                            <a href="#" class="related-thumb">
-                                <img src="<?= base_url() ?>assets/images/favorite/hoian.jpg" alt="">
-                            </a>
-                            <h4 class="related-heading">
-                                <a href="#" target="_blank" title="">Tư vấn hỗ trợ đặt vé Tư vấn hỗ trợ đặt
-                                    vé</a>
-                            </h4>
-                        </li>
-                        <li class="related-item">
-                            <a href="#" class="related-thumb">
-                                <img src="<?= base_url() ?>assets/images/favorite/hoian.jpg" alt="">
-                            </a>
-                            <h4 class="related-heading">
-                                <a href="#" target="_blank" title="">Tư vấn hỗ trợ đặt vé Tư vấn hỗ trợ đặt
-                                    vé</a>
-                            </h4>
-                        </li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
