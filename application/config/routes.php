@@ -51,10 +51,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 
 $route['default_controller'] = 'home';
-
+//Home
 $route['news'] = 'news/view';
 $route['news/(:any)'] = 'news/view/$1';
-
+//Admin
 $route['admin'] = 'admin/admin';
-$route['admin/news/insert'] = 'admin/manage_news/index/add';
 $route['admin/news'] = 'admin/manage_news';
+$route['admin/news/add'] = 'admin/manage_news/add';

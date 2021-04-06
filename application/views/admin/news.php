@@ -1,4 +1,5 @@
 <h2>Tất cả bài viết</h2>
+<p class="alert"><?php echo $this->session->tempdata('add_alert'); ?></p>
 <section class="news">
     <div class="grid">
         <div class="row heading">
@@ -10,41 +11,23 @@
             <div class="col l-1">Lượt xem</div>
             <div class="col l-1">Thao tác</div>
         </div>
+        <?php foreach ($news as $row) : ?>
         <div class="row item">
-            <div class="col l-1">1</div>
-            <div class="col l-2"><img src="https://via.placeholder.com/100" alt=""></div>
-            <div class="col l-3">Đà Lạt</div>
-            <div class="col l-2">Địa điểm nổi bật</div>
-            <div class="col l-2">2021-03-15 21:15:30</div>
-            <div class="col l-1">175</div>
+            <div class="col l-1"><?= $row['News_ID'] ?></div>
+            <div class="col l-2">
+                <div class="imgBx">
+                    <img src="<?= $row['Image'] ?>" alt="<?= $row['Name'] ?>">
+                </div>
+            </div>
+            <div class="col l-3"><?= $row['Name'] ?></div>
+            <div class="col l-2"><?= $row['Category'] ?></div>
+            <div class="col l-2"><?= $row['Date'] ?></div>
+            <div class="col l-1"><?= $row['View'] ?></div>
             <div class="col l-1 action">
                 <a href="#" class="button edit"><i class="fas fa-edit"></i></a>
                 <a href="#" class="button delete"><i class="fas fa-trash"></i></a>
             </div>
         </div>
-        <div class="row item">
-            <div class="col l-1">1</div>
-            <div class="col l-2"><img src="https://via.placeholder.com/100" alt=""></div>
-            <div class="col l-3">Đà Lạt</div>
-            <div class="col l-2">Địa điểm nổi bật</div>
-            <div class="col l-2">2021-03-15 21:15:30</div>
-            <div class="col l-1">175</div>
-            <div class="col l-1 action">
-                <a href="#" class="button edit"><i class="fas fa-edit"></i></a>
-                <a href="#" class="button delete"><i class="fas fa-trash"></i></a>
-            </div>
-        </div>
-        <div class="row item">
-            <div class="col l-1">1</div>
-            <div class="col l-2"><img src="https://via.placeholder.com/100" alt=""></div>
-            <div class="col l-3">Đà Lạt</div>
-            <div class="col l-2">Địa điểm nổi bật</div>
-            <div class="col l-2">2021-03-15 21:15:30</div>
-            <div class="col l-1">175</div>
-            <div class="col l-1 action">
-                <a href="#" class="button edit"><i class="fas fa-edit"></i></a>
-                <a href="#" class="button delete"><i class="fas fa-trash"></i></a>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 </section>

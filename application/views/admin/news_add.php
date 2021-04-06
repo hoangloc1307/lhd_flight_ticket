@@ -19,5 +19,5 @@
         Đường dẫn
         <input type="text" name="linkcustom" id="">
     </label>
-    <button type="submit">Thêm mới</button>
+    <button type="submit" name="submit">Thêm mới</button>
 </form>
