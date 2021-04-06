@@ -22,7 +22,8 @@ class News_model extends CI_Model
                 $query = $this->db->get('tbl_news');
                 return $query->row_array();
             } else {
-                $this->db->where('Category', $category);
+                $where = "Category = '" . $category . "' AND LinkDefault <> '" . $link . "' AND LinkCustom <> '" . $link . "'";
+                $this->db->where($where);
                 $query = $this->db->get('tbl_news');
                 return $query->result_array();
             }

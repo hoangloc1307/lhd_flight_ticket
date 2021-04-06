@@ -18,6 +18,7 @@ class News extends CI_Controller
             $data['title'] = 'Bài viết';
             $data['view'] = 'home/news';
             $data['news'] = $this->News_model->GetNews(); //Lấy tất cả bài viết.
+            $data['news_category'] = $this->News_model->GetNewsCategory();
         } else {
             //Lấy danh mục với link chỉ định.
             $news_category = $this->News_model->GetNewsCategory($link);
@@ -30,9 +31,14 @@ class News extends CI_Controller
                 if (is_null($news)) {
                     show_404();
                 }
+                //Lấy bài viết liên quan.
+                $id_category = $news['Category'];
+                $related_news = $this->News_model->GetNews($link, $id_category);
+
                 $data['title'] = $news['Name'];
                 $data['view'] = 'home/news_detail';
                 $data['news'] = $news;
+                $data['related_news'] = $related_news;
                 //Cập nhật lượt xem bài viết.
                 $view = $news['View'];
                 $this->News_model->UpdateView($news['News_ID'], ++$view);
