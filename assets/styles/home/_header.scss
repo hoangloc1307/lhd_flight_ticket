@@ -43,17 +43,20 @@ header {
 		ul {
 			display: flex;
 			list-style: none;
+			align-items: center;
 
 			li {
 				margin-left: 10px;
 
-				a {
+				.menu-link {
 					color: $cl-blue-3;
 					padding: 10px 15px;
 					text-decoration: none;
 					font-weight: 800;
 					border-radius: 20px;
 					transition: 0.2s ease-in-out;
+					border: 1px solid $cl-blue-3;
+					cursor: pointer;
 
 					&:hover,
 					&.active {
@@ -61,14 +64,78 @@ header {
 						color: $cl-white-2;
 					}
 				}
-				&.user a {
-					border-radius: 25px;
+				&.user {
+					position: relative;
+					color: $cl-blue-3;
+					padding: 10px 15px;
+					font-weight: 800;
+					cursor: pointer;
 					border: 1px solid $cl-blue-3;
-
+					border-radius: 20px;
 					span {
-						max-width: 100px;
-						text-overflow: ellipsis;
-						overflow: hidden;
+						display: flex;
+						align-items: center;
+
+						p {
+							padding-left: 4px;
+							width: 100px;
+							white-space: nowrap;
+							text-overflow: ellipsis;
+							overflow: hidden;
+						}
+					}
+
+					&.user:hover .menu-user {
+						display: block;
+					}
+
+					.menu-user {
+						position: absolute;
+						top: 60px;
+						left: 50%;
+						transform: translateX(-50%);
+						width: 200px;
+						flex-direction: column;
+						background: $cl-white-3;
+						box-shadow: 0 2px 5px $cl-grey;
+						border-radius: 5px;
+						padding: 12px 0;
+						border: 1px solid $cl-white-1;
+						display: none;
+
+						&::before {
+							position: absolute;
+							content: "";
+							top: -24px;
+							left: 50%;
+							transform: translateX(-50%);
+							border: 12px solid;
+							border-color: transparent transparent $cl-white-3 transparent;
+						}
+						&::after {
+							position: absolute;
+							content: "";
+							top: -18px;
+							left: 0;
+							width: 100%;
+							height: 18px;
+							background: transparent;
+						}
+
+						.menu-list {
+							margin: 0 4px;
+							a {
+								color: $cl-blue-3;
+								display: block;
+								padding: 8px 12px;
+								border-radius: 20px;
+								transition: 0.2s ease-in-out;
+								&:hover {
+									background: $cl-blue-3;
+									color: $cl-white-2;
+								}
+							}
+						}
 					}
 				}
 			}

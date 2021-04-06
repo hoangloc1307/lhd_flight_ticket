@@ -26,19 +26,19 @@
 			</div>
 			<div class="links">
 				<ul>
-					<li><a href="<?= base_url() ?>">Trang chủ</a></li>
-					<li><a href="<?= base_url() ?>news">Tin tức</a></li>
+					<li><a class="menu-link" href="<?= base_url() ?>">Trang chủ</a></li>
+					<li><a class="menu-link" href="<?= base_url() ?>news">Tin tức</a></li>
 					<li class="user">
 						<span>
 							<i class="fas fa-user"></i>
-							Hello....
+							<p>Hello....</p>
 						</span>
 						<ul class="menu-user">
-							<li>
-								<a href="#"></a>
+							<li class="menu-list">
+								<a href="#"> Thông tin người dùng</a>
 							</li>
-							<li>
-								<a href="#"></a>
+							<li class="menu-list">
+								<a href="#"> Đăng xuất </a>
 							</li>
 						</ul>
 					</li>
@@ -180,7 +180,7 @@
 
 					<div class="col l-6 search">
 						<form action="">
-							<input type="text" class="footer-search" placeholder="Tao có thể giúp gì cho mày?">
+							<input type="text" class="footer-search" placeholder="Tôi có thể giúp gì cho bạn?">
 						</form>
 						<button type="submit" class="footer-submit">
 							<i class="fas fa-search"></i>
