@@ -29,6 +29,15 @@ class News_model extends CI_Model
         }
     }
 
+    public function GetNewsWithCategory()
+    {
+        $this->db->select('News_ID, tbl_news.Name, Image, Date, View, Category, tbl_news_category.Name as Category');
+        $this->db->from('tbl_news');
+        $this->db->join('tbl_news_category', 'tbl_news_category.News_Category_ID = tbl_news.Category', 'left');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     //Hàm thêm bài viết mới.
     public function AddNews($name, $description, $content, $image, $linkcustom)
     {
