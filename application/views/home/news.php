@@ -14,125 +14,156 @@
 
 <section id="news">
 	<div class="grid wide">
+		<div class="news-header">
+			<div class="news-title">
+				<h2>Tất cả bài viết</h2>
+			</div>
+			<div class="news-icon">
+				<i class="far fa-newspaper"></i>
+			</div>
+		</div>
 		<div class="row">
-			<div class="col l-12 m-12 s-12 news-header">
-				<div class="news-title">
-					<h2>Tin tức</h2>
-				</div>
-				<div class="news-icon">
-					<i class="far fa-newspaper"></i>
-				</div>
-			</div>
-			<div class="col l-4 m-4 s-6 news-item">
-				<div class="news-wrap">
-					<a href="#" title="DaLat" class="img-wrap">
-						<img src="<?= base_url() ?>assets/images/favorite/hoian.jpg">
-					</a>
-					<div class="heading-description">
-						<a href="#" class="news-heading">
-							Vì sao bạn phải đến du lịch Đài Loan một lần trong đời?
-						</a>
-						<p class="news-description">
-							Đài Loan là điểm đến gần như hoàn hảo, với thành phố nhộn nhịp, thiên nhiên hùng vĩ,
-							văn hóa lâu đời và ẩm thực đời.
-						</p>
-						<div class="date-view">
+			<div class="col l-3 category">
+				<h3 class="category-title"> Danh mục bài viết</h3>
 
-							<p class="news-date">
-								<i class="far fa-calendar-alt"></i>
-								13/01/1999
-							</p>
-							<div class="news-view">
-								<i class="far fa-eye"></i>
-								123
+				<ul class="category-list">
+					<li class="category-item">
+						<a href="#">Đà lạt</a>
+					</li>
+					<li class="category-item">
+						<a href="#">Đà lạt</a>
+					</li>
+					<li class="category-item">
+						<a href="#">Đà lạt</a>
+					</li>
+					<li class="category-item">
+						<a href="#">Đà lạt</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col l-9">
+				<div class="row">
+					<div class="col l-4 m-4 s-6 news-item">
+						<div class="news-wrap">
+							<a href="#" title="DaLat" class="img-wrap">
+								<img src="<?= base_url() ?>assets/images/favorite/hoian.jpg">
+							</a>
+							<div class="heading-description">
+								<a href="#" class="news-heading" title="">
+									Vì sao bạn phải đến du lịch Đài Loan một lần trong đời?
+								</a>
+								<p class="news-description">
+									Đài Loan là điểm đến gần như hoàn hảo, với thành phố nhộn nhịp, thiên nhiên
+									hùng
+									vĩ,
+									văn hóa lâu đời và ẩm thực đời.
+								</p>
+								<div class="date-view">
+
+									<p class="news-date">
+										<i class="far fa-calendar-alt"></i>
+										13/01/1999
+									</p>
+									<div class="news-view">
+										<i class="far fa-eye"></i>
+										123
+									</div>
+								</div>
 							</div>
+
 						</div>
 					</div>
+					<div class="col l-4 m-4 s-6 news-item">
+						<div class="news-wrap">
+							<a href="#" title="DaLat" class="img-wrap">
+								<img src="<?= base_url() ?>assets/images/favorite/dalat.jpg">
+							</a>
+							<div class="heading-description">
+								<a href="#" class="news-heading" title="">
+									Vì sao bạn phải đến du lịch Đài Loan một lần trong đời? aaaaaaa aaaaaaaaaaa
+									aaaaa
+								</a>
+								<p class="news-description">
+									Đài Loan là điểm đến gần như hoàn hảo, với thành phố nhộn nhịp, thiên nhiên
+									hùng
+									vĩ,
+									văn hóa lâu đời và ẩm thực đời.
+								</p>
+								<div class="date-view">
 
-				</div>
-			</div>
-			<div class="col l-4 m-4 s-6 news-item">
-				<div class="news-wrap">
-					<a href="#" title="DaLat" class="img-wrap">
-						<img src="<?= base_url() ?>assets/images/favorite/dalat.jpg">
-					</a>
-					<div class="heading-description">
-						<a href="#" class="news-heading">
-							Vì sao bạn phải đến du lịch Đài Loan một lần trong đời?
-						</a>
-						<p class="news-description">
-							Đài Loan là điểm đến gần như hoàn hảo, với thành phố nhộn nhịp, thiên nhiên hùng vĩ,
-							văn hóa lâu đời và ẩm thực đời.
-						</p>
-						<div class="date-view">
-
-							<p class="news-date">
-								<i class="far fa-calendar-alt"></i>
-								13/01/1999
-							</p>
-							<div class="news-view">
-								<i class="far fa-eye"></i>
-								123
+									<p class="news-date">
+										<i class="far fa-calendar-alt"></i>
+										13/01/1999
+									</p>
+									<div class="news-view">
+										<i class="far fa-eye"></i>
+										123
+									</div>
+								</div>
 							</div>
+
 						</div>
 					</div>
+					<div class="col l-4 m-4 s-6 news-item">
+						<div class="news-wrap">
+							<a href="#" title="DaLat" class="img-wrap">
+								<img src="<?= base_url() ?>assets/images/favorite/dalat.jpg">
+							</a>
+							<div class="heading-description">
+								<a href="#" class="news-heading" title="">
+									Vì sao bạn phải đến du lịch Đài Loan một lần trong đời?
+								</a>
+								<p class="news-description">
+									Đài Loan là điểm đến gần như hoàn hảo, với thành phố nhộn nhịp, thiên nhiên
+									hùng
+									vĩ,
+									văn hóa lâu đời và ẩm thực đời.
+								</p>
+								<div class="date-view">
 
-				</div>
-			</div>
-			<div class="col l-4 m-4 s-6 news-item">
-				<div class="news-wrap">
-					<a href="#" title="DaLat" class="img-wrap">
-						<img src="<?= base_url() ?>assets/images/favorite/dalat.jpg">
-					</a>
-					<div class="heading-description">
-						<a href="#" class="news-heading">
-							Vì sao bạn phải đến du lịch Đài Loan một lần trong đời?
-						</a>
-						<p class="news-description">
-							Đài Loan là điểm đến gần như hoàn hảo, với thành phố nhộn nhịp, thiên nhiên hùng vĩ,
-							văn hóa lâu đời và ẩm thực đời.
-						</p>
-						<div class="date-view">
-
-							<p class="news-date">
-								<i class="far fa-calendar-alt"></i>
-								13/01/1999
-							</p>
-							<div class="news-view">
-								<i class="far fa-eye"></i>
-								123
+									<p class="news-date">
+										<i class="far fa-calendar-alt"></i>
+										13/01/1999
+									</p>
+									<div class="news-view">
+										<i class="far fa-eye"></i>
+										123
+									</div>
+								</div>
 							</div>
+
 						</div>
 					</div>
+					<div class="col l-4 m-4 s-6 news-item">
+						<div class="news-wrap">
+							<a href="#" title="DaLat" class="img-wrap">
+								<img src="<?= base_url() ?>assets/images/favorite/dalat.jpg">
+							</a>
+							<div class="heading-description">
+								<a href="#" class="news-heading" title="">
+									Vì sao bạn phải đến du lịch Đài Loan một lần trong đời?
+								</a>
+								<p class="news-description">
+									Đài Loan là điểm đến gần như hoàn hảo, với thành phố nhộn nhịp, thiên nhiên
+									hùng
+									vĩ,
+									văn hóa lâu đời và ẩm thực đời.
+								</p>
+								<div class="date-view">
 
-				</div>
-			</div>
-			<div class="col l-4 m-4 s-6 news-item">
-				<div class="news-wrap">
-					<a href="#" title="DaLat" class="img-wrap">
-						<img src="<?= base_url() ?>assets/images/favorite/dalat.jpg">
-					</a>
-					<div class="heading-description">
-						<a href="#" class="news-heading">
-							Vì sao bạn phải đến du lịch Đài Loan một lần trong đời?
-						</a>
-						<p class="news-description">
-							Đài Loan là điểm đến gần như hoàn hảo, với thành phố nhộn nhịp, thiên nhiên hùng vĩ,
-							văn hóa lâu đời và ẩm thực đời.
-						</p>
-						<div class="date-view">
-
-							<p class="news-date">
-								<i class="far fa-calendar-alt"></i>
-								13/01/1999
-							</p>
-							<div class="news-view">
-								<i class="far fa-eye"></i>
-								123
+									<p class="news-date">
+										<i class="far fa-calendar-alt"></i>
+										13/01/1999
+									</p>
+									<div class="news-view">
+										<i class="far fa-eye"></i>
+										123
+									</div>
+								</div>
 							</div>
+
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
