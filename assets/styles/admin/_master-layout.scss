@@ -50,6 +50,7 @@
 						left: 15px;
 						top: 50%;
 						transform: translateY(-50%);
+						transition: 0.2s ease-in-out;
 					}
 
 					i.arrow {
@@ -81,7 +82,17 @@
 						font-weight: 500;
 						margin-left: 25px;
 						letter-spacing: 0px;
-						text-transform: capitalize;
+						text-transform: unset;
+
+						&:hover {
+							background: transparent;
+							color: $cl-white-1;
+							text-decoration: underline;
+
+							i {
+								left: 25px;
+							}
+						}
 					}
 				}
 

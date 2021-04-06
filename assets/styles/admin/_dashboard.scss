@@ -2,6 +2,7 @@
 	.block {
 		background: $cl-white-2;
 		padding: 20px;
+		border-radius: 10px;
 
 		.content {
 			p:first-child {
@@ -29,6 +30,7 @@
 	.table {
 		background: $cl-white-2;
 		padding: 20px;
+		border-radius: 10px;
 
 		.link {
 			margin-bottom: 20px;
