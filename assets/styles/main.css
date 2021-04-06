@@ -742,13 +742,16 @@ header {
   display: -ms-flexbox;
   display: flex;
   list-style: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .menu-pc .links ul li {
   margin-left: 10px;
 }
 
-.menu-pc .links ul li a {
+.menu-pc .links ul li .menu-link {
   color: #17699a;
   padding: 10px 15px;
   text-decoration: none;
@@ -756,22 +759,103 @@ header {
   border-radius: 20px;
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
+  border: 1px solid #17699a;
+  cursor: pointer;
 }
 
-.menu-pc .links ul li a:hover, .menu-pc .links ul li a.active {
+.menu-pc .links ul li .menu-link:hover, .menu-pc .links ul li .menu-link.active {
   background: #17699a;
   color: #fff;
 }
 
-.menu-pc .links ul li.user a {
-  border-radius: 25px;
+.menu-pc .links ul li.user {
+  position: relative;
+  color: #17699a;
+  padding: 10px 15px;
+  font-weight: 800;
+  cursor: pointer;
   border: 1px solid #17699a;
+  border-radius: 20px;
 }
 
-.menu-pc .links ul li.user a span {
-  max-width: 100px;
+.menu-pc .links ul li.user span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.menu-pc .links ul li.user span p {
+  padding-left: 4px;
+  width: 100px;
+  white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.menu-pc .links ul li.user.user:hover .menu-user {
+  display: block;
+}
+
+.menu-pc .links ul li.user .menu-user {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 200px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #f9f9f9;
+  -webkit-box-shadow: 0 2px 5px #dddddd;
+          box-shadow: 0 2px 5px #dddddd;
+  border-radius: 5px;
+  padding: 12px 0;
+  border: 1px solid #f3f4f8;
+  display: none;
+}
+
+.menu-pc .links ul li.user .menu-user::before {
+  position: absolute;
+  content: "";
+  top: -24px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  border: 12px solid;
+  border-color: transparent transparent #f9f9f9 transparent;
+}
+
+.menu-pc .links ul li.user .menu-user::after {
+  position: absolute;
+  content: "";
+  top: -18px;
+  left: 0;
+  width: 100%;
+  height: 18px;
+  background: transparent;
+}
+
+.menu-pc .links ul li.user .menu-user .menu-list {
+  margin: 0 4px;
+}
+
+.menu-pc .links ul li.user .menu-user .menu-list a {
+  color: #17699a;
+  display: block;
+  padding: 8px 12px;
+  border-radius: 20px;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.menu-pc .links ul li.user .menu-user .menu-list a:hover {
+  background: #17699a;
+  color: #fff;
 }
 
 /*==================== Menu Mobile ====================*/
@@ -3048,6 +3132,7 @@ h2 {
   font-size: 24px;
   text-transform: uppercase;
   color: #fff;
+  margin-bottom: 0;
 }
 
 .news-letter .title h2 i {
