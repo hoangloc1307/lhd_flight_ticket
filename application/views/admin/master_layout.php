@@ -2,128 +2,133 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flight Ticket Admin - <?= $title ?></title>
-    <link rel="icon" href="<?= base_url() ?>assets/images/icon.png" type="image/icon type">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/styles/main.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
-        crossorigin="anonymous" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Flight Ticket Admin - <?= $title ?></title>
+	<link rel="icon" href="<?= base_url() ?>assets/images/icon.png" type="image/icon type">
+	<link rel="stylesheet" href="<?= base_url() ?>assets/styles/main.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+		integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+		crossorigin="anonymous" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
 </head>
 
 <body id="admin-page">
-    <nav>
-        <div class="logo">
-            <a href="<?= base_url() ?>admin">
-                <h1>Flight Ticket</h1>
-            </a>
-        </div>
-        <div class="link-list">
-            <ul class="links top">
-                <li>
-                    <a href="<?= base_url() ?>admin"><i class="fas fa-home"></i>Dashboard</a>
-                </li>
-                <li>
-                    <span><i class="fas fa-newspaper"></i>Bài viết<i class="fas fa-chevron-down arrow"></i></span>
-                    <ul class="sub-links">
-                        <li>
-                            <a href="<?= base_url() ?>admin/news"><i class="fas fa-caret-right"></i>Tất cả bài viết</a>
-                        </li>
-                        <li>
-                            <a href="<?= base_url() ?>admin/news/add"><i class="fas fa-caret-right"></i>Thêm mới</a>
-                        </li>
-                        <li>
-                            <a href="<?= base_url() ?>admin"><i class="fas fa-caret-right"></i>Danh mục bài viết</a>
-                        </li>
+	<nav>
+		<div class="logo">
+			<a href="<?= base_url() ?>admin">
+				<h1>Flight Ticket</h1>
+			</a>
+		</div>
+		<div class="link-list">
+			<ul class="links top">
+				<li>
+					<a href="<?= base_url() ?>admin"><i class="fas fa-home"></i>Dashboard</a>
+				</li>
+				<li>
+					<span><i class="fas fa-newspaper"></i>Bài viết<i class="fas fa-chevron-down arrow"></i></span>
+					<ul class="sub-links">
+						<li>
+							<a href="<?= base_url() ?>admin/news"><i class="fas fa-caret-right"></i>Tất cả bài
+								viết</a>
+						</li>
+						<li>
+							<a href="<?= base_url() ?>admin/news/add"><i class="fas fa-caret-right"></i>Thêm
+								mới</a>
+						</li>
+						<li>
+							<a href="<?= base_url() ?>admin"><i class="fas fa-caret-right"></i>Danh mục bài
+								viết</a>
+						</li>
 
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"><i class="fas fa-cog"></i>Nội dung trang chủ</a>
-                </li>
-            </ul>
-            <ul class="links bottom">
-                <li>
-                    <span><i class="fas fa-user"></i>Tài khoản<i class="fas fa-chevron-down arrow"></i></span>
-                    <ul class="sub-links">
-                        <li>
-                            <a href="#"><i class="fas fa-caret-right"></i>Thông tin tài khoản</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fas fa-caret-right"></i>Đăng xuất</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"><i class="fas fa-info-circle"></i>Thông tin website</a>
-                </li>
-            </ul>
-        </div>
-        <div class="copyright">
-            <p><i class="far fa-copyright"></i> 2021 - Bản quyền của LHD.</p>
-        </div>
-    </nav>
-    <main>
-        <?php $this->load->view($view); ?>
-    </main>
+					</ul>
+				</li>
+				<li>
+					<a href="<?= base_url() ?>admin/whychooseus"><i class="fas fa-cog"></i>Nội dung trang
+						chủ</a>
+				</li>
+			</ul>
+			<ul class="links bottom">
+				<li>
+					<span><i class="fas fa-user"></i>Tài khoản<i class="fas fa-chevron-down arrow"></i></span>
+					<ul class="sub-links">
+						<li>
+							<a href="#"><i class="fas fa-caret-right"></i>Thông tin tài khoản</a>
+						</li>
+						<li>
+							<a href="#"><i class="fas fa-caret-right"></i>Đăng xuất</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#"><i class="fas fa-info-circle"></i>Thông tin website</a>
+				</li>
+			</ul>
+		</div>
+		<div class="copyright">
+			<p><i class="far fa-copyright"></i> 2021 - Bản quyền của LHD.</p>
+		</div>
+	</nav>
 
-    <!-- Button back to top -->
-    <button class="to-top"><i class="fas fa-caret-up"></i></button>
-    <!-- Loader -->
-    <div class="loader-container">
-        <div class="loader">
-            <span style="--i: 1;"></span>
-            <span style="--i: 2;"></span>
-            <span style="--i: 3;"></span>
-            <span style="--i: 4;"></span>
-            <span style="--i: 5;"></span>
-            <span style="--i: 6;"></span>
-            <span style="--i: 7;"></span>
-            <span style="--i: 8;"></span>
-            <span style="--i: 9;"></span>
-            <span style="--i: 10;"></span>
-            <span style="--i: 11;"></span>
-            <span style="--i: 12;"></span>
-            <span style="--i: 13;"></span>
-            <span style="--i: 14;"></span>
-            <span style="--i: 15;"></span>
-            <span style="--i: 16;"></span>
-            <span style="--i: 17;"></span>
-            <span style="--i: 18;"></span>
-            <span style="--i: 19;"></span>
-            <span style="--i: 20;"></span>
-            <div class="plane"></div>
-        </div>
-    </div>
+	<main>
+		<?php $this->load->view($view); ?>
+	</main>
 
-    <script src="<?= base_url() ?>assets/scripts/script.js"></script>
-    <script>
-    $(document).ready(function() {
-        $('.links > li > span').click(function() {
-            $('.links > li').not($(this).parent()).removeClass("active");
-            $('span .arrow').not($(this).find('.arrow')).removeClass("active");
+	<!-- Button back to top -->
+	<button class="to-top"><i class="fas fa-caret-up"></i></button>
+	<!-- Loader -->
+	<div class="loader-container">
+		<div class="loader">
+			<span style="--i: 1;"></span>
+			<span style="--i: 2;"></span>
+			<span style="--i: 3;"></span>
+			<span style="--i: 4;"></span>
+			<span style="--i: 5;"></span>
+			<span style="--i: 6;"></span>
+			<span style="--i: 7;"></span>
+			<span style="--i: 8;"></span>
+			<span style="--i: 9;"></span>
+			<span style="--i: 10;"></span>
+			<span style="--i: 11;"></span>
+			<span style="--i: 12;"></span>
+			<span style="--i: 13;"></span>
+			<span style="--i: 14;"></span>
+			<span style="--i: 15;"></span>
+			<span style="--i: 16;"></span>
+			<span style="--i: 17;"></span>
+			<span style="--i: 18;"></span>
+			<span style="--i: 19;"></span>
+			<span style="--i: 20;"></span>
+			<div class="plane"></div>
+		</div>
+	</div>
 
-            $(this).parent().toggleClass("active");
-            $(this).find('.arrow').toggleClass("active");
+	<script src="<?= base_url() ?>assets/scripts/script.js"></script>
+	<script>
+	$(document).ready(function() {
+		$('.links > li > span').click(function() {
+			$('.links > li').not($(this).parent()).removeClass("active");
+			$('span .arrow').not($(this).find('.arrow')).removeClass("active");
 
-            if ($('.links > li').attr('class') != 'active') {
-                $('.sub-links').css("height", 0);
-            }
-            if ($(this).parents('li').attr('class') == 'active') {
-                let height = 0;
-                $.each($(this).next('.sub-links').find('li'), function() {
-                    height += $(this).outerHeight();
-                });
-                height = height + 'px';
-                $(this).next('.sub-links').css("height", height);
-            }
-        });
-    });
-    </script>
+			$(this).parent().toggleClass("active");
+			$(this).find('.arrow').toggleClass("active");
+
+			if ($('.links > li').attr('class') != 'active') {
+				$('.sub-links').css("height", 0);
+			}
+			if ($(this).parents('li').attr('class') == 'active') {
+				let height = 0;
+				$.each($(this).next('.sub-links').find('li'), function() {
+					height += $(this).outerHeight();
+				});
+				height = height + 'px';
+				$(this).next('.sub-links').css("height", height);
+			}
+		});
+	});
+	</script>
 </body>
 
 </html>
