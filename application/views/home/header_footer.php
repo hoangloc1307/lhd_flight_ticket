@@ -31,7 +31,7 @@
 					<li class="user">
 						<span>
 							<i class="fas fa-user"></i>
-							<p>Hello....</p>
+							<p>Hello</p>
 						</span>
 						<ul class="menu-user">
 							<li class="menu-list">
