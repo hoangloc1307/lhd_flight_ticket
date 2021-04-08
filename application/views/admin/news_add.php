@@ -8,6 +8,14 @@
         <input type="file" name='image'>
     </label>
     <label for="">
+        Danh mục
+        <select name="category" id="">
+            <?php foreach ($category as $item) : ?>
+            <option value="<?= $item['News_Category_ID'] ?>"><?= $item['Name'] ?></option>
+            <?php endforeach; ?>
+        </select>
+    </label>
+    <label for="">
         Mô tả ngắn
         <input type="text" name="description" id="">
     </label>
@@ -16,7 +24,7 @@
         <textarea name="content" id="" cols="30" rows="10"></textarea>
     </label>
     <label for="">
-        Đường dẫn
+        Đường dẫn tuỳ chỉnh
         <input type="text" name="linkcustom" id="">
     </label>
     <button type="submit" name="submit">Thêm mới</button>
