@@ -40,7 +40,7 @@ class News_model extends CI_Model
     }
 
     //Hàm thêm bài viết mới.
-    public function AddNews($name, $description, $content, $image, $linkcustom)
+    public function AddNews($name, $description, $content, $image, $linkcustom, $category)
     {
         date_default_timezone_set('Etc/GMT+5');
         $datetime = date("Y-m-d h:i:s");
@@ -53,7 +53,8 @@ class News_model extends CI_Model
             'Date' => $datetime,
             'LinkDefault' =>  vietdecode($name),
             'LinkCustom' => $linkcustom,
-            'View' => 0
+            'View' => 0,
+            'Category' => $category
         ];
 
         $this->db->insert('tbl_news', $data);
