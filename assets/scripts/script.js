@@ -12,21 +12,10 @@ $(document).ready(function () {
 	$(".to-top").click(function () {
 		$(document).scrollTop(0);
 	});
-
-	// Ẩn Loader khi load xong
-	$(".loader-container").addClass("hide");
-
-	/*Load dữ liệu sân bay*/
 });
 
-// for (let j = 0; j < json[i]['List'].length; j++) {
-// 	txt += '<li value="' + json[i][
-//         'List'
-//     ][j]['Code'] + '">' + json[i]['List'][j]['Name'] +
-//         ' (' +
-//         json[i][
-//         'List'
-//         ][j]['Code'] + ')</li>';
-// }
-// let list = '.list-' + i;
-// $(list).append(txt);
+window.onload = function(){
+	// Ẩn Loader khi load xong
+	$(".loader-container").addClass("hide");
+};
+

@@ -14,6 +14,9 @@ class Home extends CI_Controller
         $data['view'] = 'home/home';
         $data['title'] = 'Trang chủ';
 
+        $this->load->model('Admin/JSON_model');
+        $data['whychooseus'] = json_decode($this->JSON_model->get('WhyChooseUs')['Text'], true);
+
         $this->load->view('home/header_footer', $data);
     }
 }

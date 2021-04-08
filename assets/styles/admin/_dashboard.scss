@@ -1,14 +1,31 @@
 .info-card {
+	& > .grid > .row > div {
+		&:nth-child(1) .block {
+			background: $cl-yellow-1;
+		}
+
+		&:nth-child(2) .block {
+			background: $cl-green-1;
+		}
+
+		&:nth-child(3) .block {
+			background: $cl-red-2;
+		}
+
+		&:nth-child(4) .block {
+			background: $cl-blue-6;
+		}
+	}
+
 	.block {
-		background: $cl-white-2;
 		padding: 20px;
 		border-radius: 10px;
+		color: #fff;
 
 		.content {
 			p:first-child {
 				font-size: $fs-title;
 				font-weight: 700;
-				color: $cl-black;
 			}
 		}
 
@@ -19,7 +36,6 @@
 
 			i {
 				font-size: $fs-big;
-				color: $cl-blue-3;
 			}
 		}
 	}
