@@ -12,6 +12,7 @@
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
 </head>
 
 <body id="admin-page">
@@ -41,6 +42,9 @@
 
                     </ul>
                 </li>
+                <li>
+                    <a href="#"><i class="fas fa-cog"></i>Nội dung trang chủ</a>
+                </li>
             </ul>
             <ul class="links bottom">
                 <li>
@@ -56,9 +60,6 @@
                 </li>
                 <li>
                     <a href="#"><i class="fas fa-info-circle"></i>Thông tin website</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fas fa-cog"></i>Cài đặt</a>
                 </li>
             </ul>
         </div>
