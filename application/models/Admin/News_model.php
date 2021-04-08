@@ -69,7 +69,6 @@ class News_model extends CI_Model
         $this->db->update('tbl_news', $data);
     }
 
-
     /*Hàm lấy danh mục bài viết
     1 - Trả về tát cả danh mục nếu không chỉ định $link.
     2 - Trả về danh mục có link được chỉ định nếu chỉ định $link.
@@ -84,6 +83,12 @@ class News_model extends CI_Model
         $this->db->where('Link', $link);
         $query = $this->db->get('tbl_news_category');
         return $query->row_array();
+    }
+
+    public function DeleteNews($id)
+    {
+        $this->db->where('News_ID ', $id);
+        return $this->db->delete('tbl_news');
     }
 }
                         

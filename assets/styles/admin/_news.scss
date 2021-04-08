@@ -4,6 +4,25 @@ h2 {
 	font-weight: 700;
 	margin-bottom: 20px;
 }
+.alert {
+	display: flex;
+	justify-content: flex-end;
+	p {
+		width: max-content;
+		color: $cl-white-1;
+		padding: 10px 20px;
+		border-radius: 5px;
+		margin-bottom: 10px;
+
+		&.success {
+			background: $cl-green-1;
+		}
+
+		&.error {
+			background: $cl-red;
+		}
+	}
+}
 .news {
 	padding: 20px;
 	background: $cl-white-2;
@@ -57,7 +76,7 @@ h2 {
 			img {
 				width: 100%;
 				height: 100%;
-				object-fit: cover;
+				object-fit: contain;
 			}
 		}
 	}

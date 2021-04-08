@@ -66,7 +66,9 @@
                             <h3>Bài viết mới nhất</h3>
                         </div>
                         <div class="col l-3 button">
-                            <a href="">Xem tất cả <i class="fas fa-long-arrow-alt-right"></i></a>
+                            <a href="<?= base_url() ?>admin/news">
+                                Xem tất cả <i class="fas fa-long-arrow-alt-right"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="row heading">

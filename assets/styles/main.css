@@ -2885,7 +2885,7 @@ header {
   left: 0;
   width: 250px;
   height: 100%;
-  background: #17699a;
+  background: #2c3e50;
 }
 
 #admin-page nav .logo {
@@ -2968,7 +2968,7 @@ header {
 #admin-page nav .link-list .links a:hover,
 #admin-page nav .link-list .links span:hover {
   background: #f3f4f8;
-  color: #17699a;
+  color: #2c3e50;
 }
 
 #admin-page nav .link-list .links .sub-links {
@@ -2998,7 +2998,7 @@ header {
 
 #admin-page nav .link-list .links li.active span {
   background: #f3f4f8;
-  color: #17699a;
+  color: #2c3e50;
 }
 
 #admin-page nav .copyright {
@@ -3012,6 +3012,7 @@ header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background: #34495e;
 }
 
 #admin-page nav .copyright p {
@@ -3025,16 +3026,31 @@ header {
   min-height: 100vh;
 }
 
+.info-card > .grid > .row > div:nth-child(1) .block {
+  background: #f1c40f;
+}
+
+.info-card > .grid > .row > div:nth-child(2) .block {
+  background: #2ecc71;
+}
+
+.info-card > .grid > .row > div:nth-child(3) .block {
+  background: #e74c3c;
+}
+
+.info-card > .grid > .row > div:nth-child(4) .block {
+  background: #3498db;
+}
+
 .info-card .block {
-  background: #fff;
   padding: 20px;
   border-radius: 10px;
+  color: #fff;
 }
 
 .info-card .block .content p:first-child {
   font-size: 24px;
   font-weight: 700;
-  color: #333;
 }
 
 .info-card .block .icon {
@@ -3051,7 +3067,6 @@ header {
 
 .info-card .block .icon i {
   font-size: 40px;
-  color: #17699a;
 }
 
 .info-table {
@@ -3131,6 +3146,33 @@ h2 {
   margin-bottom: 20px;
 }
 
+.alert {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.alert p {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  color: #f3f4f8;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.alert p.success {
+  background: #2ecc71;
+}
+
+.alert p.error {
+  background: #f00;
+}
+
 .news {
   padding: 20px;
   background: #fff;
@@ -3194,8 +3236,8 @@ h2 {
 .news .item .imgBx img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .news-title {
@@ -3572,7 +3614,7 @@ h2 {
   left: 0;
   width: 250px;
   height: 100%;
-  background: #17699a;
+  background: #2c3e50;
 }
 
 #admin-page nav .logo {
@@ -3655,7 +3697,7 @@ h2 {
 #admin-page nav .link-list .links a:hover,
 #admin-page nav .link-list .links span:hover {
   background: #f3f4f8;
-  color: #17699a;
+  color: #2c3e50;
 }
 
 #admin-page nav .link-list .links .sub-links {
@@ -3685,7 +3727,7 @@ h2 {
 
 #admin-page nav .link-list .links li.active span {
   background: #f3f4f8;
-  color: #17699a;
+  color: #2c3e50;
 }
 
 #admin-page nav .copyright {
@@ -3699,6 +3741,7 @@ h2 {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background: #34495e;
 }
 
 #admin-page nav .copyright p {

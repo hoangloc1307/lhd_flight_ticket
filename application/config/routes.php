@@ -58,3 +58,4 @@ $route['news/(:any)'] = 'news/view/$1';
 $route['admin'] = 'admin/admin';
 $route['admin/news'] = 'admin/manage_news';
 $route['admin/news/add'] = 'admin/manage_news/add';
+$route['admin/news/delete'] = 'admin/manage_news/delete';

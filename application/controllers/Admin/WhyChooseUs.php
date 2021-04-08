@@ -35,7 +35,7 @@ class WhyChooseUs extends CI_Controller
                 $image[$i] = $oldfile[$i];
             } else {
                 move_uploaded_file($_FILES["image"]["tmp_name"][$i], $target_file);
-                $image[$i] = base_url() . $target_file;
+                $image[$i] = $target_file;
             }
 
             $data = [
@@ -50,41 +50,6 @@ class WhyChooseUs extends CI_Controller
         $this->JSON_model->edit("WhyChooseUs", $datas);
         redirect(base_url() . 'admin/whychooseus');
     }
-
-    // public function add()
-    // {
-    //     $wcu = $this->JSON_model->get("WhyChooseUs");
-    //     $datas = json_decode($wcu['Text']);
-
-    //     if (is_null($datas)) {
-    //         $datas = [];
-    //     }
-
-    //     //Xử lý ảnh
-    //     $target_dir = "assets/images/whychooseus/";
-    //     $target_file = $target_dir . basename($_FILES["image"]["name"]);
-    //     move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
-
-    //     $content = $this->input->post('content');
-    //     $title = $this->input->post('title');
-    //     $image = base_url() . $target_file;
-
-    //     $data = [
-    //         "Image" => $image,
-    //         "Title" => $title,
-    //         "Content" => $content
-    //     ];
-
-
-    //     array_push($datas, $data);
-    //     $datas = json_encode($datas);
-
-    //     if ($this->JSON_model->edit("WhyChooseUs", $datas)) {
-    //         echo "OK";
-    //     } else {
-    //         echo "NOT OK";
-    //     }
-    // }
 }
         
     /* End of file  Partner.php */

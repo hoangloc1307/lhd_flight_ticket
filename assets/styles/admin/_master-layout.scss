@@ -5,7 +5,7 @@
 		left: 0;
 		width: 250px;
 		height: 100%;
-		background: $cl-blue-3;
+		background: $cl-black-2;
 
 		.logo {
 			margin: 15px;
@@ -68,7 +68,7 @@
 
 					&:hover {
 						background: $cl-white-1;
-						color: $cl-blue-3;
+						color: $cl-black-2;
 					}
 				}
 
@@ -99,7 +99,7 @@
 				li.active {
 					span {
 						background: $cl-white-1;
-						color: $cl-blue-3;
+						color: $cl-black-2;
 					}
 				}
 			}
@@ -110,6 +110,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			background: $cl-black-3;
 
 			p {
 				text-align: center;
