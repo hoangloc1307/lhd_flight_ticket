@@ -87,8 +87,41 @@ class News_model extends CI_Model
 
     public function DeleteNews($id)
     {
-        $this->db->where('News_ID ', $id);
+        $this->db->where('News_ID', $id);
         return $this->db->delete('tbl_news');
+    }
+
+    public function AddNewsCategory($name)
+    {
+        $data = [
+            'Name' => $name,
+            'Link' => vietdecode($name)
+        ];
+        $this->db->insert('tbl_news_category', $data);
+        return $this->db->insert_id();
+    }
+
+    public function DeleteNewsCategory($id)
+    {
+        $this->db->where('News_Category_ID', $id);
+        return $this->db->delete('tbl_news_category');
+    }
+
+    public function GetNewsCategoryByID($id)
+    {
+        $this->db->where('News_Category_ID', $id);
+        $query = $this->db->get('tbl_news_category');
+        return $query->row_array();
+    }
+
+    public function EditNewsCategory($id, $name)
+    {
+        $data = [
+            'Name' => $name,
+            'Link' => vietdecode($name)
+        ];
+        $this->db->where('News_Category_ID', $id);
+        return $this->db->update('tbl_news_category', $data);
     }
 }
                         

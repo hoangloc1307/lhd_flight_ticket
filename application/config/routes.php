@@ -57,5 +57,11 @@ $route['news/(:any)'] = 'news/view/$1';
 //Admin
 $route['admin'] = 'admin/admin';
 $route['admin/news'] = 'admin/manage_news';
+$route['admin/news/category'] = 'admin/manage_news/category';
 $route['admin/news/add'] = 'admin/manage_news/add';
 $route['admin/news/delete'] = 'admin/manage_news/delete';
+$route['admin/news/addcategory'] = 'admin/manage_news/addcategory';
+$route['admin/news/deletecategory'] = 'admin/manage_news/deletecategory';
+$route['admin/news/editcategory'] = 'admin/manage_news/editcategory';
+$route['admin/news/updatecategory'] = 'admin/manage_news/updatecategory';
+$route['admin/news/fetchcategory'] = 'admin/manage_news/fetchcategory';

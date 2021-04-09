@@ -13,6 +13,14 @@ class Home extends CI_Controller
     {
         $data['view'] = 'home/home';
         $data['title'] = 'Trang chủ';
+        if (is_null($this->session->userdata('username'))) {
+            $sess_account = [
+                'user_links' => [
+                    'Đăng nhập / Đăng ký' => base_url() . 'login'
+                ]
+            ];
+            $this->session->set_userdata($sess_account);
+        }
 
         $this->load->model('Admin/JSON_model');
         $data['whychooseus'] = json_decode($this->JSON_model->get('WhyChooseUs')['Text'], true);
