@@ -159,10 +159,92 @@ h2 {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 300px;
-	height: 500px;
+	width: 480px;
+	height: 240px;
 	background: #fff;
 	display: none;
+	border-radius: 10px;
+	padding: 12px;
+	box-shadow: 0 0 10px $cl-grey;
+
+	.modal-cate__close {
+		text-align: right;
+
+		button {
+			background: none;
+			border: 0;
+			padding: 6px;
+			cursor: pointer;
+			outline: none;
+
+			&:hover {
+				opacity: 0.7;
+			}
+
+			i {
+				font-size: 22px;
+				color: $cl-red-2;
+			}
+		}
+	}
+	.modal-cate__content {
+		margin: 6px 0;
+		border: 1px solid $cl-grey;
+		padding: 12px;
+		border-radius: 5px;
+
+		.modal-cate__ID {
+			label {
+				display: flex;
+				align-items: center;
+
+				p {
+					padding: 8px;
+					font-size: $fs-sub-title;
+					font-weight: 700;
+					width: 35%;
+				}
+				input {
+					background: inherit;
+					border: none;
+					width: 65%;
+					margin: 0 12px;
+					color: $cl-grey;
+				}
+			}
+		}
+
+		.modal-cate__name {
+			label {
+				display: flex;
+				align-items: center;
+
+				p {
+					padding: 8px;
+					font-size: $fs-sub-title;
+					font-weight: 700;
+					width: 35%;
+				}
+				input {
+					background: inherit;
+					border: 1px solid $cl-grey;
+					width: 65%;
+					padding: 6px;
+					font-size: $fs-sub-title;
+					margin: 0 12px;
+					color: $cl-blue-5;
+					border-radius: 3px;
+					outline: none;
+				}
+			}
+		}
+	}
+
+	.modal-cate__submit {
+		.button-submit {
+			margin: 12px auto;
+		}
+	}
 
 	& + .overlay {
 		position: fixed;
