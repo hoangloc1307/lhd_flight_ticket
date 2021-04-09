@@ -3318,10 +3318,98 @@ h2 {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  width: 300px;
-  height: 500px;
+  width: 480px;
+  height: 240px;
   background: #fff;
   display: none;
+  border-radius: 10px;
+  padding: 12px;
+  -webkit-box-shadow: 0 0 10px #dddddd;
+          box-shadow: 0 0 10px #dddddd;
+}
+
+#edit_modal .modal-cate__close {
+  text-align: right;
+}
+
+#edit_modal .modal-cate__close button {
+  background: none;
+  border: 0;
+  padding: 6px;
+  cursor: pointer;
+  outline: none;
+}
+
+#edit_modal .modal-cate__close button:hover {
+  opacity: 0.7;
+}
+
+#edit_modal .modal-cate__close button i {
+  font-size: 22px;
+  color: #e74c3c;
+}
+
+#edit_modal .modal-cate__content {
+  margin: 6px 0;
+  border: 1px solid #dddddd;
+  padding: 12px;
+  border-radius: 5px;
+}
+
+#edit_modal .modal-cate__content .modal-cate__ID label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#edit_modal .modal-cate__content .modal-cate__ID label p {
+  padding: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  width: 35%;
+}
+
+#edit_modal .modal-cate__content .modal-cate__ID label input {
+  background: inherit;
+  border: none;
+  width: 65%;
+  margin: 0 12px;
+  color: #dddddd;
+}
+
+#edit_modal .modal-cate__content .modal-cate__name label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#edit_modal .modal-cate__content .modal-cate__name label p {
+  padding: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  width: 35%;
+}
+
+#edit_modal .modal-cate__content .modal-cate__name label input {
+  background: inherit;
+  border: 1px solid #dddddd;
+  width: 65%;
+  padding: 6px;
+  font-size: 18px;
+  margin: 0 12px;
+  color: #034166;
+  border-radius: 3px;
+  outline: none;
+}
+
+#edit_modal .modal-cate__submit .button-submit {
+  margin: 12px auto;
 }
 
 #edit_modal + .overlay {
