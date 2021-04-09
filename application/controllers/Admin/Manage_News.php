@@ -10,16 +10,15 @@ class Manage_News extends CI_Controller
         parent::__construct();
         $this->load->model('admin/News_model');
     }
-    public function index($alert = NULL)
+    public function Index()
     {
-        $data['alert'] = isset($alert) ? $alert : '';
         $data['title'] = 'Bài viết';
         $data['view'] = 'admin/news';
         $data['news'] = $this->News_model->GetNewsWithCategory();
         $this->load->view('admin/master_layout', $data, FALSE);
     }
 
-    public function add()
+    public function Add()
     {
         if (isset($_POST['submit'])) {
             $target_dir = "assets/images/news/";
@@ -49,7 +48,7 @@ class Manage_News extends CI_Controller
         }
     }
 
-    public function delete()
+    public function Delete()
     {
         if ($this->input->is_ajax_request()) {
             $id = $this->input->post('id');
@@ -58,6 +57,84 @@ class Manage_News extends CI_Controller
                 $data['response'] = "success";
             } else {
                 $data['response'] = "error";
+            }
+        }
+        echo json_encode($data);
+    }
+
+    public function Category()
+    {
+        $data['view'] = 'admin/category';
+        $data['title'] = 'Danh mục bài viết';
+        $this->load->view('admin/master_layout', $data, FALSE);
+    }
+
+    public function AddCategory()
+    {
+        if ($this->input->is_ajax_request()) {
+            $name = $this->input->post('name');
+            if ($this->News_model->AddNewsCategory($name)) {
+                $data['response'] = "success";
+                $data['message'] = "Thêm thành công";
+            } else {
+                $data['response'] = "error";
+                $data['message'] = "Thêm thất bại";
+            }
+        }
+        echo json_encode($data);
+    }
+
+    public function FetchCategory()
+    {
+        if ($this->input->is_ajax_request()) {
+            $categories = $this->News_model->GetNewsCategory();
+            echo json_encode($categories);
+        }
+    }
+
+    public function DeleteCategory()
+    {
+        if ($this->input->is_ajax_request()) {
+            $id = $this->input->post('id');
+
+            if ($this->News_model->DeleteNewsCategory($id)) {
+                $data['response'] = "success";
+                $data['message'] = "Xoá thành công";
+            } else {
+                $data['response'] = "error";
+                $data['nessage'] = "Xoá thất bại";
+            }
+        }
+        echo json_encode($data);
+    }
+
+    public function EditCategory()
+    {
+        if ($this->input->is_ajax_request()) {
+            $id = $this->input->post('id');
+
+            if ($category = $this->News_model->GetNewsCategoryByID($id)) {
+                $data['response'] = "success";
+                $data['category'] = $category;
+            } else {
+                $data['response'] = "error";
+            }
+        }
+        echo json_encode($data);
+    }
+
+    public function UpdateCategory()
+    {
+        if ($this->input->is_ajax_request()) {
+            $id = $this->input->post('id');
+            $name = $this->input->post('name');
+
+            if ($category = $this->News_model->EditNewsCategory($id, $name)) {
+                $data['response'] = "success";
+                $data['message'] = 'Sửa thành công';
+            } else {
+                $data['response'] = "error";
+                $data['message'] = 'Sửa thất bại';
             }
         }
         echo json_encode($data);

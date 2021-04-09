@@ -32,10 +32,18 @@ class Login extends CI_Controller
                 //Khởi tạo session
                 $sess_account = [
                     'username' => $username,
-                    'role' => $account['Role']
+                    'role' => $account['Role'],
+                    'user_links' => [
+                        'Thông tin tài khoản' => '#',
+                        'Đăng xuất' => base_url() . 'login/logout'
+                    ]
                 ];
+
+                if ($account['Role'] == 1) {
+                    $sess_account['user_links'] = ['Vào trang quản trị' => base_url() . 'admin'] + $sess_account['user_links'];
+                }
+
                 $this->session->set_userdata($sess_account);
-                //Chuyển về trang chủ
                 redirect(base_url());
             } else {
                 $data['view'] = 'login';
