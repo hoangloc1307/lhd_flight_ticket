@@ -1929,6 +1929,13 @@ header {
   margin-bottom: 10px;
 }
 
+#why .item .box-content p {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
 /*==================== End Section Why Choose Us ====================*/
 /*==================== Section Partner ====================*/
 #partner {
@@ -3173,12 +3180,13 @@ h2 {
   background: #f00;
 }
 
-.news {
-  padding: 20px;
+.table {
+  padding: 24px 24px 36px 24px;
   background: #fff;
+  border-radius: 12px;
 }
 
-.news .heading {
+.table .heading {
   text-transform: uppercase;
   font-weight: 700;
   font-size: 14px;
@@ -3191,7 +3199,7 @@ h2 {
   color: #034166;
 }
 
-.news .item {
+.table .item {
   padding: 5px 0;
   border-bottom: 1px solid #dddddd;
   -webkit-box-align: center;
@@ -3200,14 +3208,14 @@ h2 {
   text-align: center;
 }
 
-.news .item .news-name {
+.table .item .news-name {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.news .item .action {
+.table .item .action {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3215,7 +3223,7 @@ h2 {
       justify-content: space-around;
 }
 
-.news .item .action .button {
+.table .item .action .button {
   display: block;
   width: 30px;
   height: 30px;
@@ -3223,41 +3231,41 @@ h2 {
   border-radius: 5px;
 }
 
-.news .item .action .button.view {
+.table .item .action .button.view {
   color: #3498db;
 }
 
-.news .item .action .button.view:hover {
+.table .item .action .button.view:hover {
   background: #3498db;
 }
 
-.news .item .action .button.edit {
+.table .item .action .button.edit {
   color: #2ecc71;
 }
 
-.news .item .action .button.edit:hover {
+.table .item .action .button.edit:hover {
   background: #2ecc71;
 }
 
-.news .item .action .button.delete {
+.table .item .action .button.delete {
   color: #e74c3c;
 }
 
-.news .item .action .button.delete:hover {
+.table .item .action .button.delete:hover {
   background: #e74c3c;
 }
 
-.news .item .action .button:hover {
+.table .item .action .button:hover {
   color: #fff;
 }
 
-.news .item .imgBx {
+.table .item .imgBx {
   width: 100px;
   height: 100px;
   margin: 0 auto;
 }
 
-.news .item .imgBx img {
+.table .item .imgBx img {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
@@ -3286,10 +3294,16 @@ h2 {
 
 .news-input:focus {
   outline: none;
+  border: 1px solid #17699a;
+  -webkit-box-shadow: 0 0 1px #034166;
+          box-shadow: 0 0 1px #034166;
 }
 
 .news-img .news-thumb {
   height: 250px;
+  border-radius: 10px;
+  border: 1px solid #dddddd;
+  padding: 12px;
 }
 
 .news-img .news-thumb img {
@@ -3453,33 +3467,50 @@ h2 {
   display: block;
 }
 
-.form-add {
-  margin-bottom: 50px;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  position: relative;
+.category-add {
+  margin-bottom: 24px;
+  padding: 12px;
 }
 
-.form-add input {
+.category-add input,
+.category-add button {
+  padding: 12px;
+  border: 1px solid #dddddd;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  border-radius: 10px;
+  font-size: 16px;
+  letter-spacing: 1.3px;
+}
+
+.category-add input {
   width: 300px;
   outline: none;
-  border-radius: 12px;
-  border: 1px solid #3498db;
-  height: 30px;
-  padding-left: 8px;
+  color: #777777;
 }
 
-.form-add #add-category-btn {
-  background: #3498db;
-  border: none;
-  padding: 5px 10px;
-  position: absolute;
-  right: 1px;
-  top: 1px;
-  border-radius: 0 10px 10px 0;
+.category-add input:focus {
+  border: 1px solid #89a9bc;
+  color: #17699a;
+  -webkit-box-shadow: 0 0 1px #034166;
+          box-shadow: 0 0 1px #034166;
+}
+
+.category-add input:focus + button {
+  color: #fff;
+  background: #17699a;
+}
+
+.category-add button {
+  background: #dddddd;
+  font-weight: 500;
   cursor: pointer;
-  color: #f3f4f8;
+}
+
+.category-add button:hover {
+  background: #17699a;
+  border: 1px solid #89a9bc;
+  color: #fff;
 }
 
 .why {
