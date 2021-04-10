@@ -3180,11 +3180,15 @@ h2 {
 
 .news .heading {
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 14px;
   padding-bottom: 20px;
   border-bottom: 1px solid #dddddd;
   text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #034166;
 }
 
 .news .item {
@@ -3219,12 +3223,32 @@ h2 {
   border-radius: 5px;
 }
 
+.news .item .action .button.view {
+  color: #3498db;
+}
+
+.news .item .action .button.view:hover {
+  background: #3498db;
+}
+
 .news .item .action .button.edit {
   color: #2ecc71;
 }
 
+.news .item .action .button.edit:hover {
+  background: #2ecc71;
+}
+
 .news .item .action .button.delete {
   color: #e74c3c;
+}
+
+.news .item .action .button.delete:hover {
+  background: #e74c3c;
+}
+
+.news .item .action .button:hover {
+  color: #fff;
 }
 
 .news .item .imgBx {
@@ -3377,7 +3401,8 @@ h2 {
   border: none;
   width: 65%;
   margin: 0 12px;
-  color: #dddddd;
+  color: #333;
+  font-weight: 600;
 }
 
 #edit_modal .modal-cate__content .modal-cate__name label {
@@ -3428,6 +3453,35 @@ h2 {
   display: block;
 }
 
+.form-add {
+  margin-bottom: 50px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  position: relative;
+}
+
+.form-add input {
+  width: 300px;
+  outline: none;
+  border-radius: 12px;
+  border: 1px solid #3498db;
+  height: 30px;
+  padding-left: 8px;
+}
+
+.form-add #add-category-btn {
+  background: #3498db;
+  border: none;
+  padding: 5px 10px;
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  color: #f3f4f8;
+}
+
 .why {
   background: #fff;
 }
@@ -3455,7 +3509,6 @@ h2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid #dddddd;
   border-radius: 10px;
 }
 
@@ -3471,7 +3524,7 @@ h2 {
 .why .why-wrap .why-col .why-wrap-img .why-img {
   width: 200px;
   height: 150px;
-  border: 2px solid #dddddd;
+  border: 1px solid #dddddd;
   border-radius: 8px;
 }
 
@@ -3499,9 +3552,9 @@ h2 {
   resize: none;
   width: 100%;
   padding: 12px 16px;
-  color: #777777;
   border: 1px solid #dddddd;
   border-radius: 10px;
+  font-size: 16px;
 }
 
 .why .why-wrap-content .why-content:focus {

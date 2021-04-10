@@ -29,11 +29,13 @@ h2 {
 
 	.heading {
 		text-transform: uppercase;
-		font-weight: 600;
+		font-weight: 700;
 		font-size: $fs-detail;
 		padding-bottom: 20px;
 		border-bottom: 1px solid $cl-grey;
 		text-align: center;
+		align-items: center;
+		color: $cl-blue-5;
 	}
 
 	.item {
@@ -59,12 +61,32 @@ h2 {
 				padding: 5px;
 				border-radius: 5px;
 
+				&.view {
+					color: $cl-blue-6;
+
+					&:hover {
+						background: $cl-blue-6;
+					}
+				}
+
 				&.edit {
-					color: #2ecc71;
+					color: $cl-green-1;
+
+					&:hover {
+						background: $cl-green-1;
+					}
 				}
 
 				&.delete {
-					color: #e74c3c;
+					color: $cl-red-2;
+
+					&:hover {
+						background: $cl-red-2;
+					}
+				}
+
+				&:hover {
+					color: $cl-white-2;
 				}
 			}
 		}
@@ -209,7 +231,8 @@ h2 {
 					border: none;
 					width: 65%;
 					margin: 0 12px;
-					color: $cl-grey;
+					color: $cl-black;
+					font-weight: 600;
 				}
 			}
 		}
@@ -260,6 +283,33 @@ h2 {
 	&.show,
 	&.show + .overlay {
 		display: block;
+	}
+}
+
+.form-add {
+	margin-bottom: 50px;
+	width: max-content;
+	position: relative;
+
+	input {
+		width: 300px;
+		outline: none;
+		border-radius: 12px;
+		border: 1px solid $cl-blue-6;
+		height: 30px;
+		padding-left: 8px;
+	}
+
+	#add-category-btn {
+		background: $cl-blue-6;
+		border: none;
+		padding: 5px 10px;
+		position: absolute;
+		right: 1px;
+		top: 1px;
+		border-radius: 0 10px 10px 0;
+		cursor: pointer;
+		color: $cl-white-1;
 	}
 }
 // End

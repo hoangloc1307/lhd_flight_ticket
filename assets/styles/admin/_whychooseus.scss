@@ -17,7 +17,6 @@
 	}
 	.why-wrap {
 		display: flex;
-		border: 1px solid $cl-grey;
 		border-radius: 10px;
 
 		.why-col {
@@ -30,7 +29,7 @@
 				.why-img {
 					width: 200px;
 					height: 150px;
-					border: 2px solid $cl-grey;
+					border: 1px solid $cl-grey;
 					border-radius: 8px;
 
 					img {
@@ -60,9 +59,9 @@
 			resize: none;
 			width: 100%;
 			padding: 12px 16px;
-			color: $cl-grey-2;
 			border: 1px solid $cl-grey;
 			border-radius: 10px;
+			font-size: $fs-text;
 
 			&:focus {
 				border: 2px solid $cl-grey-2;
