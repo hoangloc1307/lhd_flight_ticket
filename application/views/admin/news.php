@@ -13,28 +13,51 @@
             <div class="col l-1">Lượt xem</div>
             <div class="col l-1">Thao tác</div>
         </div>
-        <?php foreach ($news as $row) : ?>
-        <div class="row item">
-            <div class="col l-1"><?= $row['News_ID'] ?></div>
-            <div class="col l-2">
-                <div class="imgBx">
-                    <img src="<?= base_url() . $row['Image'] ?>" alt="<?= $row['Name'] ?>">
-                </div>
-            </div>
-            <div class="news-name col l-3"><?= $row['Name'] ?></div>
-            <div class="news-name col l-2"><?= $row['Category'] ?></div>
-            <div class="col l-2"><?= $row['Date'] ?></div>
-            <div class="col l-1"><?= $row['View'] ?></div>
-            <div class="col l-1 action">
-                <a href="#" class="button edit"><i class="fas fa-edit"></i></a>
-                <a href="#" class="button delete" value="<?= $row['News_ID'] ?>"><i class="fas fa-trash"></i></a>
-            </div>
+        <div class="items">
         </div>
-        <?php endforeach; ?>
+        <ul class="pagination">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
     </div>
 </section>
 <script>
-$('.button.delete').click(function(e) {
+//Fetch
+function fetch() {
+    $.ajax({
+        url: "<?= base_url() ?>admin/manage_news/fetch",
+        dataType: "json",
+        success: function(data) {
+            var item = "";
+            for (var i in data) {
+                item += '<div class="row item">';
+                item += '<div class="col l-1">' + data[i].News_ID + '</div>';
+                item += '<div class="col l-2">';
+                item += '<div class="imgBx">';
+                item += '<img src="<?= base_url() ?>' + data[i].Image + '">';
+                item += '</div>';
+                item += '</div>';
+                item += '<div class="news-name col l-3">' + data[i].Name + '</div>';
+                item += '<div class="news-name col l-2">' + data[i].Category + '</div>';
+                item += '<div class="col l-2">' + data[i].Date + '</div>';
+                item += '<div class="col l-1">' + data[i].View + '</div>';
+                item += '<div class="col l-1 action">';
+                item += '<a href="#" class="button edit"><i class="fas fa-edit"></i></a>';
+                item += '<a href="#" class="button delete" value="' + data[i].News_ID +
+                    '"><i class="fas fa-trash"></i></a>';
+                item += '</div>';
+                item += '</div>';
+            }
+            $('.items').html(item);
+        }
+    });
+}
+fetch();
+//Delete
+$(document).on('click', '.button.delete', function(e) {
     e.preventDefault();
     var del_id = $(this).attr('value');
     var cfr = confirm("Bạn muốn xoá bài viết này?");
@@ -47,7 +70,12 @@ $('.button.delete').click(function(e) {
                 id: del_id
             },
             success: function(data) {
-                location.reload();
+                if (data.response == 'success') {
+                    fetch();
+                    toastr["success"](data.message);
+                } else {
+                    toastr["error"](data.message);
+                }
             }
         });
     }

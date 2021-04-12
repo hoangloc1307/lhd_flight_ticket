@@ -15,7 +15,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="<?= base_url() ?>assets/scripts/func.js"></script>
 </head>
 
 <body id="admin-page">
@@ -67,7 +66,8 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-info-circle"></i>Thông tin website</a>
+                    <a href="<?= base_url() ?>admin/websitesetting"><i class="fas fa-info-circle"></i>Thông tin
+                        website</a>
                 </li>
                 <li>
                     <a href="<?= base_url() ?>" target="_blank"><i class="fas fa-globe-asia"></i>Xem trang web</a>

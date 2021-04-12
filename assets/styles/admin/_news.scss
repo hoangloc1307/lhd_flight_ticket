@@ -5,14 +5,15 @@ h2 {
 	margin-bottom: 20px;
 }
 .alert {
-	display: flex;
-	justify-content: flex-end;
+	position: fixed;
+	top: 20px;
+	right: 30px;
+	animation: hide_notify 3s forwards;
+
 	p {
-		width: max-content;
 		color: $cl-white-1;
 		padding: 10px 20px;
 		border-radius: 5px;
-		margin-bottom: 10px;
 
 		&.success {
 			background: $cl-green-1;
@@ -98,8 +99,39 @@ h2 {
 			img {
 				width: 100%;
 				height: 100%;
-				object-fit: contain;
+				object-fit: cover;
 			}
+		}
+	}
+}
+
+.pagination {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 20px;
+	justify-content: flex-end;
+
+	li {
+		width: 30px;
+		height: 30px;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-right: 10px;
+		border-radius: 50%;
+		cursor: pointer;
+		border: 1px solid $cl-blue-6;
+		color: $cl-black;
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		&:hover {
+			background: $cl-blue-6;
+			color: #fff;
 		}
 	}
 }

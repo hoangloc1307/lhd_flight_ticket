@@ -10,12 +10,22 @@ class Manage_News extends CI_Controller
         parent::__construct();
         $this->load->model('admin/News_model');
     }
+
+
+    /*-------------------------------------------------------------------------------*/
+    /*----------------------------------- BÀI VIẾT ----------------------------------*/
+    /*-------------------------------------------------------------------------------*/
+
     public function Index()
     {
         $data['title'] = 'Bài viết';
         $data['view'] = 'admin/news';
-        $data['news'] = $this->News_model->GetNewsWithCategory();
         $this->load->view('admin/master_layout', $data, FALSE);
+    }
+
+    public function Fetch()
+    {
+        echo json_encode($this->News_model->GetNewsWithCategory());
     }
 
     public function Add()
@@ -55,18 +65,35 @@ class Manage_News extends CI_Controller
 
             if ($this->News_model->DeleteNews($id)) {
                 $data['response'] = "success";
+                $data['message'] = "Xoá thành công";
             } else {
                 $data['response'] = "error";
+                $data['message'] = "Xoá thất bại";
             }
         }
         echo json_encode($data);
     }
 
+
+
+    /*-------------------------------------------------------------------------------*/
+    /*------------------------------ DANH MỤC BÀI VIẾT ------------------------------*/
+    /*-------------------------------------------------------------------------------*/
+
     public function Category()
     {
         $data['view'] = 'admin/category';
         $data['title'] = 'Danh mục bài viết';
-        $this->load->view('admin/master_layout', $data, FALSE);
+        $this->load->view('admin/master_layout', $data, false);
+    }
+
+
+    public function FetchCategory()
+    {
+        if ($this->input->is_ajax_request()) {
+            $categories = $this->News_model->GetNewsCategory();
+            echo json_encode($categories);
+        }
     }
 
     public function AddCategory()
@@ -82,14 +109,6 @@ class Manage_News extends CI_Controller
             }
         }
         echo json_encode($data);
-    }
-
-    public function FetchCategory()
-    {
-        if ($this->input->is_ajax_request()) {
-            $categories = $this->News_model->GetNewsCategory();
-            echo json_encode($categories);
-        }
     }
 
     public function DeleteCategory()

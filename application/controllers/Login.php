@@ -17,7 +17,7 @@ class Login extends CI_Controller
         $this->load->view('home/header_footer', $data);
     }
 
-    public function login()
+    public function Login()
     {
         //Lấy dữ liệu người dùng nhập vào
         $username = $this->input->post('username');
@@ -59,7 +59,7 @@ class Login extends CI_Controller
         }
     }
 
-    public function logout()
+    public function Logout()
     {
         //Huỷ session
         $this->session->sess_destroy();
@@ -67,7 +67,7 @@ class Login extends CI_Controller
         redirect(base_url());
     }
 
-    public function register()
+    public function Register()
     {
         //Lấy dữ liệu người dùng nhập vào
         $username = $this->input->post('username');

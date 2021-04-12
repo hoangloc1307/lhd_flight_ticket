@@ -561,6 +561,30 @@ html {
   }
 }
 
+/* ==================== Ẩn thông báo ====================*/
+@-webkit-keyframes hide_notify {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes hide_notify {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 /*==================== Button back to top ====================*/
 .to-top {
   position: fixed;
@@ -3147,22 +3171,17 @@ h2 {
 }
 
 .alert {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  -webkit-animation: hide_notify 3s forwards;
+          animation: hide_notify 3s forwards;
 }
 
 .alert p {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   color: #f3f4f8;
   padding: 10px 20px;
   border-radius: 5px;
-  margin-bottom: 10px;
 }
 
 .alert p.success {
@@ -3260,8 +3279,50 @@ h2 {
 .news .item .imgBx img {
   width: 100%;
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.pagination {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 20px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.pagination li {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #3498db;
+  color: #333;
+}
+
+.pagination li:last-child {
+  margin-right: 0;
+}
+
+.pagination li:hover {
+  background: #3498db;
+  color: #fff;
 }
 
 .news-title {
