@@ -1,6 +1,6 @@
 <h2>Tất cả bài viết</h2>
 <div class="alert">
-    <?php echo $this->session->tempdata('add_alert'); ?>
+	<?php echo $this->session->tempdata('add_alert'); ?>
 </div>
 <section class="news">
     <div class="grid">
