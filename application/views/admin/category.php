@@ -55,72 +55,17 @@ $('#add-category-btn').click(function() {
 			dataType: "json",
 			success: function(data) {
 				fetch();
-
-				if (data.response == 'success') {
-					toastr["success"](data.message);
-
-					toastr.options = {
-						"closeButton": true,
-						"debug": false,
-						"newestOnTop": false,
-						"progressBar": false,
-						"positionClass": "toast-top-right",
-						"preventDuplicates": false,
-						"onclick": null,
-						"showDuration": "300",
-						"hideDuration": "1000",
-						"timeOut": "2000",
-						"extendedTimeOut": "1000",
-						"showEasing": "swing",
-						"hideEasing": "linear",
-						"showMethod": "fadeIn",
-						"hideMethod": "fadeOut"
-					}
-				} else {
-					toastr["error"](data.message);
-
-					toastr.options = {
-						"closeButton": true,
-						"debug": false,
-						"newestOnTop": false,
-						"progressBar": false,
-						"positionClass": "toast-top-right",
-						"preventDuplicates": false,
-						"onclick": null,
-						"showDuration": "300",
-						"hideDuration": "1000",
-						"timeOut": "2000",
-						"extendedTimeOut": "1000",
-						"showEasing": "swing",
-						"hideEasing": "linear",
-						"showMethod": "fadeIn",
-						"hideMethod": "fadeOut"
-					}
-				}
-			}
-		});
-	} else {
-		$('#category-name').focus();
-		toastr["error"]('Bạn phải nhập tên danh mục');
-
-		toastr.options = {
-			"closeButton": true,
-			"debug": false,
-			"newestOnTop": false,
-			"progressBar": false,
-			"positionClass": "toast-top-right",
-			"preventDuplicates": true,
-			"onclick": null,
-			"showDuration": "300",
-			"hideDuration": "1000",
-			"timeOut": "2000",
-			"extendedTimeOut": "1000",
-			"showEasing": "swing",
-			"hideEasing": "linear",
-			"showMethod": "fadeIn",
-			"hideMethod": "fadeOut"
-		}
-	}
+                if (data.response == 'success') {
+                    toastr["success"](data.message);
+                } else {
+                    toastr["error"](data.message);
+                }
+            }
+        });
+    } else {
+        $('#category-name').focus();
+        toastr["error"]('Bạn phải nhập tên danh mục');
+    }
 });
 
 //Fetch Category
@@ -165,63 +110,27 @@ fetch();
 
 //Delete Category
 $(document).on('click', '.button.delete', function(e) {
-	e.preventDefault();
-	var id = $(this).attr('value');
-	var cfm = confirm("Bạn có chắc muốn xoá danh mục này?");
-	if (cfm == true) {
-		$.ajax({
-			type: "post",
-			url: "<?= base_url() ?>admin/news/deletecategory",
-			dataType: "json",
-			data: {
-				id: id
-			},
-			success: function(data) {
-				fetch();
-				if (data.response == 'success') {
-					toastr["success"](data.message);
-
-					toastr.options = {
-						"closeButton": true,
-						"debug": false,
-						"newestOnTop": false,
-						"progressBar": false,
-						"positionClass": "toast-top-right",
-						"preventDuplicates": false,
-						"onclick": null,
-						"showDuration": "300",
-						"hideDuration": "1000",
-						"timeOut": "2000",
-						"extendedTimeOut": "1000",
-						"showEasing": "swing",
-						"hideEasing": "linear",
-						"showMethod": "fadeIn",
-						"hideMethod": "fadeOut"
-					}
-				} else {
-					toastr["error"](data.message);
-
-					toastr.options = {
-						"closeButton": true,
-						"debug": false,
-						"newestOnTop": false,
-						"progressBar": false,
-						"positionClass": "toast-top-right",
-						"preventDuplicates": false,
-						"onclick": null,
-						"showDuration": "300",
-						"hideDuration": "1000",
-						"timeOut": "2000",
-						"extendedTimeOut": "1000",
-						"showEasing": "swing",
-						"hideEasing": "linear",
-						"showMethod": "fadeIn",
-						"hideMethod": "fadeOut"
-					}
-				}
-			}
-		});
-	}
+    e.preventDefault();
+    var id = $(this).attr('value');
+    var cfm = confirm("Bạn có chắc muốn xoá danh mục này?");
+    if (cfm == true) {
+        $.ajax({
+            type: "post",
+            url: "<?= base_url() ?>admin/news/deletecategory",
+            dataType: "json",
+            data: {
+                id: id
+            },
+            success: function(data) {
+                fetch();
+                if (data.response == 'success') {
+                    toastr["success"](data.message);
+                } else {
+                    toastr["error"](data.message);
+                }
+            }
+        });
+    }
 });
 
 //Edit Category
@@ -255,42 +164,24 @@ $('#edit_modal .button.submit').click(function() {
 	var id = $('#edit_modal input[name="id"]').val();
 	var name = $('#edit_modal input[name="name"]').val();
 
-	if (name == "") {
-		alert("Tên danh mục không được để trống");
-		$('#edit_modal input[name="name"]').focus();
-	} else {
-		$.ajax({
-			type: "post",
-			url: "<?= base_url() ?>admin/news/updatecategory",
-			data: {
-				id: id,
-				name: name
-			},
-			dataType: "json",
-			success: function(data) {
-				$('#edit_modal .button.close').trigger('click');
-				fetch();
-				toastr["success"](data.message);
-
-				toastr.options = {
-					"closeButton": true,
-					"debug": false,
-					"newestOnTop": false,
-					"progressBar": false,
-					"positionClass": "toast-top-right",
-					"preventDuplicates": false,
-					"onclick": null,
-					"showDuration": "300",
-					"hideDuration": "1000",
-					"timeOut": "2000",
-					"extendedTimeOut": "1000",
-					"showEasing": "swing",
-					"hideEasing": "linear",
-					"showMethod": "fadeIn",
-					"hideMethod": "fadeOut"
-				}
-			}
-		});
-	}
+    if (name == "") {
+        alert("Tên danh mục không được để trống");
+        $('#edit_modal input[name="name"]').focus();
+    } else {
+        $.ajax({
+            type: "post",
+            url: "<?= base_url() ?>admin/news/updatecategory",
+            data: {
+                id: id,
+                name: name
+            },
+            dataType: "json",
+            success: function(data) {
+                $('#edit_modal .button.close').trigger('click');
+                fetch();
+                toastr["success"](data.message);
+            }
+        });
+    }
 });
 </script>
