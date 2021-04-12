@@ -2,7 +2,7 @@
 <div class="alert">
 	<?php echo $this->session->tempdata('add_alert'); ?>
 </div>
-<section class="news">
+<section class="table news">
     <div class="grid">
         <div class="row heading">
             <div class="col l-1">ID</div>
