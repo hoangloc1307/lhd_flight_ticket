@@ -4,7 +4,7 @@
             <div class="col l-12">
                 <!-- Tab -->
 
-                <div class="filter-tab">
+                <!-- <div class="filter-tab">
                     <ul class="filter-step">
                         <li class="col l-4 active">
                             <span class="number-step"> 1 </span>
@@ -19,7 +19,7 @@
                             <h5 class="tilte-step">Thanh toán</h5>
                         </li>
                     </ul>
-                </div>
+                </div> -->
 
                 <!-- End Tab -->
 
@@ -401,160 +401,7 @@
 
                         <!-- Box ticket flight -->
                         <div class="filter-main">
-                            <div id="fight-1" class="flight-item">
-                                <!-- Flight info -->
-                                <div class="flight-info">
-                                    <div class="flight-img">
-                                        <img src="/images/partner/vietnamairlines.png" alt="Vietnam Airlines" />
-                                        <p>Vietnam Airlines</p>
-                                    </div>
-                                    <div class="flight-from">
-                                        <div class="flight-city">Hà Nội</div>
-                                        <div class="flight-time">19:00</div>
-                                    </div>
-                                    <div class="flight-wrap-detail">
-                                        <div class="flight-number-code">VN253</div>
-                                        <div class="flight-line"></div>
-                                        <a href="#" class="flight-detail">
-                                            Chi tiết
-                                        </a>
-                                    </div>
-                                    <div class="flight-to">
-                                        <div class="flight-city">Hồ Chí Minh</div>
-                                        <div class="flight-time">20:00</div>
-                                    </div>
-                                    <div class="flight-price-choose">
-                                        <div class="flight-price">
-                                            770,000
-                                            <span>VND</span>
-                                        </div>
-                                        <button type="submit">
-                                            Chọn chuyến bay
-                                        </button>
-                                    </div>
-                                </div>
-                                <!-- End Flight info -->
 
-                                <!-- Info detail flight -->
-                                <div class="flight-box-detail">
-                                    <!-- Flight detail -->
-                                    <div class="flight-detail-item">
-                                        <p class="title-detail">
-                                            <i class="fas fa-info-circle"></i>
-                                            Chi tiết chuyến bay
-                                        </p>
-                                        <div class="flight-detail-wrap">
-                                            <div class="detail-img">
-                                                <img src="/images/partner/vietnamairlines.png" alt="Vietnam Airlines" />
-                                                <p>Vietnam Airline</p>
-                                            </div>
-                                            <div class="detail-from">
-                                                <span>
-                                                    <p>Hà Nội - HAN</p>
-                                                </span>
-                                                <span>
-                                                    <p>Sân bay Nội Bài</p>
-                                                </span>
-                                                <span>
-                                                    <p>Cất cánh:</p>
-                                                    <p>19:00</p>
-                                                </span>
-                                                <span>
-                                                    <p>Ngày:</p>
-                                                    <p>19/03/2021</p>
-                                                </span>
-                                            </div>
-                                            <div class="detail-to">
-                                                <span>
-                                                    <p>Hồ Chí Minh - SGN</p>
-                                                </span>
-                                                <span>
-                                                    <p>Sân bay Tân Sơn Nhất</p>
-                                                </span>
-                                                <span>
-                                                    <p>Hạ cánh:</p>
-                                                    <p>20:00</p>
-                                                </span>
-                                                <span>
-                                                    <p>Ngày:</p>
-                                                    <p>19/03/2021</p>
-                                                </span>
-                                            </div>
-                                            <div class="detail-flight">
-                                                <span>
-                                                    <p>Chuyến bay:</p>
-                                                    <p>VN6021</p>
-                                                </span>
-                                                <span>
-                                                    <p>Hạng chỗ:</p>
-                                                    <p>A_Eco</p>
-                                                </span>
-                                                <span>
-                                                    <p>Thời gian bay:</p>
-                                                    <p>01h00</p>
-                                                </span>
-                                                <span>
-                                                    <p>Máy bay:</p>
-                                                    <p>A320-100/200</p>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Flight detail -->
-
-                                    <!-- Detail ticket -->
-                                    <div class="flight-detail-item">
-                                        <p class="title-detail">
-                                            <i class="fas fa-ticket-alt"></i>
-                                            Chi tiết giá vé
-                                        </p>
-                                        <div class="flight-detail-wrap">
-                                            <ul class="detail-fare">
-                                                <li class="person">
-                                                    <b>Hành khách</b>
-                                                </li>
-                                                <li class="amount">
-                                                    <b>Số lượng</b>
-                                                </li>
-                                                <li class="price">
-                                                    <b>Giá vé</b>
-                                                </li>
-                                                <li class="taxes">
-                                                    <b>Thuế và phí</b>
-                                                </li>
-                                                <li class="total">
-                                                    <b>Tổng tiền</b>
-                                                </li>
-                                            </ul>
-                                            <ul class="detail-fare">
-                                                <li class="person">Người lớn</li>
-                                                <li class="amount">1</li>
-                                                <li class="price">1,009,000</li>
-                                                <li class="taxes">641,000</li>
-                                                <li class="total">1,650,000</li>
-                                            </ul>
-                                            <ul class="detail-fare">
-                                                <li class="person">Trẻ em</li>
-                                                <li class="amount">1</li>
-                                                <li class="price">1,009,000</li>
-                                                <li class="taxes">641,000</li>
-                                                <li class="total">1,650,000</li>
-                                            </ul>
-                                            <div class="detail-total">
-                                                <span class="total-title">
-                                                    Tổng tiền:
-                                                </span>
-                                                <span class="total-price">
-                                                    3,000,000
-                                                    <p>VND</p>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end Detail ticket -->
-                                </div>
-                                <!-- End Info detail flight -->
-                            </div>
                         </div>
                         <!-- End Box ticket flight -->
                     </div>
@@ -565,3 +412,145 @@
         </div>
     </div>
 </div>
+
+<?php var_dump($fdata); ?>
+
+<script>
+var ftype = '<?= $fdata['type'] ?>';
+var forigin = '<?php echo substr($fdata['origin'], -4, 3); ?>';
+var fdestination = '<?php echo substr($fdata['destination'], -4, 3); ?>';
+var fdepartment = '<?= $fdata['department'] ?>';
+var freturn = '<?= $fdata['return'] ?>';
+var fadult = '<?= $fdata['adult'] ?>';
+var fchildren = '<?= $fdata['children'] ?>';
+var finfants = '<?= $fdata['infants'] ?>';
+$.ajax({
+    type: "get",
+    url: "http://api.aviationstack.com/v1/flights?access_key=65976e6f57f282023dcad9ad4132f991&flight_status=scheduled&dep_iata=" +
+        forigin + "&arr_iata=" + fdestination,
+    dataType: "json",
+    success: function(response) {
+        var flight = "";
+
+        for (var i in response.data) {
+            var price = 700000;
+            var total_adult = price * 3.1 * fadult;
+            var total_children = price * 2.6 * fchildren;
+            var total_infants = price * 0.1 * finfants;
+
+            flight += "<div class='flight-item'>";
+            flight += "<div class='flight-info'>";
+            flight += "<div class='flight-img'>";
+            flight += "<img src='' alt='" + response.data[i]['airline']['name'] + "'/>";
+            flight += "<p>" + response.data[i]['airline']['name'] + "</p>";
+            flight += "</div>";
+            flight += "<div class='flight-from'>";
+            flight += "<div class='flight-city'>" + response.data[i]['departure']['iata'] + "</div>";
+            flight += "<div class='flight-time'>" + response.data[i]['departure']['scheduled'].slice(11,
+                16) + "</div>";
+            flight += "</div>";
+            flight += "<div class='flight-wrap-detail'>";
+            flight += "<div class='flight-number-code'>" + response.data[i]['flight']['iata'] + "</div>";
+            flight += "<div class='flight-line'></div>";
+            flight += "<a href='#' class='flight-detail'>Chi tiết</a>";
+            flight += "</div>";
+            flight += "<div class='flight-to'>";
+            flight += "<div class='flight-city'>" + response.data[i]['arrival']['iata'] + "</div>";
+            flight += "<div class='flight-time'>" + response.data[i]['arrival']['scheduled'].slice(11,
+                16) + "</div>";
+            flight += "</div>";
+            flight += "<div class='flight-price-choose'>";
+            flight += "<div class='flight-price'>";
+            flight += price;
+            flight += "<span>VND</span>";
+            flight += "</div>";
+            flight += "<button type='submit'>Chọn chuyến bay</button>";
+            flight += "</div>";
+            flight += "</div>";
+            flight += "<div class='flight-box-detail'>";
+            flight += "<div class='flight-detail-item'>";
+            flight += "<p class='title-detail'>";
+            flight += "<i class='fas fa-info-circle'></i> Chi tiết chuyến bay";
+            flight += "</p>";
+            flight += "<div class='flight-detail-wrap'>";
+            flight += "<div class='detail-img'>";
+            flight += "<img src='' alt='" + response.data[i]['airline']['name'] + "' />";
+            flight += "<p>" + response.data[i]['airline']['name'] + "</p>";
+            flight += "</div>";
+            flight += "<div class='detail-from'>";
+            flight += "<span>" + response.data[i]['departure']['iata'] + " - " + response.data[i][
+                'departure'
+            ]['iata'] + "</span>";
+            flight += "<span>Sân bay " + response.data[i]['departure']['airport'] + "</span>";
+            flight += "<span><p>Cất cánh:</p><p>" + response.data[i]['departure']['scheduled'].slice(11,
+                16) + "</p></span>";
+            flight += "<span><p>Ngày:</p><p>" + response.data[i]['departure']['scheduled'].slice(0, 10)
+                .split("-").reverse().join("-") + "</p></span>";
+            flight += "</div>";
+            flight += "<div class='detail-to'>";
+            flight += "<span>" + response.data[i]['arrival']['iata'] + " - " + response.data[i][
+                'arrival'
+            ]['iata'] + "</span>";
+            flight += "<span>Sân bay " + response.data[i]['arrival']['airport'] + "</span>";
+            flight += "<span><p>Hạ cánh:</p><p>" + response.data[i]['arrival']['scheduled'].slice(11,
+                16) + "</p></span>";
+            flight += "<span><p>Ngày:</p><p>" + response.data[i]['arrival']['scheduled'].slice(0, 10)
+                .split("-").reverse().join("-") + "</p></span>";
+            flight += "</div>";
+            flight += "<div class='detail-flight'>";
+            flight += "<span><p>Chuyến bay:</p><p>" + response.data[i]['flight']['iata'] + "</p></span>";
+            flight += "<span><p>Thời gian bay:</p><p>01h00</p></span>";
+            flight += "</div>";
+            flight += "</div>";
+            flight += "</div>";
+            flight += "<div class='flight-detail-item'>";
+            flight += "<p class='title-detail'><i class='fas fa-ticket-alt'></i>Chi tiết giá vé</p>";
+            flight += "<div class='flight-detail-wrap'>";
+            flight += "<ul class='detail-fare'>";
+            flight += "<li class='person'><b>Hành khách</b></li>";
+            flight += "<li class='amount'><b>Số lượng</b> </li>";
+            flight += "<li class='price'><b>Giá vé</b></li>";
+            flight += "<li class='taxes'><b>Thuế và phí</b></li>";
+            flight += "<li class='total'><b>Tổng tiền</b></li>";
+            flight += "</ul>";
+            flight += "<ul class='detail-fare'>";
+            flight += "<li class='person'>Người lớn</li>";
+            flight += "<li class='amount'>" + fadult + "</li>";
+            flight += "<li class='price'>" + price + "</li>";
+            flight += "<li class='taxes'>" + (price * 2.1) + "</li>";
+            flight += "<li class='total'>" + total_adult + "</li>";
+            flight += "</ul>";
+            if (fchildren > 0) {
+                flight += "<ul class='detail-fare'>";
+                flight += "<li class='person'>Trẻ em</li>";
+                flight += "<li class='amount'>" + fchildren + "</li>";
+                flight += "<li class='price'>" + price + "</li>";
+                flight += "<li class='taxes'>" + (price * 1.6) + "</li>";
+                flight += "<li class='total'>" + total_children + "</li>";
+                flight += "</ul>";
+            }
+            if (finfants > 0) {
+                flight += "<ul class='detail-fare'>";
+                flight += "<li class='person'>Em bé</li>";
+                flight += "<li class='amount'>" + finfants + "</li>";
+                flight += "<li class='price'>" + 0 + "</li>";
+                flight += "<li class='taxes'>" + (price * 0.1) + "</li>";
+                flight += "<li class='total'>" + total_infants + "</li>";
+                flight += "</ul>";
+            }
+            flight += "<div class='detail-total'>";
+            flight += "<span class='total-title'>Tổng tiền: </span>";
+            flight += "<span class='total-price'>" + (total_adult + total_children + total_infants) +
+                "<p>VND</p> </span>";
+            flight += "</div>";
+            flight += "</div>";
+            flight += "</div>";
+            flight += "</div>";
+            flight += "</div>";
+        }
+
+        $(".filter-main").html(flight);
+
+    }
+});
+</script>
