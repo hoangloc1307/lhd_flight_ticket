@@ -130,7 +130,8 @@ h2 {
 			margin-right: 0;
 		}
 
-		&:hover {
+		&:hover,
+		&.active {
 			background: $cl-blue-6;
 			color: #fff;
 		}

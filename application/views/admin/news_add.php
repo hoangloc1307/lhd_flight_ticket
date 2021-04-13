@@ -1,5 +1,4 @@
 <h2>Thêm mới bài viết</h2>
-
 <form action="<?= base_url() ?>admin/news/add" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="news-file col l-3">

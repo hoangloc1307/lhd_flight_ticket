@@ -33,7 +33,7 @@ class News extends CI_Controller
                 }
                 //Lấy bài viết liên quan.
                 $id_category = $news['Category'];
-                $related_news = $this->News_model->GetNews($link, $id_category);
+                $related_news = $this->News_model->GetNews($link, $id_category, 5);
 
                 $data['title'] = $news['Name'];
                 $data['view'] = 'home/news_detail';

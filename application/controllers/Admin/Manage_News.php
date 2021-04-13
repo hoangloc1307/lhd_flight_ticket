@@ -25,7 +25,18 @@ class Manage_News extends CI_Controller
 
     public function Fetch()
     {
-        echo json_encode($this->News_model->GetNewsWithCategory());
+        if ($this->input->is_ajax_request()) {
+            $page = $this->input->post('page');
+
+            $total = $this->News_model->TotalNews();
+            $news = $this->News_model->GetNewsWithCategory(5, ($page - 1) * 5);
+
+            $data = [
+                'total' => $total,
+                'news' => $news
+            ];
+        }
+        echo json_encode($data);
     }
 
     public function Add()
