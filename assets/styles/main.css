@@ -3328,7 +3328,7 @@ h2 {
   margin-right: 0;
 }
 
-.pagination li:hover {
+.pagination li:hover, .pagination li.active {
   background: #3498db;
   color: #fff;
 }

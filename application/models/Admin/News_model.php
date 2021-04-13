@@ -10,7 +10,7 @@ class News_model extends CI_Model
     2 - Trả về bài viết với link được chỉ định nếu không chỉ định $category.
     3 - Trả về danh sách các bài viết có cùng danh mục nếu cả hai biến được chỉ định.
     */
-    public function GetNews($link = null, $category = null)
+    public function GetNews($link = null, $category = null, $limit = null)
     {
         if (is_null($link)) {
             $query = $this->db->get('tbl_news');
@@ -24,17 +24,24 @@ class News_model extends CI_Model
             } else {
                 $where = "Category = '" . $category . "' AND LinkDefault <> '" . $link . "' AND LinkCustom <> '" . $link . "'";
                 $this->db->where($where);
+                $this->db->order_by('News_ID', 'DESC');
+                if (!is_null($limit)) {
+                    $this->db->limit($limit, 0);
+                }
                 $query = $this->db->get('tbl_news');
                 return $query->result_array();
             }
         }
     }
 
-    public function GetNewsWithCategory()
+    public function GetNewsWithCategory($limit = null, $offset = null)
     {
         $this->db->select('News_ID, tbl_news.Name, Image, Date, View, Category, tbl_news_category.Name as Category');
         $this->db->from('tbl_news');
         $this->db->join('tbl_news_category', 'tbl_news_category.News_Category_ID = tbl_news.Category', 'left');
+        if (!(is_null($limit) && is_null($offset))) {
+            $this->db->limit($limit, $offset);
+        }
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -123,6 +130,10 @@ class News_model extends CI_Model
         $this->db->where('News_Category_ID', $id);
         return $this->db->update('tbl_news_category', $data);
     }
-}
-                        
-/* End of file News_model.php */
+
+    public function TotalNews()
+    {
+        $query = $this->db->get('tbl_news');
+        return $query->num_rows();
+    }
+} /* End of file News_model.php */
