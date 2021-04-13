@@ -33,6 +33,7 @@ $(document).ready(function () {
 			$(this)
 				.prev(".amount")
 				.text(++amount);
+			$(this).prevAll("input").val($(this).prev(".amount").text());
 
 			if (
 				$(this).parents(".infants").attr("class") == "infants" &&
@@ -59,7 +60,7 @@ $(document).ready(function () {
 			$(this)
 				.next(".amount")
 				.text(--amount);
-
+			$(this).nextAll("input").val($(this).prev(".amount").text());
 			if (
 				$(this).parents(".infants").attr("class") == "infants" &&
 				amount < 2
