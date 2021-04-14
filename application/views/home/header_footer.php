@@ -117,7 +117,7 @@
 								<a href="#" title="Giới thiệu">Giới thiệu</a>
 							</li>
 							<li class="footer-item">
-								<a href="#" title="Chính sách bảo mật">Khách hàng nói về chúng tôi</a>
+								<a href="#" title="Khách hàng nói về chúng tôi">Khách hàng nói về chúng tôi</a>
 							</li>
 						</ul>
 					</div>
@@ -141,7 +141,7 @@
 
 					<div class="col l-3">
 						<h4 class="footer-title">
-							Trụ sở
+							Địa chỉ
 						</h4>
 						<ul class="footer-list">
 							<li class="footer-item">

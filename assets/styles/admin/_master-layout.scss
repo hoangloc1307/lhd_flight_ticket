@@ -31,75 +31,78 @@
 			.links {
 				list-style: none;
 
-				a,
-				span {
-					color: $cl-white-1;
-					display: block;
-					padding: 10px 15px 10px 40px;
-					border-radius: 20px 0 0 20px;
-					margin-left: 15px;
-					text-transform: capitalize;
-					font-weight: 600;
-					letter-spacing: 1px;
-					position: relative;
-					cursor: pointer;
-					font-size: $fs-text;
+				li {
+					margin: 6px 0;
+					a,
+					span {
+						color: $cl-white-1;
+						display: block;
+						padding: 10px 15px 10px 40px;
+						border-radius: 20px 0 0 20px;
+						margin-left: 15px;
+						text-transform: capitalize;
+						font-weight: 600;
+						letter-spacing: 1px;
+						position: relative;
+						cursor: pointer;
+						font-size: $fs-text;
 
-					i:first-child {
-						position: absolute;
-						left: 15px;
-						top: 50%;
-						transform: translateY(-50%);
-						transition: 0.2s ease-in-out;
-					}
+						i:first-child {
+							position: absolute;
+							left: 15px;
+							top: 50%;
+							transform: translateY(-50%);
+							transition: 0.2s ease-in-out;
+						}
 
-					i.arrow {
-						font-size: 12px;
-						position: absolute;
-						right: 15px;
-						top: 50%;
-						transform: translateY(-50%) rotate(0);
-						transition: 0.5s ease-in-out;
+						i.arrow {
+							font-size: 12px;
+							position: absolute;
+							right: 15px;
+							top: 50%;
+							transform: translateY(-50%) rotate(0);
+							transition: 0.5s ease-in-out;
 
-						&.active {
-							transform: translateY(-50%) rotate(-180deg);
+							&.active {
+								transform: translateY(-50%) rotate(-180deg);
+							}
+						}
+
+						&:hover {
+							background: $cl-white-1;
+							color: $cl-black-2;
 						}
 					}
 
-					&:hover {
-						background: $cl-white-1;
-						color: $cl-black-2;
-					}
-				}
+					.sub-links {
+						list-style: none;
+						overflow: hidden;
+						height: 0;
+						transition: 0.5s ease-in-out;
 
-				.sub-links {
-					list-style: none;
-					overflow: hidden;
-					height: 0;
-					transition: 0.5s ease-in-out;
+						a {
+							font-weight: 500;
+							margin-left: 25px;
+							letter-spacing: 0px;
+							text-transform: unset;
 
-					a {
-						font-weight: 500;
-						margin-left: 25px;
-						letter-spacing: 0px;
-						text-transform: unset;
+							&:hover {
+								background: transparent;
+								color: $cl-white-1;
+								text-decoration: underline;
 
-						&:hover {
-							background: transparent;
-							color: $cl-white-1;
-							text-decoration: underline;
-
-							i {
-								left: 25px;
+								i {
+									left: 25px;
+								}
 							}
 						}
 					}
-				}
 
-				li.active {
-					span {
-						background: $cl-white-1;
-						color: $cl-black-2;
+					&.active {
+						span {
+							background: $cl-white-1;
+							color: $cl-black-2;
+						}
 					}
 				}
 			}
