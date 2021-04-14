@@ -7,6 +7,38 @@ function numberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
+function SortDepartureTime(a, b) {
+	if (a["departure"]["scheduled"] === b["departure"]["scheduled"]) {
+		return 0;
+	} else {
+		return a["departure"]["scheduled"] < b["departure"]["scheduled"] ? -1 : 1;
+	}
+}
+
+function SortArrivalTime(a, b) {
+	if (a["arrival"]["scheduled"] === b["arrival"]["scheduled"]) {
+		return 0;
+	} else {
+		return a["arrival"]["scheduled"] < b["arrival"]["scheduled"] ? -1 : 1;
+	}
+}
+
+function SortPrice(a, b) {
+	if (a["price"] === b["price"]) {
+		return 0;
+	} else {
+		return a["price"] < b["price"] ? -1 : 1;
+	}
+}
+
+function SortDuration(a, b) {
+	if (a["duration"] === b["duration"]) {
+		return 0;
+	} else {
+		return a["duration"] < b["duration"] ? -1 : 1;
+	}
+}
+
 function ImageAirlines(airline_name) {
 	var src = "";
 

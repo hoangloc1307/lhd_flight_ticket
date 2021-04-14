@@ -95,10 +95,10 @@ $(document).ready(function () {
 	});
 
 	$(".minus-button").click(function () {
-		var amount = parseInt($(this).next(".amount").text());
+		var amount = parseInt($(this).nextAll(".amount").text());
 		if (amount > 0) {
 			$(this)
-				.next(".amount")
+				.nextAll(".amount")
 				.text(--amount);
 			$(this).nextAll("input").val($(this).prev(".amount").text());
 			if (
@@ -109,10 +109,10 @@ $(document).ready(function () {
 				$(this).nextAll(".plus-button").addClass("active");
 			}
 
-			// if ($(this).parents(".adults").attr("class") == "adults" && amount < 2) {
-			// 	$(this).removeClass("active");
-			// 	$(this).addClass("unactive");
-			// }
+			if ($(this).parents(".adults").attr("class") == "adults" && amount < 2) {
+				$(this).removeClass("active");
+				$(this).addClass("unactive");
+			}
 		}
 		if (amount == 0) {
 			$(this).removeClass("active");
