@@ -431,122 +431,134 @@ $.ajax({
     dataType: "json",
     success: function(response) {
         var flight = "";
-
+        var nowtime = new Date();
         for (var i in response.data) {
-            var price = 700000;
-            var total_adult = price * 3.1 * fadult;
-            var total_children = price * 2.6 * fchildren;
-            var total_infants = price * 0.1 * finfants;
+            var datetime1 = new Date(response.data[i]['departure']['scheduled']);
+            if (datetime1 > nowtime) {
+                var datetime2 = new Date(response.data[i]['arrival']['scheduled']);
+                var date1 = datetime1.getDate() + "-" + (datetime1.getMonth() + 1) + "-" + datetime1
+                    .getFullYear();
+                var date2 = datetime2.getDate() + "-" + (datetime2.getMonth() + 1) + "-" + datetime2
+                    .getFullYear();
+                var time1 = zeroPad(datetime1.getHours(), 10) + ":" + zeroPad(datetime1.getMinutes(), 10);
+                var time2 = zeroPad(datetime2.getHours(), 10) + ":" + zeroPad(datetime2.getMinutes(), 10);
+                var flight_time = datetime2.getTime() - datetime1.getTime();
+                var duration = zeroPad(Math.floor(flight_time / 3600000), 10) + "h" + zeroPad(Math.floor((
+                    flight_time %
+                    3600000) / 60000), 10) + "m";
+                console.log(response.data[i]['departure']['scheduled']);
 
-            flight += "<div class='flight-item'>";
-            flight += "<div class='flight-info'>";
-            flight += "<div class='flight-img'>";
-            flight += "<img src='' alt='" + response.data[i]['airline']['name'] + "'/>";
-            flight += "<p>" + response.data[i]['airline']['name'] + "</p>";
-            flight += "</div>";
-            flight += "<div class='flight-from'>";
-            flight += "<div class='flight-city'>" + response.data[i]['departure']['iata'] + "</div>";
-            flight += "<div class='flight-time'>" + response.data[i]['departure']['scheduled'].slice(11,
-                16) + "</div>";
-            flight += "</div>";
-            flight += "<div class='flight-wrap-detail'>";
-            flight += "<div class='flight-number-code'>" + response.data[i]['flight']['iata'] + "</div>";
-            flight += "<div class='flight-line'></div>";
-            flight += "<a href='#' class='flight-detail'>Chi tiết</a>";
-            flight += "</div>";
-            flight += "<div class='flight-to'>";
-            flight += "<div class='flight-city'>" + response.data[i]['arrival']['iata'] + "</div>";
-            flight += "<div class='flight-time'>" + response.data[i]['arrival']['scheduled'].slice(11,
-                16) + "</div>";
-            flight += "</div>";
-            flight += "<div class='flight-price-choose'>";
-            flight += "<div class='flight-price'>";
-            flight += price;
-            flight += "<span>VND</span>";
-            flight += "</div>";
-            flight += "<button type='submit'>Chọn chuyến bay</button>";
-            flight += "</div>";
-            flight += "</div>";
-            flight += "<div class='flight-box-detail'>";
-            flight += "<div class='flight-detail-item'>";
-            flight += "<p class='title-detail'>";
-            flight += "<i class='fas fa-info-circle'></i> Chi tiết chuyến bay";
-            flight += "</p>";
-            flight += "<div class='flight-detail-wrap'>";
-            flight += "<div class='detail-img'>";
-            flight += "<img src='' alt='" + response.data[i]['airline']['name'] + "' />";
-            flight += "<p>" + response.data[i]['airline']['name'] + "</p>";
-            flight += "</div>";
-            flight += "<div class='detail-from'>";
-            flight += "<span>" + response.data[i]['departure']['iata'] + " - " + response.data[i][
-                'departure'
-            ]['iata'] + "</span>";
-            flight += "<span>Sân bay " + response.data[i]['departure']['airport'] + "</span>";
-            flight += "<span><p>Cất cánh:</p><p>" + response.data[i]['departure']['scheduled'].slice(11,
-                16) + "</p></span>";
-            flight += "<span><p>Ngày:</p><p>" + response.data[i]['departure']['scheduled'].slice(0, 10)
-                .split("-").reverse().join("-") + "</p></span>";
-            flight += "</div>";
-            flight += "<div class='detail-to'>";
-            flight += "<span>" + response.data[i]['arrival']['iata'] + " - " + response.data[i][
-                'arrival'
-            ]['iata'] + "</span>";
-            flight += "<span>Sân bay " + response.data[i]['arrival']['airport'] + "</span>";
-            flight += "<span><p>Hạ cánh:</p><p>" + response.data[i]['arrival']['scheduled'].slice(11,
-                16) + "</p></span>";
-            flight += "<span><p>Ngày:</p><p>" + response.data[i]['arrival']['scheduled'].slice(0, 10)
-                .split("-").reverse().join("-") + "</p></span>";
-            flight += "</div>";
-            flight += "<div class='detail-flight'>";
-            flight += "<span><p>Chuyến bay:</p><p>" + response.data[i]['flight']['iata'] + "</p></span>";
-            flight += "<span><p>Thời gian bay:</p><p>01h00</p></span>";
-            flight += "</div>";
-            flight += "</div>";
-            flight += "</div>";
-            flight += "<div class='flight-detail-item'>";
-            flight += "<p class='title-detail'><i class='fas fa-ticket-alt'></i>Chi tiết giá vé</p>";
-            flight += "<div class='flight-detail-wrap'>";
-            flight += "<ul class='detail-fare'>";
-            flight += "<li class='person'><b>Hành khách</b></li>";
-            flight += "<li class='amount'><b>Số lượng</b> </li>";
-            flight += "<li class='price'><b>Giá vé</b></li>";
-            flight += "<li class='taxes'><b>Thuế và phí</b></li>";
-            flight += "<li class='total'><b>Tổng tiền</b></li>";
-            flight += "</ul>";
-            flight += "<ul class='detail-fare'>";
-            flight += "<li class='person'>Người lớn</li>";
-            flight += "<li class='amount'>" + fadult + "</li>";
-            flight += "<li class='price'>" + price + "</li>";
-            flight += "<li class='taxes'>" + (price * 2.1) + "</li>";
-            flight += "<li class='total'>" + total_adult + "</li>";
-            flight += "</ul>";
-            if (fchildren > 0) {
+                var price = 700000;
+                var total_adult = price * 3.1 * fadult;
+                var total_children = price * 2.6 * fchildren;
+                var total_infants = price * 0.1 * finfants;
+
+                flight += "<div class='flight-item'>";
+                flight += "<div class='flight-info'>";
+                flight += "<div class='flight-img'>";
+                flight += "<img src='' alt='" + response.data[i]['airline']['name'] + "'/>";
+                flight += "<p>" + response.data[i]['airline']['name'] + "</p>";
+                flight += "</div>";
+                flight += "<div class='flight-from'>";
+                flight += "<div class='flight-city'>" + response.data[i]['departure']['iata'] + "</div>";
+                flight += "<div class='flight-time'>" + time1 + "</div>";
+                flight += "</div>";
+                flight += "<div class='flight-wrap-detail'>";
+                flight += "<div class='flight-number-code'>" + response.data[i]['flight']['iata'] +
+                    "</div>";
+                flight += "<div class='flight-line'></div>";
+                flight += "<a href='#' class='flight-detail'>Chi tiết</a>";
+                flight += "</div>";
+                flight += "<div class='flight-to'>";
+                flight += "<div class='flight-city'>" + response.data[i]['arrival']['iata'] + "</div>";
+                flight += "<div class='flight-time'>" + time2 + "</div>";
+                flight += "</div>";
+                flight += "<div class='flight-price-choose'>";
+                flight += "<div class='flight-price'>";
+                flight += price;
+                flight += "<span>VND</span>";
+                flight += "</div>";
+                flight += "<button type='submit'>Chọn chuyến bay</button>";
+                flight += "</div>";
+                flight += "</div>";
+                flight += "<div class='flight-box-detail'>";
+                flight += "<div class='flight-detail-item'>";
+                flight += "<p class='title-detail'>";
+                flight += "<i class='fas fa-info-circle'></i> Chi tiết chuyến bay";
+                flight += "</p>";
+                flight += "<div class='flight-detail-wrap'>";
+                flight += "<div class='detail-img'>";
+                flight += "<img src='' alt='" + response.data[i]['airline']['name'] + "' />";
+                flight += "<p>" + response.data[i]['airline']['name'] + "</p>";
+                flight += "</div>";
+                flight += "<div class='detail-from'>";
+                flight += "<span>" + response.data[i]['departure']['iata'] + " - " + response.data[i][
+                    'departure'
+                ]['iata'] + "</span>";
+                flight += "<span>Sân bay: " + response.data[i]['departure']['airport'] + "</span>";
+                flight += "<span><p>Cất cánh:</p><p>" + time1 + "</p></span>";
+                flight += "<span><p>Ngày:</p><p>" + date1 + "</p></span>";
+                flight += "</div>";
+                flight += "<div class='detail-to'>";
+                flight += "<span>" + response.data[i]['arrival']['iata'] + " - " + response.data[i][
+                    'arrival'
+                ]['iata'] + "</span>";
+                flight += "<span>Sân bay " + response.data[i]['arrival']['airport'] + "</span>";
+                flight += "<span><p>Hạ cánh:</p><p>" + time2 + "</p></span>";
+                flight += "<span><p>Ngày:</p><p>" + date2 + "</p></span>";
+                flight += "</div>";
+                flight += "<div class='detail-flight'>";
+                flight += "<span><p>Chuyến bay:</p><p>" + response.data[i]['flight']['iata'] +
+                    "</p></span>";
+                flight += "<span><p>Thời gian bay:</p><p>" + duration + "</p></span>";
+                flight += "</div>";
+                flight += "</div>";
+                flight += "</div>";
+                flight += "<div class='flight-detail-item'>";
+                flight += "<p class='title-detail'><i class='fas fa-ticket-alt'></i>Chi tiết giá vé</p>";
+                flight += "<div class='flight-detail-wrap'>";
                 flight += "<ul class='detail-fare'>";
-                flight += "<li class='person'>Trẻ em</li>";
-                flight += "<li class='amount'>" + fchildren + "</li>";
+                flight += "<li class='person'><b>Hành khách</b></li>";
+                flight += "<li class='amount'><b>Số lượng</b> </li>";
+                flight += "<li class='price'><b>Giá vé</b></li>";
+                flight += "<li class='taxes'><b>Thuế và phí</b></li>";
+                flight += "<li class='total'><b>Tổng tiền</b></li>";
+                flight += "</ul>";
+                flight += "<ul class='detail-fare'>";
+                flight += "<li class='person'>Người lớn</li>";
+                flight += "<li class='amount'>" + fadult + "</li>";
                 flight += "<li class='price'>" + price + "</li>";
-                flight += "<li class='taxes'>" + (price * 1.6) + "</li>";
-                flight += "<li class='total'>" + total_children + "</li>";
+                flight += "<li class='taxes'>" + (price * 2.1) + "</li>";
+                flight += "<li class='total'>" + total_adult + "</li>";
                 flight += "</ul>";
+                if (fchildren > 0) {
+                    flight += "<ul class='detail-fare'>";
+                    flight += "<li class='person'>Trẻ em</li>";
+                    flight += "<li class='amount'>" + fchildren + "</li>";
+                    flight += "<li class='price'>" + price + "</li>";
+                    flight += "<li class='taxes'>" + (price * 1.6) + "</li>";
+                    flight += "<li class='total'>" + total_children + "</li>";
+                    flight += "</ul>";
+                }
+                if (finfants > 0) {
+                    flight += "<ul class='detail-fare'>";
+                    flight += "<li class='person'>Em bé</li>";
+                    flight += "<li class='amount'>" + finfants + "</li>";
+                    flight += "<li class='price'>" + 0 + "</li>";
+                    flight += "<li class='taxes'>" + (price * 0.1) + "</li>";
+                    flight += "<li class='total'>" + total_infants + "</li>";
+                    flight += "</ul>";
+                }
+                flight += "<div class='detail-total'>";
+                flight += "<span class='total-title'>Tổng tiền: </span>";
+                flight += "<span class='total-price'>" + (total_adult + total_children + total_infants) +
+                    "<p>VND</p> </span>";
+                flight += "</div>";
+                flight += "</div>";
+                flight += "</div>";
+                flight += "</div>";
+                flight += "</div>";
             }
-            if (finfants > 0) {
-                flight += "<ul class='detail-fare'>";
-                flight += "<li class='person'>Em bé</li>";
-                flight += "<li class='amount'>" + finfants + "</li>";
-                flight += "<li class='price'>" + 0 + "</li>";
-                flight += "<li class='taxes'>" + (price * 0.1) + "</li>";
-                flight += "<li class='total'>" + total_infants + "</li>";
-                flight += "</ul>";
-            }
-            flight += "<div class='detail-total'>";
-            flight += "<span class='total-title'>Tổng tiền: </span>";
-            flight += "<span class='total-price'>" + (total_adult + total_children + total_infants) +
-                "<p>VND</p> </span>";
-            flight += "</div>";
-            flight += "</div>";
-            flight += "</div>";
-            flight += "</div>";
-            flight += "</div>";
         }
 
         $(".filter-main").html(flight);
