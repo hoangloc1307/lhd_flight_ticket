@@ -108,6 +108,11 @@ $(document).ready(function () {
 				$(this).nextAll(".plus-button").removeClass("unactive");
 				$(this).nextAll(".plus-button").addClass("active");
 			}
+
+			// if ($(this).parents(".adults").attr("class") == "adults" && amount < 2) {
+			// 	$(this).removeClass("active");
+			// 	$(this).addClass("unactive");
+			// }
 		}
 		if (amount == 0) {
 			$(this).removeClass("active");
