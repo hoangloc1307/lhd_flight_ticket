@@ -23,6 +23,23 @@ function ImageAirlines(airline_name) {
 		case "VietJet Air":
 			src = "/assets/images/partner/vietjetair.png";
 			break;
+		case "Vietravel Airlines":
+			src = "/assets/images/partner/vietravelairlines.png";
+			break;
+		case "China Airlines":
+			src = "/assets/images/partner/chinaairlines.png";
+			break;
+		case "Cambodia Angkor Air":
+			src = "/assets/images/partner/cambodiaangkorair.png";
+			break;
+		case "Korean Air":
+			src = "/assets/images/partner/koreanair.png";
+			break;
+		case "Jet Linx Aviation":
+			src = "/assets/images/partner/jetlinx.png";
+			break;
+		default:
+			src = "/assets/images/partner/default.png";
 	}
 
 	return src;
@@ -189,7 +206,7 @@ function GetNameByIATA(iata) {
 			name = "Yangon";
 			break;
 		default:
-			name = "UNKNOWN";
+			name = iata;
 	}
 
 	return name;
