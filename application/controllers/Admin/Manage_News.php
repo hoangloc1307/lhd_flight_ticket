@@ -65,6 +65,7 @@ class Manage_News extends CI_Controller
         } else {
             $data['category'] = $this->News_model->GetNewsCategory();
             $data['view'] = 'admin/news_add';
+            $data['title'] = 'Thêm mới bài viết';
             $this->load->view('admin/master_layout', $data, FALSE);
         }
     }
