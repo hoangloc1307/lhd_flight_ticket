@@ -87,7 +87,7 @@
 									<i class="fas fa-minus"></i>
 								</button>
 								<input type="hidden" name="fadult">
-								<span class="amount">0</span>
+								<span class="amount">1</span>
 								<button type="button" class="plus-button active">
 									<i class="fas fa-plus"></i>
 								</button>

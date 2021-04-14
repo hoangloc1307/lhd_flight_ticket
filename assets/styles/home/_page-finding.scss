@@ -1,632 +1,642 @@
 .finding {
-  padding: 24px 0;
-
-  .filter-step {
-    display: flex;
-    align-items: center;
-    height: 40px;
-
-    li {
-      list-style: none;
-      display: flex;
-      background: $cl-grey;
-      color: $cl-white-2;
-      height: 100%;
-      align-items: center;
-      border-radius: 3px;
-      font-weight: 600;
-      position: relative;
-
-      &.active {
-        background: $cl-blue-3;
-
-        &::after {
-          border-left: 20px solid $cl-blue-3;
-        }
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: -20px;
-        border: 20px solid;
-        border-left: 20px solid $cl-grey;
-      }
-
-      .number-step {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        border: 2px solid $cl-white-2;
-        line-height: 1.8;
-        text-align: center;
-        margin: 0 12px;
-      }
-      .tilte-step {
-        font-weight: 600;
-        font-size: $fs-sub-title;
-        text-transform: uppercase;
-      }
-    }
-    li:nth-child(2),
-    li:nth-child(3) {
-      &::before {
-        position: absolute;
-        content: "";
-        top: 0;
-        left: 0;
-        border: 20px solid;
-        border-color: transparent transparent transparent $cl-white-2;
-      }
-    }
-    li:nth-child(3) {
-      &::after {
-        display: none;
-      }
-    }
-  }
-
-  #filter-left {
-    .title {
-      padding: 10px 14px;
-      background: $cl-blue-3;
-      border-radius: 3px 3px 0 0;
-      color: #fff;
-      font-size: 18px;
-      font-weight: 700;
-      text-transform: capitalize;
-      margin-top: 10px;
-      display: flex;
-      align-items: center;
-
-      span {
-        margin-left: 8px;
-      }
-    }
-
-    .finding-base {
-      box-shadow: 0px 5px 5px #999;
-
-      ul {
-        padding: 12px 0;
-
-        border-radius: 0 0 3px 3px;
-
-        li {
-          list-style: none;
-          padding: 12px 14px;
-          border-bottom: 1px solid #f9f9f9;
-          cursor: pointer;
-          transition: 0.2s linear;
-
-          &:hover {
-            background: $cl-white-1;
-          }
-
-          .label-radio {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-
-            input[type="radio"] {
-              display: none;
-
-              &:checked + .label-circle::after {
-                transition: 0.2s cubic-bezier(0.2, 0.82, 0.165, 1);
-                opacity: 1;
-              }
-            }
-            .label-circle {
-              position: relative;
-              display: block;
-              width: 20px;
-              height: 20px;
-              border: 2px solid $cl-blue-3;
-              border-radius: 100%;
-              -webkit-tap-highlight-color: transparent;
-              margin-right: 10px;
-
-              &::after {
-                content: "";
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background: $cl-blue-3;
-                transform: translate(-50%, -50%);
-                transition: 0.3s ease-in-out;
-                opacity: 0;
-              }
-            }
-            span {
-              color: $cl-black;
-            }
-          }
-        }
-      }
-    }
-
-    .finding-airline {
-      .finding-airline__content {
-        .label {
-          padding: 12px 14px;
-          display: flex;
-          background: $cl-white-1;
-          text-transform: uppercase;
-          justify-content: space-between;
-          align-items: center;
-
-          i {
-            color: $cl-blue-3;
-
-            &.dropdown-caret {
-              transform: rotate(180deg);
-            }
-          }
-        }
-
-        .finding-airline__airline {
-          li {
-            display: flex;
-
-            .checkmark {
-              display: block;
-              width: 20px;
-              height: 20px;
-              margin-right: 12px;
-              border: 2px solid $cl-blue-3;
-              position: relative;
-              border-radius: 3px;
-
-              &::before {
-                left: 50%;
-                top: 0;
-                width: 5px;
-                height: 10px;
-                border: solid #fff;
-                border-width: 0 3px 3px 0;
-                transform: translateX(-50%) rotate(45deg);
-                content: "";
-                position: absolute;
-              }
-            }
-
-            .active {
-              background: $cl-blue-3;
-            }
-          }
-        }
-
-        .finding-airline__clock {
-          padding: 20px;
-
-          p {
-            text-align: center;
-            padding: 10px;
-            color: $cl-blue-3;
-          }
-
-          .dropdown {
-            position: relative;
-
-            .dropdown-select {
-              padding: 10px 24px;
-              background: $cl-blue-2;
-              color: $cl-white-2;
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              border-radius: 8px;
-              box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
-              cursor: pointer;
-
-              i {
-                color: $cl-white-2;
-
-                &.dropdown-caret {
-                  transform: rotate(180deg);
-                }
-              }
-            }
-
-            .dropdown-list {
-              position: absolute;
-              top: 100%;
-              left: 0;
-              right: 0;
-              background: #fff;
-              padding: 5px;
-              box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
-              margin-top: 14px;
-              z-index: 1;
-              border-radius: 5px;
-              display: none;
-
-              .dropdown-show {
-                display: flex;
-                flex-wrap: wrap;
-
-                .dropdown-item {
-                  padding: 5px 14px;
-                  width: 25%;
-                  transition: 0.2s ease-in-out;
-
-                  &:hover {
-                    border-radius: 8px;
-                    background: $cl-blue-2;
-                    color: $cl-white-2;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  #filter-content {
-    .filter-header {
-      display: flex;
-      align-items: center;
-      margin-top: 10px;
-      padding: 10px 14px;
-      background: $cl-blue-3;
-      color: $cl-white-2;
-      border-radius: 3px 3px 0 0;
-
-      .icon {
-        font-size: 30px;
-        position: relative;
-
-        &::after {
-          position: absolute;
-          content: "";
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 2px;
-          background: $cl-white-2;
-        }
-      }
-
-      .title {
-        margin: 0 12px;
-
-        .title-flight {
-          display: flex;
-          align-items: center;
-
-          h5 {
-            font-size: $fs-sub-title;
-          }
-
-          i {
-            margin: 0 12px;
-          }
-        }
-
-        .date {
-          font-size: 14px;
-          font-style: italic;
-        }
-      }
-    }
-
-    .filter-list-date {
-      display: flex;
-      list-style: none;
-      align-items: center;
-      border: 1px solid #eee;
-      overflow-x: scroll;
-      overflow: hidden;
-      list-style: none;
-      cursor: pointer;
-      border-radius: 0 0 3px 3px;
-
-      .list-item {
-        width: 20%;
-        text-align: center;
-        padding: 8px;
-        transition: 0.3s ease-in-out;
-        border-right: 1px solid #eee;
-        flex: none;
-
-        &:last-child {
-          border-right: 0;
-        }
-
-        &:hover {
-          background: $cl-grey;
-        }
-
-        &.active,
-        &.active .list-calendar {
-          background: $cl-blue-1;
-          color: $cl-white-2;
-          border-radius: 3px;
-        }
-
-        .list-date {
-          font-size: $fs-small-text;
-        }
-
-        .list-calendar {
-          color: $cl-blue-3;
-          font-weight: 600;
-        }
-      }
-    }
-
-    .filter-main {
-      .flight-item {
-        &:hover {
-          background: $cl-white-1;
-          border-radius: 10px;
-        }
-        .flight-info {
-          display: flex;
-          padding: 10px;
-          align-items: stretch;
-          border: 1px solid #ddd;
-          margin-top: 12px;
-          border-radius: 10px;
-
-          .flight-img,
-          .flight-from,
-          .flight-wrap-detail,
-          .flight-to,
-          .flight-price-choose {
-            padding: 10px;
-            text-align: center;
-            flex: auto;
-          }
-
-          .flight-img {
-            border-right: 1px dashed $cl-grey;
-
-            img {
-              max-width: 100px;
-            }
-
-            p {
-              font-size: $fs-small-text;
-            }
-          }
-
-          .flight-from,
-          .flight-to {
-            .flight-time {
-              font-size: $fs-main-title;
-              font-weight: 600;
-            }
-          }
-          .flight-wrap-detail {
-            .flight-number-code {
-              font-weight: 700;
-              color: $cl-blue-3;
-            }
-            .flight-line {
-              width: 100%;
-              height: 1px;
-              margin: 12px 0;
-              background: $cl-blue-3;
-              position: relative;
-              transition: 0.3s ease-in-out;
-
-              &::before,
-              &::after {
-                content: "";
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-              }
-
-              &::before {
-                left: 0;
-                width: 10px;
-                height: 10px;
-                background: $cl-blue-3;
-                border-radius: 50%;
-              }
-              &::after {
-                content: "\f072";
-                font-family: "Font Awesome 5 Free";
-                font-weight: 700;
-                right: 0;
-                color: $cl-blue-3;
-              }
-            }
-
-            .flight-detail {
-              color: $cl-blue-3;
-              position: relative;
-              display: block;
-
-              &::before,
-              &::after {
-                position: absolute;
-                font-family: "Font Awesome 5 Free";
-                font-weight: 700;
-                top: 50%;
-                right: 0;
-                color: $cl-blue-3;
-                transform: translateY(-50%);
-                font-size: 12px;
-              }
-              &::before {
-                content: "\f078";
-              }
-
-              &:hover {
-                opacity: 0.75;
-              }
-            }
-            .active::after {
-              content: "\f077";
-            }
-          }
-          .flight-price-choose {
-            border-left: 1px dashed $cl-grey;
-
-            .flight-price {
-              font-size: 24px;
-              font-weight: 600;
-              color: $cl-blue-3;
-              display: flex;
-              justify-content: space-evenly;
-              align-items: center;
-              margin-bottom: 10px;
-
-              span {
-                font-size: 16px;
-                color: $cl-grey-2;
-                font-weight: 300;
-              }
-            }
-            button {
-              width: 100%;
-              padding: 10px;
-              background: $cl-blue-2;
-              display: block;
-              outline: 0;
-              font-weight: 600;
-              border: 0;
-              font-size: 14px;
-              text-transform: uppercase;
-              color: $cl-white-2;
-              border-radius: 5px;
-              cursor: pointer;
-              transition: 0.3s ease-in-out;
-
-              &:hover {
-                background: $cl-blue-5;
-              }
-            }
-          }
-        }
-
-        .flight-box-detail {
-          padding: 10px;
-          margin: 10px 0;
-          background: $cl-grey;
-          border-radius: 10px;
-
-          .flight-detail-item {
-            background: $cl-white-2;
-            border-radius: 10px;
-            margin: 10px 0;
-
-            .detail-img,
-            .detail-from,
-            .detail-to,
-            .detail-flight {
-              flex: auto;
-              padding: 10px;
-            }
-
-            .title-detail {
-              padding: 20px 10px 10px 10px;
-              margin: 0 10px;
-              border-bottom: 1px solid $cl-grey;
-              display: flex;
-              align-items: center;
-
-              i {
-                color: $cl-blue-3;
-                padding: 0 8px;
-              }
-            }
-
-            .flight-detail-wrap {
-              padding: 10px;
-              display: flex;
-              align-items: center;
-              flex-wrap: wrap;
-              .detail-img {
-                text-align: center;
-
-                img {
-                  max-width: 100px;
-                }
-                p {
-                  font-size: $fs-small-text;
-                }
-              }
-
-              .detail-from,
-              .detail-to,
-              .detail-flight {
-                span {
-                  display: flex;
-                  align-items: center;
-
-                  p {
-                    padding-right: 5px;
-                    font-size: $fs-detail;
-                  }
-                }
-              }
-
-              // Chi tiet gia ve
-              .detail-fare {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                flex-wrap: wrap;
-                width: 100%;
-                list-style: none;
-                border-bottom: 1px dashed $cl-grey-2;
-                padding: 5px 0;
-
-                li {
-                  font-size: $fs-detail;
-                  width: 20%;
-
-                  &:nth-child(2),
-                  &:nth-child(3),
-                  &:nth-child(4) {
-                    text-align: center;
-                  }
-
-                  &:last-child {
-                    text-align: right;
-                  }
-                }
-              }
-
-              .detail-total {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-                margin-top: 10px;
-
-                .total-title {
-                  font-size: $fs-title;
-                  color: #17699a;
-                  font-weight: 700;
-                  text-transform: uppercase;
-                }
-                .total-price {
-                  font-size: 18px;
-                  display: flex;
-                  font-weight: 600;
-                  align-items: center;
-
-                  p {
-                    font-size: $fs-small-text;
-                    padding-left: 10px;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+	padding: 24px 0;
+
+	.filter-step {
+		display: flex;
+		align-items: center;
+		height: 40px;
+
+		li {
+			list-style: none;
+			display: flex;
+			background: $cl-grey;
+			color: $cl-white-2;
+			height: 100%;
+			align-items: center;
+			border-radius: 3px;
+			font-weight: 600;
+			position: relative;
+
+			&.active {
+				background: $cl-blue-3;
+
+				&::after {
+					border-left: 20px solid $cl-blue-3;
+				}
+			}
+
+			&::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				right: -20px;
+				border: 20px solid;
+				border-left: 20px solid $cl-grey;
+			}
+
+			.number-step {
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				border: 2px solid $cl-white-2;
+				line-height: 1.8;
+				text-align: center;
+				margin: 0 12px;
+			}
+			.tilte-step {
+				font-weight: 600;
+				font-size: $fs-sub-title;
+				text-transform: uppercase;
+			}
+		}
+		li:nth-child(2),
+		li:nth-child(3) {
+			&::before {
+				position: absolute;
+				content: "";
+				top: 0;
+				left: 0;
+				border: 20px solid;
+				border-color: transparent transparent transparent $cl-white-2;
+			}
+		}
+		li:nth-child(3) {
+			&::after {
+				display: none;
+			}
+		}
+	}
+
+	#filter-left {
+		.title {
+			padding: 10px 14px;
+			background: $cl-blue-3;
+			border-radius: 3px 3px 0 0;
+			color: #fff;
+			font-size: 18px;
+			font-weight: 700;
+			text-transform: capitalize;
+			margin-top: 10px;
+			display: flex;
+			align-items: center;
+
+			span {
+				margin-left: 8px;
+			}
+		}
+
+		.finding-base {
+			box-shadow: 0px 5px 5px #999;
+
+			ul {
+				padding: 12px 0;
+
+				border-radius: 0 0 3px 3px;
+
+				li {
+					list-style: none;
+					padding: 12px 14px;
+					border-bottom: 1px solid #f9f9f9;
+					cursor: pointer;
+					transition: 0.2s linear;
+
+					&:hover {
+						background: $cl-white-1;
+					}
+
+					.label-radio {
+						display: flex;
+						align-items: center;
+						cursor: pointer;
+
+						input[type="radio"] {
+							display: none;
+
+							&:checked + .label-circle::after {
+								transition: 0.2s cubic-bezier(0.2, 0.82, 0.165, 1);
+								opacity: 1;
+							}
+						}
+						.label-circle {
+							position: relative;
+							display: block;
+							width: 20px;
+							height: 20px;
+							border: 2px solid $cl-blue-3;
+							border-radius: 100%;
+							-webkit-tap-highlight-color: transparent;
+							margin-right: 10px;
+
+							&::after {
+								content: "";
+								position: absolute;
+								top: 50%;
+								left: 50%;
+								width: 10px;
+								height: 10px;
+								border-radius: 50%;
+								background: $cl-blue-3;
+								transform: translate(-50%, -50%);
+								transition: 0.3s ease-in-out;
+								opacity: 0;
+							}
+						}
+						span {
+							color: $cl-black;
+						}
+					}
+				}
+			}
+		}
+
+		.finding-airline {
+			.finding-airline__content {
+				.label {
+					padding: 12px 14px;
+					display: flex;
+					background: $cl-white-1;
+					text-transform: uppercase;
+					justify-content: space-between;
+					align-items: center;
+
+					i {
+						color: $cl-blue-3;
+
+						&.dropdown-caret {
+							transform: rotate(180deg);
+						}
+					}
+				}
+
+				.finding-airline__airline {
+					li {
+						display: flex;
+
+						.checkmark {
+							display: block;
+							width: 20px;
+							height: 20px;
+							margin-right: 12px;
+							border: 2px solid $cl-blue-3;
+							position: relative;
+							border-radius: 3px;
+
+							&::before {
+								left: 50%;
+								top: 0;
+								width: 5px;
+								height: 10px;
+								border: solid #fff;
+								border-width: 0 3px 3px 0;
+								transform: translateX(-50%) rotate(45deg);
+								content: "";
+								position: absolute;
+							}
+						}
+
+						.active {
+							background: $cl-blue-3;
+						}
+					}
+				}
+
+				.finding-airline__clock {
+					padding: 20px;
+
+					p {
+						text-align: center;
+						padding: 10px;
+						color: $cl-blue-3;
+					}
+
+					.dropdown {
+						position: relative;
+
+						.dropdown-select {
+							padding: 10px 24px;
+							background: $cl-blue-2;
+							color: $cl-white-2;
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+							border-radius: 8px;
+							box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
+							cursor: pointer;
+
+							i {
+								color: $cl-white-2;
+
+								&.dropdown-caret {
+									transform: rotate(180deg);
+								}
+							}
+						}
+
+						.dropdown-list {
+							position: absolute;
+							top: 100%;
+							left: 0;
+							right: 0;
+							background: #fff;
+							padding: 5px;
+							box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
+							margin-top: 14px;
+							z-index: 1;
+							border-radius: 5px;
+							display: none;
+
+							.dropdown-show {
+								display: flex;
+								flex-wrap: wrap;
+
+								.dropdown-item {
+									padding: 5px 14px;
+									width: 25%;
+									transition: 0.2s ease-in-out;
+
+									&:hover {
+										border-radius: 8px;
+										background: $cl-blue-2;
+										color: $cl-white-2;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	#filter-content {
+		.filter-header {
+			display: flex;
+			align-items: center;
+			margin-top: 10px;
+			padding: 10px 14px;
+			background: $cl-blue-3;
+			color: $cl-white-2;
+			border-radius: 3px;
+
+			.icon {
+				font-size: 30px;
+				position: relative;
+
+				&::after {
+					position: absolute;
+					content: "";
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					height: 2px;
+					background: $cl-white-2;
+				}
+			}
+
+			.title {
+				margin: 0 12px;
+
+				.title-flight {
+					display: flex;
+					align-items: center;
+
+					h5 {
+						font-size: $fs-sub-title;
+					}
+
+					i {
+						margin: 0 12px;
+					}
+				}
+
+				.date {
+					font-size: 14px;
+					font-style: italic;
+				}
+			}
+		}
+
+		.filter-list-date {
+			display: flex;
+			list-style: none;
+			align-items: center;
+			border: 1px solid #eee;
+			overflow-x: scroll;
+			overflow: hidden;
+			list-style: none;
+			cursor: pointer;
+			border-radius: 0 0 3px 3px;
+
+			.list-item {
+				width: 20%;
+				text-align: center;
+				padding: 8px;
+				transition: 0.3s ease-in-out;
+				border-right: 1px solid #eee;
+				flex: none;
+
+				&:last-child {
+					border-right: 0;
+				}
+
+				&:hover {
+					background: $cl-grey;
+				}
+
+				&.active,
+				&.active .list-calendar {
+					background: $cl-blue-1;
+					color: $cl-white-2;
+					border-radius: 3px;
+				}
+
+				.list-date {
+					font-size: $fs-small-text;
+				}
+
+				.list-calendar {
+					color: $cl-blue-3;
+					font-weight: 600;
+				}
+			}
+		}
+
+		.filter-main {
+			.flight-item {
+				&:hover {
+					background: $cl-white-1;
+					border-radius: 10px;
+				}
+				.flight-info {
+					display: flex;
+					padding: 10px;
+					align-items: stretch;
+					border: 1px solid #ddd;
+					margin-top: 12px;
+					border-radius: 10px;
+
+					.flight-img,
+					.flight-from,
+					.flight-wrap-detail,
+					.flight-to,
+					.flight-price-choose {
+						padding: 10px;
+						text-align: center;
+						flex: auto;
+					}
+
+					.flight-img {
+						display: flex;
+						align-items: center;
+						border-right: 1px dashed $cl-grey;
+
+						.box-img {
+							width: 100px;
+							height: 40px;
+							margin: 0 auto;
+							img {
+								width: 100%;
+								height: 100%;
+								object-fit: contain;
+							}
+						}
+					}
+
+					.flight-from,
+					.flight-to {
+						.flight-time {
+							font-size: $fs-main-title;
+							font-weight: 600;
+						}
+					}
+					.flight-wrap-detail {
+						.flight-number-code {
+							font-weight: 700;
+							color: $cl-blue-3;
+						}
+						.flight-line {
+							width: 100%;
+							height: 1px;
+							margin: 12px 0;
+							background: $cl-blue-3;
+							position: relative;
+							transition: 0.3s ease-in-out;
+
+							&::before,
+							&::after {
+								content: "";
+								position: absolute;
+								top: 50%;
+								transform: translateY(-50%);
+							}
+
+							&::before {
+								left: 0;
+								width: 10px;
+								height: 10px;
+								background: $cl-blue-3;
+								border-radius: 50%;
+							}
+							&::after {
+								content: "\f072";
+								font-family: "Font Awesome 5 Free";
+								font-weight: 700;
+								right: 0;
+								color: $cl-blue-3;
+							}
+						}
+
+						.flight-detail {
+							color: $cl-blue-3;
+							position: relative;
+							display: block;
+							cursor: pointer;
+
+							&::before,
+							&::after {
+								position: absolute;
+								font-family: "Font Awesome 5 Free";
+								font-weight: 700;
+								top: 50%;
+								right: 0;
+								color: $cl-blue-3;
+								transform: translateY(-50%);
+								font-size: 12px;
+							}
+							&::before {
+								content: "\f078";
+							}
+
+							&:hover {
+								opacity: 0.75;
+							}
+						}
+						.active::after {
+							content: "\f077";
+						}
+					}
+					.flight-price-choose {
+						border-left: 1px dashed $cl-grey;
+
+						.flight-price {
+							font-size: 24px;
+							font-weight: 600;
+							color: $cl-blue-3;
+							display: flex;
+							justify-content: space-evenly;
+							align-items: center;
+							margin-bottom: 10px;
+
+							span {
+								font-size: 16px;
+								color: $cl-grey-2;
+								font-weight: 300;
+							}
+						}
+						button {
+							width: 100%;
+							padding: 10px;
+							background: $cl-blue-2;
+							display: block;
+							outline: 0;
+							font-weight: 600;
+							border: 0;
+							font-size: 14px;
+							text-transform: uppercase;
+							color: $cl-white-2;
+							border-radius: 5px;
+							cursor: pointer;
+							transition: 0.3s ease-in-out;
+
+							&:hover {
+								background: $cl-blue-5;
+							}
+						}
+					}
+				}
+
+				.flight-box-detail {
+					padding: 10px;
+					margin: 10px 0;
+					background: $cl-grey;
+					border-radius: 10px;
+					display: none;
+
+					.flight-detail-item {
+						background: $cl-white-2;
+						border-radius: 10px;
+						margin: 10px 0;
+
+						.detail-img,
+						.detail-from,
+						.detail-to,
+						.detail-flight {
+							flex: auto;
+							padding: 10px;
+						}
+
+						.title-detail {
+							padding: 20px 10px 10px 10px;
+							margin: 0 10px;
+							border-bottom: 1px solid $cl-grey;
+							display: flex;
+							align-items: center;
+
+							i {
+								color: $cl-blue-3;
+								padding: 0 8px;
+							}
+						}
+
+						.flight-detail-wrap {
+							padding: 10px;
+							display: flex;
+							align-items: center;
+							flex-wrap: wrap;
+							.detail-img {
+								text-align: center;
+
+								.box-img {
+									width: 100px;
+									height: 40px;
+									margin: 0 auto;
+									img {
+										width: 100%;
+										height: 100%;
+										object-fit: contain;
+									}
+									p {
+										font-size: $fs-small-text;
+									}
+								}
+							}
+
+							.detail-from,
+							.detail-to,
+							.detail-flight {
+								span {
+									display: flex;
+									align-items: center;
+									font-size: $fs-detail;
+								}
+							}
+
+							// Chi tiet gia ve
+							.detail-fare {
+								display: flex;
+								align-items: center;
+								justify-content: space-between;
+								flex-wrap: wrap;
+								width: 100%;
+								list-style: none;
+								border-bottom: 1px dashed $cl-grey-2;
+								padding: 5px 0;
+
+								li {
+									font-size: $fs-detail;
+									width: 20%;
+
+									&:nth-child(2),
+									&:nth-child(3),
+									&:nth-child(4) {
+										text-align: center;
+									}
+
+									&:last-child {
+										text-align: right;
+									}
+								}
+							}
+
+							.detail-total {
+								display: flex;
+								justify-content: space-between;
+								align-items: center;
+								width: 100%;
+								margin-top: 10px;
+
+								.total-title {
+									font-size: $fs-title;
+									color: #17699a;
+									font-weight: 700;
+									text-transform: uppercase;
+								}
+								.total-price {
+									font-size: 18px;
+									display: flex;
+									font-weight: 600;
+									align-items: center;
+
+									p {
+										font-size: $fs-small-text;
+										padding-left: 10px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
