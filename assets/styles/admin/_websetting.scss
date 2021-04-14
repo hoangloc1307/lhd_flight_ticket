@@ -1,0 +1,15 @@
+.setting {
+	max-width: 50%;
+	.setting-title {
+		font-size: 18px;
+		color: #999;
+		margin: 12px 0;
+	}
+	input {
+		width: 100%;
+		outline: none;
+		border: 1px solid $cl-grey;
+		padding: 12px 24px;
+		border-radius: 5px;
+	}
+}

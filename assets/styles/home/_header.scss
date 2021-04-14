@@ -70,15 +70,15 @@ header {
 					padding: 10px 15px;
 					font-weight: 800;
 					cursor: pointer;
-					border: 1px solid $cl-blue-3;
+					border: none;
 					border-radius: 20px;
 					span {
 						display: flex;
 						align-items: center;
 
 						p {
-							padding-left: 4px;
-							width: 100px;
+							padding-left: 8px;
+							max-width: 100px;
 							white-space: nowrap;
 							text-overflow: ellipsis;
 							overflow: hidden;

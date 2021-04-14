@@ -370,7 +370,7 @@
 		padding-top: 50px;
 
 		h2 {
-			font-size: $fs-big;
+			font-size: $fs-main-title;
 			color: $cl-black;
 		}
 
@@ -590,7 +590,7 @@
 /*==================== Section Why Choose Us ====================*/
 #why {
 	padding: 100px 0;
-	background: $cl-grey;
+	background: $cl-white-3;
 
 	.row-item {
 		display: flex;
@@ -626,15 +626,13 @@
 		padding: 12px;
 		background: $cl-white-2;
 		border-radius: 20px;
-		box-shadow: 0px 3px 15px $cl-blue-1;
+		border: 1px solid $cl-grey;
 		cursor: pointer;
-		transform: translateY(0);
 		transition: 0.3s ease-in-out;
 		height: 100%;
 
 		&:hover {
-			transform: translateY(-10px);
-			box-shadow: 3px 5px 10px $cl-blue-5;
+			box-shadow: 0px 0px 20px $cl-blue-3;
 		}
 
 		.box-image {
@@ -695,14 +693,18 @@
 		}
 	}
 
-	.item {
-		display: block;
-		height: 50px;
+	.col {
+		padding: 12px;
 
-		.item-image {
-			width: 100%;
-			height: 100%;
-			object-fit: contain;
+		.item {
+			display: block;
+			height: 50px;
+
+			.item-image {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+			}
 		}
 	}
 }

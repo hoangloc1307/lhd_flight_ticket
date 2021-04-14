@@ -24,6 +24,46 @@ $(document).ready(function () {
 	});
 	/*===== End ===== */
 
+	/* Tab điểm đi, điểm đến */
+
+	$(document).on("click", "label:first-child .tab-container > li", function () {
+		$("label .tab-container > li").removeClass("tab-active");
+		$(this).addClass("tab-active");
+
+		var index = $(this).index() + 1;
+		$(".list-city-wrap .list-city").removeClass("list-active");
+		$(".list-city-wrap .list-city:nth-child(" + index + ")").addClass(
+			"list-active"
+		);
+		$("label:first-child .tab-container > li")
+			.not(this)
+			.removeClass("tab-active");
+		$(this).addClass("tab-active");
+	});
+
+	$(document).on("click", "label:last-child .tab-container > li", function () {
+		$("label .tab-container > li").removeClass("tab-active");
+		$(this).addClass("tab-active");
+
+		var list = $(this).index() + 1;
+		$(".list-city-wrap .list-city").removeClass("list-active");
+		$(".list-city-wrap .list-city:nth-child(" + list + ")").addClass(
+			"list-active"
+		);
+		$("label:last-child .tab-container > li")
+			.not(this)
+			.removeClass("tab-active");
+		$(this).addClass("tab-active");
+	});
+
+	/*===== End ===== */
+
+	/* Chọn điểm di, điểm đến */
+	$(document).on("click", ".list-point li", function () {
+		$(this).parents(".way-popup").prev(".choose").val($(this).text());
+	});
+	/*===== End ===== */
+
 	/* Tăng - Giảm số lượng hành khách */
 
 	$(".plus-button").click(function () {
@@ -82,5 +122,3 @@ $(document).ready(function () {
 
 	/*===== End ===== */
 });
-
-
