@@ -413,8 +413,6 @@
     </div>
 </div>
 
-<?php var_dump($fdata); ?>
-
 <script>
 var ftype = '<?= $fdata['type'] ?>';
 var forigin = '<?php echo substr($fdata['origin'], -4, 3); ?>';
@@ -424,6 +422,7 @@ var freturn = '<?= $fdata['return'] ?>';
 var fadult = '<?= $fdata['adult'] ?>';
 var fchildren = '<?= $fdata['children'] ?>';
 var finfants = '<?= $fdata['infants'] ?>';
+
 $.ajax({
     type: "get",
     url: "http://api.aviationstack.com/v1/flights?access_key=65976e6f57f282023dcad9ad4132f991&flight_status=scheduled&dep_iata=" +
@@ -433,22 +432,30 @@ $.ajax({
         var flight = "";
         var nowtime = new Date();
         for (var i in response.data) {
-            var datetime1 = new Date(response.data[i]['departure']['scheduled']);
-            if (datetime1 > nowtime) {
-                var datetime2 = new Date(response.data[i]['arrival']['scheduled']);
-                var date1 = datetime1.getDate() + "-" + (datetime1.getMonth() + 1) + "-" + datetime1
+            var departure_scheduled = new Date(response.data[i]['departure']['scheduled']);
+            if (departure_scheduled > nowtime) {
+                var arrival_scheduled = new Date(response.data[i]['arrival']['scheduled']);
+                var departure_date = departure_scheduled.getDate() + "-" + (departure_scheduled.getMonth() +
+                        1) +
+                    "-" + departure_scheduled
                     .getFullYear();
-                var date2 = datetime2.getDate() + "-" + (datetime2.getMonth() + 1) + "-" + datetime2
+                var arrival_date = arrival_scheduled.getDate() + "-" + (arrival_scheduled.getMonth() + 1) +
+                    "-" +
+                    arrival_scheduled
                     .getFullYear();
-                var time1 = zeroPad(datetime1.getHours(), 10) + ":" + zeroPad(datetime1.getMinutes(), 10);
-                var time2 = zeroPad(datetime2.getHours(), 10) + ":" + zeroPad(datetime2.getMinutes(), 10);
-                var flight_time = datetime2.getTime() - datetime1.getTime();
-                var duration = zeroPad(Math.floor(flight_time / 3600000), 10) + "h" + zeroPad(Math.floor((
+                var departure_time = response.data[i]['departure']['scheduled'].slice(11, 16);
+                var arrival_time = response.data[i]['arrival']['scheduled'].slice(11, 16);
+                var flight_time = arrival_scheduled - departure_scheduled;
+                var duration = ZeroPad(Math.floor(flight_time / 3600000), 10) + "h" + ZeroPad(Math.floor((
                     flight_time %
                     3600000) / 60000), 10) + "m";
-                console.log(response.data[i]['departure']['scheduled']);
 
-                var price = 700000;
+                var airline_name = response.data[i]['airline']['name'];
+                var departure_iata = response.data[i]['departure']['iata'];
+                var arrival_iata = response.data[i]['arrival']['iata'];
+                var flight_iata = response.data[i]['flight']['iata'];
+
+                var price = Math.round((flight_time / 20) * (Math.round(Math.random() * 10) / 10 + 0.5));
                 var total_adult = price * 3.1 * fadult;
                 var total_children = price * 2.6 * fchildren;
                 var total_infants = price * 0.1 * finfants;
@@ -456,28 +463,26 @@ $.ajax({
                 flight += "<div class='flight-item'>";
                 flight += "<div class='flight-info'>";
                 flight += "<div class='flight-img'>";
-                flight += "<img src='' alt='" + response.data[i]['airline']['name'] + "'/>";
-                flight += "<p>" + response.data[i]['airline']['name'] + "</p>";
+                flight += "<img src='<?= base_url() ?>" + ImageAirlines(airline_name) + "' alt='" +
+                    airline_name + "'/>";
+                flight += "<p>" + airline_name + "</p>";
                 flight += "</div>";
                 flight += "<div class='flight-from'>";
-                flight += "<div class='flight-city'>" + response.data[i]['departure']['iata'] + "</div>";
-                flight += "<div class='flight-time'>" + time1 + "</div>";
+                flight += "<div class='flight-city'>" + GetNameByIATA(departure_iata) + "</div>";
+                flight += "<div class='flight-time'>" + departure_time + "</div>";
                 flight += "</div>";
                 flight += "<div class='flight-wrap-detail'>";
-                flight += "<div class='flight-number-code'>" + response.data[i]['flight']['iata'] +
-                    "</div>";
+                flight += "<div class='flight-number-code'>" + flight_iata + "</div>";
                 flight += "<div class='flight-line'></div>";
                 flight += "<a href='#' class='flight-detail'>Chi tiết</a>";
                 flight += "</div>";
                 flight += "<div class='flight-to'>";
-                flight += "<div class='flight-city'>" + response.data[i]['arrival']['iata'] + "</div>";
-                flight += "<div class='flight-time'>" + time2 + "</div>";
+                flight += "<div class='flight-city'>" + GetNameByIATA(arrival_iata) + "</div>";
+                flight += "<div class='flight-time'>" + arrival_time + "</div>";
                 flight += "</div>";
                 flight += "<div class='flight-price-choose'>";
-                flight += "<div class='flight-price'>";
-                flight += price;
-                flight += "<span>VND</span>";
-                flight += "</div>";
+                flight += "<div class='flight-price'>" + numberWithCommas(price) + "<span>VND</span>" +
+                    "</div>";
                 flight += "<button type='submit'>Chọn chuyến bay</button>";
                 flight += "</div>";
                 flight += "</div>";
@@ -488,28 +493,24 @@ $.ajax({
                 flight += "</p>";
                 flight += "<div class='flight-detail-wrap'>";
                 flight += "<div class='detail-img'>";
-                flight += "<img src='' alt='" + response.data[i]['airline']['name'] + "' />";
-                flight += "<p>" + response.data[i]['airline']['name'] + "</p>";
+                flight += "<img src='<?= base_url() ?>" + ImageAirlines(airline_name) + "' alt='" +
+                    airline_name + "' />";
+                flight += "<p>" + airline_name + "</p>";
                 flight += "</div>";
                 flight += "<div class='detail-from'>";
-                flight += "<span>" + response.data[i]['departure']['iata'] + " - " + response.data[i][
-                    'departure'
-                ]['iata'] + "</span>";
+                flight += "<span>" + GetNameByIATA(departure_iata) + " - " + departure_iata + "</span>";
                 flight += "<span>Sân bay: " + response.data[i]['departure']['airport'] + "</span>";
-                flight += "<span><p>Cất cánh:</p><p>" + time1 + "</p></span>";
-                flight += "<span><p>Ngày:</p><p>" + date1 + "</p></span>";
+                flight += "<span><p>Cất cánh:</p><p>" + departure_time + "</p></span>";
+                flight += "<span><p>Ngày:</p><p>" + departure_date + "</p></span>";
                 flight += "</div>";
                 flight += "<div class='detail-to'>";
-                flight += "<span>" + response.data[i]['arrival']['iata'] + " - " + response.data[i][
-                    'arrival'
-                ]['iata'] + "</span>";
-                flight += "<span>Sân bay " + response.data[i]['arrival']['airport'] + "</span>";
-                flight += "<span><p>Hạ cánh:</p><p>" + time2 + "</p></span>";
-                flight += "<span><p>Ngày:</p><p>" + date2 + "</p></span>";
+                flight += "<span>" + GetNameByIATA(arrival_iata) + " - " + arrival_iata + "</span>";
+                flight += "<span>Sân bay: " + response.data[i]['arrival']['airport'] + "</span>";
+                flight += "<span><p>Hạ cánh:</p><p>" + arrival_time + "</p></span>";
+                flight += "<span><p>Ngày:</p><p>" + arrival_date + "</p></span>";
                 flight += "</div>";
                 flight += "<div class='detail-flight'>";
-                flight += "<span><p>Chuyến bay:</p><p>" + response.data[i]['flight']['iata'] +
-                    "</p></span>";
+                flight += "<span><p>Chuyến bay:</p><p>" + flight_iata + "</p></span>";
                 flight += "<span><p>Thời gian bay:</p><p>" + duration + "</p></span>";
                 flight += "</div>";
                 flight += "</div>";
@@ -527,17 +528,17 @@ $.ajax({
                 flight += "<ul class='detail-fare'>";
                 flight += "<li class='person'>Người lớn</li>";
                 flight += "<li class='amount'>" + fadult + "</li>";
-                flight += "<li class='price'>" + price + "</li>";
-                flight += "<li class='taxes'>" + (price * 2.1) + "</li>";
-                flight += "<li class='total'>" + total_adult + "</li>";
+                flight += "<li class='price'>" + numberWithCommas(price) + "</li>";
+                flight += "<li class='taxes'>" + numberWithCommas((price * 2.1)) + "</li>";
+                flight += "<li class='total'>" + numberWithCommas(total_adult) + "</li>";
                 flight += "</ul>";
                 if (fchildren > 0) {
                     flight += "<ul class='detail-fare'>";
                     flight += "<li class='person'>Trẻ em</li>";
                     flight += "<li class='amount'>" + fchildren + "</li>";
-                    flight += "<li class='price'>" + price + "</li>";
-                    flight += "<li class='taxes'>" + (price * 1.6) + "</li>";
-                    flight += "<li class='total'>" + total_children + "</li>";
+                    flight += "<li class='price'>" + numberWithCommas(price) + "</li>";
+                    flight += "<li class='taxes'>" + numberWithCommas((price * 1.6)) + "</li>";
+                    flight += "<li class='total'>" + numberWithCommas(total_children) + "</li>";
                     flight += "</ul>";
                 }
                 if (finfants > 0) {
@@ -545,13 +546,14 @@ $.ajax({
                     flight += "<li class='person'>Em bé</li>";
                     flight += "<li class='amount'>" + finfants + "</li>";
                     flight += "<li class='price'>" + 0 + "</li>";
-                    flight += "<li class='taxes'>" + (price * 0.1) + "</li>";
-                    flight += "<li class='total'>" + total_infants + "</li>";
+                    flight += "<li class='taxes'>" + numberWithCommas((price * 0.1)) + "</li>";
+                    flight += "<li class='total'>" + numberWithCommas(total_infants) + "</li>";
                     flight += "</ul>";
                 }
                 flight += "<div class='detail-total'>";
                 flight += "<span class='total-title'>Tổng tiền: </span>";
-                flight += "<span class='total-price'>" + (total_adult + total_children + total_infants) +
+                flight += "<span class='total-price'>" + numberWithCommas(total_adult + total_children +
+                        total_infants) +
                     "<p>VND</p> </span>";
                 flight += "</div>";
                 flight += "</div>";
