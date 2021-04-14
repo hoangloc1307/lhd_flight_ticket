@@ -12,10 +12,7 @@ $(document).ready(function () {
 	$(".to-top").click(function () {
 		$(document).scrollTop(0);
 	});
-});
 
-window.onload = function(){
 	// Ẩn Loader khi load xong
 	$(".loader-container").addClass("hide");
-};
-
+});
