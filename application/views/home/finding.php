@@ -422,7 +422,7 @@ $.ajax({
         for (var i in response.data) {
             var scheduled = new Date(response.data[i]['departure']['scheduled'].replace("+00",
                 "+07"));
-            if (scheduled > nowtime) {
+            if (scheduled > nowtime && response.data[i]['flight']['iata'] != null) {
                 var a_scheduled = new Date(response.data[i]['arrival']['scheduled'].replace("+00",
                     "+07"));
                 var ftime = a_scheduled - scheduled;
@@ -488,8 +488,8 @@ function ShowData(sortfunction) {
             flight += "<div class='flight-time'>" + arrival_time + "</div>";
             flight += "</div>";
             flight += "<div class='flight-price-choose'>";
-            flight += "<div class='flight-price'>" + numberWithCommas(price) +
-                "<span>VND</span>" + "</div>";
+            flight += "<div class='flight-price'><span>" + numberWithCommas(price) +
+                "</span><span>VND</span>" + "</div>";
             flight += "<button type='submit'>Chọn chuyến bay</button>";
             flight += "</div>";
             flight += "</div>";
@@ -560,8 +560,8 @@ function ShowData(sortfunction) {
             }
             flight += "<div class='detail-total'>";
             flight += "<span class='total-title'>Tổng tiền: </span>";
-            flight += "<span class='total-price'>" + numberWithCommas(total_adult +
-                total_children + total_infants) + "<p>VND</p> </span>";
+            flight += "<span class='total-price'><span>" + numberWithCommas(total_adult +
+                total_children + total_infants) + "</span>VND </span>";
             flight += "</div>";
             flight += "</div>";
             flight += "</div>";
@@ -569,6 +569,7 @@ function ShowData(sortfunction) {
             flight += "</div>";
         }
         $(".filter-main").html(flight);
+        $('.finding-view  > .box-view > li.personal label').trigger('click');
     }
 }
 $(document).ready(function() {
@@ -576,5 +577,20 @@ $(document).ready(function() {
         $(this).parents(".flight-info").next(".flight-box-detail").slideToggle();
     });
 
+    $('.finding-view  > .box-view > li.personal').click(function() {
+        $('.flight-price span:first-child').each(function() {
+            var p = $(this).parents('.flight-info').next('.flight-box-detail').find(
+                '.detail-fare:nth-child(2) li.price').text();
+            $(this).text(p);
+        });
+    });
+
+    $('.finding-view  > .box-view > li.taxes').click(function() {
+        $('.flight-price span:first-child').each(function() {
+            var p = $(this).parents('.flight-info').next('.flight-box-detail').find(
+                '.total-price span').text();
+            $(this).text(p);
+        });
+    });
 });
 </script>
