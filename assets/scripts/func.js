@@ -44,34 +44,34 @@ function ImageAirlines(airline_name) {
 
 	switch (airline_name) {
 		case "Vietnam Airlines":
-			src = "/assets/images/partner/vietnamairlines.png";
+			src = "assets/images/partner/vietnamairlines.png";
 			break;
 		case "FlexFlight":
-			src = "/assets/images/partner/flexflight.png";
+			src = "assets/images/partner/flexflight.png";
 			break;
 		case "Bamboo Airways":
-			src = "/assets/images/partner/bambooairline.png";
+			src = "assets/images/partner/bambooairline.png";
 			break;
 		case "VietJet Air":
-			src = "/assets/images/partner/vietjetair.png";
+			src = "assets/images/partner/vietjetair.png";
 			break;
 		case "Vietravel Airlines":
-			src = "/assets/images/partner/vietravelairlines.png";
+			src = "assets/images/partner/vietravelairlines.png";
 			break;
 		case "China Airlines":
-			src = "/assets/images/partner/chinaairlines.png";
+			src = "assets/images/partner/chinaairlines.png";
 			break;
 		case "Cambodia Angkor Air":
-			src = "/assets/images/partner/cambodiaangkorair.png";
+			src = "assets/images/partner/cambodiaangkorair.png";
 			break;
 		case "Korean Air":
-			src = "/assets/images/partner/koreanair.png";
+			src = "assets/images/partner/koreanair.png";
 			break;
 		case "Jet Linx Aviation":
-			src = "/assets/images/partner/jetlinx.png";
+			src = "assets/images/partner/jetlinx.png";
 			break;
 		default:
-			src = "/assets/images/partner/default.png";
+			src = "assets/images/partner/default.png";
 	}
 
 	return src;
