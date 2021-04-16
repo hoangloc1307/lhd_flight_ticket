@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Finding extends CI_Controller
+class Test extends CI_Controller
 {
 
     public function __construct()
@@ -47,10 +47,6 @@ class Finding extends CI_Controller
                 $children = $this->input->post('fchildren');
                 $infants = $this->input->post('finfants');
 
-                //Customer
-                $max = '100';
-                $nonstop = 'false';
-
                 //Tạo url
                 $url = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
                 $url .= '?currencyCode=VND';
@@ -67,8 +63,7 @@ class Finding extends CI_Controller
                 if ($infants > 0) {
                     $url .= '&infants=' . $infants;
                 }
-                $url .= '&max=' . $max;
-                $url .= '&nonStop=' . $nonstop;
+                $url .= '&max=10';
 
                 //Tạo Authorization
                 $auth = "Authorization : " . $access_token;
@@ -86,25 +81,11 @@ class Finding extends CI_Controller
                     CURLOPT_HTTPHEADER => array($auth)
                 ));
 
-                $response = curl_exec($curl);
+                $data = curl_exec($curl);
 
                 curl_close($curl);
 
-                $data['user_input'] = json_encode([
-                    'type' => $type,
-                    'origin' => $origin,
-                    'destination' => $destination,
-                    'departure' => $departure,
-                    'return' => $return,
-                    'adults' => $adults,
-                    'children' => $children,
-                    'infants' => $infants
-                ]);
-                $data['view'] = 'home/finding';
-                $data['title'] = 'Tìm chuyến bay';
-                $data['flight_data'] = $response;
-
-                $this->load->view('home/header_footer', $data);
+                echo $data;
             }
         } else {
             show_404();
@@ -112,4 +93,4 @@ class Finding extends CI_Controller
     }
 }
         
-    /* End of file  Finding.php */
+    /* End of file  Test.php */

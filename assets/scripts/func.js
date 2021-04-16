@@ -3,72 +3,86 @@ function ZeroPad(nr, base) {
 	return len > 0 ? new Array(len).join("0") + nr : nr;
 }
 
-function numberWithCommas(x) {
+function NumberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
-function SortDepartureTime(a, b) {
-	if (a["departure"]["scheduled"] === b["departure"]["scheduled"]) {
-		return 0;
-	} else {
-		return a["departure"]["scheduled"] < b["departure"]["scheduled"] ? -1 : 1;
+function DateOrTimeString(dateTimeString, dateOrTime = "date") {
+	var x = new Date(dateTimeString);
+	if (dateOrTime == "time") {
+		return ZeroPad(x.getHours(), 10) + ":" + ZeroPad(x.getMinutes(), 10);
 	}
+	return x.getDate() + "-" + (x.getMonth() + 1) + "-" + x.getFullYear();
 }
 
-function SortArrivalTime(a, b) {
-	if (a["arrival"]["scheduled"] === b["arrival"]["scheduled"]) {
+//SORT DATA
+function SortDepartureTime(a, b) {
+	if (
+		a.itineraries[0].segments[0].departure.at ===
+		b.itineraries[0].segments[0].departure.at
+	) {
 		return 0;
 	} else {
-		return a["arrival"]["scheduled"] < b["arrival"]["scheduled"] ? -1 : 1;
+		return a.itineraries[0].segments[0].departure.at <
+			b.itineraries[0].segments[0].departure.at
+			? -1
+			: 1;
 	}
 }
 
 function SortPrice(a, b) {
-	if (a["price"] === b["price"]) {
+	if (a.travelerPricings[0].price.base === b.travelerPricings[0].price.base) {
 		return 0;
 	} else {
-		return a["price"] < b["price"] ? -1 : 1;
+		return a.travelerPricings[0].price.base < b.travelerPricings[0].price.base
+			? -1
+			: 1;
 	}
 }
 
-function SortDuration(a, b) {
-	if (a["duration"] === b["duration"]) {
-		return 0;
-	} else {
-		return a["duration"] < b["duration"] ? -1 : 1;
-	}
-}
-
-function ImageAirlines(airline_name) {
+//GET VALUE BY IATA CODE
+function GetAirlinesImageByIATA(iataCode) {
 	var src = "";
 
-	switch (airline_name) {
-		case "Vietnam Airlines":
+	switch (iataCode) {
+		case "VN":
 			src = "assets/images/partner/vietnamairlines.png";
 			break;
-		case "FlexFlight":
+		case "W2":
 			src = "assets/images/partner/flexflight.png";
 			break;
-		case "Bamboo Airways":
+		case "QH":
 			src = "assets/images/partner/bambooairline.png";
 			break;
-		case "VietJet Air":
+		case "VJ":
 			src = "assets/images/partner/vietjetair.png";
 			break;
-		case "Vietravel Airlines":
+		case "VU":
 			src = "assets/images/partner/vietravelairlines.png";
 			break;
-		case "China Airlines":
+		case "CI":
 			src = "assets/images/partner/chinaairlines.png";
 			break;
-		case "Cambodia Angkor Air":
+		case "K6":
 			src = "assets/images/partner/cambodiaangkorair.png";
 			break;
-		case "Korean Air":
+		case "KE":
 			src = "assets/images/partner/koreanair.png";
 			break;
-		case "Jet Linx Aviation":
+		case "JL":
 			src = "assets/images/partner/jetlinx.png";
+			break;
+		case "SL":
+			src = "assets/images/partner/lionair.png";
+			break;
+		case "AK":
+			src = "assets/images/partner/airasia.png";
+			break;
+		case "GA":
+			src = "assets/images/partner/garuda.png";
+			break;
+		case "SQ":
+			src = "assets/images/partner/singaporeairlines.png";
 			break;
 		default:
 			src = "assets/images/partner/default.png";
@@ -77,7 +91,7 @@ function ImageAirlines(airline_name) {
 	return src;
 }
 
-function GetNameByIATA(iata) {
+function GetCityNameByIATA(iata) {
 	var name = "";
 
 	switch (iata) {

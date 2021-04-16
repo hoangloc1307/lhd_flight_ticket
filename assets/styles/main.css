@@ -2218,6 +2218,12 @@ header {
 }
 
 .finding .choose {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.finding .confirm {
   display: none;
 }
 

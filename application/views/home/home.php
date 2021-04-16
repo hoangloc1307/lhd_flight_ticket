@@ -127,9 +127,9 @@
 							</div>
 						</div>
 
-					</div>
-					<button type="submit" value="Search flight"> Tìm Chuyến Bay </button>
-				</form>
+                    </div>
+                    <button type="submit" name="search-flight"> Tìm Chuyến Bay </button>
+                </form>
 
 				<script>
 				/* Lấy dữ liệu sân bay */
