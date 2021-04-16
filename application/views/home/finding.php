@@ -621,7 +621,7 @@
 
 								</div>
 
-								<div class="baggage">
+								<div class="info-flight">
 									<div class="fly-info">
 										<div class="img-box">
 											<img src="<?= base_url() ?>assets/images/partner/vietnamairlines.png"
