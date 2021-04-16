@@ -371,15 +371,29 @@
 
 		h2 {
 			font-size: $fs-main-title;
-			color: $cl-black;
+			color: $cl-grey-2;
 		}
 
 		p {
 			font-weight: 300;
-			font-size: $fs-title;
+			font-size: $fs-main-title;
 			letter-spacing: 0.5px;
 			margin: 10px 0;
 			color: $cl-blue-3;
+			position: relative;
+			text-transform: capitalize;
+
+			&::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				right: 0;
+				background-image: url(../images/fly.png);
+				background-size: cover;
+				background-repeat: no-repeat;
+				width: 150px;
+				height: 150px;
+			}
 		}
 
 		a {

@@ -102,6 +102,12 @@ class Login extends CI_Controller
             $this->load->view('home/header_footer', $data);
         }
     }
+
+    public function Infouser() {
+        $data['view'] = 'home/info';
+        $data['title'] = 'Thông tin tài khoản';
+        $this->load->view('home/header_footer', $data);
+    }
 }
         
     /* End of file  Login.php */

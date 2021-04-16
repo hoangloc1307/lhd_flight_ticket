@@ -585,6 +585,24 @@ html {
   }
 }
 
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /*==================== Button back to top ====================*/
 .to-top {
   position: fixed;
@@ -825,9 +843,7 @@ header {
 .menu-pc .links ul li.user .menu-user {
   position: absolute;
   top: 60px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  right: 0;
   width: 200px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -839,6 +855,8 @@ header {
   border-radius: 5px;
   padding: 12px 0;
   border: 1px solid #f3f4f8;
+  -webkit-animation: fadeIn 0.2s ease-in;
+          animation: fadeIn 0.2s ease-in;
   display: none;
 }
 
@@ -846,7 +864,7 @@ header {
   position: absolute;
   content: "";
   top: -24px;
-  left: 50%;
+  right: 10%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   border: 12px solid;
@@ -856,10 +874,10 @@ header {
 .menu-pc .links ul li.user .menu-user::after {
   position: absolute;
   content: "";
-  top: -18px;
+  top: -37px;
   left: 0;
   width: 100%;
-  height: 18px;
+  height: 35px;
   background: transparent;
 }
 
@@ -1618,15 +1636,29 @@ header {
 
 .hero-content .content h2 {
   font-size: 32px;
-  color: #333;
+  color: #777777;
 }
 
 .hero-content .content p {
   font-weight: 300;
-  font-size: 24px;
+  font-size: 32px;
   letter-spacing: 0.5px;
   margin: 10px 0;
   color: #17699a;
+  position: relative;
+  text-transform: capitalize;
+}
+
+.hero-content .content p::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-image: url(../images/fly.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 150px;
 }
 
 .hero-content .content a {
@@ -2855,7 +2887,7 @@ header {
   width: 100%;
 }
 
-.finding .info-customer .baggage {
+.finding .info-customer .info-flight {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2868,7 +2900,7 @@ header {
   padding: 10px;
 }
 
-.finding .info-customer .baggage .fly-info {
+.finding .info-customer .info-flight .fly-info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2877,20 +2909,20 @@ header {
           align-items: center;
 }
 
-.finding .info-customer .baggage .fly-info .img-box {
+.finding .info-customer .info-flight .fly-info .img-box {
   width: 100px;
   height: 40px;
   margin-right: 24px;
 }
 
-.finding .info-customer .baggage .fly-info .img-box img {
+.finding .info-customer .info-flight .fly-info .img-box img {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
 }
 
-.finding .info-customer .baggage .fly-info i {
+.finding .info-customer .info-flight .fly-info i {
   padding: 0 24px;
 }
 
@@ -3242,6 +3274,143 @@ header {
   padding-left: 10px;
 }
 
+section {
+  padding-top: 50px;
+}
+
+section .title {
+  padding: 12px;
+  background: #17699a;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 6px 6px 0 0;
+}
+
+section .title i {
+  margin: 0 12px;
+}
+
+.infouser .info-user .info-edit {
+  background: #f3f4f8;
+  padding: 12px;
+  line-height: 1.8;
+  border-radius: 0 0 6px 6px;
+  margin: 0;
+}
+
+.infouser .info-user .info-edit .form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 12px;
+}
+
+.infouser .info-user .info-edit .form-group label {
+  color: #17699a;
+  font-weight: 600;
+}
+
+.infouser .info-user .info-edit .form-group label i {
+  margin-right: 12px;
+}
+
+.infouser .info-user .info-edit .form-group .input-edit {
+  margin: 0 12px;
+  width: 70%;
+  padding: 6px 12px;
+  letter-spacing: 1px;
+  border: 1px solid #dddddd;
+  outline: none;
+  border-radius: 6px;
+}
+
+.infouser .info-user .info-edit .form-group .input-edit:focus {
+  border: 1px solid #17699a;
+}
+
+.infouser .info-user .info-edit .button-password {
+  padding: 12px 24px;
+  border: none;
+  outline: none;
+  background: #f29018;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 auto;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  display: block;
+}
+
+.infouser .info-user .info-edit .button-password:hover {
+  background: #c76e00;
+}
+
+.infouser .info-user .button-submit {
+  width: 150px;
+  font-size: 16px;
+}
+
+.infouser input::-webkit-outer-spin-button,
+.infouser input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.my-order {
+  padding-bottom: 50px;
+}
+
+.my-order .view-order {
+  padding: 12px;
+  background: #f3f4f8;
+}
+
+.my-order .view-order .order-head,
+.my-order .view-order .order-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+}
+
+.my-order .view-order .order-head li,
+.my-order .view-order .order-body li {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.my-order .view-order .order-head li {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.my-order .view-order .order-body li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 16px;
+  color: #777777;
+  font-weight: 400;
+}
+
 #admin-page nav {
   position: fixed;
   top: 0;
@@ -3285,7 +3454,7 @@ header {
 }
 
 #admin-page nav .link-list .links li {
-  margin: 6px 0;
+  margin: 3px 0;
 }
 
 #admin-page nav .link-list .links li a,
@@ -4267,7 +4436,7 @@ h2 {
 }
 
 #admin-page nav .link-list .links li {
-  margin: 6px 0;
+  margin: 3px 0;
 }
 
 #admin-page nav .link-list .links li a,
