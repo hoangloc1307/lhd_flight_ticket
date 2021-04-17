@@ -111,26 +111,52 @@
                     <!-- Content -->
 
                     <div id="filter-content" class="col l-8">
-                        <!-- Flight name -->
-                        <div class="filter-header">
-                            <div class="icon">
-                                <i class="fas fa-location-arrow"></i>
-                            </div>
-                            <div class="title">
-                                <div class="title-flight">
-                                    <h5><?php echo json_decode($user_input, true)['origin']; ?></h5>
-                                    <i class="fas fa-long-arrow-alt-right"></i>
-                                    <h5><?php echo json_decode($user_input, true)['destination']; ?></h5>
+                        <div id="filter-content-di">
+                            <!-- Flight name -->
+                            <div class="filter-header">
+                                <div class="icon">
+                                    <i class="fas fa-location-arrow"></i>
                                 </div>
-                                <p class="date"><?php echo json_decode($user_input, true)['departure']; ?></p>
+                                <div class="title">
+                                    <div class="title-flight">
+                                        <h5><?php echo json_decode($user_input, true)['origin']; ?></h5>
+                                        <i class="fas fa-long-arrow-alt-right"></i>
+                                        <h5><?php echo json_decode($user_input, true)['destination']; ?></h5>
+                                    </div>
+                                    <p class="date"><?php echo json_decode($user_input, true)['departure']; ?></p>
+                                </div>
                             </div>
-                        </div>
-                        <!-- End Flight name -->
+                            <!-- End Flight name -->
 
-                        <!-- Box ticket flight -->
-                        <div class="filter-main">
+                            <!-- Box ticket flight -->
+                            <div class="filter-main">
+                            </div>
+                            <!-- End Box ticket flight -->
                         </div>
-                        <!-- End Box ticket flight -->
+                        <?php if (json_decode($user_input, true)['type'] == 'roundtrip') : ?>
+                        <div id="filter-content-ve">
+                            <!-- Flight name -->
+                            <div class="filter-header">
+                                <div class="icon">
+                                    <i class="fas fa-location-arrow"></i>
+                                </div>
+                                <div class="title">
+                                    <div class="title-flight">
+                                        <h5><?php echo json_decode($user_input, true)['destination']; ?></h5>
+                                        <i class="fas fa-long-arrow-alt-right"></i>
+                                        <h5><?php echo json_decode($user_input, true)['origin']; ?></h5>
+                                    </div>
+                                    <p class="date"><?php echo json_decode($user_input, true)['return']; ?></p>
+                                </div>
+                            </div>
+                            <!-- End Flight name -->
+
+                            <!-- Box ticket flight -->
+                            <div class="filter-main">
+                            </div>
+                            <!-- End Box ticket flight -->
+                        </div>
+                        <?php endif; ?>
                     </div>
 
                     <!-- End Content -->
@@ -145,8 +171,14 @@ var flightData = JSON.parse('<?= $flight_data ?>');
 var userInput = <?= $user_input ?>;
 var carriers = flightData['dictionaries']['carriers'];
 var tickets = flightData['data'];
+console.log(flightData);
+if (userInput.type === 'roundtrip') {
+    var flightData2 = JSON.parse('<?= isset($flight_data2) ? $flight_data2 : '' ?>');
+    var tickets2 = flightData2['data'];
+    console.log(flightData2);
+}
+
 var includetaxes = false;
-// console.log(flightData);
 
 //Danh sách hãng hàng không
 var carriers_text = "<li value='all'><span class='checkmark active'></span><span>Tất cả các hãng</span></li>";
@@ -159,20 +191,24 @@ $('.finding-airline__airline .box').html(carriers_text);
 // Chuyến bay
 function ShowData(sortFunction) {
     tickets.sort(sortFunction);
+    if (userInput.type == 'roundtrip') {
+        tickets2.sort(sortFunction);
+    }
+    //Vé lượt đi
     var tickets_text = "";
     for (let i in tickets) {
-        tickets_text += "<div class='flight-item' value='" + tickets[i].itineraries[0].segments[0].carrierCode + "'>";
+        tickets_text += "<div class='flight-item' value='" + tickets[i].itineraries[0].segments[0].operating
+            .carrierCode + "'>";
         tickets_text += "<div class='flight-info'>";
         tickets_text += "<div class='flight-img'>";
         tickets_text += "<div class='box-img'>";
         tickets_text += "<img src='<?php base_url() ?>" + GetAirlinesImageByIATA(tickets[i].itineraries[0].segments[0]
-            .carrierCode) + "'/>";
+            .operating.carrierCode) + "'/>";
         tickets_text += "</div></div>";
         tickets_text += "<div class='flight-from'>";
         tickets_text += "<div class='flight-city'>" + GetCityNameByIATA(userInput['origin'].substr(-4, 3)) + "</div>";
         tickets_text += "<div class='flight-time'>" + DateOrTimeString(tickets[i].itineraries[0].segments[0].departure
-            .at,
-            'time') + "</div>";
+            .at, 'time') + "</div>";
         tickets_text += "</div>";
         tickets_text += "<div class='flight-wrap-detail'>";
         if (tickets[i].itineraries[0].segments.length > 1) {
@@ -263,15 +299,12 @@ function ShowData(sortFunction) {
         tickets_text += "<li class='amount'>" + userInput['adults'] + "</li>";
         for (let j in tickets[i].travelerPricings) {
             if (tickets[i].travelerPricings[j].travelerType == "ADULT") {
-                tickets_text += "<li class='price'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[j].price
-                    .base)) + "</li>";
+                tickets_text += "<li class='price'>" + NumberWithCommas(parseInt(includetaxes == true ? tickets[i]
+                    .price.total : tickets[i].travelerPricings[0].price.base)) + "</li>";
                 tickets_text += "<li class='taxes'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[j].price
-                    .total - tickets[i]
-                    .travelerPricings[j].price.base)) + "</li>";
+                    .total - tickets[i].travelerPricings[j].price.base)) + "</li>";
                 tickets_text += "<li class='total'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[j].price
-                        .total * userInput[
-                            'adults'])) +
-                    "</li>";
+                    .total * userInput['adults'])) + "</li>";
                 break;
             }
         }
@@ -282,17 +315,12 @@ function ShowData(sortFunction) {
             tickets_text += "<li class='amount'>" + userInput['children'] + "</li>";
             for (let j in tickets[i].travelerPricings) {
                 if (tickets[i].travelerPricings[j].travelerType == "CHILD") {
-                    tickets_text += "<li class='price'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[j]
-                        .price
-                        .base)) + "</li>";
+                    tickets_text += "<li class='price'>" + NumberWithCommas(parseInt(includetaxes == true ? tickets[i]
+                        .price.total : tickets[i].travelerPricings[0].price.base)) + "</li>";
                     tickets_text += "<li class='taxes'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[j]
-                        .price
-                        .total - tickets[i]
-                        .travelerPricings[j].price.base)) + "</li>";
+                        .price.total - tickets[i].travelerPricings[j].price.base)) + "</li>";
                     tickets_text += "<li class='total'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[j]
-                        .price
-                        .total * userInput[
-                            'children'])) + "</li>";
+                        .price.total * userInput['children'])) + "</li>";
                     break;
                 }
             }
@@ -304,17 +332,12 @@ function ShowData(sortFunction) {
             tickets_text += "<li class='amount'>" + userInput['infants'] + "</li>";
             for (let j in tickets[i].travelerPricings) {
                 if (tickets[i].travelerPricings[j].travelerType == "HELD_INFANT") {
-                    tickets_text += "<li class='price'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[j]
-                        .price
-                        .base)) + "</li>";
+                    tickets_text += "<li class='price'>" + NumberWithCommas(parseInt(includetaxes == true ? tickets[i]
+                        .price.total : tickets[i].travelerPricings[0].price.base)) + "</li>";
                     tickets_text += "<li class='taxes'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[j]
-                        .price
-                        .total - tickets[i]
-                        .travelerPricings[j].price.base)) + "</li>";
+                        .price.total - tickets[i].travelerPricings[j].price.base)) + "</li>";
                     tickets_text += "<li class='total'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[j]
-                        .price
-                        .total * userInput[
-                            'infants'])) + "</li>";
+                        .price.total * userInput['infants'])) + "</li>";
                     break;
                 }
             }
@@ -326,8 +349,189 @@ function ShowData(sortFunction) {
             "</span>VND </span>";
         tickets_text += "</div></div></div></div></div>";
     }
-    $(".filter-main").html(tickets_text);
-    console.log(flightData);
+    $("#filter-content-di .filter-main").html(tickets_text);
+
+    //Vé lượt về
+    if (userInput.type == 'roundtrip') {
+        var tickets_text2 = "";
+        for (let i in tickets2) {
+            tickets_text2 += "<div class='flight-item' value='" + tickets2[i].itineraries[0].segments[0].operating
+                .carrierCode +
+                "'>";
+            tickets_text2 += "<div class='flight-info'>";
+            tickets_text2 += "<div class='flight-img'>";
+            tickets_text2 += "<div class='box-img'>";
+            tickets_text2 += "<img src='<?php base_url() ?>" + GetAirlinesImageByIATA(tickets2[i].itineraries[0]
+                .segments[0].operating.carrierCode) + "'/>";
+            tickets_text2 += "</div></div>";
+            tickets_text2 += "<div class='flight-from'>";
+            tickets_text2 += "<div class='flight-city'>" + GetCityNameByIATA(userInput['destination'].substr(-4, 3)) +
+                "</div>";
+            tickets_text2 += "<div class='flight-time'>" + DateOrTimeString(tickets2[i].itineraries[0].segments[0]
+                .departure
+                .at, 'time') + "</div>";
+            tickets_text2 += "</div>";
+            tickets_text2 += "<div class='flight-wrap-detail'>";
+            if (tickets2[i].itineraries[0].segments.length > 1) {
+                tickets_text2 += "<div class='flight-number-code'>" + (tickets2[i].itineraries[0].segments.length - 1) +
+                    " điểm dừng</div>";
+            } else {
+                tickets_text2 += "<div class='flight-number-code'>" + tickets2[i].itineraries[0].segments[0].operating
+                    .carrierCode + "" + tickets2[i].itineraries[0].segments[0].number + "</div>";
+            }
+            tickets_text2 += "<div class='flight-line'></div>";
+            tickets_text2 += "<div class='flight-detail'>Chi tiết</div>";
+            tickets_text2 += "</div>";
+            tickets_text2 += "<div class='flight-to'>";
+            tickets_text2 += "<div class='flight-city'>" + GetCityNameByIATA(userInput['origin'].substr(-4, 3)) +
+                "</div>";
+            tickets_text2 += "<div class='flight-time'>" + DateOrTimeString(tickets2[i].itineraries[0].segments[
+                tickets2[i]
+                .itineraries[0].segments
+                .length - 1].arrival.at, 'time') + "</div>";
+            tickets_text2 += "</div>";
+            tickets_text2 += "<div class='flight-price-choose'>";
+            tickets_text2 += "<div class='flight-price'><span>" + NumberWithCommas(parseInt(includetaxes == true ?
+                tickets2[i]
+                .price.total : tickets2[i].travelerPricings[0].price.base)) + "</span><span>VND</span>" + "</div>";
+            tickets_text2 += "<button>Chọn chuyến bay</button>";
+            tickets_text2 += "</div></div>";
+            tickets_text2 += "<div class='flight-box-detail'>";
+            tickets_text2 += "<div class='flight-detail-item'>";
+            tickets_text2 += "<p class='title-detail'><i class='fas fa-info-circle'></i> Chi tiết chuyến bay</p>";
+            for (let j in tickets2[i].itineraries[0].segments) {
+                tickets_text2 += "<div class='flight-detail-wrap'>";
+                tickets_text2 += "<div class='detail-img'>";
+                tickets_text2 += "<div class='box-img'>";
+                tickets_text2 += "<img src='<?= base_url() ?>" + GetAirlinesImageByIATA(tickets2[i].itineraries[0]
+                    .segments[j]
+                    .carrierCode) + "'/>";
+                tickets_text2 += "</div></div>";
+                tickets_text2 += "<div class='detail-from'>";
+                tickets_text2 += "<span>" + GetCityNameByIATA(tickets2[i].itineraries[0].segments[j].departure
+                        .iataCode) +
+                    " - " +
+                    tickets2[i].itineraries[0].segments[j].departure.iataCode + "</span>";
+                tickets_text2 += "<span>Sân bay: " + tickets2[i].itineraries[0].segments[j].departure.iataCode +
+                    "</span>";
+                tickets_text2 += "<span><p>Cất cánh:</p><p>" + DateOrTimeString(tickets2[i].itineraries[0].segments[j]
+                        .departure
+                        .at, 'time') +
+                    "</p></span>";
+                tickets_text2 += "<span><p>Ngày:</p><p>" + DateOrTimeString(tickets2[i].itineraries[0].segments[j]
+                        .departure
+                        .at) +
+                    "</p></span>";
+                tickets_text2 += "</div>";
+                tickets_text2 += "<div class='detail-to'>";
+                tickets_text2 += "<span>" + GetCityNameByIATA(tickets2[i].itineraries[0].segments[j].arrival.iataCode) +
+                    " - " +
+                    tickets2[i].itineraries[0].segments[j].arrival.iataCode + "</span>";
+                tickets_text2 += "<span>Sân bay: " + tickets2[i].itineraries[0].segments[j].arrival.iataCode +
+                    "</span>";
+                tickets_text2 += "<span><p>Hạ cánh:</p><p>" + DateOrTimeString(tickets2[i].itineraries[0].segments[j]
+                    .arrival
+                    .at,
+                    'time') + "</p></span>";
+                tickets_text2 += "<span><p>Ngày:</p> <p>" + DateOrTimeString(tickets2[i].itineraries[0].segments[j]
+                        .arrival
+                        .at) +
+                    "</p></span>";
+                tickets_text2 += "</div>";
+                tickets_text2 += "<div class='detail-flight'>";
+                tickets_text2 += "<span><p>Chuyến bay:</p><p>" + tickets2[i].itineraries[0].segments[j].number +
+                    "</p></span>";
+                tickets_text2 += "<span><p>Thời gian bay:</p><p>" + tickets2[i].itineraries[0].segments[j].duration
+                    .replace(
+                        "PT",
+                        "") + "</p></span>";
+                tickets_text2 += "<span><p>Hàng:</p><p>" + tickets2[i].travelerPricings[0].fareDetailsBySegment[0]
+                    .class +
+                    "</p></span>";
+                tickets_text2 += "<span><p>Hạng:</p><p>" + tickets2[i].travelerPricings[0].fareDetailsBySegment[0]
+                    .cabin +
+                    "</p></span>";
+                // tickets_text2 += "<span><p>Máy bay:</p><p>" + flightData.dictionaries.aircraft[tickets2[i].itineraries[0]
+                //         .segments[j].aircraft.code] +
+                //     "</p></span>";
+                tickets_text2 += "</div></div>";
+            }
+            tickets_text2 += "</div>";
+            tickets_text2 += "<div class='flight-detail-item'>";
+            tickets_text2 += "<p class='title-detail'><i class='fas fa-ticket-alt'></i>Chi tiết giá vé</p>";
+            tickets_text2 += "<div class='flight-detail-wrap'>";
+            tickets_text2 += "<ul class='detail-fare'>";
+            tickets_text2 += "<li class='person'><b>Hành khách</b></li>";
+            tickets_text2 += "<li class='amount'><b>Số lượng</b> </li>";
+            tickets_text2 += "<li class='price'><b>Giá vé</b></li>";
+            tickets_text2 += "<li class='taxes'><b>Thuế và phí</b></li>";
+            tickets_text2 += "<li class='total'><b>Tổng tiền</b></li>";
+            tickets_text2 += "</ul>";
+            tickets_text2 += "<ul class='detail-fare'>";
+            tickets_text2 += "<li class='person'>Người lớn</li>";
+            tickets_text2 += "<li class='amount'>" + userInput['adults'] + "</li>";
+            for (let j in tickets2[i].travelerPricings) {
+                if (tickets2[i].travelerPricings[j].travelerType == "ADULT") {
+                    tickets_text2 += "<li class='price'>" + NumberWithCommas(parseInt(includetaxes == true ? tickets2[i]
+                        .price.total : tickets2[i].travelerPricings[0].price.base)) + "</li>";
+                    tickets_text2 += "<li class='taxes'>" + NumberWithCommas(parseInt(tickets2[i].travelerPricings[j]
+                        .price
+                        .total - tickets2[i].travelerPricings[j].price.base)) + "</li>";
+                    tickets_text2 += "<li class='total'>" + NumberWithCommas(parseInt(tickets2[i].travelerPricings[j]
+                        .price
+                        .total * userInput['adults'])) + "</li>";
+                    break;
+                }
+            }
+            tickets_text2 += "</ul>";
+            if (userInput['children'] > 0) {
+                tickets_text2 += "<ul class='detail-fare'>";
+                tickets_text2 += "<li class='person'>Trẻ em</li>";
+                tickets_text2 += "<li class='amount'>" + userInput['children'] + "</li>";
+                for (let j in tickets2[i].travelerPricings) {
+                    if (tickets2[i].travelerPricings[j].travelerType == "CHILD") {
+                        tickets_text2 += "<li class='price'>" + NumberWithCommas(parseInt(includetaxes == true ?
+                            tickets2[i]
+                            .price.total : tickets2[i].travelerPricings[0].price.base)) + "</li>";
+                        tickets_text2 += "<li class='taxes'>" + NumberWithCommas(parseInt(tickets2[i].travelerPricings[
+                                j]
+                            .price.total - tickets2[i].travelerPricings[j].price.base)) + "</li>";
+                        tickets_text2 += "<li class='total'>" + NumberWithCommas(parseInt(tickets2[i].travelerPricings[
+                                j]
+                            .price.total * userInput['children'])) + "</li>";
+                        break;
+                    }
+                }
+                tickets_text2 += "</ul>";
+            }
+            if (userInput['infants'] > 0) {
+                tickets_text2 += "<ul class='detail-fare'>";
+                tickets_text2 += "<li class='person'>Em bé</li>";
+                tickets_text2 += "<li class='amount'>" + userInput['infants'] + "</li>";
+                for (let j in tickets2[i].travelerPricings) {
+                    if (tickets2[i].travelerPricings[j].travelerType == "HELD_INFANT") {
+                        tickets_text2 += "<li class='price'>" + NumberWithCommas(parseInt(includetaxes == true ?
+                            tickets2[i]
+                            .price.total : tickets2[i].travelerPricings[0].price.base)) + "</li>";
+                        tickets_text2 += "<li class='taxes'>" + NumberWithCommas(parseInt(tickets2[i].travelerPricings[
+                                j]
+                            .price.total - tickets2[i].travelerPricings[j].price.base)) + "</li>";
+                        tickets_text2 += "<li class='total'>" + NumberWithCommas(parseInt(tickets2[i].travelerPricings[
+                                j]
+                            .price.total * userInput['infants'])) + "</li>";
+                        break;
+                    }
+                }
+                tickets_text2 += "</ul>";
+            }
+            tickets_text2 += "<div class='detail-total'>";
+            tickets_text2 += "<span class='total-title'>Tổng tiền: </span>";
+            tickets_text2 += "<span class='total-price'><span>" + NumberWithCommas(parseInt(tickets2[i].price.total)) +
+                "</span>VND </span>";
+            tickets_text2 += "</div></div></div></div></div>";
+        }
+        $("#filter-content-ve .filter-main").html(tickets_text2);
+    }
 }
 ShowData(SortPrice);
 

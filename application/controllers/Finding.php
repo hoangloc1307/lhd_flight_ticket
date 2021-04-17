@@ -35,7 +35,9 @@ class Finding extends CI_Controller
 
             // Lấy dữ liệu chuyến bay
             if (!is_null($access_token)) {
+                //Tạo Authorization
                 $access_token = 'Bearer ' . $response['access_token'];
+                $auth = "Authorization : " . $access_token;
 
                 //Lấy dữ liệu nhập vào
                 $type = $this->input->post('ftype');
@@ -50,18 +52,15 @@ class Finding extends CI_Controller
                 $maxprice = $this->input->post('fmaxprice');
 
                 //Custom
-                $max = '100';
-                $nonstop = 'false';
+                $max = '0';
+                $nonstop = 'true';
 
-                //Tạo url
+                //Lấy chuyến đi
                 $url = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
                 $url .= '?currencyCode=VND';
                 $url .= '&originLocationCode=' . substr($origin, -4, 3);
                 $url .= '&destinationLocationCode=' . substr($destination, -4, 3);
                 $url .= '&departureDate=' . $departure;
-                if ($type == 'roundtrip') {
-                    $url .= '&returnDate=' . $return;
-                }
                 $url .= '&adults=' . $adults;
                 if ($children > 0) {
                     $url .= '&children=' . $children;
@@ -69,15 +68,16 @@ class Finding extends CI_Controller
                 if ($infants > 0) {
                     $url .= '&infants=' . $infants;
                 }
-                $url .= '&travelClass=' . $class;
+                if ($class != 'ALL') {
+                    $url .= '&travelClass=' . $class;
+                }
                 if ($maxprice != "") {
                     $url .= '&maxPrice=' . $maxprice;
                 }
-                $url .= '&max=' . $max;
+                if ($max != '0') {
+                    $url .= '&max=' . $max;
+                }
                 $url .= '&nonStop=' . $nonstop;
-
-                //Tạo Authorization
-                $auth = "Authorization : " . $access_token;
 
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
@@ -92,9 +92,52 @@ class Finding extends CI_Controller
                     CURLOPT_HTTPHEADER => array($auth)
                 ));
 
-                $response = curl_exec($curl);
+                $response_go = curl_exec($curl);
 
                 curl_close($curl);
+
+                //Tạo url lấy chuyến về nếu mà chọn khứ hồi
+                if ($type == 'roundtrip') {
+                    $url = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
+                    $url .= '?currencyCode=VND';
+                    $url .= '&originLocationCode=' . substr($destination, -4, 3);
+                    $url .= '&destinationLocationCode=' . substr($origin, -4, 3);
+                    $url .= '&departureDate=' . $return;
+                    $url .= '&adults=' . $adults;
+                    if ($children > 0) {
+                        $url .= '&children=' . $children;
+                    }
+                    if ($infants > 0) {
+                        $url .= '&infants=' . $infants;
+                    }
+                    if ($class != 'ALL') {
+                        $url .= '&travelClass=' . $class;
+                    }
+                    if ($maxprice != "") {
+                        $url .= '&maxPrice=' . $maxprice;
+                    }
+                    if ($max != '0') {
+                        $url .= '&max=' . $max;
+                    }
+                    $url .= '&nonStop=' . $nonstop;
+
+                    $curl = curl_init();
+                    curl_setopt_array($curl, array(
+                        CURLOPT_URL => $url,
+                        CURLOPT_RETURNTRANSFER => true,
+                        CURLOPT_ENCODING => '',
+                        CURLOPT_MAXREDIRS => 10,
+                        CURLOPT_TIMEOUT => 0,
+                        CURLOPT_FOLLOWLOCATION => true,
+                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                        CURLOPT_CUSTOMREQUEST => 'GET',
+                        CURLOPT_HTTPHEADER => array($auth)
+                    ));
+
+                    $response_back = curl_exec($curl);
+
+                    curl_close($curl);
+                }
 
                 $data['user_input'] = json_encode([
                     'type' => $type,
@@ -110,7 +153,10 @@ class Finding extends CI_Controller
                 ]);
                 $data['view'] = 'home/finding';
                 $data['title'] = 'Tìm chuyến bay';
-                $data['flight_data'] = $response;
+                $data['flight_data'] = $response_go;
+                if ($type == 'roundtrip') {
+                    $data['flight_data2'] = $response_back;
+                }
 
                 $this->load->view('home/header_footer', $data);
             }
