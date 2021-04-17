@@ -29,7 +29,7 @@ section {
 
 				label {
 					color: $cl-blue-3;
-					font-weight: 600;
+					font-weight: 700;
 
 					i {
 						margin-right: 12px;
@@ -71,6 +71,7 @@ section {
 		.button-submit {
 			width: 150px;
 			font-size: $fs-text;
+			margin-bottom: 0;
 		}
 	}
 
@@ -87,30 +88,219 @@ section {
 	.view-order {
 		padding: 12px;
 		background: $cl-white-1;
+		border-radius: 0 0 6px 6px;
 
 		.order-head,
 		.order-body {
 			display: flex;
 			align-items: center;
 			list-style: none;
+			padding: 12px;
+			background: $cl-white-2;
+
+			&:not(:last-child) {
+				border-bottom: 1px dashed $cl-grey;
+			}
 
 			li {
 				flex: 1;
+				i {
+					padding-right: 6px;
+				}
+
+				&:last-child {
+					justify-content: flex-end;
+					text-align: right;
+				}
+				&:nth-child(2),
+				&:nth-child(3),
+				&:nth-child(4),
+				&:nth-child(5) {
+					text-align: center;
+					justify-content: center;
+				}
 			}
 		}
 		.order-head {
+			&:first-child {
+				border-radius: 6px 6px 0 0;
+			}
+
 			li {
 				font-size: 18px;
 				font-weight: 700;
 			}
 		}
-		.order-body {
-			li {
-				display: flex;
-				align-items: center;
-				font-size: $fs-text;
-				color: $cl-grey-2;
-				font-weight: 400;
+
+		.order-item {
+			.order-body {
+				li {
+					display: flex;
+					align-items: center;
+					font-size: $fs-text;
+					color: $cl-blue-5;
+					font-weight: 400;
+					a {
+						position: relative;
+						padding-right: 24px;
+
+						&:hover {
+							color: $cl-blue-3;
+						}
+						&::after {
+							content: "\f078";
+							position: absolute;
+							top: 50%;
+							transform: translateY(-50%);
+							right: 0;
+							font-family: "Font Awesome 5 Free";
+							font-weight: 700;
+							font-size: $fs-small-text;
+						}
+					}
+				}
+
+				.order-codeflight {
+					p {
+						padding: 0 3px;
+					}
+				}
+				.order-total {
+					p {
+						padding-left: 12px;
+					}
+				}
+			}
+			.order-detail {
+				margin-bottom: 12px;
+				padding-bottom: 12px;
+				border-radius: 0 0 6px 6px;
+				background: $cl-white-2;
+
+				.heading {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					text-transform: uppercase;
+					padding: 12px;
+					background: $cl-grey;
+					color: $cl-blue-5;
+
+					h4:nth-child(2) {
+						position: relative;
+						padding: 0 18px 0 6px;
+
+						&::after {
+							position: absolute;
+							content: "";
+							width: 10px;
+							height: 1px;
+							top: 50%;
+							transform: translateY(-50%);
+							right: 0;
+							background: $cl-blue-5;
+						}
+					}
+					h4:last-child {
+						margin-left: 12px;
+					}
+				}
+				.order-passenger,
+				.order-contact,
+				.order-payment {
+					margin: 12px;
+					padding: 12px;
+					background: $cl-white-1;
+					border-radius: 6px;
+				}
+				.passenger-title,
+				.contact-title,
+				.payment-title {
+					display: flex;
+					align-items: center;
+					font-weight: 600;
+					font-size: $fs-sub-title;
+					color: $cl-blue-3;
+					padding: 6px 0;
+					margin-bottom: 6px;
+					border-bottom: 2px solid $cl-blue-3;
+
+					i {
+						margin-right: 12px;
+					}
+				}
+				.order-passenger {
+					.passenger-detail {
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+						line-height: 1.6;
+						padding: 12px 0;
+
+						div {
+							display: flex;
+							align-items: center;
+						}
+						p:first-child {
+							margin: 0 6px;
+							font-weight: 600;
+						}
+
+						.flight-code {
+							p:nth-child(3),
+							p:nth-child(4),
+							p:last-child {
+								margin: 0 6px;
+								position: relative;
+								padding-left: 12px;
+
+								&::before {
+									content: "";
+									position: absolute;
+									top: 50%;
+									transform: translateY(-50%);
+									left: 0;
+									background: $cl-blue-5;
+									height: 20px;
+									width: 2px;
+								}
+							}
+						}
+					}
+				}
+				.order-contact {
+					.contact-detail {
+						line-height: 1.6;
+						div {
+							p:first-child {
+								margin-right: 6px;
+								font-weight: 600;
+							}
+						}
+
+						div:not(div:last-child) {
+							margin-bottom: 6px;
+						}
+
+						div:first-of-type,
+						div:nth-child(2),
+						div:nth-child(3) {
+							display: flex;
+							align-items: center;
+						}
+
+						.address {
+							p:last-child {
+								text-transform: capitalize;
+							}
+						}
+						.note {
+							p:last-child {
+								text-align: justify;
+							}
+						}
+					}
+				}
 			}
 		}
 	}
