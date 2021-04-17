@@ -24,7 +24,7 @@
 								</div>
 								<div class="form-group">
 									<label for=""><i class="far fa-envelope"></i>Email</label>
-									<input class="input-edit" type="date" name="" id="" value=""
+									<input class="input-edit" type="mail" name="" id="" value=""
 										placeholder="Truyền cái Email">
 								</div>
 
@@ -69,23 +69,129 @@
 				</div>
 				<div class="view-order">
 					<ul class="order-head">
-						<li class="order-code">Mã đơn hàng</li>
-						<li class="order-date">Ngày đặt</li>
-						<li class="order-fromto">Điểm đến - điểm đi</li>
-						<li class="order-codeflight">Mã chuyến bay</li>
-						<li class="order-total">Tổng cộng</li>
-						<li class="order-status">Trạng thái</li>
+						<li class="order-code"><i class="fas fa-hashtag"></i>Mã đơn hàng</li>
+						<li class="order-date"><i class="far fa-clock"></i>Ngày đặt</li>
+						<li class="order-fromto"><i class="fas fa-map-marker-alt"></i>Đến & đi</li>
+						<li class="order-codeflight"><i class="fas fa-hashtag"></i>Mã chuyến bay</li>
+						<li class="order-total"><i class="fas fa-ticket-alt"></i>Tổng cộng</li>
+						<li class="order-status"><i class="fas fa-record-vinyl"></i>Trạng thái</li>
 					</ul>
-					<ul class="order-body">
-						<li class="order-code">DC123456789</li>
-						<li class="order-date">30/04/2021</li>
-						<li class="order-fromto">SGN - HAN</li>
-						<li class="order-codeflight">K63214</li>
-						<li class="order-total">199,000
-							<p>VND</p>
-						</li>
-						<li class="order-status">Đã thanh toán</li>
-					</ul>
+					<div class="order-item">
+						<ul class="order-body">
+							<li class="order-code">
+								<a href="#">DC123456789</a>
+							</li>
+							<li class="order-date">30/04/2021</li>
+							<li class="order-fromto">SGN - HAN</li>
+							<li class="order-codeflight">
+								<p>VJ172</p>
+								<p>VJ173</p>
+							</li>
+							<li class="order-total">199,000
+								<p>VND</p>
+							</li>
+							<li class="order-status">Đã thanh toán</li>
+						</ul>
+
+						<div class="order-detail">
+
+							<div class="heading">
+								<h4>Chi tiết đơn hàng:</h4>
+								<h4>#DC123456789</h4>
+								<h4>Đã thanh toán</h4>
+							</div>
+
+							<div class="order-passenger">
+								<div class="passenger-title">
+									<i class="fas fa-info-circle"></i>
+									<p>Thông tin khách hàng</p>
+								</div>
+								<div class="passenger-detail">
+
+									<div class="passenger">
+										<p>Tên hành khách (đại diện): </p>
+										<p>Nguyễn Trung Hiếu </p>
+									</div>
+									<div class="type-ticket">
+										<p>Loại vé: </p>
+										<p>Khứ hồi </p>
+									</div>
+									<div class="flight-code">
+										<p>Mã chuyến bay: </p>
+										<p>VJ172</p>
+										<p>VJ173</p>
+									</div>
+									<div class="type-ticket">
+										<p>Ngày đặt: </p>
+										<p>17/04/2021</p>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="row">
+								<div class="col l-6 m-12 s-12">
+
+									<div class="order-contact">
+										<div class="contact-title">
+											<i class="fas fa-info-circle"></i>
+											<p>Thông tin liên hệ</p>
+										</div>
+										<div class="contact-detail">
+											<div class="name">
+												<p>Họ & Tên: </p>
+												<p>Nguyễn Trung Hiếu</p>
+											</div>
+											<div class="phone">
+												<p>Điện thoại: </p>
+												<p>0123 456 789</p>
+											</div>
+											<div class="email">
+												<p>Email: </p>
+												<p>hieucot69@gmail.com</p>
+											</div>
+											<div class="address">
+												<p>Địa chỉ: </p>
+												<p>Ấp 1, Xã Bàu Cạn, Huyện Long Thành, Tỉnh Đồng Nai</p>
+											</div>
+											<div class="note">
+												<p>Ghi chú: </p>
+												<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+													Pariatur incidunt ut ipsam voluptates esse quas odio,
+													quaerat exercitationem eos? Qui exercitationem incidunt
+													aperiam culpa. Nisi saepe labore id rerum dolore?
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col l-6 m-12 s-12">
+
+									<div class="order-payment">
+										<div class="payment-title">
+											<i class="fas fa-info-circle"></i>
+											<p>Thông tin thanh toán</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="order-item">
+						<ul class="order-body">
+							<li class="order-code">
+								<a href="#">DC987654321</a>
+							</li>
+							<li class="order-date">30/04/2021</li>
+							<li class="order-fromto">SGN - HAN</li>
+							<li class="order-codeflight">K63214</li>
+							<li class="order-total">199,000
+								<p>VND</p>
+							</li>
+							<li class="order-status">Chưa thanh toán</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -98,6 +204,20 @@ $(document).ready(function() {
 		e.preventDefault();
 		$(".password .form-group .input-edit").prop("disabled", false);
 	});
+
+
+	// Xử lý thanh toán & chưa thanh toán
+	$(".order-body .order-status").each(function() {
+		if ($(this).text() == "Đã thanh toán") {
+			$(this).css("color", "#27AE60");
+		} else {
+			$(this).css("color", "#e74c3c");
+		}
+	});
+	// End
+
+	// Xử lý thanh toán & chưa thanh toán
+
 
 });
 </script>

@@ -92,7 +92,7 @@ header {
 					.menu-user {
 						position: absolute;
 						top: 60px;
-						right: 0;
+						right: -20px;
 						width: 200px;
 						flex-direction: column;
 						background: $cl-white-3;
@@ -102,16 +102,15 @@ header {
 						border: 1px solid $cl-white-1;
 						animation: fadeIn 0.2s ease-in;
 						display: none;
-
 						&::before {
 							position: absolute;
 							content: "";
 							top: -24px;
-							right: 10%;
-							transform: translateX(-50%);
+							right: 30px;
 							border: 12px solid;
 							border-color: transparent transparent $cl-white-3 transparent;
 						}
+
 						&::after {
 							position: absolute;
 							content: "";

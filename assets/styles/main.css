@@ -843,7 +843,7 @@ header {
 .menu-pc .links ul li.user .menu-user {
   position: absolute;
   top: 60px;
-  right: 0;
+  right: -20px;
   width: 200px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -864,9 +864,7 @@ header {
   position: absolute;
   content: "";
   top: -24px;
-  right: 10%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  right: 30px;
   border: 12px solid;
   border-color: transparent transparent #f9f9f9 transparent;
 }
@@ -3313,7 +3311,7 @@ section .title i {
 
 .infouser .info-user .info-edit .form-group label {
   color: #17699a;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .infouser .info-user .info-edit .form-group label i {
@@ -3359,6 +3357,7 @@ section .title i {
 .infouser .info-user .button-submit {
   width: 150px;
   font-size: 16px;
+  margin-bottom: 0;
 }
 
 .infouser input::-webkit-outer-spin-button,
@@ -3374,6 +3373,7 @@ section .title i {
 .my-order .view-order {
   padding: 12px;
   background: #f3f4f8;
+  border-radius: 0 0 6px 6px;
 }
 
 .my-order .view-order .order-head,
@@ -3385,6 +3385,13 @@ section .title i {
       -ms-flex-align: center;
           align-items: center;
   list-style: none;
+  padding: 12px;
+  background: #fff;
+}
+
+.my-order .view-order .order-head:not(:last-child),
+.my-order .view-order .order-body:not(:last-child) {
+  border-bottom: 1px dashed #dddddd;
 }
 
 .my-order .view-order .order-head li,
@@ -3394,12 +3401,40 @@ section .title i {
           flex: 1;
 }
 
+.my-order .view-order .order-head li i,
+.my-order .view-order .order-body li i {
+  padding-right: 6px;
+}
+
+.my-order .view-order .order-head li:last-child,
+.my-order .view-order .order-body li:last-child {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  text-align: right;
+}
+
+.my-order .view-order .order-head li:nth-child(2), .my-order .view-order .order-head li:nth-child(3), .my-order .view-order .order-head li:nth-child(4), .my-order .view-order .order-head li:nth-child(5),
+.my-order .view-order .order-body li:nth-child(2),
+.my-order .view-order .order-body li:nth-child(3),
+.my-order .view-order .order-body li:nth-child(4),
+.my-order .view-order .order-body li:nth-child(5) {
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.my-order .view-order .order-head:first-child {
+  border-radius: 6px 6px 0 0;
+}
+
 .my-order .view-order .order-head li {
   font-size: 18px;
   font-weight: 700;
 }
 
-.my-order .view-order .order-body li {
+.my-order .view-order .order-item .order-body li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3407,8 +3442,195 @@ section .title i {
       -ms-flex-align: center;
           align-items: center;
   font-size: 16px;
-  color: #777777;
+  color: #034166;
   font-weight: 400;
+}
+
+.my-order .view-order .order-item .order-body li a {
+  position: relative;
+  padding-right: 24px;
+}
+
+.my-order .view-order .order-item .order-body li a:hover {
+  color: #17699a;
+}
+
+.my-order .view-order .order-item .order-body li a::after {
+  content: "\f078";
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 0;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.my-order .view-order .order-item .order-body .order-codeflight p {
+  padding: 0 3px;
+}
+
+.my-order .view-order .order-item .order-body .order-total p {
+  padding-left: 12px;
+}
+
+.my-order .view-order .order-item .order-detail {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-radius: 0 0 6px 6px;
+  background: #fff;
+}
+
+.my-order .view-order .order-item .order-detail .heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-transform: uppercase;
+  padding: 12px;
+  background: #dddddd;
+  color: #034166;
+}
+
+.my-order .view-order .order-item .order-detail .heading h4:nth-child(2) {
+  position: relative;
+  padding: 0 18px 0 6px;
+}
+
+.my-order .view-order .order-item .order-detail .heading h4:nth-child(2)::after {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 1px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 0;
+  background: #034166;
+}
+
+.my-order .view-order .order-item .order-detail .heading h4:last-child {
+  margin-left: 12px;
+}
+
+.my-order .view-order .order-item .order-detail .order-passenger,
+.my-order .view-order .order-item .order-detail .order-contact,
+.my-order .view-order .order-item .order-detail .order-payment {
+  margin: 12px;
+  padding: 12px;
+  background: #f3f4f8;
+  border-radius: 6px;
+}
+
+.my-order .view-order .order-item .order-detail .passenger-title,
+.my-order .view-order .order-item .order-detail .contact-title,
+.my-order .view-order .order-item .order-detail .payment-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 600;
+  font-size: 18px;
+  color: #17699a;
+  padding: 6px 0;
+  margin-bottom: 6px;
+  border-bottom: 2px solid #17699a;
+}
+
+.my-order .view-order .order-item .order-detail .passenger-title i,
+.my-order .view-order .order-item .order-detail .contact-title i,
+.my-order .view-order .order-item .order-detail .payment-title i {
+  margin-right: 12px;
+}
+
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  line-height: 1.6;
+  padding: 12px 0;
+}
+
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail p:first-child {
+  margin: 0 6px;
+  font-weight: 600;
+}
+
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:nth-child(3),
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:nth-child(4),
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:last-child {
+  margin: 0 6px;
+  position: relative;
+  padding-left: 12px;
+}
+
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:nth-child(3)::before,
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:nth-child(4)::before,
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:last-child::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 0;
+  background: #034166;
+  height: 20px;
+  width: 2px;
+}
+
+.my-order .view-order .order-item .order-detail .order-contact .contact-detail {
+  line-height: 1.6;
+}
+
+.my-order .view-order .order-item .order-detail .order-contact .contact-detail div p:first-child {
+  margin-right: 6px;
+  font-weight: 600;
+}
+
+.my-order .view-order .order-item .order-detail .order-contact .contact-detail div:not(div:last-child) {
+  margin-bottom: 6px;
+}
+
+.my-order .view-order .order-item .order-detail .order-contact .contact-detail div:first-of-type,
+.my-order .view-order .order-item .order-detail .order-contact .contact-detail div:nth-child(2),
+.my-order .view-order .order-item .order-detail .order-contact .contact-detail div:nth-child(3) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.my-order .view-order .order-item .order-detail .order-contact .contact-detail .address p:last-child {
+  text-transform: capitalize;
+}
+
+.my-order .view-order .order-item .order-detail .order-contact .contact-detail .note p:last-child {
+  text-align: justify;
 }
 
 #admin-page nav {
