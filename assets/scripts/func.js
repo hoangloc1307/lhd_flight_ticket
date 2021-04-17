@@ -31,10 +31,14 @@ function SortDepartureTime(a, b) {
 }
 
 function SortPrice(a, b) {
-	if (a.travelerPricings[0].price.base === b.travelerPricings[0].price.base) {
+	if (
+		parseInt(a.travelerPricings[0].price.base) ===
+		parseInt(b.travelerPricings[0].price.base)
+	) {
 		return 0;
 	} else {
-		return a.travelerPricings[0].price.base < b.travelerPricings[0].price.base
+		return parseInt(a.travelerPricings[0].price.base) <
+			parseInt(b.travelerPricings[0].price.base)
 			? -1
 			: 1;
 	}

@@ -129,19 +129,23 @@
                     </div>
                     <div class="class">
                         <label>
-                            <input type="radio" name="fclass" value="ECONOMY" checked /> Economy
+                            <input type="radio" name="fclass" value="ALL" checked /> Tất cả
                             <span class="radiobtn"></span>
                         </label>
                         <label>
-                            <input type="radio" name="fclass" value="PREMIUM_ECONOMY" /> Premium Economy
+                            <input type="radio" name="fclass" value="ECONOMY" /> Phổ thông
                             <span class="radiobtn"></span>
                         </label>
                         <label>
-                            <input type="radio" name="fclass" value="BUSINESS" /> Business
+                            <input type="radio" name="fclass" value="PREMIUM_ECONOMY" /> Phổ thông cao cấp
                             <span class="radiobtn"></span>
                         </label>
                         <label>
-                            <input type="radio" name="fclass" value="FIRST" /> First
+                            <input type="radio" name="fclass" value="BUSINESS" /> Thương gia
+                            <span class="radiobtn"></span>
+                        </label>
+                        <label>
+                            <input type="radio" name="fclass" value="FIRST" /> Nhất
                             <span class="radiobtn"></span>
                         </label>
                     </div>
