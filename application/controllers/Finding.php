@@ -46,8 +46,10 @@ class Finding extends CI_Controller
                 $adults = $this->input->post('fadult');
                 $children = $this->input->post('fchildren');
                 $infants = $this->input->post('finfants');
+                $class = $this->input->post('fclass');
+                $maxprice = $this->input->post('fmaxprice');
 
-                //Customer
+                //Custom
                 $max = '100';
                 $nonstop = 'false';
 
@@ -66,6 +68,10 @@ class Finding extends CI_Controller
                 }
                 if ($infants > 0) {
                     $url .= '&infants=' . $infants;
+                }
+                $url .= '&travelClass=' . $class;
+                if ($maxprice != "") {
+                    $url .= '&maxPrice=' . $maxprice;
                 }
                 $url .= '&max=' . $max;
                 $url .= '&nonStop=' . $nonstop;
@@ -98,7 +104,9 @@ class Finding extends CI_Controller
                     'return' => $return,
                     'adults' => $adults,
                     'children' => $children,
-                    'infants' => $infants
+                    'infants' => $infants,
+                    'class' => $class,
+                    'maxprice' => $maxprice
                 ]);
                 $data['view'] = 'home/finding';
                 $data['title'] = 'Tìm chuyến bay';

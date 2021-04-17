@@ -240,11 +240,11 @@ function ShowData(sortFunction) {
                 "") + "</p></span>";
             tickets_text += "<span><p>Hàng:</p><p>" + tickets[i].travelerPricings[0].fareDetailsBySegment[0].class +
                 "</p></span>";
-            // tickets_text += "<span><p>Hạng:</p><p>" + tickets[i].travelerPricings[0].fareDetailsBySegment[0].cabin +
-            //     "</p></span>";
-            tickets_text += "<span><p>Máy bay:</p><p>" + flightData.dictionaries.aircraft[tickets[i].itineraries[0]
-                    .segments[j].aircraft.code] +
+            tickets_text += "<span><p>Hạng:</p><p>" + tickets[i].travelerPricings[0].fareDetailsBySegment[0].cabin +
                 "</p></span>";
+            // tickets_text += "<span><p>Máy bay:</p><p>" + flightData.dictionaries.aircraft[tickets[i].itineraries[0]
+            //         .segments[j].aircraft.code] +
+            //     "</p></span>";
             tickets_text += "</div></div>";
         }
         tickets_text += "</div>";
@@ -327,6 +327,7 @@ function ShowData(sortFunction) {
         tickets_text += "</div></div></div></div></div>";
     }
     $(".filter-main").html(tickets_text);
+    console.log(flightData);
 }
 ShowData(SortPrice);
 
