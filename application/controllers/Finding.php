@@ -41,8 +41,8 @@ class Finding extends CI_Controller
 
                 //Lấy dữ liệu nhập vào
                 $type = $this->input->post('ftype');
-                $origin = $this->input->post('forigin');
-                $destination = $this->input->post('fdestination');
+                $origin = substr($this->input->post('forigin'), -4, 3);
+                $destination = substr($this->input->post('fdestination'), -4, 3);
                 $departure = $this->input->post('fdepartment');
                 $return = $this->input->post('freturn');
                 $adults = $this->input->post('fadult');
@@ -52,14 +52,14 @@ class Finding extends CI_Controller
                 $maxprice = $this->input->post('fmaxprice');
 
                 //Custom
-                $max = '0';
+                $max = '15';
                 $nonstop = 'true';
 
                 //Lấy chuyến đi
                 $url = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
                 $url .= '?currencyCode=VND';
-                $url .= '&originLocationCode=' . substr($origin, -4, 3);
-                $url .= '&destinationLocationCode=' . substr($destination, -4, 3);
+                $url .= '&originLocationCode=' . $origin;
+                $url .= '&destinationLocationCode=' . $destination;
                 $url .= '&departureDate=' . $departure;
                 $url .= '&adults=' . $adults;
                 if ($children > 0) {
@@ -100,8 +100,8 @@ class Finding extends CI_Controller
                 if ($type == 'roundtrip') {
                     $url = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
                     $url .= '?currencyCode=VND';
-                    $url .= '&originLocationCode=' . substr($destination, -4, 3);
-                    $url .= '&destinationLocationCode=' . substr($origin, -4, 3);
+                    $url .= '&originLocationCode=' . $destination;
+                    $url .= '&destinationLocationCode=' . $origin;
                     $url .= '&departureDate=' . $return;
                     $url .= '&adults=' . $adults;
                     if ($children > 0) {

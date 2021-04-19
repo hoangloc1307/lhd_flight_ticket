@@ -10,7 +10,7 @@
                             <span class="number-step"> 1 </span>
                             <h5 class="tilte-step">Chọn chuyến bay</h5>
                         </li>
-                        <li class="col l-4 active">
+                        <li class="col l-4">
                             <span class="number-step"> 2 </span>
                             <h5 class="tilte-step">Đặt chỗ</h5>
                         </li>
@@ -111,7 +111,7 @@
                     <!-- Content -->
 
                     <div id="filter-content" class="col l-8">
-                        <div id="filter-content-di">
+                        <div id="filter-content-di" class="result">
                             <!-- Flight name -->
                             <div class="filter-header">
                                 <div class="icon">
@@ -134,7 +134,7 @@
                             <!-- End Box ticket flight -->
                         </div>
                         <?php if (json_decode($user_input, true)['type'] == 'roundtrip') : ?>
-                        <div id="filter-content-ve">
+                        <div id="filter-content-ve" class="result">
                             <!-- Flight name -->
                             <div class="filter-header">
                                 <div class="icon">
@@ -162,6 +162,66 @@
                     <!-- End Content -->
                 </div>
                 <!-- End Step 1 -->
+                <!-- Step 2 -->
+                <div class="row confirm">
+                    <div id="filter-left" class="col l-4">
+                        <div class="finding-detail">
+                            <div class="header">
+                                <i class="fas fa-shopping-cart"></i>
+                                <h3>Chi tiết giá vé</h3>
+                            </div>
+                            <div class="content">
+                                <div class="detail-ticket-container"></div>
+                                <div class="detail-summary">
+                                    <div class="summary">
+                                        <p>Tóm tắt giá vé</p>
+                                        <p>Tổng</p>
+                                    </div>
+                                    <div class="summary-cart-container">
+                                    </div>
+                                </div>
+                                <div class="total-price">
+                                    <p>Tổng chi phí:</p>
+                                    <div class="price">
+                                        <p>1.200.000</p>
+                                        <p>VND</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col l-8">
+                        <div class="flight-selected">
+                            <div class="box-selected flight-selected__base">
+                                <h3 class="header">
+                                    Chuyến bay bạn đã lựa chọn
+                                </h3>
+                                <div class="flight-choose">
+                                </div>
+                            </div>
+                            <div class="info-customer flight-selected__base">
+                                <h3 class="header">
+                                    Thông tin khách hàng
+                                </h3>
+                                <div class="box-info">
+                                    <div class="box-title">
+                                        <p class="box-user">Khách hàng</p>
+                                        <p class="box-lastname">Họ tên Tên</p>
+                                    </div>
+                                    <div class="box-container">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-contact flight-selected__base">
+                                <h3 class="header">
+                                    Thông tin liên hệ
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Step 2 -->
             </div>
         </div>
     </div>
@@ -171,11 +231,9 @@ var flightData = JSON.parse('<?= $flight_data ?>');
 var userInput = <?= $user_input ?>;
 var carriers = flightData['dictionaries']['carriers'];
 var tickets = flightData['data'];
-console.log(flightData);
 if (userInput.type === 'roundtrip') {
     var flightData2 = JSON.parse('<?= isset($flight_data2) ? $flight_data2 : '' ?>');
     var tickets2 = flightData2['data'];
-    console.log(flightData2);
 }
 
 var includetaxes = false;
@@ -198,7 +256,7 @@ function ShowData(sortFunction) {
     var tickets_text = "";
     for (let i in tickets) {
         tickets_text += "<div class='flight-item' value='" + tickets[i].itineraries[0].segments[0].operating
-            .carrierCode + "'>";
+            .carrierCode + "' id-ticket='" + tickets[i].id + "'>";
         tickets_text += "<div class='flight-info'>";
         tickets_text += "<div class='flight-img'>";
         tickets_text += "<div class='box-img'>";
@@ -206,7 +264,7 @@ function ShowData(sortFunction) {
             .operating.carrierCode) + "'/>";
         tickets_text += "</div></div>";
         tickets_text += "<div class='flight-from'>";
-        tickets_text += "<div class='flight-city'>" + GetCityNameByIATA(userInput['origin'].substr(-4, 3)) + "</div>";
+        tickets_text += "<div class='flight-city'>" + GetCityNameByIATA(userInput['origin']) + "</div>";
         tickets_text += "<div class='flight-time'>" + DateOrTimeString(tickets[i].itineraries[0].segments[0].departure
             .at, 'time') + "</div>";
         tickets_text += "</div>";
@@ -222,7 +280,7 @@ function ShowData(sortFunction) {
         tickets_text += "<div class='flight-detail'>Chi tiết</div>";
         tickets_text += "</div>";
         tickets_text += "<div class='flight-to'>";
-        tickets_text += "<div class='flight-city'>" + GetCityNameByIATA(userInput['destination'].substr(-4, 3)) +
+        tickets_text += "<div class='flight-city'>" + GetCityNameByIATA(userInput['destination']) +
             "</div>";
         tickets_text += "<div class='flight-time'>" + DateOrTimeString(tickets[i].itineraries[0].segments[tickets[i]
             .itineraries[0].segments
@@ -230,7 +288,8 @@ function ShowData(sortFunction) {
         tickets_text += "</div>";
         tickets_text += "<div class='flight-price-choose'>";
         tickets_text += "<div class='flight-price'><span>" + NumberWithCommas(parseInt(includetaxes == true ? tickets[i]
-            .price.total : tickets[i].travelerPricings[0].price.base)) + "</span><span>VND</span>" + "</div>";
+                .travelerPricings[0].price.total : tickets[i].travelerPricings[0].price.base)) +
+            "</span><span>VND</span>" + "</div>";
         tickets_text += "<button>Chọn chuyến bay</button>";
         tickets_text += "</div></div>";
         tickets_text += "<div class='flight-box-detail'>";
@@ -278,9 +337,6 @@ function ShowData(sortFunction) {
                 "</p></span>";
             tickets_text += "<span><p>Hạng:</p><p>" + tickets[i].travelerPricings[0].fareDetailsBySegment[0].cabin +
                 "</p></span>";
-            // tickets_text += "<span><p>Máy bay:</p><p>" + flightData.dictionaries.aircraft[tickets[i].itineraries[0]
-            //         .segments[j].aircraft.code] +
-            //     "</p></span>";
             tickets_text += "</div></div>";
         }
         tickets_text += "</div>";
@@ -294,29 +350,24 @@ function ShowData(sortFunction) {
         tickets_text += "<li class='taxes'><b>Thuế và phí</b></li>";
         tickets_text += "<li class='total'><b>Tổng tiền</b></li>";
         tickets_text += "</ul>";
-        tickets_text += "<ul class='detail-fare'>";
+        tickets_text += "<ul class='detail-fare adults'>";
         tickets_text += "<li class='person'>Người lớn</li>";
         tickets_text += "<li class='amount'>" + userInput['adults'] + "</li>";
-        for (let j in tickets[i].travelerPricings) {
-            if (tickets[i].travelerPricings[j].travelerType == "ADULT") {
-                tickets_text += "<li class='price'>" + NumberWithCommas(parseInt(includetaxes == true ? tickets[i]
-                    .price.total : tickets[i].travelerPricings[0].price.base)) + "</li>";
-                tickets_text += "<li class='taxes'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[j].price
-                    .total - tickets[i].travelerPricings[j].price.base)) + "</li>";
-                tickets_text += "<li class='total'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[j].price
-                    .total * userInput['adults'])) + "</li>";
-                break;
-            }
-        }
+        tickets_text += "<li class='price'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[0].price.base)) +
+            "</li>";
+        tickets_text += "<li class='taxes'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[0].price
+            .total - tickets[i].travelerPricings[0].price.base)) + "</li>";
+        tickets_text += "<li class='total'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[0].price
+            .total * userInput['adults'])) + "</li>";
         tickets_text += "</ul>";
         if (userInput['children'] > 0) {
-            tickets_text += "<ul class='detail-fare'>";
+            tickets_text += "<ul class='detail-fare children'>";
             tickets_text += "<li class='person'>Trẻ em</li>";
             tickets_text += "<li class='amount'>" + userInput['children'] + "</li>";
             for (let j in tickets[i].travelerPricings) {
                 if (tickets[i].travelerPricings[j].travelerType == "CHILD") {
-                    tickets_text += "<li class='price'>" + NumberWithCommas(parseInt(includetaxes == true ? tickets[i]
-                        .price.total : tickets[i].travelerPricings[0].price.base)) + "</li>";
+                    tickets_text += "<li class='price'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[j]
+                        .price.base)) + "</li>";
                     tickets_text += "<li class='taxes'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[j]
                         .price.total - tickets[i].travelerPricings[j].price.base)) + "</li>";
                     tickets_text += "<li class='total'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[j]
@@ -327,13 +378,13 @@ function ShowData(sortFunction) {
             tickets_text += "</ul>";
         }
         if (userInput['infants'] > 0) {
-            tickets_text += "<ul class='detail-fare'>";
+            tickets_text += "<ul class='detail-fare infants'>";
             tickets_text += "<li class='person'>Em bé</li>";
             tickets_text += "<li class='amount'>" + userInput['infants'] + "</li>";
             for (let j in tickets[i].travelerPricings) {
                 if (tickets[i].travelerPricings[j].travelerType == "HELD_INFANT") {
-                    tickets_text += "<li class='price'>" + NumberWithCommas(parseInt(includetaxes == true ? tickets[i]
-                        .price.total : tickets[i].travelerPricings[0].price.base)) + "</li>";
+                    tickets_text += "<li class='price'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[j]
+                        .price.base)) + "</li>";
                     tickets_text += "<li class='taxes'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[j]
                         .price.total - tickets[i].travelerPricings[j].price.base)) + "</li>";
                     tickets_text += "<li class='total'>" + NumberWithCommas(parseInt(tickets[i].travelerPricings[j]
@@ -349,15 +400,16 @@ function ShowData(sortFunction) {
             "</span>VND </span>";
         tickets_text += "</div></div></div></div></div>";
     }
-    $("#filter-content-di .filter-main").html(tickets_text);
+    if ($("#filter-content-di").hasClass("chose_active") == false) {
+        $("#filter-content-di .filter-main").html(tickets_text);
+    }
 
     //Vé lượt về
     if (userInput.type == 'roundtrip') {
         var tickets_text2 = "";
         for (let i in tickets2) {
             tickets_text2 += "<div class='flight-item' value='" + tickets2[i].itineraries[0].segments[0].operating
-                .carrierCode +
-                "'>";
+                .carrierCode + "' id-ticket='" + tickets2[i].id + "'>";
             tickets_text2 += "<div class='flight-info'>";
             tickets_text2 += "<div class='flight-img'>";
             tickets_text2 += "<div class='box-img'>";
@@ -365,7 +417,7 @@ function ShowData(sortFunction) {
                 .segments[0].operating.carrierCode) + "'/>";
             tickets_text2 += "</div></div>";
             tickets_text2 += "<div class='flight-from'>";
-            tickets_text2 += "<div class='flight-city'>" + GetCityNameByIATA(userInput['destination'].substr(-4, 3)) +
+            tickets_text2 += "<div class='flight-city'>" + GetCityNameByIATA(userInput['destination']) +
                 "</div>";
             tickets_text2 += "<div class='flight-time'>" + DateOrTimeString(tickets2[i].itineraries[0].segments[0]
                 .departure
@@ -383,7 +435,7 @@ function ShowData(sortFunction) {
             tickets_text2 += "<div class='flight-detail'>Chi tiết</div>";
             tickets_text2 += "</div>";
             tickets_text2 += "<div class='flight-to'>";
-            tickets_text2 += "<div class='flight-city'>" + GetCityNameByIATA(userInput['origin'].substr(-4, 3)) +
+            tickets_text2 += "<div class='flight-city'>" + GetCityNameByIATA(userInput['origin']) +
                 "</div>";
             tickets_text2 += "<div class='flight-time'>" + DateOrTimeString(tickets2[i].itineraries[0].segments[
                 tickets2[i]
@@ -392,8 +444,8 @@ function ShowData(sortFunction) {
             tickets_text2 += "</div>";
             tickets_text2 += "<div class='flight-price-choose'>";
             tickets_text2 += "<div class='flight-price'><span>" + NumberWithCommas(parseInt(includetaxes == true ?
-                tickets2[i]
-                .price.total : tickets2[i].travelerPricings[0].price.base)) + "</span><span>VND</span>" + "</div>";
+                    tickets2[i].travelerPricings[0].price.total : tickets2[i].travelerPricings[0].price.base)) +
+                "</span><span>VND</span>" + "</div>";
             tickets_text2 += "<button>Chọn chuyến bay</button>";
             tickets_text2 += "</div></div>";
             tickets_text2 += "<div class='flight-box-detail'>";
@@ -467,58 +519,45 @@ function ShowData(sortFunction) {
             tickets_text2 += "<li class='taxes'><b>Thuế và phí</b></li>";
             tickets_text2 += "<li class='total'><b>Tổng tiền</b></li>";
             tickets_text2 += "</ul>";
-            tickets_text2 += "<ul class='detail-fare'>";
+            tickets_text2 += "<ul class='detail-fare adults'>";
             tickets_text2 += "<li class='person'>Người lớn</li>";
             tickets_text2 += "<li class='amount'>" + userInput['adults'] + "</li>";
-            for (let j in tickets2[i].travelerPricings) {
-                if (tickets2[i].travelerPricings[j].travelerType == "ADULT") {
-                    tickets_text2 += "<li class='price'>" + NumberWithCommas(parseInt(includetaxes == true ? tickets2[i]
-                        .price.total : tickets2[i].travelerPricings[0].price.base)) + "</li>";
-                    tickets_text2 += "<li class='taxes'>" + NumberWithCommas(parseInt(tickets2[i].travelerPricings[j]
-                        .price
-                        .total - tickets2[i].travelerPricings[j].price.base)) + "</li>";
-                    tickets_text2 += "<li class='total'>" + NumberWithCommas(parseInt(tickets2[i].travelerPricings[j]
-                        .price
-                        .total * userInput['adults'])) + "</li>";
-                    break;
-                }
-            }
+            tickets_text2 += "<li class='price'>" + NumberWithCommas(parseInt(tickets2[i].travelerPricings[0].price
+                .base)) + "</li>";
+            tickets_text2 += "<li class='taxes'>" + NumberWithCommas(parseInt(tickets2[i].travelerPricings[0].price
+                .total - tickets2[i].travelerPricings[0].price.base)) + "</li>";
+            tickets_text2 += "<li class='total'>" + NumberWithCommas(parseInt(tickets2[i].travelerPricings[0]
+                .price.total * userInput['adults'])) + "</li>";
             tickets_text2 += "</ul>";
             if (userInput['children'] > 0) {
-                tickets_text2 += "<ul class='detail-fare'>";
+                tickets_text2 += "<ul class='detail-fare children'>";
                 tickets_text2 += "<li class='person'>Trẻ em</li>";
                 tickets_text2 += "<li class='amount'>" + userInput['children'] + "</li>";
                 for (let j in tickets2[i].travelerPricings) {
                     if (tickets2[i].travelerPricings[j].travelerType == "CHILD") {
-                        tickets_text2 += "<li class='price'>" + NumberWithCommas(parseInt(includetaxes == true ?
-                            tickets2[i]
-                            .price.total : tickets2[i].travelerPricings[0].price.base)) + "</li>";
+                        tickets_text2 += "<li class='price'>" + NumberWithCommas(parseInt(tickets2[i].travelerPricings[
+                            j].price.base)) + "</li>";
                         tickets_text2 += "<li class='taxes'>" + NumberWithCommas(parseInt(tickets2[i].travelerPricings[
-                                j]
-                            .price.total - tickets2[i].travelerPricings[j].price.base)) + "</li>";
+                            j].price.total - tickets2[i].travelerPricings[j].price.base)) + "</li>";
                         tickets_text2 += "<li class='total'>" + NumberWithCommas(parseInt(tickets2[i].travelerPricings[
-                                j]
-                            .price.total * userInput['children'])) + "</li>";
+                            j].price.total * userInput['children'])) + "</li>";
                         break;
                     }
                 }
                 tickets_text2 += "</ul>";
             }
             if (userInput['infants'] > 0) {
-                tickets_text2 += "<ul class='detail-fare'>";
+                tickets_text2 += "<ul class='detail-fare infants'>";
                 tickets_text2 += "<li class='person'>Em bé</li>";
                 tickets_text2 += "<li class='amount'>" + userInput['infants'] + "</li>";
                 for (let j in tickets2[i].travelerPricings) {
                     if (tickets2[i].travelerPricings[j].travelerType == "HELD_INFANT") {
-                        tickets_text2 += "<li class='price'>" + NumberWithCommas(parseInt(includetaxes == true ?
-                            tickets2[i]
-                            .price.total : tickets2[i].travelerPricings[0].price.base)) + "</li>";
+                        tickets_text2 += "<li class='price'>" + NumberWithCommas(parseInt(tickets2[i].travelerPricings[
+                            j].price.base)) + "</li>";
                         tickets_text2 += "<li class='taxes'>" + NumberWithCommas(parseInt(tickets2[i].travelerPricings[
-                                j]
-                            .price.total - tickets2[i].travelerPricings[j].price.base)) + "</li>";
+                            j].price.total - tickets2[i].travelerPricings[j].price.base)) + "</li>";
                         tickets_text2 += "<li class='total'>" + NumberWithCommas(parseInt(tickets2[i].travelerPricings[
-                                j]
-                            .price.total * userInput['infants'])) + "</li>";
+                            j].price.total * userInput['infants'])) + "</li>";
                         break;
                     }
                 }
@@ -530,7 +569,9 @@ function ShowData(sortFunction) {
                 "</span>VND </span>";
             tickets_text2 += "</div></div></div></div></div>";
         }
-        $("#filter-content-ve .filter-main").html(tickets_text2);
+        if ($("#filter-content-ve").hasClass('chose_active') == false) {
+            $("#filter-content-ve .filter-main").html(tickets_text2);
+        }
     }
 }
 ShowData(SortPrice);
@@ -583,5 +624,209 @@ $(document).ready(function() {
             });
         }
     });
+});
+
+/*Chọn chuyến bay*/
+var number_ticket = 1;
+if (userInput['type'] == 'roundtrip') {
+    number_ticket = 2;
+}
+
+var number_ticket_chose = 0;
+var flightTicketChoose = [];
+var flightTicketChooseInfo = [];
+$(document).on('click', '.flight-price-choose button', function() {
+
+    $(this).parents('.result').find('.flight-item').css('display', 'none');
+    $(this).parents('.flight-item').css('display', 'block');
+    $(this).parents('.result').addClass('chose_active');
+    flightTicketChoose.push('<div class="flight-item" value="' + $(this).parents('.flight-item')
+        .attr('value') + '">' + $(this).parents('.flight-item').html() + '</div>');
+
+    if (number_ticket_chose == 0) {
+        flightTicketChooseInfo['origin'] = [];
+        flightTicketChooseInfo['destination'] = [];
+        flightTicketChooseInfo['date'] = [];
+        flightTicketChooseInfo['time'] = [];
+        flightTicketChooseInfo['carrier'] = [];
+        flightTicketChooseInfo['adults_price'] = [];
+        flightTicketChooseInfo['children_price'] = [];
+        flightTicketChooseInfo['infants_price'] = [];
+    }
+
+    flightTicketChooseInfo['origin'].push($(this).parents('.flight-item').find(
+        '.flight-detail-item:first-child .detail-from span:nth-child(2)').text().substr(-3));
+    flightTicketChooseInfo['destination'].push($(this).parents('.flight-item').find(
+        '.flight-detail-item:first-child .detail-to span:nth-child(2)').text().substr(-3));
+    flightTicketChooseInfo['date'].push($(this).parents('.flight-item').find(
+        '.flight-detail-item:first-child .detail-from span:nth-child(4) p:nth-child(2)').text());
+    flightTicketChooseInfo['time'].push($(this).parents('.flight-item').find(
+        '.flight-detail-item:first-child .detail-from span:nth-child(3) p:nth-child(2)').text());
+    flightTicketChooseInfo['carrier'].push($(this).parents('.flight-item').attr('value'));
+    var adults_price = parseInt($(this).parents('.flight-item').find('.detail-fare.adults .price').text()
+            .replaceAll('.', '')) +
+        parseInt($(this).parents('.flight-item').find('.detail-fare.adults .taxes').text().replaceAll('.', ''));
+    flightTicketChooseInfo['adults_price'].push(adults_price);
+    if (userInput['children'] > 0) {
+        var children_price = parseInt($(this).parents('.flight-item').find('.detail-fare.children .price')
+                .text().replaceAll('.', '')) +
+            parseInt($(this).parents('.flight-item').find('.detail-fare.children .taxes').text().replaceAll('.',
+                ''));
+        flightTicketChooseInfo['children_price'].push(children_price);
+    }
+    if (userInput['infants'] > 0) {
+        var infants_price = parseInt($(this).parents('.flight-item').find('.detail-fare.infants .price')
+                .text().replaceAll('.', '')) +
+            parseInt($(this).parents('.flight-item').find('.detail-fare.infants .taxes').text().replaceAll('.',
+                ''));
+        flightTicketChooseInfo['infants_price'].push(infants_price);
+    }
+
+    $(this).remove();
+    number_ticket_chose++;
+
+    if (number_ticket_chose == number_ticket) {
+        //Ẩn bước 1, hiện bước 2
+        $('.filter-tab .filter-step li:nth-child(2)').addClass('active');
+        $('.choose').css('display', 'none');
+        $('.confirm').css('display', 'flex');
+
+        //Hiển lại 2 vé đã chọn ở bước 1
+        var flight_choose = "";
+        for (let i = 0; i < flightTicketChoose.length; i++) {
+            flight_choose += flightTicketChoose[i].replace("<button>Chọn chuyến bay</button>", "");
+        }
+        $('.flight-choose').html(flight_choose);
+
+        //Đỗ dữ liệu chuyến bay
+        var detail_ticket_text = "";
+        for (let i = 0; i < number_ticket_chose; i++) {
+            detail_ticket_text += "<div class='detail-ticket'>";
+            detail_ticket_text += "<div class='from-to'>";
+            detail_ticket_text += "<p>" + flightTicketChooseInfo['origin'][i] + "</p>";
+            detail_ticket_text += "<i class='fas fa-long-arrow-alt-right'></i>";
+            detail_ticket_text += "<p>" + flightTicketChooseInfo['destination'][i] + "</p>";
+            detail_ticket_text += "</div>";
+            detail_ticket_text += "<div class='date-time'>";
+            detail_ticket_text += "<i class='far fa-clock'></i>";
+            detail_ticket_text += "<p class='time'>" + flightTicketChooseInfo['time'][i] + "</p>";
+            detail_ticket_text += "<p class='date'>" + flightTicketChooseInfo['date'][i] + "</p>";
+            detail_ticket_text += "</div>";
+            detail_ticket_text += "<div class='image'>";
+            detail_ticket_text += "<img src='<?= base_url() ?>" + GetAirlinesImageByIATA(flightTicketChooseInfo[
+                'carrier'][i]) + "'>";
+            detail_ticket_text += "</div></div>";
+        }
+        $('.detail-ticket-container').html(detail_ticket_text);
+
+        //Đỗ dữ liệu giá tiền
+        var price_text = "";
+        price_text += "<div class='summary-cart'>";
+        price_text += "<p class='people'>Người lớn</p>";
+        price_text += "<div class='amount-wrap'>";
+        price_text += "<p>" + userInput['adults'] + "</p>";
+        price_text += "<p>x</p>";
+        price_text += "<p>" + NumberWithCommas(flightTicketChooseInfo['adults_price'][0] + (isNaN(
+            flightTicketChooseInfo[
+                'adults_price'][1]) ? 0 : flightTicketChooseInfo['adults_price'][1])) + "</p>";
+        price_text += "</div>";
+        price_text += "<p class='total'>" + NumberWithCommas((flightTicketChooseInfo['adults_price'][0] + (
+                isNaN(
+                    flightTicketChooseInfo['adults_price'][1]) ? 0 : flightTicketChooseInfo[
+                    'adults_price'][
+                    1
+                ])) *
+            userInput['adults']) + "</p>";
+        price_text += "</div>";
+        if (userInput['children'] > 0) {
+            price_text += "<div class='summary-cart'>";
+            price_text += "<p class='people'>Trẻ em</p>";
+            price_text += "<div class='amount-wrap'>";
+            price_text += "<p>" + userInput['children'] + "</p>";
+            price_text += "<p>x</p>";
+            price_text += "<p>" + NumberWithCommas(flightTicketChooseInfo['children_price'][0] + (isNaN(
+                flightTicketChooseInfo[
+                    'children_price'][1]) ? 0 : flightTicketChooseInfo['children_price'][1])) + "</p>";
+            price_text += "</div>";
+            price_text += "<p class='total'>" + NumberWithCommas((flightTicketChooseInfo['children_price'][0] +
+                    (
+                        isNaN(
+                            flightTicketChooseInfo['children_price'][1]) ? 0 : flightTicketChooseInfo[
+                            'children_price'][
+                            1
+                        ])) *
+                userInput['children']) + "</p>";
+            price_text += "</div>";
+        }
+        if (userInput['infants'] > 0) {
+            price_text += "<div class='summary-cart'>";
+            price_text += "<p class='people'>Trẻ em</p>";
+            price_text += "<div class='amount-wrap'>";
+            price_text += "<p>" + userInput['infants'] + "</p>";
+            price_text += "<p>x</p>";
+            price_text += "<p>" + NumberWithCommas(flightTicketChooseInfo['infants_price'][0] + (isNaN(
+                flightTicketChooseInfo[
+                    'infants_price'][1]) ? 0 : flightTicketChooseInfo['infants_price'][1])) + "</p>";
+            price_text += "</div>";
+            price_text += "<p class='total'>" + NumberWithCommas((flightTicketChooseInfo['infants_price'][0] +
+                    (
+                        isNaN(
+                            flightTicketChooseInfo['infants_price'][1]) ? 0 : flightTicketChooseInfo[
+                            'infants_price'][
+                            1
+                        ])) *
+                userInput['infants']) + "</p>";
+            price_text += "</div>";
+        }
+        $('.summary-cart-container').html(price_text);
+        var total_price = ((flightTicketChooseInfo['adults_price'][0] + (isNaN(flightTicketChooseInfo[
+                'adults_price'][1]) ? 0 : flightTicketChooseInfo['adults_price'][1])) *
+            userInput['adults']);
+        if (userInput['children'] > 0) {
+            total_price += ((flightTicketChooseInfo['children_price'][0] + (isNaN(flightTicketChooseInfo[
+                    'children_price'][1]) ? 0 : flightTicketChooseInfo['children_price'][1])) *
+                userInput['children']);
+        }
+        if (userInput['infants'] > 0) {
+            total_price += ((flightTicketChooseInfo['infants_price'][0] + (isNaN(flightTicketChooseInfo[
+                    'infants_price'][1]) ? 0 : flightTicketChooseInfo['infants_price'][1])) *
+                userInput['infants']);
+        }
+        $('.detail-summary + .total-price .price p:first-child').text(NumberWithCommas(total_price));
+
+        //Tạo form nhập thông tin
+        var customer_text = "";
+        for (let i = 0; i < userInput['adults']; i++) {
+            customer_text += "<div class='customer-people'>";
+            customer_text += "<div class='customer-user'>";
+            customer_text += "<i class='fas fa-user-edit'></i>";
+            customer_text += "<p>Người lớn " + (i + 1) + "</p>";
+            customer_text += "</div>";
+            customer_text += "<div class='name'>";
+            customer_text += "<input type='text' placeholder='Họ tên' name='name[]'>";
+            customer_text += "</div></div>";
+        }
+        for (let i = 0; i < userInput['children']; i++) {
+            customer_text += "<div class='customer-people'>";
+            customer_text += "<div class='customer-user'>";
+            customer_text += "<i class='fas fa-user-edit'></i>";
+            customer_text += "<p>Trẻ em " + (i + 1) + "</p>";
+            customer_text += "</div>";
+            customer_text += "<div class='name'>";
+            customer_text += "<input type='text' placeholder='Họ tên' name='name[]'>";
+            customer_text += "</div></div>";
+        }
+        for (let i = 0; i < userInput['infants']; i++) {
+            customer_text += "<div class='customer-people'>";
+            customer_text += "<div class='customer-user'>";
+            customer_text += "<i class='fas fa-user-edit'></i>";
+            customer_text += "<p>Em bé " + (i + 1) + "</p>";
+            customer_text += "</div>";
+            customer_text += "<div class='name'>";
+            customer_text += "<input type='text' placeholder='Họ tên' name='name[]'>";
+            customer_text += "</div></div>";
+        }
+        $('.info-customer .box-info .box-container').html(customer_text);
+    }
 });
 </script>
