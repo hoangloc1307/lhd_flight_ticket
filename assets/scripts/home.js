@@ -126,4 +126,20 @@ $(document).ready(function () {
 	});
 
 	/*===== End ===== */
+
+	/*===== Menu Mobile ===== */
+	$(document).on("click", ".menu-mobile .icon", function () {
+		$(".overlay").slideToggle(0);
+		$(".list-mobile").slideToggle();
+	});
+	$(document).on("click", ".list-mobile .close i", function () {
+		$(".overlay").slideToggle(0);
+		$(".list-mobile").slideToggle(0);
+	});
+	$(document).on("click", ".user", function () {
+		$(this).find("span > i:last-child").toggleClass("active");
+		$(".list-mobile ul .user .menu-user").toggleClass("active");
+	});
+
+	/*===== End Menu Mobile ===== */
 });
