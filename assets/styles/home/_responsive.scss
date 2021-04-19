@@ -1,28 +1,131 @@
+@media (max-width: 1366px) {
+	/*========== Home Page ==========*/
+
+	/*========== End Home Page ==========*/
+}
+
 @media (max-width: 1024px) {
 }
 
 @media (max-width: 768px) {
-  /*========== Login Page ==========*/
-  .login-container {
-    margin: 30px;
-  }
-  /*========== End Login Page ==========*/
+	/*========== Header==========*/
+	.menu-pc {
+		display: none;
+	}
+	.menu-mobile {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 100px;
+	}
+	/*========== End Header ==========*/
+
+	/*========== Home Page ==========*/
+	#hero {
+		&::before {
+			background-image: unset;
+		}
+		.booking-form {
+			h2 {
+				color: $cl-white-2;
+				border-bottom: 2px solid $cl-white-2;
+				margin-right: 0;
+			}
+			form {
+				.type,
+				.class,
+				.max-price,
+				.way,
+				.date,
+				.passenger-name {
+					label,
+					p,
+					i {
+						color: $cl-white-2;
+
+						input {
+							width: 300px;
+							padding: 6px 12px;
+							&:checked + .radiobtn {
+								box-shadow: 0 0 5px $cl-white-2;
+								border-color: unset;
+							}
+						}
+					}
+				}
+				.passenger-number {
+					color: $cl-white-2;
+					button {
+						color: $cl-white-2;
+						border: 1px solid $cl-white-2;
+					}
+				}
+				.way {
+					i {
+						color: $cl-blue-3;
+					}
+					.way-popup .header button i {
+						color: $cl-blue-3;
+					}
+					.tab-city .list-point li {
+						color: $cl-blue-3;
+					}
+					.way-popup-mobile {
+						position: absolute;
+						list-style: none;
+						background: #fff;
+						top: 100%;
+						right: -65px;
+						left: unset;
+						width: 700px;
+						-webkit-box-shadow: 2px 3px 5px #89a9bc;
+						box-shadow: 2px 3px 5px #89a9bc;
+						padding: 20px;
+						height: auto;
+						z-index: 1;
+						font-size: 14px;
+						border-radius: 8px;
+					}
+				}
+				.class {
+					label {
+						padding-bottom: 0;
+					}
+				}
+				button[type="submit"] {
+					color: $cl-blue-5;
+					background: $cl-grey;
+					box-shadow: 0px 0px 10px $cl-white-2;
+				}
+			}
+		}
+		.hero-content {
+			display: none;
+		}
+	}
+	/*========== End Home Page ==========*/
+
+	/*========== Login Page ==========*/
+	.login-container {
+		margin: 30px;
+	}
+	/*========== End Login Page ==========*/
 }
 
 @media (max-width: 480px) {
-  /*========== Login Page ==========*/
-  .login-container {
-    margin: 15px;
+	/*========== Login Page ==========*/
+	.login-container {
+		margin: 15px;
 
-    .user .img-box {
-      display: none;
-    }
+		.user .img-box {
+			display: none;
+		}
 
-    .form-box {
-      width: 100%;
-    }
-  }
-  /*========== End Login Page ==========*/
+		.form-box {
+			width: 100%;
+		}
+	}
+	/*========== End Login Page ==========*/
 }
 
 @media (max-width: 320px) {

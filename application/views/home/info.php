@@ -79,7 +79,9 @@
 					<div class="order-item">
 						<ul class="order-body">
 							<li class="order-code">
-								<a href="#">DC123456789</a>
+								<a href="#">DC123456789
+									<i class="fas fa-chevron-down"></i>
+								</a>
 							</li>
 							<li class="order-date">30/04/2021</li>
 							<li class="order-fromto">SGN - HAN</li>
@@ -134,7 +136,7 @@
 
 									<div class="order-contact">
 										<div class="contact-title">
-											<i class="fas fa-info-circle"></i>
+											<i class="fas fa-id-card-alt"></i>
 											<p>Thông tin liên hệ</p>
 										</div>
 										<div class="contact-detail">
@@ -169,11 +171,92 @@
 
 									<div class="order-payment">
 										<div class="payment-title">
-											<i class="fas fa-info-circle"></i>
+											<i class="fas fa-money-check-alt"></i>
 											<p>Thông tin thanh toán</p>
+										</div>
+										<div class="payment-detail">
+											<div class="method">
+												<p>Phương thức: </p>
+												<p>Thanh toán tại văn phòng FlightTicket</p>
+											</div>
+											<div class="status">
+												<p>Trạng thái: </p>
+												<p>Đã thanh toán</p>
+											</div>
 										</div>
 									</div>
 								</div>
+							</div>
+							<div class="row">
+								<div class="col l-6 m-12 s-12">
+									<div class="order-departure">
+										<div class="departure-title">
+											<i class="fas fa-plane-departure"></i>
+											<p>Điểm khởi hành</p>
+										</div>
+										<div class="departure-detail">
+											<div class="airport">
+												<p>Sân bay: </p>
+												<p>Tan Son Nhat International Airport</p>
+											</div>
+											<div class="code-airport">
+												<p>Mã sân bay: </p>
+												<p>SGN</p>
+											</div>
+											<div class="city">
+												<p>Thành phố: </p>
+												<p>Ho Chi Minh City</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col l-6 m-12 s-12">
+									<div class="order-destination">
+										<div class="destination-title">
+											<i class="fas fa-plane-arrival"></i>
+											<p>Điểm đến</p>
+										</div>
+										<div class="destination-detail">
+											<div class="airport">
+												<p>Sân bay: </p>
+												<p>Noi Bai International Airport</p>
+											</div>
+											<div class="code-airport">
+												<p>Mã sân bay: </p>
+												<p>HAN</p>
+											</div>
+											<div class="city">
+												<p>Thành phố: </p>
+												<p>Ha Noi City</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="order-total">
+								<div class="total-title">
+									<i class="fas fa-receipt"></i>
+									<p>Tổng chi phí</p>
+								</div>
+								<div class="total-detail">
+									<div class="price-ticket">
+										<p>Giá vé: </p>
+										<p>199.000</p>
+										<p>VND</p>
+									</div>
+									<div class="taxes-fess">
+										<p>Thuế & phí: </p>
+										<p>430,000 </p>
+										<p>VND</p>
+									</div>
+									<div class="total-price">
+										<p>Tổng: </p>
+										<p>630,000 </p>
+										<p>VND</p>
+									</div>
+								</div>
+
 							</div>
 						</div>
 
@@ -181,7 +264,9 @@
 					<div class="order-item">
 						<ul class="order-body">
 							<li class="order-code">
-								<a href="#">DC987654321</a>
+								<a href="#">DC987654321
+									<i class="fas fa-chevron-down"></i>
+								</a>
 							</li>
 							<li class="order-date">30/04/2021</li>
 							<li class="order-fromto">SGN - HAN</li>
@@ -191,6 +276,170 @@
 							</li>
 							<li class="order-status">Chưa thanh toán</li>
 						</ul>
+						<div class="order-detail">
+
+							<div class="heading">
+								<h4>Chi tiết đơn hàng:</h4>
+								<h4>#DC987654321</h4>
+								<h4>Chưa thanh toán</h4>
+							</div>
+
+							<div class="order-passenger">
+								<div class="passenger-title">
+									<i class="fas fa-info-circle"></i>
+									<p>Thông tin khách hàng</p>
+								</div>
+								<div class="passenger-detail">
+
+									<div class="passenger">
+										<p>Tên hành khách (đại diện): </p>
+										<p>Nguyễn Trung Hiếu </p>
+									</div>
+									<div class="type-ticket">
+										<p>Loại vé: </p>
+										<p>Khứ hồi </p>
+									</div>
+									<div class="flight-code">
+										<p>Mã chuyến bay: </p>
+										<p>VJ172</p>
+										<p>VJ173</p>
+									</div>
+									<div class="type-ticket">
+										<p>Ngày đặt: </p>
+										<p>17/04/2021</p>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="row">
+								<div class="col l-6 m-12 s-12">
+
+									<div class="order-contact">
+										<div class="contact-title">
+											<i class="fas fa-id-card-alt"></i>
+											<p>Thông tin liên hệ</p>
+										</div>
+										<div class="contact-detail">
+											<div class="name">
+												<p>Họ & Tên: </p>
+												<p>Nguyễn Trung Hiếu</p>
+											</div>
+											<div class="phone">
+												<p>Điện thoại: </p>
+												<p>0123 456 789</p>
+											</div>
+											<div class="email">
+												<p>Email: </p>
+												<p>hieucot69@gmail.com</p>
+											</div>
+											<div class="address">
+												<p>Địa chỉ: </p>
+												<p>Ấp 1, Xã Bàu Cạn, Huyện Long Thành, Tỉnh Đồng Nai</p>
+											</div>
+											<div class="note">
+												<p>Ghi chú: </p>
+												<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+													Pariatur incidunt ut ipsam voluptates esse quas odio,
+													quaerat exercitationem eos? Qui exercitationem incidunt
+													aperiam culpa. Nisi saepe labore id rerum dolore?
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col l-6 m-12 s-12">
+
+									<div class="order-payment">
+										<div class="payment-title">
+											<i class="fas fa-money-check-alt"></i>
+											<p>Thông tin thanh toán</p>
+										</div>
+										<div class="payment-detail">
+											<div class="method">
+												<p>Phương thức: </p>
+												<p>Thanh toán tại văn phòng FlightTicket</p>
+											</div>
+											<div class="status">
+												<p>Trạng thái: </p>
+												<p>Chưa thanh toán</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col l-6 m-12 s-12">
+									<div class="order-departure">
+										<div class="departure-title">
+											<i class="fas fa-plane-departure"></i>
+											<p>Điểm khởi hành</p>
+										</div>
+										<div class="departure-detail">
+											<div class="airport">
+												<p>Sân bay: </p>
+												<p>Tan Son Nhat International Airport</p>
+											</div>
+											<div class="code-airport">
+												<p>Mã sân bay: </p>
+												<p>SGN</p>
+											</div>
+											<div class="city">
+												<p>Thành phố: </p>
+												<p>Ho Chi Minh City</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col l-6 m-12 s-12">
+									<div class="order-destination">
+										<div class="destination-title">
+											<i class="fas fa-plane-arrival"></i>
+											<p>Điểm đến</p>
+										</div>
+										<div class="destination-detail">
+											<div class="airport">
+												<p>Sân bay: </p>
+												<p>Noi Bai International Airport</p>
+											</div>
+											<div class="code-airport">
+												<p>Mã sân bay: </p>
+												<p>HAN</p>
+											</div>
+											<div class="city">
+												<p>Thành phố: </p>
+												<p>Ha Noi City</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="order-total">
+								<div class="total-title">
+									<i class="fas fa-receipt"></i>
+									<p>Tổng chi phí</p>
+								</div>
+								<div class="total-detail">
+									<div class="price-ticket">
+										<p>Giá vé: </p>
+										<p>199.000</p>
+										<p>VND</p>
+									</div>
+									<div class="taxes-fess">
+										<p>Thuế & phí: </p>
+										<p>530,000 </p>
+										<p>VND</p>
+									</div>
+									<div class="total-price">
+										<p>Tổng: </p>
+										<p>730,000 </p>
+										<p>VND</p>
+									</div>
+								</div>
+
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -216,7 +465,13 @@ $(document).ready(function() {
 	});
 	// End
 
-	// Xử lý thanh toán & chưa thanh toán
+	// Bấm vào mã đơn hàng
+	$(document).on("click", ".order-code > a", function(e) {
+		e.preventDefault();
+		$(this).find("i").toggleClass("active");
+		$(this).parents(".order-body").next(".order-detail").slideToggle();
+
+	});
 
 
 });

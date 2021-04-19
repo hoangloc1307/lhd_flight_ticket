@@ -46,8 +46,52 @@
 					</li>
 				</ul>
 
+
 			</div>
 		</nav>
+		<nav class="menu-mobile grid wide">
+			<div class="logo">
+				<a href="<?= base_url() ?>">
+					<h1>Flight Ticket</h1>
+					<img src="<?= base_url() ?>assets/images/logo_icon.png" alt="Logo icon" />
+				</a>
+			</div>
+			<div class="icon">
+				<i class="fas fa-bars icon-menu"></i>
+			</div>
+		</nav>
+
+		<div class="overlay"></div>
+		<div class="list-mobile">
+			<div class="close">
+				<i class="fas fa-times"></i>
+			</div>
+			<div class="title">
+				<p>Menu</p>
+			</div>
+			<ul>
+				<li><a class="menu-link" href="<?= base_url() ?>">Trang chủ</a></li>
+				<li><a class="menu-link" href="<?= base_url() ?>gioi-thieu">Giới thiệu</a></li>
+				<li><a class="menu-link" href="<?= base_url() ?>news">Tin tức</a></li>
+				<li><a class="menu-link" href="<?= base_url() ?>#">Câu hỏi thường gặp</a></li>
+				<li class="user">
+					<span>
+						<i class="fas fa-user"></i>
+						<?php echo is_null($this->session->userdata('username')) ? "" : "<p>" . $this->session->userdata('username') . "</p>"; ?>
+						<i class="fas fa-angle-down"></i>
+					</span>
+					<ul class="menu-user">
+						<?php foreach ($this->session->userdata('user_links') as $key => $value) : ?>
+						<li class="menu-list">
+							<a href="<?= $value ?>"><?= $key ?></a>
+						</li>
+						<?php endforeach; ?>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+
 		<script>
 		// Active menu item
 		$.each($('.menu-pc .links > ul > li > a'), function() {
@@ -56,7 +100,6 @@
 			}
 		});
 		</script>
-		<nav class="menu-mobile"></nav>
 	</header>
 	<!-- End Header -->
 
@@ -158,30 +201,36 @@
 							</li>
 						</ul>
 					</div>
-				</div>
 
-				<div class="row contact">
 					<div class="col l-3">
-						<div class="footer-contact">
-							<div class="hotline">
-								<i class="fas fa-phone"></i>
-								<p>Hotline</p>
-							</div>
-							<a href="tel:">0123 456 789</a>
-						</div>
+						<h4 class="footer-title">
+							Hotline
+						</h4>
+						<a href="tel:">0123 456 789</a>
 					</div>
 
 					<div class="col l-3">
-						<div class="footer-contact">
-							<div class="hotline">
-								<i class="fas fa-phone"></i>
-								<p>Điện thoại</p>
-							</div>
-							<a href="tel:">0789 654 321</a>
-						</div>
+						<h4 class="footer-title">
+							Email
+						</h4>
+						<a href="#">flightticket@gmail.com</a>
 					</div>
 
-					<div class="col l-6 search">
+					<div class="col l-3">
+						<h4 class="footer-title">
+							Kết nối
+						</h4>
+						<ul class="footer-list">
+							<li class="footer-item">
+								<a href="#"><i class="fab fa-facebook"></i>Facebook</a>
+							</li>
+							<li class="footer-item">
+								<a href="#"><i class="fab fa-instagram"></i>Instagram</a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="col l-3 search">
 						<form action="">
 							<input type="text" class="footer-search" placeholder="Tôi có thể giúp gì cho bạn?">
 						</form>
@@ -189,17 +238,14 @@
 							<i class="fas fa-search"></i>
 						</button>
 					</div>
-
-
 				</div>
 			</div>
 		</div>
 		<!-- End Main Footer -->
 
 		<div class="copyright">
-			<p><i class="far fa-copyright"></i> 2021 - Bản quyền của LHD.<br><span>Dự án website bán vé máy
-					bay
-					để ra trường 2017-2021.</span></p>
+			<p><i class="far fa-copyright"></i> 2021 - Bản quyền thuộc LHD.<br><span>Dự án website bán vé máy
+					bay</span></p>
 		</div>
 	</footer>
 	<!-- End Footer -->

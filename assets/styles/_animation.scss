@@ -72,3 +72,19 @@
 		opacity: 1;
 	}
 }
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+@keyframes slideIn {
+	0% {
+		right: -320px;
+	}
+	100% {
+		right: 0;
+	}
+}

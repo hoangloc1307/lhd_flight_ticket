@@ -144,7 +144,7 @@ html {
 
 @media (min-width: 740px) and (max-width: 1023px) {
   .wide {
-    width: 644px;
+    width: 700px;
   }
 }
 
@@ -603,6 +603,42 @@ html {
   }
 }
 
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes slideIn {
+  0% {
+    right: -320px;
+  }
+  100% {
+    right: 0;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    right: -320px;
+  }
+  100% {
+    right: 0;
+  }
+}
+
 /*==================== Button back to top ====================*/
 .to-top {
   position: fixed;
@@ -739,6 +775,33 @@ header {
           box-shadow: 0 0 5px #034166;
 }
 
+.logo a {
+  display: block;
+  height: 50px;
+  position: relative;
+}
+
+.logo a:hover img {
+  left: calc(100% - 55px);
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
+}
+
+.logo h1 {
+  font-family: "Lobster", cursive;
+  color: #17699a;
+  font-size: 32px;
+}
+
+.logo img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 55px;
+  -webkit-transition: 0s ease-in-out;
+  transition: 0s ease-in-out;
+}
+
 .menu-pc {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -750,33 +813,6 @@ header {
       -ms-flex-align: center;
           align-items: center;
   height: 100px;
-}
-
-.menu-pc .logo a {
-  display: block;
-  height: 50px;
-  position: relative;
-}
-
-.menu-pc .logo a:hover img {
-  left: calc(100% - 55px);
-  -webkit-transition: 1s ease-in-out;
-  transition: 1s ease-in-out;
-}
-
-.menu-pc .logo h1 {
-  font-family: "Lobster", cursive;
-  color: #17699a;
-  font-size: 32px;
-}
-
-.menu-pc .logo img {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 55px;
-  -webkit-transition: 0s ease-in-out;
-  transition: 0s ease-in-out;
 }
 
 .menu-pc .links ul {
@@ -900,6 +936,159 @@ header {
 /*==================== Menu Mobile ====================*/
 .menu-mobile {
   display: none;
+}
+
+.icon {
+  padding: 8px 12px;
+  border: 1px solid #17699a;
+  border-radius: 10px;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.icon:hover {
+  background: #17699a;
+}
+
+.icon .icon-menu {
+  font-size: 24px;
+  color: #17699a;
+}
+
+.icon .icon-menu:hover {
+  color: #fff;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #333;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  overflow: hidden;
+  display: none;
+}
+
+.list-mobile {
+  height: 100vh;
+  background: #034166;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 320px;
+  color: #dddddd;
+  z-index: 99;
+  display: none;
+}
+
+.list-mobile .close {
+  text-align: right;
+  margin: 12px 24px;
+  font-size: 24px;
+}
+
+.list-mobile .close i {
+  padding: 12px;
+}
+
+.list-mobile .title p {
+  text-align: center;
+  font-size: 22px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #f29018;
+  text-shadow: 1px 1px 1px #777777;
+  margin: 12px 0;
+  padding: 12px 0;
+  position: relative;
+}
+
+.list-mobile .title p::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background: #fff;
+}
+
+.list-mobile ul {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.list-mobile ul li {
+  margin: 12px 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.list-mobile ul li .menu-link {
+  border-radius: 20px;
+  display: block;
+  color: #dddddd;
+}
+
+.list-mobile ul .user span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 12px;
+}
+
+.list-mobile ul .user span p {
+  padding: 0 12px;
+}
+
+.list-mobile ul .user span i:last-child {
+  -webkit-transition: 0.3s linear;
+  transition: 0.3s linear;
+}
+
+.list-mobile ul .user span i:last-child.active {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
+
+.list-mobile ul .user .menu-user {
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.list-mobile ul .user .menu-user.active {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  height: 170px;
+}
+
+.list-mobile ul .user .menu-user a {
+  color: #dddddd;
 }
 
 #news {
@@ -1189,8 +1378,9 @@ header {
   background: linear-gradient(to left, #034166, #06527f, #17699a);
   position: relative;
   z-index: 1;
-  height: 600px;
+  height: 650px;
   overflow: hidden;
+  padding: 50px 0;
 }
 
 #hero::before {
@@ -1206,7 +1396,7 @@ header {
 }
 
 .booking-form {
-  padding-top: 50px;
+  height: 100%;
 }
 
 .booking-form h2 {
@@ -1224,7 +1414,7 @@ header {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin: 25px 0;
+  margin: 16px 0;
 }
 
 .booking-form form .type label,
@@ -1282,14 +1472,6 @@ header {
   background: #f8f8fb;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 50%;
-}
-
-.booking-form form .class p.heading {
-  width: 100%;
-  color: #333;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  margin-bottom: 5px;
 }
 
 .booking-form form .way,
@@ -1587,6 +1769,56 @@ header {
           box-shadow: 0 0 3px #17699a;
 }
 
+.booking-form form .class p {
+  width: 100%;
+  color: #333;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 5px;
+}
+
+.booking-form form .class .class-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.booking-form form .class label {
+  padding-bottom: 12px;
+}
+
+.booking-form form .class label:nth-child(4),
+.booking-form form .class label:last-child {
+  padding-bottom: 0;
+}
+
+.booking-form form .max-price label {
+  color: #333;
+  font-weight: 700;
+}
+
+.booking-form form .max-price label input {
+  color: #17699a;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-weight: 600;
+  width: 200px;
+  margin-top: 5px;
+}
+
+.booking-form form .max-price label input::-webkit-outer-spin-button,
+.booking-form form .max-price label input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .booking-form form button[type="submit"] {
   color: #fff;
   background: -webkit-gradient(linear, right top, left top, from(#17699a), to(#06527f));
@@ -1604,6 +1836,7 @@ header {
   -webkit-box-shadow: 0px 0px 10px #3e789b;
           box-shadow: 0px 0px 10px #3e789b;
   overflow: hidden;
+  margin-top: 24px;
 }
 
 .booking-form form button[type="submit"]::before {
@@ -1629,7 +1862,6 @@ header {
 
 .hero-content .content {
   text-align: right;
-  padding-top: 50px;
 }
 
 .hero-content .content h2 {
@@ -1647,18 +1879,6 @@ header {
   text-transform: capitalize;
 }
 
-.hero-content .content p::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-image: url(../images/fly.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 150px;
-  height: 150px;
-}
-
 .hero-content .content a {
   color: #fff;
   background: -webkit-gradient(linear, right top, left top, from(#17699a), to(#06527f));
@@ -1672,7 +1892,7 @@ header {
   width: 100%;
   height: 350px;
   position: relative;
-  top: 25px;
+  top: 100px;
   -webkit-animation: flight 15s ease-in-out forwards infinite -8s;
           animation: flight 15s ease-in-out forwards infinite -8s;
   z-index: -2;
@@ -1751,7 +1971,7 @@ header {
 /*==================== End Section Hero ====================*/
 /*==================== Section Favorite ====================*/
 #favorite {
-  padding: 100px 0;
+  padding: 50px 0;
 }
 
 #favorite .heading {
@@ -1901,8 +2121,8 @@ header {
 /*==================== End Section Favorite ====================*/
 /*==================== Section Why Choose Us ====================*/
 #why {
-  padding: 100px 0;
-  background: #f9f9f9;
+  padding: 50px 0;
+  background: #f3f4f8;
 }
 
 #why .row-item {
@@ -1948,15 +2168,7 @@ header {
   background: #fff;
   border-radius: 20px;
   border: 1px solid #dddddd;
-  cursor: pointer;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
   height: 100%;
-}
-
-#why .item:hover {
-  -webkit-box-shadow: 0px 0px 20px #17699a;
-          box-shadow: 0px 0px 20px #17699a;
 }
 
 #why .item .box-image {
@@ -1976,6 +2188,7 @@ header {
   text-transform: capitalize;
   color: #f29018;
   margin-bottom: 10px;
+  background: unset;
 }
 
 #why .item .box-content p {
@@ -1988,7 +2201,13 @@ header {
 /*==================== End Section Why Choose Us ====================*/
 /*==================== Section Partner ====================*/
 #partner {
-  padding: 100px 0;
+  padding: 50px 0;
+}
+
+#partner .row {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #partner .heading {
@@ -3455,16 +3674,15 @@ section .title i {
   color: #17699a;
 }
 
-.my-order .view-order .order-item .order-body li a::after {
-  content: "\f078";
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  right: 0;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 700;
-  font-size: 12px;
+.my-order .view-order .order-item .order-body li a i {
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.my-order .view-order .order-item .order-body li a i.active {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+  padding: 0;
 }
 
 .my-order .view-order .order-item .order-body .order-codeflight p {
@@ -3480,6 +3698,19 @@ section .title i {
   padding-bottom: 12px;
   border-radius: 0 0 6px 6px;
   background: #fff;
+  display: none;
+}
+
+.my-order .view-order .order-item .order-detail .col {
+  margin-bottom: 12px;
+}
+
+.my-order .view-order .order-item .order-detail .col:first-child {
+  padding-right: 0;
+}
+
+.my-order .view-order .order-item .order-detail .col:last-child {
+  padding-left: 0;
 }
 
 .my-order .view-order .order-item .order-detail .heading {
@@ -3521,16 +3752,23 @@ section .title i {
 
 .my-order .view-order .order-item .order-detail .order-passenger,
 .my-order .view-order .order-item .order-detail .order-contact,
-.my-order .view-order .order-item .order-detail .order-payment {
+.my-order .view-order .order-item .order-detail .order-payment,
+.my-order .view-order .order-item .order-detail .order-departure,
+.my-order .view-order .order-item .order-detail .order-destination,
+.my-order .view-order .order-item .order-detail .order-total {
   margin: 12px;
   padding: 12px;
   background: #f3f4f8;
   border-radius: 6px;
+  height: 100%;
 }
 
 .my-order .view-order .order-item .order-detail .passenger-title,
 .my-order .view-order .order-item .order-detail .contact-title,
-.my-order .view-order .order-item .order-detail .payment-title {
+.my-order .view-order .order-item .order-detail .payment-title,
+.my-order .view-order .order-item .order-detail .departure-title,
+.my-order .view-order .order-item .order-detail .destination-title,
+.my-order .view-order .order-item .order-detail .total-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3547,11 +3785,17 @@ section .title i {
 
 .my-order .view-order .order-item .order-detail .passenger-title i,
 .my-order .view-order .order-item .order-detail .contact-title i,
-.my-order .view-order .order-item .order-detail .payment-title i {
+.my-order .view-order .order-item .order-detail .payment-title i,
+.my-order .view-order .order-item .order-detail .departure-title i,
+.my-order .view-order .order-item .order-detail .destination-title i,
+.my-order .view-order .order-item .order-detail .total-title i {
   margin-right: 12px;
 }
 
-.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail {
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail,
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail,
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail,
+.my-order .view-order .order-item .order-detail .order-total .total-detail {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3565,7 +3809,10 @@ section .title i {
   padding: 12px 0;
 }
 
-.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div {
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div,
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail div,
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail div,
+.my-order .view-order .order-item .order-detail .order-total .total-detail div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3574,14 +3821,33 @@ section .title i {
           align-items: center;
 }
 
-.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail p:first-child {
-  margin: 0 6px;
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div p:first-child,
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail div p:first-child,
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail div p:first-child,
+.my-order .view-order .order-item .order-detail .order-total .total-detail div p:first-child {
+  margin-right: 6px;
   font-weight: 600;
+}
+
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div p:last-child,
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail div p:last-child,
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail div p:last-child,
+.my-order .view-order .order-item .order-detail .order-total .total-detail div p:last-child {
+  margin-left: 6px;
 }
 
 .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:nth-child(3),
 .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:nth-child(4),
-.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:last-child {
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:last-child,
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail .flight-code p:nth-child(3),
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail .flight-code p:nth-child(4),
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail .flight-code p:last-child,
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail .flight-code p:nth-child(3),
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail .flight-code p:nth-child(4),
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail .flight-code p:last-child,
+.my-order .view-order .order-item .order-detail .order-total .total-detail .flight-code p:nth-child(3),
+.my-order .view-order .order-item .order-detail .order-total .total-detail .flight-code p:nth-child(4),
+.my-order .view-order .order-item .order-detail .order-total .total-detail .flight-code p:last-child {
   margin: 0 6px;
   position: relative;
   padding-left: 12px;
@@ -3589,7 +3855,16 @@ section .title i {
 
 .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:nth-child(3)::before,
 .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:nth-child(4)::before,
-.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:last-child::before {
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:last-child::before,
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail .flight-code p:nth-child(3)::before,
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail .flight-code p:nth-child(4)::before,
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail .flight-code p:last-child::before,
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail .flight-code p:nth-child(3)::before,
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail .flight-code p:nth-child(4)::before,
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail .flight-code p:last-child::before,
+.my-order .view-order .order-item .order-detail .order-total .total-detail .flight-code p:nth-child(3)::before,
+.my-order .view-order .order-item .order-detail .order-total .total-detail .flight-code p:nth-child(4)::before,
+.my-order .view-order .order-item .order-detail .order-total .total-detail .flight-code p:last-child::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -3601,22 +3876,58 @@ section .title i {
   width: 2px;
 }
 
-.my-order .view-order .order-item .order-detail .order-contact .contact-detail {
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .total-price p,
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail .total-price p,
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail .total-price p,
+.my-order .view-order .order-item .order-detail .order-total .total-detail .total-price p {
+  font-size: 24px;
+}
+
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .total-price p:nth-child(2),
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .total-price p:last-child,
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail .total-price p:nth-child(2),
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail .total-price p:last-child,
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail .total-price p:nth-child(2),
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail .total-price p:last-child,
+.my-order .view-order .order-item .order-detail .order-total .total-detail .total-price p:nth-child(2),
+.my-order .view-order .order-item .order-detail .order-total .total-detail .total-price p:last-child {
+  color: #f29018;
+}
+
+.my-order .view-order .order-item .order-detail .order-contact .contact-detail,
+.my-order .view-order .order-item .order-detail .order-contact .payment-detail,
+.my-order .view-order .order-item .order-detail .order-payment .contact-detail,
+.my-order .view-order .order-item .order-detail .order-payment .payment-detail {
   line-height: 1.6;
 }
 
-.my-order .view-order .order-item .order-detail .order-contact .contact-detail div p:first-child {
+.my-order .view-order .order-item .order-detail .order-contact .contact-detail div p:first-child,
+.my-order .view-order .order-item .order-detail .order-contact .payment-detail div p:first-child,
+.my-order .view-order .order-item .order-detail .order-payment .contact-detail div p:first-child,
+.my-order .view-order .order-item .order-detail .order-payment .payment-detail div p:first-child {
   margin-right: 6px;
   font-weight: 600;
 }
 
-.my-order .view-order .order-item .order-detail .order-contact .contact-detail div:not(div:last-child) {
+.my-order .view-order .order-item .order-detail .order-contact .contact-detail div:not(div:last-child),
+.my-order .view-order .order-item .order-detail .order-contact .payment-detail div:not(div:last-child),
+.my-order .view-order .order-item .order-detail .order-payment .contact-detail div:not(div:last-child),
+.my-order .view-order .order-item .order-detail .order-payment .payment-detail div:not(div:last-child) {
   margin-bottom: 6px;
 }
 
 .my-order .view-order .order-item .order-detail .order-contact .contact-detail div:first-of-type,
 .my-order .view-order .order-item .order-detail .order-contact .contact-detail div:nth-child(2),
-.my-order .view-order .order-item .order-detail .order-contact .contact-detail div:nth-child(3) {
+.my-order .view-order .order-item .order-detail .order-contact .contact-detail div:nth-child(3),
+.my-order .view-order .order-item .order-detail .order-contact .payment-detail div:first-of-type,
+.my-order .view-order .order-item .order-detail .order-contact .payment-detail div:nth-child(2),
+.my-order .view-order .order-item .order-detail .order-contact .payment-detail div:nth-child(3),
+.my-order .view-order .order-item .order-detail .order-payment .contact-detail div:first-of-type,
+.my-order .view-order .order-item .order-detail .order-payment .contact-detail div:nth-child(2),
+.my-order .view-order .order-item .order-detail .order-payment .contact-detail div:nth-child(3),
+.my-order .view-order .order-item .order-detail .order-payment .payment-detail div:first-of-type,
+.my-order .view-order .order-item .order-detail .order-payment .payment-detail div:nth-child(2),
+.my-order .view-order .order-item .order-detail .order-payment .payment-detail div:nth-child(3) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3625,12 +3936,45 @@ section .title i {
           align-items: center;
 }
 
-.my-order .view-order .order-item .order-detail .order-contact .contact-detail .address p:last-child {
+.my-order .view-order .order-item .order-detail .order-contact .contact-detail .address p:last-child,
+.my-order .view-order .order-item .order-detail .order-contact .payment-detail .address p:last-child,
+.my-order .view-order .order-item .order-detail .order-payment .contact-detail .address p:last-child,
+.my-order .view-order .order-item .order-detail .order-payment .payment-detail .address p:last-child {
   text-transform: capitalize;
 }
 
-.my-order .view-order .order-item .order-detail .order-contact .contact-detail .note p:last-child {
+.my-order .view-order .order-item .order-detail .order-contact .contact-detail .note p:last-child,
+.my-order .view-order .order-item .order-detail .order-contact .payment-detail .note p:last-child,
+.my-order .view-order .order-item .order-detail .order-payment .contact-detail .note p:last-child,
+.my-order .view-order .order-item .order-detail .order-payment .payment-detail .note p:last-child {
   text-align: justify;
+}
+
+.my-order .view-order .order-item .order-detail .order-departure .departure-detail,
+.my-order .view-order .order-item .order-detail .order-departure .destination-detail,
+.my-order .view-order .order-item .order-detail .order-destination .departure-detail,
+.my-order .view-order .order-item .order-detail .order-destination .destination-detail {
+  line-height: 1.6;
+}
+
+.my-order .view-order .order-item .order-detail .order-departure .departure-detail div,
+.my-order .view-order .order-item .order-detail .order-departure .destination-detail div,
+.my-order .view-order .order-item .order-detail .order-destination .departure-detail div,
+.my-order .view-order .order-item .order-detail .order-destination .destination-detail div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.my-order .view-order .order-item .order-detail .order-departure .departure-detail div p:first-child,
+.my-order .view-order .order-item .order-detail .order-departure .destination-detail div p:first-child,
+.my-order .view-order .order-item .order-detail .order-destination .departure-detail div p:first-child,
+.my-order .view-order .order-item .order-detail .order-destination .destination-detail div p:first-child {
+  margin-right: 6px;
+  font-weight: 600;
 }
 
 #admin-page nav {
@@ -4463,13 +4807,8 @@ h2 {
 }
 
 .main-footer {
-  height: 500px;
   background: #034166;
-  padding: 100px 0;
-}
-
-.main-footer .about-us {
-  padding-bottom: 24px;
+  padding: 50px 0;
 }
 
 .main-footer .footer-title {
@@ -4479,57 +4818,27 @@ h2 {
   text-transform: uppercase;
 }
 
+.main-footer a {
+  text-decoration: none;
+  color: #fff;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+}
+
+.main-footer a:hover {
+  color: #f29018;
+}
+
+.main-footer a i {
+  padding-right: 6px;
+}
+
 .main-footer .footer-list {
   list-style: none;
 }
 
 .main-footer .footer-list .footer-item {
   padding-bottom: 12px;
-}
-
-.main-footer .footer-list .footer-item a {
-  text-decoration: none;
-  color: #fff;
-  -webkit-transition: 0.2s linear;
-  transition: 0.2s linear;
-}
-
-.main-footer .footer-list .footer-item a:hover {
-  color: #f29018;
-}
-
-.main-footer .contact {
-  padding-top: 24px;
-}
-
-.main-footer .footer-contact .hotline {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 24px;
-  font-weight: 700;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: #f29018;
-  margin-bottom: 24px;
-}
-
-.main-footer .footer-contact .hotline p {
-  padding: 0 12px;
-}
-
-.main-footer .footer-contact a {
-  text-decoration: none;
-  color: #fff;
-  -webkit-transition: 0.2s linear;
-  transition: 0.2s linear;
-  font-size: 24px;
-  font-weight: 700;
-}
-
-.main-footer .footer-contact a:hover {
-  color: #f29018;
 }
 
 .main-footer .search {
@@ -4545,13 +4854,13 @@ h2 {
 }
 
 .main-footer .search form {
-  width: 80%;
+  width: 100%;
 }
 
 .main-footer .search form .footer-search {
   background: inherit;
   color: #fff;
-  font-size: 18px;
+  font-size: 16px;
   width: 100%;
   border-bottom: 1px solid #f29018 !important;
   outline: none;
@@ -4561,23 +4870,23 @@ h2 {
 }
 
 .main-footer .search form .footer-search::-webkit-input-placeholder {
-  color: #fff;
-  font-size: 18px;
+  color: #dddddd;
+  font-size: 16px;
 }
 
 .main-footer .search form .footer-search:-ms-input-placeholder {
-  color: #fff;
-  font-size: 18px;
+  color: #dddddd;
+  font-size: 16px;
 }
 
 .main-footer .search form .footer-search::-ms-input-placeholder {
-  color: #fff;
-  font-size: 18px;
+  color: #dddddd;
+  font-size: 16px;
 }
 
 .main-footer .search form .footer-search::placeholder {
-  color: #fff;
-  font-size: 18px;
+  color: #dddddd;
+  font-size: 16px;
 }
 
 .main-footer .search .footer-submit {
@@ -4603,7 +4912,7 @@ h2 {
 
 .copyright {
   text-align: center;
-  background: #034166;
+  background: #06527f;
   padding: 10px 0;
 }
 
@@ -4766,7 +5075,146 @@ h2 {
   min-height: 100vh;
 }
 
+@media (max-width: 1366px) {
+  /*========== Home Page ==========*/
+  /*========== End Home Page ==========*/
+}
+
 @media (max-width: 768px) {
+  /*========== Header==========*/
+  .menu-pc {
+    display: none;
+  }
+  .menu-mobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 100px;
+  }
+  /*========== End Header ==========*/
+  /*========== Home Page ==========*/
+  #hero::before {
+    background-image: unset;
+  }
+  #hero .booking-form h2 {
+    color: #fff;
+    border-bottom: 2px solid #fff;
+    margin-right: 0;
+  }
+  #hero .booking-form form .type label,
+  #hero .booking-form form .type p,
+  #hero .booking-form form .type i,
+  #hero .booking-form form .class label,
+  #hero .booking-form form .class p,
+  #hero .booking-form form .class i,
+  #hero .booking-form form .max-price label,
+  #hero .booking-form form .max-price p,
+  #hero .booking-form form .max-price i,
+  #hero .booking-form form .way label,
+  #hero .booking-form form .way p,
+  #hero .booking-form form .way i,
+  #hero .booking-form form .date label,
+  #hero .booking-form form .date p,
+  #hero .booking-form form .date i,
+  #hero .booking-form form .passenger-name label,
+  #hero .booking-form form .passenger-name p,
+  #hero .booking-form form .passenger-name i {
+    color: #fff;
+  }
+  #hero .booking-form form .type label input,
+  #hero .booking-form form .type p input,
+  #hero .booking-form form .type i input,
+  #hero .booking-form form .class label input,
+  #hero .booking-form form .class p input,
+  #hero .booking-form form .class i input,
+  #hero .booking-form form .max-price label input,
+  #hero .booking-form form .max-price p input,
+  #hero .booking-form form .max-price i input,
+  #hero .booking-form form .way label input,
+  #hero .booking-form form .way p input,
+  #hero .booking-form form .way i input,
+  #hero .booking-form form .date label input,
+  #hero .booking-form form .date p input,
+  #hero .booking-form form .date i input,
+  #hero .booking-form form .passenger-name label input,
+  #hero .booking-form form .passenger-name p input,
+  #hero .booking-form form .passenger-name i input {
+    width: 300px;
+    padding: 6px 12px;
+  }
+  #hero .booking-form form .type label input:checked + .radiobtn,
+  #hero .booking-form form .type p input:checked + .radiobtn,
+  #hero .booking-form form .type i input:checked + .radiobtn,
+  #hero .booking-form form .class label input:checked + .radiobtn,
+  #hero .booking-form form .class p input:checked + .radiobtn,
+  #hero .booking-form form .class i input:checked + .radiobtn,
+  #hero .booking-form form .max-price label input:checked + .radiobtn,
+  #hero .booking-form form .max-price p input:checked + .radiobtn,
+  #hero .booking-form form .max-price i input:checked + .radiobtn,
+  #hero .booking-form form .way label input:checked + .radiobtn,
+  #hero .booking-form form .way p input:checked + .radiobtn,
+  #hero .booking-form form .way i input:checked + .radiobtn,
+  #hero .booking-form form .date label input:checked + .radiobtn,
+  #hero .booking-form form .date p input:checked + .radiobtn,
+  #hero .booking-form form .date i input:checked + .radiobtn,
+  #hero .booking-form form .passenger-name label input:checked + .radiobtn,
+  #hero .booking-form form .passenger-name p input:checked + .radiobtn,
+  #hero .booking-form form .passenger-name i input:checked + .radiobtn {
+    -webkit-box-shadow: 0 0 5px #fff;
+            box-shadow: 0 0 5px #fff;
+    border-color: unset;
+  }
+  #hero .booking-form form .passenger-number {
+    color: #fff;
+  }
+  #hero .booking-form form .passenger-number button {
+    color: #fff;
+    border: 1px solid #fff;
+  }
+  #hero .booking-form form .way i {
+    color: #17699a;
+  }
+  #hero .booking-form form .way .way-popup .header button i {
+    color: #17699a;
+  }
+  #hero .booking-form form .way .tab-city .list-point li {
+    color: #17699a;
+  }
+  #hero .booking-form form .way .way-popup-mobile {
+    position: absolute;
+    list-style: none;
+    background: #fff;
+    top: 100%;
+    right: -65px;
+    left: unset;
+    width: 700px;
+    -webkit-box-shadow: 2px 3px 5px #89a9bc;
+    box-shadow: 2px 3px 5px #89a9bc;
+    padding: 20px;
+    height: auto;
+    z-index: 1;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+  #hero .booking-form form .class label {
+    padding-bottom: 0;
+  }
+  #hero .booking-form form button[type="submit"] {
+    color: #034166;
+    background: #dddddd;
+    -webkit-box-shadow: 0px 0px 10px #fff;
+            box-shadow: 0px 0px 10px #fff;
+  }
+  #hero .hero-content {
+    display: none;
+  }
+  /*========== End Home Page ==========*/
   /*========== Login Page ==========*/
   .login-container {
     margin: 30px;

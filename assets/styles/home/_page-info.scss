@@ -147,16 +147,24 @@ section {
 						&:hover {
 							color: $cl-blue-3;
 						}
-						&::after {
-							content: "\f078";
-							position: absolute;
-							top: 50%;
-							transform: translateY(-50%);
-							right: 0;
-							font-family: "Font Awesome 5 Free";
-							font-weight: 700;
-							font-size: $fs-small-text;
+						i {
+							transition: 0.3s ease-in-out;
+							&.active {
+								transform: rotate(-180deg);
+								padding: 0;
+							}
 						}
+
+						// &::after {
+						// 	content: "\f078";
+						// 	position: absolute;
+						// 	top: 50%;
+						// 	transform: translateY(-50%);
+						// 	right: 0;
+						// 	font-family: "Font Awesome 5 Free";
+						// 	font-weight: 700;
+						// 	font-size: $fs-small-text;
+						// }
 					}
 				}
 
@@ -176,6 +184,16 @@ section {
 				padding-bottom: 12px;
 				border-radius: 0 0 6px 6px;
 				background: $cl-white-2;
+				display: none;
+				.col {
+					margin-bottom: 12px;
+				}
+				.col:first-child {
+					padding-right: 0;
+				}
+				.col:last-child {
+					padding-left: 0;
+				}
 
 				.heading {
 					display: flex;
@@ -205,17 +223,26 @@ section {
 						margin-left: 12px;
 					}
 				}
+				// Sử dụng thuộc tính chung
 				.order-passenger,
 				.order-contact,
-				.order-payment {
+				.order-payment,
+				.order-departure,
+				.order-destination,
+				.order-total {
 					margin: 12px;
 					padding: 12px;
 					background: $cl-white-1;
 					border-radius: 6px;
+					height: 100%;
 				}
+				// Sử dụng thuộc tính chung
 				.passenger-title,
 				.contact-title,
-				.payment-title {
+				.payment-title,
+				.departure-title,
+				.destination-title,
+				.total-title {
 					display: flex;
 					align-items: center;
 					font-weight: 600;
@@ -229,8 +256,11 @@ section {
 						margin-right: 12px;
 					}
 				}
-				.order-passenger {
-					.passenger-detail {
+				// Thông tin khách hàng & Tổng chi phí
+				.order-passenger,
+				.order-total {
+					.passenger-detail,
+					.total-detail {
 						display: flex;
 						align-items: center;
 						justify-content: space-between;
@@ -240,12 +270,16 @@ section {
 						div {
 							display: flex;
 							align-items: center;
-						}
-						p:first-child {
-							margin: 0 6px;
-							font-weight: 600;
+							p:first-child {
+								margin-right: 6px;
+								font-weight: 600;
+							}
+							p:last-child {
+								margin-left: 6px;
+							}
 						}
 
+						// div của flight-code bên Thông tin khách hàng
 						.flight-code {
 							p:nth-child(3),
 							p:nth-child(4),
@@ -266,10 +300,23 @@ section {
 								}
 							}
 						}
+						// div của total-price bên Tổng chi phí
+						.total-price {
+							p {
+								font-size: $fs-title;
+							}
+							p:nth-child(2),
+							p:last-child {
+								color: $cl-orange-3;
+							}
+						}
 					}
 				}
-				.order-contact {
-					.contact-detail {
+				// Thông tin liên hệ & Thông tin thanh toán
+				.order-contact,
+				.order-payment {
+					.contact-detail,
+					.payment-detail {
 						line-height: 1.6;
 						div {
 							p:first-child {
@@ -297,6 +344,23 @@ section {
 						.note {
 							p:last-child {
 								text-align: justify;
+							}
+						}
+					}
+				}
+				// Điểm khởi hành & điểm đến
+				.order-departure,
+				.order-destination {
+					.departure-detail,
+					.destination-detail {
+						line-height: 1.6;
+						div {
+							display: flex;
+							align-items: center;
+
+							p:first-child {
+								margin-right: 6px;
+								font-weight: 600;
 							}
 						}
 					}
