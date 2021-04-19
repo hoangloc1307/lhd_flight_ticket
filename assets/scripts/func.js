@@ -44,6 +44,14 @@ function SortPrice(a, b) {
 	}
 }
 
+function SortID(a, b) {
+	if (parseInt(a.id) === parseInt(b.id)) {
+		return 0;
+	} else {
+		return parseInt(a.id) < parseInt(b.id) ? -1 : 1;
+	}
+}
+
 //GET VALUE BY IATA CODE
 function GetAirlinesImageByIATA(iataCode) {
 	var src = "";
