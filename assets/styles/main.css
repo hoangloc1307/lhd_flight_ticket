@@ -2863,6 +2863,11 @@ header {
   padding: 0 6px;
 }
 
+.finding .finding-detail .content .detail-summary .amount-wrap p:nth-child(2),
+.finding .flight-selected__base .content .detail-summary .amount-wrap p:nth-child(2) {
+  padding: 0 3px;
+}
+
 .finding .finding-detail .content .total-price,
 .finding .flight-selected__base .content .total-price {
   display: -webkit-box;
@@ -3034,23 +3039,9 @@ header {
 }
 
 .finding .info-customer .box-info .box-user,
-.finding .info-customer .box-info .customer-user,
-.finding .info-customer .box-info .box-sex,
-.finding .info-customer .box-info .box-firstname,
-.finding .info-customer .box-info .customer-sex,
-.finding .info-customer .box-info .customer-firstname {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+.finding .info-customer .box-info .box-name {
   text-align: center;
-}
-
-.finding .info-customer .box-info .box-lastname,
-.finding .info-customer .box-info .customer-lastname {
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
-  text-align: center;
+  width: 50%;
 }
 
 .finding .info-customer .box-info .box-title {
@@ -3060,9 +3051,13 @@ header {
 }
 
 .finding .info-customer .box-info .customer-people {
-  padding: 12px 6px;
+  padding: 12px;
   border-bottom: 1px dashed #dddddd;
   background: #f9f9f9;
+}
+
+.finding .info-customer .box-info .customer-people .customer-user {
+  width: 50%;
 }
 
 .finding .info-customer .box-info .customer-people .customer-user i {
@@ -3071,6 +3066,22 @@ header {
 
 .finding .info-customer .box-info .customer-people .customer-user p:nth-child(2) {
   padding: 0 8px;
+}
+
+.finding .info-customer .box-info .customer-people .name {
+  width: 50%;
+}
+
+.finding .info-customer .box-info .customer-people .name input {
+  padding: 12px 6px;
+  border-radius: 6px;
+  width: 100%;
+  border: 1px solid #dddddd;
+  outline: none;
+}
+
+.finding .info-customer .box-info .customer-people .name input:focus {
+  border: 1px solid #17699a;
 }
 
 .finding .info-customer .box-info .customer-people .sex-option,
@@ -3143,6 +3154,160 @@ header {
   padding: 0 24px;
 }
 
+.finding .info-contact .box-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+}
+
+.finding .info-contact .box-info .box-customer,
+.finding .info-contact .box-info .box-note {
+  width: 50%;
+  padding: 10px;
+}
+
+.finding .info-contact .box-info .box-customer p,
+.finding .info-contact .box-info .box-note p {
+  margin-bottom: 6px;
+}
+
+.finding .info-contact .box-info .box-customer input,
+.finding .info-contact .box-info .box-note input {
+  width: 100%;
+  padding: 6px 12px;
+  border-radius: 6px;
+  width: 100%;
+  border: 1px solid #dddddd;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+.finding .info-contact .box-info .box-customer input:focus,
+.finding .info-contact .box-info .box-note input:focus {
+  border: 1px solid #17699a;
+}
+
+.finding .info-contact .box-info .box-customer textarea,
+.finding .info-contact .box-info .box-note textarea {
+  border: 1px solid #dddddd;
+  outline: none;
+  width: 100%;
+  resize: vertical;
+  overflow: auto;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.finding .info-contact .box-info .box-customer textarea:focus,
+.finding .info-contact .box-info .box-note textarea:focus {
+  border: 1px solid #17699a;
+}
+
+.finding .info-contact .box-info .box-customer input::-webkit-outer-spin-button,
+.finding .info-contact .box-info .box-customer input::-webkit-inner-spin-button,
+.finding .info-contact .box-info .box-note input::-webkit-outer-spin-button,
+.finding .info-contact .box-info .box-note input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.finding .payment .box-option {
+  padding: 10px;
+}
+
+.finding .payment .box-option .option-payment {
+  list-style: none;
+}
+
+.finding .payment .box-option .option-payment .payment-method {
+  margin-bottom: 12px;
+  background: #f3f4f8;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.finding .payment .box-option .option-payment .payment-method .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #17699a;
+  cursor: pointer;
+}
+
+.finding .payment .box-option .option-payment .payment-method .title p {
+  margin-left: 12px;
+}
+
+.finding .payment .box-option .option-payment .payment-method .content {
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 6px;
+  background: #fff;
+  display: none;
+}
+
+.finding .payment .box-option .option-payment .payment-method .content.active {
+  display: block;
+}
+
+.finding .button-step {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.finding .button-step button {
+  padding: 12px 24px;
+  outline: none;
+  color: #fff;
+  border: 0;
+  font-size: 16px;
+  cursor: pointer;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  border-radius: 6px;
+}
+
+.finding .button-step button:hover {
+  -webkit-box-shadow: 1px 2px 5px #dddddd;
+          box-shadow: 1px 2px 5px #dddddd;
+}
+
+.finding .button-step button:first-child {
+  background: #f3ae59;
+}
+
+.finding .button-step button:first-child:hover {
+  background: #f29018;
+}
+
+.finding .button-step button:first-child i {
+  padding-right: 6px;
+}
+
+.finding .button-step button:last-child {
+  background: #2ecc71;
+}
+
+.finding .button-step button:last-child:hover {
+  background: #27ae60;
+}
+
+.finding .button-step button:last-child i {
+  padding-left: 6px;
+}
+
 .finding .flight-item:hover {
   background: #f3f4f8;
   border-radius: 10px;
@@ -3166,11 +3331,21 @@ header {
 .finding .flight-item .flight-info .flight-wrap-detail,
 .finding .flight-item .flight-info .flight-to,
 .finding .flight-item .flight-info .flight-price-choose {
-  padding: 10px;
+  padding: 6px;
   text-align: center;
   -webkit-box-flex: 1;
-      -ms-flex: auto;
-          flex: auto;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .finding .flight-item .flight-info .flight-img {
@@ -3196,9 +3371,16 @@ header {
      object-fit: contain;
 }
 
+.finding .flight-item .flight-info .flight-from .flight-city,
+.finding .flight-item .flight-info .flight-to .flight-city {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .finding .flight-item .flight-info .flight-from .flight-time,
 .finding .flight-item .flight-info .flight-to .flight-time {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 600;
 }
 
@@ -3246,6 +3428,7 @@ header {
   position: relative;
   display: block;
   cursor: pointer;
+  padding-right: 6px;
 }
 
 .finding .flight-item .flight-info .flight-wrap-detail .flight-detail::before, .finding .flight-item .flight-info .flight-wrap-detail .flight-detail::after {
@@ -3253,7 +3436,7 @@ header {
   font-family: "Font Awesome 5 Free";
   font-weight: 700;
   top: 50%;
-  right: 0;
+  right: 20px;
   color: #17699a;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -3288,12 +3471,11 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 10px;
 }
 
 .finding .flight-item .flight-info .flight-price-choose .flight-price span:first-child {
   color: #034166;
-  font-size: 24px;
+  font-size: 22px;
   margin-right: 6px;
 }
 
@@ -3311,13 +3493,14 @@ header {
   outline: 0;
   font-weight: 600;
   border: 0;
-  font-size: 14px;
+  font-size: 12px;
   text-transform: uppercase;
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
+  margin-top: 10px;
 }
 
 .finding .flight-item .flight-info .flight-price-choose button:hover {
@@ -3343,9 +3526,18 @@ header {
 .finding .flight-item .flight-box-detail .flight-detail-item .detail-to,
 .finding .flight-item .flight-box-detail .flight-detail-item .detail-flight {
   -webkit-box-flex: 1;
-      -ms-flex: auto;
-          flex: auto;
+      -ms-flex: 1;
+          flex: 1;
   padding: 10px;
+}
+
+.finding .flight-item .flight-box-detail .flight-detail-item .detail-img span,
+.finding .flight-item .flight-box-detail .flight-detail-item .detail-from span,
+.finding .flight-item .flight-box-detail .flight-detail-item .detail-to span,
+.finding .flight-item .flight-box-detail .flight-detail-item .detail-flight span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .finding .flight-item .flight-box-detail .flight-detail-item .title-detail {
@@ -3375,6 +3567,10 @@ header {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap:not(.flight-detail-wrap:last-child) {
+  border-bottom: 1px solid #dddddd;
 }
 
 .finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-img {

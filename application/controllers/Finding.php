@@ -53,7 +53,7 @@ class Finding extends CI_Controller
 
                 //Custom
                 $max = '15';
-                $nonstop = 'true';
+                $nonstop = 'false';
 
                 //Lấy chuyến đi
                 $url = 'https://test.api.amadeus.com/v2/shopping/flight-offers';

@@ -342,6 +342,9 @@
 					i {
 						padding: 0 6px;
 					}
+					p:nth-child(2) {
+						padding: 0 3px;
+					}
 				}
 			}
 			.total-price {
@@ -487,19 +490,9 @@
 				align-items: center;
 			}
 			.box-user,
-			.customer-user,
-			.box-sex,
-			.box-firstname,
-			.customer-sex,
-			.customer-firstname {
-				flex: 1;
+			.box-name {
 				text-align: center;
-			}
-
-			.box-lastname,
-			.customer-lastname {
-				flex: 2;
-				text-align: center;
+				width: 50%;
 			}
 
 			.box-title {
@@ -509,15 +502,29 @@
 			}
 
 			.customer-people {
-				padding: 12px 6px;
+				padding: 12px;
 				border-bottom: 1px dashed $cl-grey;
 				background: $cl-white-3;
 				.customer-user {
+					width: 50%;
 					i {
 						color: $cl-blue-3;
 					}
 					p:nth-child(2) {
 						padding: 0 8px;
+					}
+				}
+				.name {
+					width: 50%;
+					input {
+						padding: 12px 6px;
+						border-radius: 6px;
+						width: 100%;
+						border: 1px solid $cl-grey;
+						outline: none;
+						&:focus {
+							border: 1px solid $cl-blue-3;
+						}
 					}
 				}
 				.sex-option,
@@ -575,6 +582,129 @@
 			}
 		}
 	}
+	.info-contact {
+		.box-info {
+			display: flex;
+			padding: 10px;
+
+			.box-customer,
+			.box-note {
+				width: 50%;
+				padding: 10px;
+
+				p {
+					margin-bottom: 6px;
+				}
+				input {
+					width: 100%;
+					padding: 6px 12px;
+					border-radius: 6px;
+					width: 100%;
+					border: 1px solid $cl-grey;
+					outline: none;
+					&:focus {
+						border: 1px solid $cl-blue-3;
+					}
+					margin-bottom: 12px;
+				}
+
+				textarea {
+					border: 1px solid $cl-grey;
+					outline: none;
+					width: 100%;
+					resize: vertical;
+					overflow: auto;
+					border-radius: 6px;
+					padding: 12px;
+					&:focus {
+						border: 1px solid $cl-blue-3;
+					}
+				}
+				input::-webkit-outer-spin-button,
+				input::-webkit-inner-spin-button {
+					-webkit-appearance: none;
+					margin: 0;
+				}
+			}
+		}
+	}
+
+	.payment {
+		.box-option {
+			padding: 10px;
+
+			.option-payment {
+				list-style: none;
+				.payment-method {
+					margin-bottom: 12px;
+					background: $cl-white-1;
+					border-radius: 6px;
+					padding: 12px;
+
+					.title {
+						display: flex;
+						align-items: center;
+						font-size: 18px;
+						font-weight: 700;
+						color: $cl-blue-3;
+						cursor: pointer;
+
+						p {
+							margin-left: 12px;
+						}
+					}
+					.content {
+						padding: 12px;
+						margin-top: 12px;
+						border-radius: 6px;
+						background: $cl-white-2;
+						display: none;
+						&.active {
+							display: block;
+						}
+					}
+				}
+			}
+		}
+	}
+	.button-step {
+		display: flex;
+		justify-content: space-between;
+		padding: 12px;
+		margin-top: 12px;
+		button {
+			padding: 12px 24px;
+			outline: none;
+			color: #fff;
+			border: 0;
+			font-size: 16px;
+			cursor: pointer;
+			transition: 0.3s ease-in-out;
+			border-radius: 6px;
+
+			&:hover {
+				box-shadow: 1px 2px 5px $cl-grey;
+			}
+		}
+		button:first-child {
+			background: $cl-orange-2;
+			&:hover {
+				background: $cl-orange-3;
+			}
+			i {
+				padding-right: 6px;
+			}
+		}
+		button:last-child {
+			background: $cl-green-1;
+			&:hover {
+				background: $cl-green-2;
+			}
+			i {
+				padding-left: 6px;
+			}
+		}
+	}
 	// Chi tiết vé - sử dụng chung cho step 1 & 2!
 	.flight-item {
 		&:hover {
@@ -594,9 +724,12 @@
 			.flight-wrap-detail,
 			.flight-to,
 			.flight-price-choose {
-				padding: 10px;
+				padding: 6px;
 				text-align: center;
-				flex: auto;
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
 			}
 
 			.flight-img {
@@ -618,8 +751,13 @@
 
 			.flight-from,
 			.flight-to {
+				.flight-city {
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
 				.flight-time {
-					font-size: $fs-main-title;
+					font-size: $fs-title;
 					font-weight: 600;
 				}
 			}
@@ -665,6 +803,7 @@
 					position: relative;
 					display: block;
 					cursor: pointer;
+					padding-right: 6px;
 
 					&::before,
 					&::after {
@@ -672,7 +811,7 @@
 						font-family: "Font Awesome 5 Free";
 						font-weight: 700;
 						top: 50%;
-						right: 0;
+						right: 20px;
 						color: $cl-blue-3;
 						transform: translateY(-50%);
 						font-size: 12px;
@@ -698,11 +837,10 @@
 					display: flex;
 					justify-content: center;
 					align-items: center;
-					margin-bottom: 10px;
 
 					span:first-child {
 						color: $cl-blue-5;
-						font-size: $fs-title;
+						font-size: $fs-small-title;
 						margin-right: 6px;
 					}
 					span:last-child {
@@ -719,12 +857,13 @@
 					outline: 0;
 					font-weight: 600;
 					border: 0;
-					font-size: 14px;
+					font-size: $fs-small-text;
 					text-transform: uppercase;
 					color: $cl-white-2;
 					border-radius: 5px;
 					cursor: pointer;
 					transition: 0.3s ease-in-out;
+					margin-top: 10px;
 
 					&:hover {
 						background: $cl-blue-5;
@@ -749,8 +888,14 @@
 				.detail-from,
 				.detail-to,
 				.detail-flight {
-					flex: auto;
+					flex: 1;
 					padding: 10px;
+
+					span {
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+					}
 				}
 
 				.title-detail {
@@ -771,6 +916,10 @@
 					display: flex;
 					align-items: center;
 					flex-wrap: wrap;
+
+					&:not(.flight-detail-wrap:last-child) {
+						border-bottom: 1px solid $cl-grey;
+					}
 					.detail-img {
 						text-align: center;
 
