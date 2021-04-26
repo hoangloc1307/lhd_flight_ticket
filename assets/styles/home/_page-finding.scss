@@ -7,6 +7,9 @@
 	.confirm {
 		display: none;
 	}
+	.finish-payment {
+		display: none;
+	}
 
 	.filter-step {
 		display: flex;
@@ -1018,4 +1021,168 @@
 		}
 	}
 	// End chi tiết vé!
+
+	// Step 3
+	.finish-payment {
+		.title {
+			padding: 20px 10px;
+			border-bottom: 1px solid $cl-grey;
+			display: flex;
+			align-items: center;
+			background: $cl-blue-3;
+			color: $cl-white-2;
+			font-size: $fs-sub-title;
+			border-radius: 6px 6px 0 0;
+			text-transform: uppercase;
+
+			i {
+				padding: 0 8px;
+			}
+		}
+		.flight-detail {
+			margin: 20px 0;
+
+			.detail-img,
+			.detail-from,
+			.detail-to,
+			.detail-flight {
+				flex: 1;
+				padding: 10px;
+
+				span {
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+			}
+
+			.flight-detail-wrap {
+				padding: 10px;
+				display: flex;
+				align-items: center;
+				flex-wrap: wrap;
+				background: $cl-white-1;
+				border-radius: 0 0 6px 6px;
+
+				&:not(.flight-detail-wrap:last-child) {
+					border-bottom: 1px solid $cl-grey;
+				}
+				.detail-img {
+					text-align: center;
+
+					.box-img {
+						width: 150px;
+						height: 40px;
+						margin: 0 auto;
+						img {
+							width: 100%;
+							height: 100%;
+							object-fit: contain;
+						}
+						p {
+							font-size: $fs-small-text;
+						}
+					}
+				}
+
+				.detail-from,
+				.detail-to,
+				.detail-flight {
+					span {
+						display: flex;
+						align-items: center;
+						font-size: $fs-detail;
+					}
+					span:nth-child(3),
+					span:nth-child(4) {
+						p:first-child {
+							margin-right: 3px;
+						}
+					}
+				}
+				.detail-flight {
+					span {
+						p:first-child {
+							margin-right: 3px;
+						}
+					}
+				}
+			}
+		}
+		.info {
+			margin: 20px 0;
+			.info-detail {
+				background: $cl-white-1;
+				border-radius: 0 0 6px 6px;
+				padding: 10px;
+				.info-table {
+					padding: 12px;
+					border-radius: 6px;
+					border: 1px solid $cl-grey;
+					margin: 0;
+					background: $cl-white-2;
+					.info-heading,
+					.info-body,
+					.info-footer {
+						display: flex;
+						align-items: center;
+						padding: 10px;
+						text-align: center;
+						&:not(.info-footer) {
+							border-bottom: 1px dashed $cl-black-3;
+						}
+
+						p {
+							flex: 1;
+						}
+						p:last-child {
+							text-align: right;
+						}
+						p:first-child {
+							text-align: left;
+						}
+					}
+					.info-heading {
+						font-weight: 700;
+					}
+					.info-footer {
+						p {
+							font-size: $fs-small-title;
+							font-weight: 600;
+							color: $cl-blue-3;
+							padding: 0 6px;
+						}
+						span {
+							display: flex;
+							align-items: center;
+						}
+					}
+				}
+			}
+		}
+		.contact {
+			.contact-detail {
+				padding: 12px;
+				border-radius: 0 0 6px 6px;
+				background: $cl-white-1;
+
+				.col {
+					div {
+						display: flex;
+						align-items: center;
+						padding: 10px 0;
+						p:first-child {
+							font-weight: 700;
+							padding-right: 6px;
+						}
+					}
+					.request {
+						flex-direction: column;
+						align-items: flex-start;
+					}
+				}
+			}
+		}
+	}
+	// End Step 3
 }

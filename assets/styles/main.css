@@ -2444,6 +2444,10 @@ header {
   display: none;
 }
 
+.finding .finish-payment {
+  display: none;
+}
+
 .finding .filter-step {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3685,6 +3689,221 @@ header {
 .finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-total .total-price p {
   font-size: 12px;
   padding-left: 10px;
+}
+
+.finding .finish-payment .title {
+  padding: 20px 10px;
+  border-bottom: 1px solid #dddddd;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #17699a;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 6px 6px 0 0;
+  text-transform: uppercase;
+}
+
+.finding .finish-payment .title i {
+  padding: 0 8px;
+}
+
+.finding .finish-payment .flight-detail {
+  margin: 20px 0;
+}
+
+.finding .finish-payment .flight-detail .detail-img,
+.finding .finish-payment .flight-detail .detail-from,
+.finding .finish-payment .flight-detail .detail-to,
+.finding .finish-payment .flight-detail .detail-flight {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 10px;
+}
+
+.finding .finish-payment .flight-detail .detail-img span,
+.finding .finish-payment .flight-detail .detail-from span,
+.finding .finish-payment .flight-detail .detail-to span,
+.finding .finish-payment .flight-detail .detail-flight span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.finding .finish-payment .flight-detail .flight-detail-wrap {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background: #f3f4f8;
+  border-radius: 0 0 6px 6px;
+}
+
+.finding .finish-payment .flight-detail .flight-detail-wrap:not(.flight-detail-wrap:last-child) {
+  border-bottom: 1px solid #dddddd;
+}
+
+.finding .finish-payment .flight-detail .flight-detail-wrap .detail-img {
+  text-align: center;
+}
+
+.finding .finish-payment .flight-detail .flight-detail-wrap .detail-img .box-img {
+  width: 150px;
+  height: 40px;
+  margin: 0 auto;
+}
+
+.finding .finish-payment .flight-detail .flight-detail-wrap .detail-img .box-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.finding .finish-payment .flight-detail .flight-detail-wrap .detail-img .box-img p {
+  font-size: 12px;
+}
+
+.finding .finish-payment .flight-detail .flight-detail-wrap .detail-from span,
+.finding .finish-payment .flight-detail .flight-detail-wrap .detail-to span,
+.finding .finish-payment .flight-detail .flight-detail-wrap .detail-flight span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 14px;
+}
+
+.finding .finish-payment .flight-detail .flight-detail-wrap .detail-from span:nth-child(3) p:first-child,
+.finding .finish-payment .flight-detail .flight-detail-wrap .detail-from span:nth-child(4) p:first-child,
+.finding .finish-payment .flight-detail .flight-detail-wrap .detail-to span:nth-child(3) p:first-child,
+.finding .finish-payment .flight-detail .flight-detail-wrap .detail-to span:nth-child(4) p:first-child,
+.finding .finish-payment .flight-detail .flight-detail-wrap .detail-flight span:nth-child(3) p:first-child,
+.finding .finish-payment .flight-detail .flight-detail-wrap .detail-flight span:nth-child(4) p:first-child {
+  margin-right: 3px;
+}
+
+.finding .finish-payment .flight-detail .flight-detail-wrap .detail-flight span p:first-child {
+  margin-right: 3px;
+}
+
+.finding .finish-payment .info {
+  margin: 20px 0;
+}
+
+.finding .finish-payment .info .info-detail {
+  background: #f3f4f8;
+  border-radius: 0 0 6px 6px;
+  padding: 10px;
+}
+
+.finding .finish-payment .info .info-detail .info-table {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #dddddd;
+  margin: 0;
+  background: #fff;
+}
+
+.finding .finish-payment .info .info-detail .info-table .info-heading,
+.finding .finish-payment .info .info-detail .info-table .info-body,
+.finding .finish-payment .info .info-detail .info-table .info-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+  text-align: center;
+}
+
+.finding .finish-payment .info .info-detail .info-table .info-heading:not(.info-footer),
+.finding .finish-payment .info .info-detail .info-table .info-body:not(.info-footer),
+.finding .finish-payment .info .info-detail .info-table .info-footer:not(.info-footer) {
+  border-bottom: 1px dashed #34495e;
+}
+
+.finding .finish-payment .info .info-detail .info-table .info-heading p,
+.finding .finish-payment .info .info-detail .info-table .info-body p,
+.finding .finish-payment .info .info-detail .info-table .info-footer p {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.finding .finish-payment .info .info-detail .info-table .info-heading p:last-child,
+.finding .finish-payment .info .info-detail .info-table .info-body p:last-child,
+.finding .finish-payment .info .info-detail .info-table .info-footer p:last-child {
+  text-align: right;
+}
+
+.finding .finish-payment .info .info-detail .info-table .info-heading p:first-child,
+.finding .finish-payment .info .info-detail .info-table .info-body p:first-child,
+.finding .finish-payment .info .info-detail .info-table .info-footer p:first-child {
+  text-align: left;
+}
+
+.finding .finish-payment .info .info-detail .info-table .info-heading {
+  font-weight: 700;
+}
+
+.finding .finish-payment .info .info-detail .info-table .info-footer p {
+  font-size: 22px;
+  font-weight: 600;
+  color: #17699a;
+  padding: 0 6px;
+}
+
+.finding .finish-payment .info .info-detail .info-table .info-footer span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.finding .finish-payment .contact .contact-detail {
+  padding: 12px;
+  border-radius: 0 0 6px 6px;
+  background: #f3f4f8;
+}
+
+.finding .finish-payment .contact .contact-detail .col div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 0;
+}
+
+.finding .finish-payment .contact .contact-detail .col div p:first-child {
+  font-weight: 700;
+  padding-right: 6px;
+}
+
+.finding .finish-payment .contact .contact-detail .col .request {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 section {
