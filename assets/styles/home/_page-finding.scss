@@ -649,8 +649,12 @@
 						align-items: center;
 						font-size: 18px;
 						font-weight: 700;
-						color: $cl-blue-3;
+						color: $cl-black;
 						cursor: pointer;
+
+						i {
+							display: none;
+						}
 
 						p {
 							margin-left: 12px;
@@ -662,8 +666,19 @@
 						border-radius: 6px;
 						background: $cl-white-2;
 						display: none;
-						&.active {
+					}
+
+					&.active {
+						.content {
 							display: block;
+						}
+
+						.title {
+							color: $cl-blue-3;
+
+							i {
+								display: block;
+							}
 						}
 					}
 				}

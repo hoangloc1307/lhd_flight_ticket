@@ -2,15 +2,12 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller
-{
+class Home extends CI_Controller {
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
-    public function index()
-    {
+    public function index() {
         $data['view'] = 'home/home';
         $data['title'] = 'Trang chủ';
         if (is_null($this->session->userdata('username'))) {
@@ -24,6 +21,7 @@ class Home extends CI_Controller
 
         $this->load->model('Admin/JSON_model');
         $data['whychooseus'] = json_decode($this->JSON_model->get('WhyChooseUs')['Text'], true);
+        $data['websitesetting'] = json_decode($this->JSON_model->get('WebsiteSetting')['Text'], true);
 
         $this->load->view('home/header_footer', $data);
     }

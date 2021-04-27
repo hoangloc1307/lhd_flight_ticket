@@ -2,15 +2,12 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Finding extends CI_Controller
-{
+class Finding extends CI_Controller {
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
-    public function index()
-    {
+    public function index() {
         if (isset($_POST['search-flight'])) {
             $api_key = 'RC6NqrKRWls95AuEi0Ukv2nTGSAd9tSy';
             $api_secret = 'dWcLwAsq8o0zIyJS';
@@ -52,7 +49,7 @@ class Finding extends CI_Controller
                 $maxprice = $this->input->post('fmaxprice');
 
                 //Custom
-                $max = '15';
+                $max = '3';
                 $nonstop = 'false';
 
                 //Lấy chuyến đi

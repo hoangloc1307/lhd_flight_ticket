@@ -1,0 +1,9 @@
+{
+    "intelephense.environment.shortOpenTag": true,
+    "intelephense.files.associations": [
+
+        "*.php",
+        "*.phtml"
+    ],
+    "intelephense.format.braces": "k&r"
+}
