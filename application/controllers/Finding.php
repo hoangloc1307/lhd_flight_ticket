@@ -154,7 +154,8 @@ class Finding extends CI_Controller {
                 if ($type == 'roundtrip') {
                     $data['flight_data2'] = $response_back;
                 }
-
+                $this->load->model('Admin/JSON_model');
+                $data['websitesetting'] = json_decode($this->JSON_model->get('WebsiteSetting')['Text'], true);
                 $this->load->view('home/header_footer', $data);
             }
         } else {
