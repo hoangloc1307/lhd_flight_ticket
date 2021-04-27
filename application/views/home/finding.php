@@ -165,7 +165,7 @@
                 <!-- End Step 1 -->
                 <!-- Step 2 -->
                 <div class="row confirm">
-                    <div id="filter-left" class="col l-4">
+                    <div class="col l-4">
                         <div class="finding-detail">
                             <div class="header">
                                 <i class="fas fa-shopping-cart"></i>
@@ -307,6 +307,140 @@
                     </div>
                 </div>
                 <!-- End Step 2 -->
+                <!-- Step 3 -->
+                <div class="row finish-payment">
+                    <div class="col l-12 m-12 s-12">
+                        <div class="flight-detail">
+                            <h4 class="title">
+                                <i class="fas fa-info-circle"></i> Chi tiết chuyến bay
+                            </h4>
+                            <div class="flight-detail-wrap">
+                                <div class="detail-img">
+                                    <div class="box-img">
+                                        <img src="<?= base_url() ?>assets/images/partner/vietjetair.png" />
+                                    </div>
+                                </div>
+                                <div class="detail-from">
+                                    <span>Tp. Hồ Chí Minh - SGN</span>
+                                    <span>Sân bay: SGN</span>
+                                    <span>
+                                        <p>Cất cánh:</p>
+                                        <p>20:15</p>
+                                    </span>
+                                    <span>
+                                        <p>Ngày:</p>
+                                        <p>26-4-2021</p>
+                                    </span>
+                                </div>
+                                <div class="detail-to">
+                                    <span>Đà Lạt - DLI</span>
+                                    <span>Sân bay: DLI</span>
+                                    <span>
+                                        <p>Hạ cánh:</p>
+                                        <p>21:10</p>
+                                    </span>
+                                    <span>
+                                        <p>Ngày:</p>
+                                        <p>26-4-2021</p>
+                                    </span>
+                                </div>
+                                <div class="detail-flight">
+                                    <span>
+                                        <p>Chuyến bay:</p>
+                                        <p>362</p>
+                                    </span>
+                                    <span>
+                                        <p>Thời gian bay:</p>
+                                        <p>55M</p>
+                                    </span>
+                                    <span>
+                                        <p>Hàng:</p>
+                                        <p>J</p>
+                                    </span>
+                                    <span>
+                                        <p>Hạng:</p>
+                                        <p>ECONOMY</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <h4 class="title">
+                                <i class="fas fa-info-circle"></i> Thông tin khách hàng và giá vé
+                            </h4>
+                            <div class="info-detail">
+                                <div class="info-table">
+
+                                    <div class="info-heading">
+                                        <p>STT</p>
+                                        <p>Hành khách</p>
+                                        <p>Giới tính</p>
+                                        <p>Tổng</p>
+                                    </div>
+                                    <div class="info-body">
+                                        <p>1</p>
+                                        <p>Nguyễn Trung Hiếu</p>
+                                        <p>Nam</p>
+                                        <p>760.900</p>
+                                    </div>
+                                    <div class="info-body">
+                                        <p>2</p>
+                                        <p>Nguyễn Văn A</p>
+                                        <p>Nam</p>
+                                        <p>200.900</p>
+                                    </div>
+                                    <div class="info-footer">
+                                        <p>Tổng chi phí:</p>
+                                        <span>
+                                            <p>960.900</p>
+                                            <p>VND</p>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact">
+                            <h4 class="title">
+                                <i class="fas fa-phone-square-alt"></i> Thông tin liên hệ
+                            </h4>
+                            <div class="contact-detail">
+                                <div class="row">
+                                    <div class="col l-6 m-6 s-12">
+                                        <div class="name">
+                                            <p>Họ & tên:</p>
+                                            <p>Nguyễn Trung Hiếu</p>
+                                        </div>
+                                        <div class="email">
+                                            <p>Email:</p>
+                                            <p>hieucot69@gmail.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="col l-6 m-6 s-12">
+                                        <div class="phone">
+                                            <p>Điện thoại:</p>
+                                            <p>0582187188</p>
+                                        </div>
+                                        <div class="method">
+                                            <p>Phương thức thanh toán:</p>
+                                            <p>Thanh toán tại văn phòng Flight Ticket</p>
+                                        </div>
+                                    </div>
+                                    <div class="col l-12 m-12 s-12">
+                                        <div class="request">
+                                            <p>Yêu cầu đặc biệt:</p>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste
+                                                maxime alias veniam veritatis placeat tempora molestias
+                                                minima pariatur quidem mollitia, dolorem perspiciatis magnam
+                                                sit velit id magni? Dolore, nam quas.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Step 3 -->
             </div>
         </div>
     </div>
