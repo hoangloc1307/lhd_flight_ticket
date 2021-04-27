@@ -3240,8 +3240,12 @@ header {
           align-items: center;
   font-size: 18px;
   font-weight: 700;
-  color: #17699a;
+  color: #333;
   cursor: pointer;
+}
+
+.finding .payment .box-option .option-payment .payment-method .title i {
+  display: none;
 }
 
 .finding .payment .box-option .option-payment .payment-method .title p {
@@ -3256,7 +3260,15 @@ header {
   display: none;
 }
 
-.finding .payment .box-option .option-payment .payment-method .content.active {
+.finding .payment .box-option .option-payment .payment-method.active .content {
+  display: block;
+}
+
+.finding .payment .box-option .option-payment .payment-method.active .title {
+  color: #17699a;
+}
+
+.finding .payment .box-option .option-payment .payment-method.active .title i {
   display: block;
 }
 

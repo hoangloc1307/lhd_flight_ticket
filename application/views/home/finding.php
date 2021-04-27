@@ -221,17 +221,17 @@
                                 <div class="box-info">
                                     <div class="box-customer">
                                         <p class="box-name">Họ & Tên</p>
-                                        <input type="text" name="" id="" placeholder="Họ & Tên">
+                                        <input type="text" name="name" placeholder="Họ & Tên">
                                         <p class="box-phone">Điện thoại</p>
-                                        <input type="number" name="" id="" placeholder="Điện thoại">
+                                        <input type="number" name="phone" placeholder="Điện thoại">
                                         <p class="box-phone">Email</p>
-                                        <input type="mail" name="" id="" placeholder="Email">
+                                        <input type="mail" name="email" placeholder="Email">
                                         <p class="box-phone">Địa chỉ</p>
-                                        <input type="text" name="" id="" placeholder="Địa chỉ">
+                                        <input type="text" name="address" placeholder="Địa chỉ">
                                     </div>
                                     <div class="box-note">
                                         <p>Ghi chú</p>
-                                        <textarea name="" id="" cols="30" rows="13"></textarea>
+                                        <textarea name="note" cols="30" rows="13"></textarea>
                                     </div>
 
                                 </div>
@@ -242,12 +242,12 @@
                                 </h3>
                                 <div class="box-option">
                                     <ul class="option-payment">
-                                        <li class="payment-method">
+                                        <li class="payment-method active">
                                             <div class="title">
                                                 <i class="far fa-check-circle active"></i>
                                                 <p>Thanh toán tại văn phòng FlightTicket</p>
                                             </div>
-                                            <div class="content active">
+                                            <div class="content">
                                                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                                                     Sapiente itaque, eveniet minus eligendi eaque veniam,
                                                     iste sit a ut delectus, deserunt error esse repellat.
@@ -314,54 +314,9 @@
                             <h4 class="title">
                                 <i class="fas fa-info-circle"></i> Chi tiết chuyến bay
                             </h4>
-                            <div class="flight-detail-wrap">
-                                <div class="detail-img">
-                                    <div class="box-img">
-                                        <img src="<?= base_url() ?>assets/images/partner/vietjetair.png" />
-                                    </div>
-                                </div>
-                                <div class="detail-from">
-                                    <span>Tp. Hồ Chí Minh - SGN</span>
-                                    <span>Sân bay: SGN</span>
-                                    <span>
-                                        <p>Cất cánh:</p>
-                                        <p>20:15</p>
-                                    </span>
-                                    <span>
-                                        <p>Ngày:</p>
-                                        <p>26-4-2021</p>
-                                    </span>
-                                </div>
-                                <div class="detail-to">
-                                    <span>Đà Lạt - DLI</span>
-                                    <span>Sân bay: DLI</span>
-                                    <span>
-                                        <p>Hạ cánh:</p>
-                                        <p>21:10</p>
-                                    </span>
-                                    <span>
-                                        <p>Ngày:</p>
-                                        <p>26-4-2021</p>
-                                    </span>
-                                </div>
-                                <div class="detail-flight">
-                                    <span>
-                                        <p>Chuyến bay:</p>
-                                        <p>362</p>
-                                    </span>
-                                    <span>
-                                        <p>Thời gian bay:</p>
-                                        <p>55M</p>
-                                    </span>
-                                    <span>
-                                        <p>Hàng:</p>
-                                        <p>J</p>
-                                    </span>
-                                    <span>
-                                        <p>Hạng:</p>
-                                        <p>ECONOMY</p>
-                                    </span>
-                                </div>
+                            <div class="flight-detail-container">
+                                <div class="go"></div>
+                                <div class="back"></div>
                             </div>
                         </div>
 
@@ -371,32 +326,6 @@
                             </h4>
                             <div class="info-detail">
                                 <div class="info-table">
-
-                                    <div class="info-heading">
-                                        <p>STT</p>
-                                        <p>Hành khách</p>
-                                        <p>Giới tính</p>
-                                        <p>Tổng</p>
-                                    </div>
-                                    <div class="info-body">
-                                        <p>1</p>
-                                        <p>Nguyễn Trung Hiếu</p>
-                                        <p>Nam</p>
-                                        <p>760.900</p>
-                                    </div>
-                                    <div class="info-body">
-                                        <p>2</p>
-                                        <p>Nguyễn Văn A</p>
-                                        <p>Nam</p>
-                                        <p>200.900</p>
-                                    </div>
-                                    <div class="info-footer">
-                                        <p>Tổng chi phí:</p>
-                                        <span>
-                                            <p>960.900</p>
-                                            <p>VND</p>
-                                        </span>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -429,10 +358,7 @@
                                     <div class="col l-12 m-12 s-12">
                                         <div class="request">
                                             <p>Yêu cầu đặc biệt:</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste
-                                                maxime alias veniam veritatis placeat tempora molestias
-                                                minima pariatur quidem mollitia, dolorem perspiciatis magnam
-                                                sit velit id magni? Dolore, nam quas.</p>
+                                            <p></p>
                                         </div>
                                     </div>
                                 </div>
@@ -859,6 +785,12 @@ $(document).ready(function() {
             });
         }
     });
+
+    // Phương thức thanh toán
+    $(".payment-method").click(function() {
+        $(".payment-method").not(this).removeClass('active');
+        $(this).addClass('active');
+    });
 });
 
 //Chọn chuyến bay
@@ -870,15 +802,16 @@ if (userInput['type'] == 'roundtrip') {
 }
 //Vé hiện tại đã chọn
 var number_ticket_chose = 0;
-var flightTicketChoose = [];
+var flightTicketChooseHTML = [];
 var flightTicketChooseInfo = [];
+var priceTotal = 0;
 //Khi bấm vào nút chọn vé
 $(document).on('click', '.flight-price-choose button', function() {
     //Lưu html để hiển thị lại
     $(this).parents('.result').find('.flight-item').css('display', 'none');
     $(this).parents('.flight-item').css('display', 'block');
     $(this).parents('.result').addClass('chose_active');
-    flightTicketChoose.push('<div class="flight-item" value="' + $(this).parents('.flight-item')
+    flightTicketChooseHTML.push('<div class="flight-item" value="' + $(this).parents('.flight-item')
         .attr('value') + '">' + $(this).parents('.flight-item').html() + '</div>');
     //Lưu thông tin của vé đã chọn
     if (number_ticket_chose == 0) {
@@ -937,8 +870,8 @@ $(document).on('click', '.flight-price-choose button', function() {
 
         //Hiển lại 2 vé đã chọn ở bước 1
         var flight_choose = "";
-        for (let i = 0; i < flightTicketChoose.length; i++) {
-            flight_choose += flightTicketChoose[i].replace("<button>Chọn chuyến bay</button>", "");
+        for (let i = 0; i < flightTicketChooseHTML.length; i++) {
+            flight_choose += flightTicketChooseHTML[i].replace("<button>Chọn chuyến bay</button>", "");
         }
         $('.flight-choose').html(flight_choose);
 
@@ -1037,6 +970,7 @@ $(document).on('click', '.flight-price-choose button', function() {
                 userInput['infants']);
         }
         $('.detail-summary + .total-price .price p:first-child').text(NumberWithCommas(total_price));
+        priceTotal = total_price;
 
         //Tạo form nhập thông tin
         var customer_text = "";
@@ -1047,7 +981,7 @@ $(document).on('click', '.flight-price-choose button', function() {
             customer_text += "<p>Người lớn " + (i + 1) + "</p>";
             customer_text += "</div>";
             customer_text += "<div class='name'>";
-            customer_text += "<input type='text' placeholder='Họ & tên' name='name[]'>";
+            customer_text += "<input type='text' placeholder='Họ & tên' name='names[]'>";
             customer_text += "</div></div>";
         }
         for (let i = 0; i < userInput['children']; i++) {
@@ -1057,7 +991,7 @@ $(document).on('click', '.flight-price-choose button', function() {
             customer_text += "<p>Trẻ em " + (i + 1) + "</p>";
             customer_text += "</div>";
             customer_text += "<div class='name'>";
-            customer_text += "<input type='text' placeholder='Họ tên' name='name[]'>";
+            customer_text += "<input type='text' placeholder='Họ tên' name='names[]'>";
             customer_text += "</div></div>";
         }
         for (let i = 0; i < userInput['infants']; i++) {
@@ -1067,15 +1001,155 @@ $(document).on('click', '.flight-price-choose button', function() {
             customer_text += "<p>Em bé " + (i + 1) + "</p>";
             customer_text += "</div>";
             customer_text += "<div class='name'>";
-            customer_text += "<input type='text' placeholder='Họ tên' name='name[]'>";
+            customer_text += "<input type='text' placeholder='Họ tên' name='names[]'>";
             customer_text += "</div></div>";
         }
         $('.info-customer .box-info .box-container').html(customer_text);
     }
+});
 
-    // Phương thức thanh toán
-    $(".payment-method .title").click(function() {
-        $(this).parents(".payment-method").find(".content").slideToggle();
+// Bấm nút quay lại
+$(document).on('click', '.button-step button:first-child', function() {
+    //Ẩn bước 2, hiện bước 1
+    $('.filter-tab .filter-step li:nth-child(2)').removeClass('active');
+    $('.choose').css('display', 'flex');
+    $('.confirm').css('display', 'none');
+    $('.result').removeClass('chose_active');
+    ShowData(SortPrice);
+    $('.flight-item').css('display', 'block');
+
+    //Reset lại giá trị
+    number_ticket_chose = 0;
+    flightTicketChooseHTML = [];
+    flightTicketChooseInfo = [];
+});
+
+//Bấm nút tiếp tục
+$(document).on('click', '.button-step button:nth-child(2)', function() {
+    var checkInfoStatus = true;
+
+    //Kiểm tra điền đủ thông tin chưa
+    $('.box-info .customer-people .name input').each(function() {
+        if ($(this).val() == '') {
+            checkInfoStatus = false;
+        }
     });
+    $('.box-info .box-customer input').each(function() {
+        if ($(this).val() == '') {
+            checkInfoStatus = false;
+        }
+    });
+
+    if (checkInfoStatus == true) {
+        var confirm_booking = confirm("Xác nhận đặt vé");
+        if (confirm_booking == true) {
+            var flightTicketDetailHTML = [];
+            var customerNames = [];
+            var payment = '';
+
+            flightTicketDetailHTML['go'] = [];
+            flightTicketDetailHTML['back'] = [];
+            //Lấy chi tiết chuyến bay
+            $('.confirm .flight-item').each(function(index) {
+                if (index == 0) {
+                    $(this).find(
+                            '.flight-box-detail .flight-detail-item:first-child .flight-detail-wrap')
+                        .each(function() {
+                            flightTicketDetailHTML['go'].push("<div class='flight-detail-wrap'>" +
+                                $(
+                                    this).html() + "</div>");
+                        });
+                } else {
+                    $(this).find(
+                            '.flight-box-detail .flight-detail-item:first-child .flight-detail-wrap')
+                        .each(function() {
+                            flightTicketDetailHTML['back'].push("<div class='flight-detail-wrap'>" +
+                                $(
+                                    this).html() + "</div>");
+                        });
+                }
+            });
+            //Lấy thông tin người dùng nhập vào
+            $('input[name="names[]"]').each(function() {
+                customerNames.push($(this).val());
+            });
+            $('.option-payment .payment-method').each(function() {
+                if ($(this).hasClass('active')) {
+                    payment = $(this).find('.title p').text();
+                }
+            });
+
+            //Chuyển giao diện
+            $('.choose').css('display', 'none');
+            $('.confirm').css('display', 'none');
+            $('.finish-payment').css('display', 'block');
+            $('.filter-tab .filter-step li:nth-child(3)').addClass('active');
+
+            //Đổ dữ liệu
+            var goDetailHTML = "<div class='title'> " + userInput['origin'] +
+                "<i class='fas fa-long-arrow-alt-right'></i>" + userInput['destination'] + "</div>";
+            for (let i = 0; i < flightTicketDetailHTML['go'].length; i++) {
+                goDetailHTML += flightTicketDetailHTML['go'][i];
+            }
+            $('.flight-detail-container .go').html(goDetailHTML);
+            if (userInput['type'] == 'roundtrip') {
+                var backDetailHTML = "<div class='title'> " + userInput['destination'] +
+                    "<i class='fas fa-long-arrow-alt-right'></i>" + userInput['origin'] + "</div>";
+                for (let i = 0; i < flightTicketDetailHTML['back'].length; i++) {
+                    backDetailHTML += flightTicketDetailHTML['back'][i];
+                }
+                $('.flight-detail-container .back').html(backDetailHTML);
+            }
+
+            $('.finish-payment .contact-detail .name p:nth-child(2)').text($('input[name="name"]').val());
+            $('.finish-payment .contact-detail .phone p:nth-child(2)').text($('input[name="phone"]').val());
+            $('.finish-payment .contact-detail .email p:nth-child(2)').text($('input[name="email"]').val());
+            $('.finish-payment .contact-detail .request p:nth-child(2)').text($('textarea[name="note"]').val());
+            $('.finish-payment .contact-detail .method p:nth-child(2)').text(payment);
+
+            var priceHTML = "<div class='info-heading'><p>STT</p><p>Hành khách</p><p>Tổng</p></div>";
+            var customerIndex = 0;
+            for (customerIndex; customerIndex < userInput['adults']; customerIndex++) {
+                priceHTML += "<div class='info-body'>";
+                priceHTML += "<p>" + (customerIndex + 1) + "</p>";
+                priceHTML += "<p>" + customerNames[customerIndex] + "</p>";
+                priceHTML += "<p>" + NumberWithCommas(flightTicketChooseInfo['adults_price'][0] + (isNaN(
+                    flightTicketChooseInfo['adults_price'][1]) ? 0 : flightTicketChooseInfo[
+                    'adults_price'][1])) + "</p>";
+                priceHTML += "</div>";
+                console.log("L" + customerIndex);
+            }
+            for (customerIndex; customerIndex < parseInt(userInput['adults']) + parseInt(userInput[
+                    'children']); customerIndex++) {
+                priceHTML += "<div class='info-body'>";
+                priceHTML += "<p>" + (customerIndex + 1) + "</p>";
+                priceHTML += "<p>" + customerNames[customerIndex] + "</p>";
+                priceHTML += "<p>" + NumberWithCommas(flightTicketChooseInfo['children_price'][0] + (isNaN(
+                    flightTicketChooseInfo['children_price'][1]) ? 0 : flightTicketChooseInfo[
+                    'children_price'][1])) + "</p>";
+                priceHTML += "</div>";
+                console.log("T" + customerIndex);
+            }
+            for (customerIndex; customerIndex < parseInt(userInput['adults']) + (parseInt(userInput[
+                    'children']) > 0 ? parseInt(userInput['children']) : 0) + parseInt(userInput[
+                    'infants']); customerIndex++) {
+                priceHTML += "<div class='info-body'>";
+                priceHTML += "<p>" + (customerIndex + 1) + "</p>";
+                priceHTML += "<p>" + customerNames[customerIndex] + "</p>";
+                priceHTML += "<p>" + NumberWithCommas(flightTicketChooseInfo['infants_price'][0] + (isNaN(
+                    flightTicketChooseInfo['infants_price'][1]) ? 0 : flightTicketChooseInfo[
+                    'infants_price'][1])) + "</p>";
+                priceHTML += "</div>";
+                console.log("E" + customerIndex);
+            }
+            priceHTML += "<div class='info-footer'><p>Tổng chi phí:</p><span>";
+            priceHTML += "<p>" + NumberWithCommas(priceTotal) + "</p>";
+            priceHTML += "<p>VND</p></span></div>";
+
+            $('.info-table').html(priceHTML);
+        }
+
+        //Lưu vào database
+    }
 });
 </script>
