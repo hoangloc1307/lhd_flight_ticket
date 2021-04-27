@@ -3746,6 +3746,30 @@ header {
   white-space: nowrap;
 }
 
+.finding .finish-payment .flight-detail .title-flight {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 12px;
+  background: #f3f4f8;
+  font-size: 18px;
+  font-weight: 700;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.finding .finish-payment .flight-detail .title-flight i {
+  padding: 12px;
+}
+
+.finding .finish-payment .flight-detail .back .title-flight {
+  margin-top: 12px;
+}
+
 .finding .finish-payment .flight-detail .flight-detail-wrap {
   padding: 10px;
   display: -webkit-box;
@@ -3756,7 +3780,10 @@ header {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  background: #f3f4f8;
+  background: #f9f9f9;
+}
+
+.finding .finish-payment .flight-detail .flight-detail-wrap:last-child {
   border-radius: 0 0 6px 6px;
 }
 

@@ -1070,14 +1070,32 @@
 					white-space: nowrap;
 				}
 			}
+			.title-flight {
+				display: flex;
+				justify-content: center;
+				padding: 12px;
+				background: $cl-white-1;
+				font-size: $fs-sub-title;
+				font-weight: 700;
+				align-items: center;
+
+				i {
+					padding: 12px;
+				}
+			}
+			.back .title-flight {
+				margin-top: 12px;
+			}
 
 			.flight-detail-wrap {
 				padding: 10px;
 				display: flex;
 				align-items: center;
 				flex-wrap: wrap;
-				background: $cl-white-1;
-				border-radius: 0 0 6px 6px;
+				background: $cl-white-3;
+				&:last-child {
+					border-radius: 0 0 6px 6px;
+				}
 
 				&:not(.flight-detail-wrap:last-child) {
 					border-bottom: 1px solid $cl-grey;
