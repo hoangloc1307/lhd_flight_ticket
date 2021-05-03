@@ -354,13 +354,13 @@
 <section id="why">
 	<div class="grid wide">
 		<div class="row">
-			<div class="col l-12">
+			<div class="col l-12 m-12 s-12">
 				<h2 class="heading">Vì sao chọn chúng tôi</h2>
 			</div>
 		</div>
 		<div class="row row-item">
 			<?php foreach ($whychooseus as $item) : ?>
-			<div class="col l-3 m-6 s-6">
+			<div class="col l-3 m-6 s-12">
 				<div class="item">
 					<div class="box-image">
 						<img class="image" src="<?= base_url() . $item["Image"] ?>" alt="<?= $item["Title"] ?>" />
@@ -382,75 +382,75 @@
 	<div class="grid wide">
 		<h2 class="heading">Đối tác</h2>
 		<div class="row">
-			<div class="col l-2">
+			<div class="col l-2 m-3 s-4">
 				<a href="" class="item">
 					<img src="<?= base_url() ?>assets/images/Partner/bambooairline.png" alt="Bamboo Airline"
 						class="item-image">
 				</a>
 			</div>
 
-			<div class="col l-2">
+			<div class="col l-2 m-3 s-4">
 				<a href="" class="item">
 					<img src="<?= base_url() ?>assets/images/Partner/pacific.png" alt="pacific" class="item-image">
 				</a>
 			</div>
 
-			<div class="col l-2">
+			<div class="col l-2 m-3 s-4">
 				<a href="" class="item">
 					<img src="<?= base_url() ?>assets/images/Partner/vietjetair.png" alt="Vietjetair"
 						class="item-image">
 				</a>
 			</div>
 
-			<div class="col l-2">
+			<div class="col l-2 m-3 s-4">
 				<a href="" class="item">
 					<img src="<?= base_url() ?>assets/images/Partner/vietnamairlines.png" alt="Vietnamairlines"
 						class="item-image">
 				</a>
 			</div>
 
-			<div class="col l-2">
+			<div class="col l-2 m-3 s-4">
 				<a href="" class="item">
 					<img src="<?= base_url() ?>assets/images/Partner/flexflight.png" alt="flexflight"
 						class="item-image">
 				</a>
 			</div>
 
-			<div class="col l-2">
+			<div class="col l-2 m-3 s-4">
 				<a href="" class="item">
 					<img src="<?= base_url() ?>assets/images/Partner/dntu.png" alt="DNTU" class="item-image">
 				</a>
 			</div>
 
-			<div class="col l-2">
+			<div class="col l-2 m-3 s-4">
 				<a href="" class="item">
 					<img src="<?= base_url() ?>assets/images/Partner/weba.vn.png" alt="Weba.vn" class="item-image">
 				</a>
 			</div>
-			<div class="col l-2">
+			<div class="col l-2 m-3 s-4">
 				<a href="" class="item">
 					<img src="<?= base_url() ?>assets/images/Partner/cambodiaangkorair.png" alt="cambodiaangkorair"
 						class="item-image">
 				</a>
 			</div>
-			<div class="col l-2">
+			<div class="col l-2 m-3 s-4">
 				<a href="" class="item">
 					<img src="<?= base_url() ?>assets/images/Partner/chinaairlines.png" alt="chinaairlines"
 						class="item-image">
 				</a>
 			</div>
-			<div class="col l-2">
+			<div class="col l-2 m-3 s-4">
 				<a href="" class="item">
 					<img src="<?= base_url() ?>assets/images/Partner/jetlinx.png" alt="jetlinx" class="item-image">
 				</a>
 			</div>
-			<div class="col l-2">
+			<div class="col l-2 m-3 s-4">
 				<a href="" class="item">
 					<img src="<?= base_url() ?>assets/images/Partner/koreanair.png" alt="koreanair"
 						class="item-image">
 				</a>
 			</div>
-			<div class="col l-2">
+			<div class="col l-2 m-3 s-4">
 				<a href="" class="item">
 					<img src="<?= base_url() ?>assets/images/Partner/vietravelairlines.png" alt="vietravelairlines"
 						class="item-image">
