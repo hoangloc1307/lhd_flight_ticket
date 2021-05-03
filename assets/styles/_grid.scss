@@ -27,6 +27,14 @@
 		max-width: 100%/12 * $i;
 	}
 }
+@media (min-width: 320px) and (max-width: 768px) {
+	.row {
+		margin: 0 12px;
+	}
+	.col {
+		margin: 6px 0;
+	}
+}
 
 @media (min-width: 740px) and (max-width: 1023px) {
 	.wide {
@@ -42,6 +50,7 @@
 	.col {
 		padding-left: 8px;
 		padding-right: 8px;
+		margin: 12px 0;
 	}
 	.m-0 {
 		display: none;

@@ -142,6 +142,15 @@ html {
   max-width: 100%;
 }
 
+@media (min-width: 320px) and (max-width: 768px) {
+  .row {
+    margin: 0 12px;
+  }
+  .col {
+    margin: 6px 0;
+  }
+}
+
 @media (min-width: 740px) and (max-width: 1023px) {
   .wide {
     width: 700px;
@@ -156,6 +165,7 @@ html {
   .col {
     padding-left: 8px;
     padding-right: 8px;
+    margin: 12px 0;
   }
   .m-0 {
     display: none;
@@ -1598,7 +1608,8 @@ header {
   border-color: #dddddd;
   border-style: solid;
   border-width: 1px 1px 0px 1px;
-  margin-bottom: -1px;
+  margin-bottom: -2px;
+  z-index: 1;
 }
 
 .booking-form form .way label .way-popup .tab-city .tab-container .tab-active:hover {
@@ -2088,7 +2099,6 @@ header {
   right: 12px;
   top: 0;
   z-index: -1;
-  background: #000;
   border-radius: 16px;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(46.62%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.8)));
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 46.62%, rgba(0, 0, 0, 0.8) 100%);
@@ -2548,10 +2558,17 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .finding #filter-left .title span {
   margin-left: 8px;
+}
+
+.finding #filter-left .title .icon-down {
+  display: none;
 }
 
 .finding #filter-left .finding-base {
@@ -3778,10 +3795,6 @@ header {
   padding: 12px;
 }
 
-.finding .finish-payment .flight-detail .back .title-flight {
-  margin-top: 12px;
-}
-
 .finding .finish-payment .flight-detail .flight-detail-wrap {
   padding: 10px;
   display: -webkit-box;
@@ -3793,10 +3806,6 @@ header {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   background: #f9f9f9;
-}
-
-.finding .finish-payment .flight-detail .flight-detail-wrap:last-child {
-  border-radius: 0 0 6px 6px;
 }
 
 .finding .finish-payment .flight-detail .flight-detail-wrap:not(.flight-detail-wrap:last-child) {
@@ -3940,6 +3949,8 @@ header {
       -ms-flex-align: center;
           align-items: center;
   padding: 10px 0;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .finding .finish-payment .contact .contact-detail .col div p:first-child {
@@ -5612,7 +5623,7 @@ h2 {
   #hero .booking-form form .passenger-name p input,
   #hero .booking-form form .passenger-name i input {
     width: 300px;
-    padding: 6px 12px;
+    padding: 8px 12px;
   }
   #hero .booking-form form .type label input:checked + .radiobtn,
   #hero .booking-form form .type p input:checked + .radiobtn,
@@ -5648,6 +5659,7 @@ h2 {
   }
   #hero .booking-form form .way .way-popup .header button i {
     color: #17699a;
+    display: block;
   }
   #hero .booking-form form .way .tab-city .list-point li {
     color: #17699a;
@@ -5661,7 +5673,7 @@ h2 {
     left: unset;
     width: 700px;
     -webkit-box-shadow: 2px 3px 5px #89a9bc;
-    box-shadow: 2px 3px 5px #89a9bc;
+            box-shadow: 2px 3px 5px #89a9bc;
     padding: 20px;
     height: auto;
     z-index: 1;
@@ -5672,10 +5684,10 @@ h2 {
     padding-bottom: 0;
   }
   #hero .booking-form form button[type="submit"] {
-    color: #034166;
-    background: #dddddd;
-    -webkit-box-shadow: 0px 0px 10px #fff;
-            box-shadow: 0px 0px 10px #fff;
+    color: #fff;
+    background: #f29018;
+    -webkit-box-shadow: 1px 2px 5px #fff;
+            box-shadow: 1px 2px 5px #fff;
   }
   #hero .hero-content {
     display: none;
@@ -5686,6 +5698,39 @@ h2 {
     margin: 30px;
   }
   /*========== End Login Page ==========*/
+  /*========== Finding Page ==========*/
+  .finding .filter-step li .tilte-step {
+    font-size: 14px;
+  }
+  .finding #filter-left .finding-base {
+    -webkit-box-shadow: 0px 2px 5px #999;
+            box-shadow: 0px 2px 5px #999;
+    border-radius: unset;
+  }
+  .finding #filter-left .finding-base ul {
+    display: none;
+  }
+  .finding #filter-left .title {
+    margin-top: 16px;
+    border-radius: unset;
+  }
+  .finding #filter-left .title .icon-down {
+    display: block;
+    -webkit-transition: 0.3s linear;
+    transition: 0.3s linear;
+  }
+  .finding #filter-left .title .icon-down.active {
+    -webkit-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+    -webkit-transition: 0.3s linear;
+    transition: 0.3s linear;
+  }
+  /*========== End Finding Page ==========*/
+  /*========== Footer ==========*/
+  .news-letter .title h2 {
+    text-align: center;
+  }
+  /*========== End Footer ==========*/
 }
 
 @media (max-width: 480px) {
@@ -5700,5 +5745,152 @@ h2 {
     width: 100%;
   }
   /*========== End Login Page ==========*/
+  /*========== Header ==========*/
+  .menu-mobile .logo {
+    margin-left: 12px;
+  }
+  .menu-mobile .icon {
+    margin-right: 12px;
+  }
+  .list-mobile {
+    width: 270px;
+  }
+  .list-mobile ul li {
+    font-size: 18px;
+  }
+  /*========== End Header ==========*/
+  #hero {
+    padding: 25px 0;
+    height: 100%;
+  }
+  #hero .booking-form h2 {
+    font-size: 24px;
+  }
+  #hero .booking-form form .way {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  #hero .booking-form form .way label {
+    margin: 6px 0;
+    width: 100%;
+  }
+  #hero .booking-form form .way label input {
+    width: 100%;
+  }
+  #hero .booking-form form .way label .way-popup {
+    width: 100%;
+    padding: 12px;
+    left: 0;
+  }
+  #hero .booking-form form .way label .way-popup .header i {
+    display: unset;
+  }
+  #hero .booking-form form .way label .way-popup .list-point li {
+    width: 100%;
+    line-height: 1.8;
+  }
+  #hero .booking-form form .way i {
+    display: none;
+  }
+  #hero .booking-form form .date {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    width: 100%;
+  }
+  #hero .booking-form form .date label {
+    width: 45%;
+  }
+  #hero .booking-form form .date label input {
+    width: 100%;
+  }
+  #hero .booking-form form .date i {
+    margin: 0 10px;
+  }
+  #hero .booking-form form .passenger {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  #hero .booking-form form .passenger div {
+    margin-right: 0;
+  }
+  #hero .booking-form form .passenger .passenger-name {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #hero .booking-form form .class label {
+    margin: 12px 10px 12px 0;
+  }
+  #hero .booking-form form .max-price label {
+    width: 100%;
+  }
+  #hero .booking-form form .max-price label input {
+    width: 100%;
+  }
+  #hero .booking-form form button[type="submit"] {
+    margin: 0;
+    width: 100%;
+    border-radius: 10px;
+    padding: 16px 0;
+    font-size: 16px;
+  }
+  #why .heading,
+  #favorite .heading,
+  #partner .heading {
+    font-size: 22px;
+  }
+  #favorite .block .image-box {
+    height: 250px;
+  }
+  #favorite .block .image-box h3 {
+    top: 30%;
+  }
+  #favorite .block .info::after {
+    left: 3px;
+    right: 3px;
+    opacity: 0.6;
+  }
+  #why .row-item .col {
+    margin: 12px 0;
+  }
+  /*========== Footer ==========*/
+  .news-letter .col {
+    margin: 6px 0;
+  }
+  .news-letter .title h2 {
+    font-size: 18px;
+  }
+  .news-letter .title h2 i {
+    font-size: 18px;
+  }
+  .main-footer .footer-title {
+    margin-bottom: 12px;
+    font-size: 18px;
+  }
+  /*========== End Footer ==========*/
+  /*========== Finding ==========*/
+  .finding .filter-step li .number-step {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    line-height: 1.4;
+    font-size: 12px;
+  }
+  .finding .filter-step li .number-step:nth-of-type(2), .finding .filter-step li .number-step:nth-of-type(3) {
+    margin: 0 3px 0 12px;
+  }
+  .finding .filter-step li .tilte-step {
+    font-size: 12px;
+    text-transform: none;
+  }
+  /*========== End Finding ==========*/
 }
 /*# sourceMappingURL=main.css.map */

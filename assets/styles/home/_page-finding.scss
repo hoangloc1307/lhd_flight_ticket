@@ -90,9 +90,13 @@
 			margin-top: 10px;
 			display: flex;
 			align-items: center;
+			justify-content: space-between;
 
 			span {
 				margin-left: 8px;
+			}
+			.icon-down {
+				display: none;
 			}
 		}
 
@@ -1070,6 +1074,7 @@
 					white-space: nowrap;
 				}
 			}
+
 			.title-flight {
 				display: flex;
 				justify-content: center;
@@ -1083,9 +1088,6 @@
 					padding: 12px;
 				}
 			}
-			.back .title-flight {
-				margin-top: 12px;
-			}
 
 			.flight-detail-wrap {
 				padding: 10px;
@@ -1093,9 +1095,6 @@
 				align-items: center;
 				flex-wrap: wrap;
 				background: $cl-white-3;
-				&:last-child {
-					border-radius: 0 0 6px 6px;
-				}
 
 				&:not(.flight-detail-wrap:last-child) {
 					border-bottom: 1px solid $cl-grey;
@@ -1204,6 +1203,8 @@
 						display: flex;
 						align-items: center;
 						padding: 10px 0;
+						flex-wrap: wrap;
+
 						p:first-child {
 							font-weight: 700;
 							padding-right: 6px;

@@ -1,20 +1,20 @@
 <div class="finding">
 	<div class="grid wide">
 		<div class="row">
-			<div class="col l-12">
+			<div class="col l-12 m-12 s-12">
 				<!-- Tab -->
 
 				<div class="filter-tab">
 					<ul class="filter-step">
-						<li class="col l-4 active">
+						<li class="col l-4 m-4 s-4 active">
 							<span class="number-step"> 1 </span>
 							<h5 class="tilte-step">Chọn chuyến bay</h5>
 						</li>
-						<li class="col l-4">
+						<li class="col l-4 m-4 s-4">
 							<span class="number-step"> 2 </span>
 							<h5 class="tilte-step">Đặt chỗ</h5>
 						</li>
-						<li class="col l-4">
+						<li class="col l-4 m-4 s-4">
 							<span class="number-step"> 3 </span>
 							<h5 class="tilte-step">Thanh toán</h5>
 						</li>
@@ -27,12 +27,15 @@
 				<div class="row choose">
 					<!-- Filter left -->
 
-					<div id="filter-left" class="col l-4">
+					<div id="filter-left" class="col l-4 m-12 s-12">
 						<!-- Flight sort -->
 						<div class="finding-sort finding-base">
 							<div class="title">
-								<i class="fas fa-filter"></i>
-								<span>Sắp xếp theo chuyến bay</span>
+								<div>
+									<i class="fas fa-sort-alpha-down"></i>
+									<span>Sắp xếp theo chuyến bay</span>
+								</div>
+								<i class="fas fa-angle-down icon-down"></i>
 							</div>
 							<ul class="box-sort">
 								<li class="price" onclick="ShowData(SortPrice)">
@@ -59,8 +62,11 @@
 						<!-- View price ticket -->
 						<div class="finding-view finding-base">
 							<div class="title">
-								<i class="far fa-eye"></i>
-								<span>Hiển thị theo</span>
+								<div>
+									<i class="far fa-eye"></i>
+									<span>Hiển thị theo</span>
+								</div>
+								<i class="fas fa-angle-down icon-down"></i>
 							</div>
 							<ul class="box-view">
 								<li class="personal">
@@ -88,15 +94,18 @@
 						<!-- Flight filter -->
 						<div class="finding-airline finding-base">
 							<div class="title">
-								<i class="fas fa-filter"></i>
-								<span>Lọc chuyến bay</span>
+								<div>
+									<i class="fas fa-filter"></i>
+									<span>Lọc chuyến bay</span>
+								</div>
+								<i class="fas fa-angle-down icon-down"></i>
 							</div>
 
 							<div class="finding-airline__content">
-								<div class="label">
+								<!-- <div class="label">
 									<span>Chọn hãng hàng không</span>
 									<i class="fas fa-plane"></i>
-								</div>
+								</div> -->
 
 								<div class="finding-airline__airline">
 									<ul class="box">
@@ -112,7 +121,7 @@
 
 					<!-- Content -->
 
-					<div id="filter-content" class="col l-8">
+					<div id="filter-content" class="col l-8 m-12 s-12">
 						<div id="filter-content-di" class="result">
 							<!-- Flight name -->
 							<div class="filter-header">
@@ -121,11 +130,9 @@
 								</div>
 								<div class="title">
 									<div class="title-flight">
-										<h5><?php
-
-use function Aws\filter;
-
-echo json_decode($user_input, true)['origin']; ?></h5>
+										<h5>
+											<?php echo json_decode($user_input, true)['origin'];?>
+										</h5>
 										<i class="fas fa-long-arrow-alt-right"></i>
 										<h5><?php echo json_decode($user_input, true)['destination']; ?></h5>
 									</div>
@@ -171,7 +178,7 @@ echo json_decode($user_input, true)['origin']; ?></h5>
 				<!-- End Step 1 -->
 				<!-- Step 2 -->
 				<div class="row confirm">
-					<div class="col l-4">
+					<div class="col l-4 m-12 s-12">
 						<div class="finding-detail">
 							<div class="header">
 								<i class="fas fa-shopping-cart"></i>
@@ -198,7 +205,7 @@ echo json_decode($user_input, true)['origin']; ?></h5>
 						</div>
 					</div>
 
-					<div class="col l-8">
+					<div class="col l-8 m-12 s-12">
 						<div class="flight-selected">
 							<div class="box-selected flight-selected__base">
 								<h3 class="header">

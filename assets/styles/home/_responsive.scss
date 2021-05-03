@@ -4,7 +4,7 @@
 	/*========== End Home Page ==========*/
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
 }
 
 @media (max-width: 768px) {
@@ -45,7 +45,7 @@
 
 						input {
 							width: 300px;
-							padding: 6px 12px;
+							padding: 8px 12px;
 							&:checked + .radiobtn {
 								box-shadow: 0 0 5px $cl-white-2;
 								border-color: unset;
@@ -66,6 +66,7 @@
 					}
 					.way-popup .header button i {
 						color: $cl-blue-3;
+						display: block;
 					}
 					.tab-city .list-point li {
 						color: $cl-blue-3;
@@ -78,7 +79,6 @@
 						right: -65px;
 						left: unset;
 						width: 700px;
-						-webkit-box-shadow: 2px 3px 5px #89a9bc;
 						box-shadow: 2px 3px 5px #89a9bc;
 						padding: 20px;
 						height: auto;
@@ -93,9 +93,9 @@
 					}
 				}
 				button[type="submit"] {
-					color: $cl-blue-5;
-					background: $cl-grey;
-					box-shadow: 0px 0px 10px $cl-white-2;
+					color: $cl-white-2;
+					background: $cl-orange-3;
+					box-shadow: 1px 2px 5px $cl-white-2;
 				}
 			}
 		}
@@ -113,6 +113,47 @@
 		margin: 30px;
 	}
 	/*========== End Login Page ==========*/
+
+	/*========== Finding Page ==========*/
+	.finding {
+		.filter-step li .tilte-step {
+			font-size: $fs-detail;
+		}
+		#filter-left {
+			.finding-base {
+				box-shadow: 0px 2px 5px #999;
+				border-radius: unset;
+
+				ul {
+					display: none;
+				}
+			}
+			.title {
+				margin-top: 16px;
+				border-radius: unset;
+
+				.icon-down {
+					display: block;
+					transition: 0.3s linear;
+
+					&.active {
+						transform: rotate(-180deg);
+						transition: 0.3s linear;
+					}
+				}
+			}
+		}
+	}
+
+	/*========== End Finding Page ==========*/
+
+	/*========== Footer ==========*/
+	.news-letter {
+		.title h2 {
+			text-align: center;
+		}
+	}
+	/*========== End Footer ==========*/
 }
 
 @media (max-width: 480px) {
@@ -129,6 +170,187 @@
 		}
 	}
 	/*========== End Login Page ==========*/
+	/*========== Header ==========*/
+	.menu-mobile {
+		.logo {
+			margin-left: 12px;
+		}
+		.icon {
+			margin-right: 12px;
+		}
+	}
+	.list-mobile {
+		width: 270px;
+		ul li {
+			font-size: $fs-sub-title;
+		}
+	}
+	/*========== End Header ==========*/
+	#hero {
+		padding: 25px 0;
+		height: 100%;
+
+		.booking-form {
+			h2 {
+				font-size: $fs-title;
+			}
+			form {
+				.way {
+					flex-direction: column;
+					align-items: flex-start;
+					label {
+						margin: 6px 0;
+						width: 100%;
+
+						input {
+							width: 100%;
+						}
+
+						.way-popup {
+							width: 100%;
+							padding: 12px;
+							left: 0;
+
+							.header i {
+								display: unset;
+							}
+
+							.list-point li {
+								width: 100%;
+								line-height: 1.8;
+							}
+						}
+					}
+					i {
+						display: none;
+					}
+				}
+				.date {
+					flex-wrap: nowrap;
+					width: 100%;
+
+					label {
+						width: 45%;
+						input {
+							width: 100%;
+						}
+					}
+					i {
+						margin: 0 10px;
+					}
+				}
+				.passenger {
+					justify-content: space-between;
+					div {
+						margin-right: 0;
+					}
+					.passenger-name {
+						flex-direction: column;
+					}
+				}
+				.class {
+					label {
+						margin: 12px 10px 12px 0;
+					}
+				}
+				.max-price {
+					label {
+						width: 100%;
+						input {
+							width: 100%;
+						}
+					}
+				}
+				button[type="submit"] {
+					margin: 0;
+					width: 100%;
+					border-radius: 10px;
+					padding: 16px 0;
+					font-size: $fs-text;
+				}
+			}
+		}
+	}
+
+	#why,
+	#favorite,
+	#partner {
+		.heading {
+			font-size: $fs-small-title;
+		}
+	}
+
+	#favorite {
+		.block {
+			.image-box {
+				height: 250px;
+
+				h3 {
+					top: 30%;
+				}
+			}
+			.info {
+				&::after {
+					left: 3px;
+					right: 3px;
+					opacity: 0.6;
+				}
+			}
+		}
+	}
+	#why {
+		.row-item {
+			.col {
+				margin: 12px 0;
+			}
+		}
+	}
+
+	/*========== Footer ==========*/
+	.news-letter {
+		.col {
+			margin: 6px 0;
+		}
+		.title {
+			h2 {
+				font-size: $fs-sub-title;
+				i {
+					font-size: $fs-sub-title;
+				}
+			}
+		}
+	}
+	.main-footer {
+		.footer-title {
+			margin-bottom: 12px;
+			font-size: $fs-sub-title;
+		}
+	}
+	/*========== End Footer ==========*/
+
+	/*========== Finding ==========*/
+	.finding {
+		.filter-step li {
+			.number-step {
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				border: 1px solid #fff;
+				line-height: 1.4;
+				font-size: $fs-small-text;
+
+				&:nth-of-type(2),
+				&:nth-of-type(3) {
+					margin: 0 3px 0 12px;
+				}
+			}
+			.tilte-step {
+				font-size: $fs-small-text;
+				text-transform: none;
+			}
+		}
+	}
+	/*========== End Finding ==========*/
 }
 
 @media (max-width: 320px) {
