@@ -1066,6 +1066,7 @@ header {
 .list-mobile ul .user span i:last-child {
   -webkit-transition: 0.3s linear;
   transition: 0.3s linear;
+  margin-left: 6px;
 }
 
 .list-mobile ul .user span i:last-child.active {
@@ -1084,6 +1085,9 @@ header {
   display: -webkit-box !important;
   display: -ms-flexbox !important;
   display: flex !important;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   height: 170px;
 }
 
@@ -2006,27 +2010,29 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  min-height: 250px;
-  margin: 50px 0;
+  margin: 12px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+#favorite .block:hover .image-box img {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+#favorite .block:hover .info::after {
+  opacity: 0.6;
 }
 
 #favorite .block .image-box {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
+  width: 100%;
+  height: 350px;
   overflow: hidden;
   position: relative;
-  border: 3px solid #3e789b;
-  -webkit-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  border-radius: 16px;
 }
 
 #favorite .block .image-box img {
@@ -2034,30 +2040,31 @@ header {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 #favorite .block .image-box h3 {
   position: absolute;
-  bottom: 0;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   color: #fff;
-  font-size: 15px;
-  background: #17699a;
+  font-size: 22px;
   padding: 5px 10px;
   text-transform: uppercase;
-  opacity: 1;
-  text-align: center;
-  border-radius: 20px;
-  width: 100%;
+  text-shadow: 1px 1px 1px #333;
   -webkit-transition: 0.3s ease-in-out 0.3s;
   transition: 0.3s ease-in-out 0.3s;
+  z-index: 1;
 }
 
 #favorite .block .info {
-  width: 0;
-  height: 200px;
-  padding: 0 10px;
-  overflow: hidden;
-  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0 12px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2070,52 +2077,57 @@ header {
           justify-content: center;
   -webkit-transition: 0s ease-in-out 0s;
   transition: 0s ease-in-out 0s;
+  z-index: 1;
 }
 
-#favorite .block .info h3 {
-  color: #17699a;
-  border-bottom: 1px solid #17699a;
-  text-align: center;
+#favorite .block .info::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  left: 12px;
+  right: 12px;
+  top: 0;
+  z-index: -1;
+  background: #000;
+  border-radius: 16px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(46.62%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.8)));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 46.62%, rgba(0, 0, 0, 0.8) 100%);
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 #favorite .block .info p {
   margin: 10px 0;
+  height: 80px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  color: #fff;
+  padding: 12px;
+  text-shadow: 1px 1px 1px #333;
 }
 
 #favorite .block .info div {
   text-align: right;
+  padding: 12px;
 }
 
 #favorite .block .info div a {
-  color: #f00;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
 }
 
 #favorite .block .info div a:hover {
-  color: #17699a;
+  text-decoration: underline;
+  color: #f29018;
 }
 
-#favorite .block:hover .image-box {
-  width: 150px;
-  height: 150px;
-  -webkit-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out;
-  left: 0;
-  -webkit-transform: translateX(0);
-          transform: translateX(0);
-}
-
-#favorite .block:hover .image-box h3 {
-  opacity: 0;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-}
-
-#favorite .block:hover .info {
-  width: calc(100% - 150px);
-  height: 200px;
-  opacity: 1;
-  -webkit-transition: width 0s ease-in-out 0.5s, opacity 0.3s ease-in-out 0.5s;
-  transition: width 0s ease-in-out 0.5s, opacity 0.3s ease-in-out 0.5s;
+#favorite .block .info div a i {
+  margin-left: 6px;
 }
 
 /*==================== End Section Favorite ====================*/
