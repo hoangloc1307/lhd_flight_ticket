@@ -242,6 +242,7 @@ header {
 				}
 				i:last-child {
 					transition: 0.3s linear;
+					margin-left: 6px;
 
 					&.active {
 						transform: rotate(-180deg);
@@ -255,6 +256,7 @@ header {
 
 				&.active {
 					display: flex !important;
+					justify-content: flex-start;
 					height: 170px;
 				}
 
