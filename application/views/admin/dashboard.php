@@ -5,7 +5,7 @@
                 <div class="block">
                     <div class="row">
                         <div class="content col l-8">
-                            <p>54</p>
+                            <p><?= $number_of_news ?></p>
                             <p>Bài viết</p>
                         </div>
                         <div class="icon col l-4">
@@ -18,7 +18,7 @@
                 <div class="block">
                     <div class="row">
                         <div class="content col l-8">
-                            <p>123</p>
+                            <p><?= $number_of_customer ?></p>
                             <p>Khách hàng</p>
                         </div>
                         <div class="icon col l-4">
@@ -76,56 +76,14 @@
                         <div class="col l-4">Ngày đăng</div>
                         <div class="col l-2 view">Lượt xem</div>
                     </div>
-                    <a href="#" class="row item">
-                        <div class="col l-6 name">Bài viết số 1</div>
-                        <div class="col l-4">2021-03-19 15:05:30</div>
-                        <div class="col l-2 view">75</div>
+                    <?php foreach ($news as $item) : ?>
+                    <a href="<?= base_url() . 'news/' . ($item['LinkCustom'] != '' ? $item['LinkCustom'] : $item['LinkDefault']) ?>"
+                        class="row item" target="_blank">
+                        <div class="col l-6 name"><?= $item['Name'] ?></div>
+                        <div class="col l-4"><?= $item['Date'] ?></div>
+                        <div class="col l-2 view"><?= $item['View'] ?></div>
                     </a>
-                    <a href="#" class="row item">
-                        <div class="col l-6 name">Bài viết số 2</div>
-                        <div class="col l-4">2021-03-15 19:55:38</div>
-                        <div class="col l-2 view">135</div>
-                    </a>
-                    <a href="#" class="row item">
-                        <div class="col l-6 name">Bài viết số 3</div>
-                        <div class="col l-4">2021-02-11 09:07:48</div>
-                        <div class="col l-2 view">1359</div>
-                    </a>
-                    <a href="#" class="row item">
-                        <div class="col l-6 name">Bài viết số 1</div>
-                        <div class="col l-4">2021-03-19 15:05:30</div>
-                        <div class="col l-2 view">75</div>
-                    </a>
-                    <a href="#" class="row item">
-                        <div class="col l-6 name">Bài viết số 2</div>
-                        <div class="col l-4">2021-03-15 19:55:38</div>
-                        <div class="col l-2 view">135</div>
-                    </a>
-                    <a href="#" class="row item">
-                        <div class="col l-6 name">Bài viết số 3</div>
-                        <div class="col l-4">2021-02-11 09:07:48</div>
-                        <div class="col l-2 view">1359</div>
-                    </a>
-                    <a href="#" class="row item">
-                        <div class="col l-6 name">Bài viết số 1</div>
-                        <div class="col l-4">2021-03-19 15:05:30</div>
-                        <div class="col l-2 view">75</div>
-                    </a>
-                    <a href="#" class="row item">
-                        <div class="col l-6 name">Bài viết số 2</div>
-                        <div class="col l-4">2021-03-15 19:55:38</div>
-                        <div class="col l-2 view">135</div>
-                    </a>
-                    <a href="#" class="row item">
-                        <div class="col l-6 name">Bài viết số 3</div>
-                        <div class="col l-4">2021-02-11 09:07:48</div>
-                        <div class="col l-2 view">1359</div>
-                    </a>
-                    <a href="#" class="row item">
-                        <div class="col l-6 name">Bài viết số 3</div>
-                        <div class="col l-4">2021-02-11 09:07:48</div>
-                        <div class="col l-2 view">1359</div>
-                    </a>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <div class="col l-4">

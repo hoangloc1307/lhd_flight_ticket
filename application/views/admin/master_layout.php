@@ -49,9 +49,21 @@
 
                     </ul>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="<?= base_url() ?>admin/whychooseus"><i class="fas fa-th"></i>Nội dung trang
                         chủ</a>
+                </li> -->
+                <li>
+                    <span><i class="fas fa-th"></i>Nội dung trang chủ<i class="fas fa-chevron-down arrow"></i></span>
+                    <ul class="sub-links">
+                        <li>
+                            <a href="<?= base_url() ?>admin/whychooseus"><i class="fas fa-caret-right"></i>Vì sao chọn
+                                chúng tôi</a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url() ?>admin/partner"><i class="fas fa-caret-right"></i>Đối tác</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
             <ul class="links bottom">

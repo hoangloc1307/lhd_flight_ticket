@@ -162,6 +162,61 @@ class Finding extends CI_Controller {
             show_404();
         }
     }
+
+    public function CreateOrder() {
+        if ($this->input->is_ajax_request()) {
+            $this->load->model('Database_model');
+
+            $order = $this->input->post('dulieu');
+
+            //Kiểm tra xem thông tin khách hàng này đã có chưa
+            $where = "Email = '" . $order['contact_mail'] . "'";
+            $customer = $this->Database_model->GetRecord('tbl_customer', $where);
+
+            //Nếu chưa có thì tạo mới
+            if (is_null($customer)) {
+                $customer_data = [
+                    'Name' => $order['contact_name'],
+                    'Address' => $order['contact_address'],
+                    'Phone' => $order['contact_phone'],
+                    'Email' => $order['contact_mail']
+                ];
+                $this->Database_model->InsertRecord('tbl_customer', $customer_data);
+            } else {
+                //
+            }
+
+            //Lấy thông tin khách hàng vừa mới tạo
+            $customer = $this->Database_model->GetRecord('tbl_customer', $where);
+
+            //Tạo mã đặt vé
+            $order_code = create_oder_code();
+
+            //Kiểm tra mã đặt vé
+            $where = "'Order_Code' = '" . $order_code . "'";
+            $order_code_database = $this->Database_model->GetRecord('tbl_order', $where);
+            if (!is_null($order_code_database)) {
+                while ($order_code == $order_code_database['Order_Code']) {
+                    $order_code = create_oder_code();
+                    $where = "'Order_Code' = '" . $order_code . "'";
+                    $order_code_database = $this->Database_model->GetRecord('tbl_order', $where)['Order_Code'];
+                }
+            }
+
+            //Lưu dữ diệu vào database
+            $data = [
+                'Order_Code' => $order_code,
+                'Order_Detail' => json_encode($order),
+                'Customer_ID' => $customer['Customer_ID']
+            ];
+
+            if ($this->Database_model->InsertRecord('tbl_order', $data) > 0) {
+                echo json_encode("Đặt vé thành công");
+            } else {
+                echo json_encode("Đặt vé không thành công");
+            }
+        }
+    }
 }
         
     /* End of file  Finding.php */

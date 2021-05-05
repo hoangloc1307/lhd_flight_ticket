@@ -1521,6 +1521,11 @@ header {
           box-shadow: 0 0 3px #17699a;
 }
 
+.booking-form form .way label input#date-return:disabled,
+.booking-form form .date label input#date-return:disabled {
+  color: transparent;
+}
+
 .booking-form form .way i,
 .booking-form form .date i {
   font-size: 16px;
@@ -3966,10 +3971,6 @@ header {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-}
-
-section {
-  padding-top: 50px;
 }
 
 section .title {

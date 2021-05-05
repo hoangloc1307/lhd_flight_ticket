@@ -19,7 +19,7 @@ $(document).ready(function () {
 	});
 
 	$(".choose").click(function () {
-		$(".way-popup").not(this).removeClass("show");
+		$(".way-popup").removeClass("show");
 		$(this).next(".way-popup").addClass("show");
 	});
 	/*===== End ===== */

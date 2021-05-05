@@ -2,32 +2,27 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Login_model extends CI_Model
-{
-    public function getAccount($username)
-    {
-        $this->db->where('username', $username);
+class Login_model extends CI_Model {
+
+    public function getAccount($email) {
+        $this->db->where('Email', $email);
         $data = $this->db->get('tbl_account');
         return $data->row_array();
     }
 
-    public function createAccount($username, $password, $email, $phone)
-    {
+    public function createAccount($email, $password, $phone) {
         $tbl_account = [
-            'Username' => $username,
-            'Password' => $password,
+            'Email' => $email,
+            'Password' => md5($password),
             'Role' => 2
         ];
-
         $this->db->insert('tbl_account', $tbl_account);
-        $account_id = $this->db->insert_id();
-
-        $tbl_customer = [
-            'Email' => $email,
-            'Phone' => $phone,
-            'Account_ID' => $account_id
-        ];
-
+        if ($this->db->insert_id()) {
+            $tbl_customer = [
+                'Email' => $email,
+                'Phone' => $phone
+            ];
+        }
         $this->db->insert('tbl_customer', $tbl_customer);
         return $this->db->insert_id();
     }

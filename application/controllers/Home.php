@@ -10,7 +10,7 @@ class Home extends CI_Controller {
     public function index() {
         $data['view'] = 'home/home';
         $data['title'] = 'Trang chủ';
-        if (is_null($this->session->userdata('username'))) {
+        if (is_null($this->session->userdata('email'))) {
             $sess_account = [
                 'user_links' => [
                     'Đăng nhập / Đăng ký' => base_url() . 'login'

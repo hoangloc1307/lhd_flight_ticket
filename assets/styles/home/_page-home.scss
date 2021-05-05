@@ -111,6 +111,10 @@
 						border-color: $cl-blue-3;
 						box-shadow: 0 0 3px $cl-blue-3;
 					}
+
+					&#date-return:disabled {
+						color: transparent;
+					}
 				}
 			}
 

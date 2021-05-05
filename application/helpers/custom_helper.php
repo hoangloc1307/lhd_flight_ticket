@@ -1,8 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 if (!function_exists('vietdecode')) {
-    function vietdecode($value)
-    {
+    function vietdecode($value) {
         $value = str_replace('“', '', $value);
         $value = str_replace('”', '', $value);
         $value = str_replace("'", '', $value);
@@ -160,5 +159,20 @@ if (!function_exists('vietdecode')) {
         $value = str_replace("   ", " ", $value);
         $value = str_replace("  ", " ", $value);
         return strtolower(str_replace(" ", "-", trim($value)));
+    }
+
+    if (!function_exists('create_oder_code')) {
+        function create_oder_code() {
+            $code = "";
+            for ($i = 0; $i < 6; $i++) {
+                $isNum = mt_rand(0, 1);
+                if ($isNum == 0) {
+                    $code .= mt_rand(0, 9);
+                } else {
+                    $code .= chr(mt_rand(65, 90));
+                }
+            }
+            return $code;
+        }
     }
 }
