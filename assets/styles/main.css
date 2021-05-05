@@ -5221,6 +5221,60 @@ h2 {
   border-radius: 5px;
 }
 
+#order .order-title {
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: #17699a;
+  text-transform: uppercase;
+}
+
+#order .table .heading,
+#order .table .body {
+  margin: 0 !important;
+}
+
+#order .table .body {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #dddddd;
+}
+
+#order .table .body:hover {
+  background: #f9f9f9;
+  opacity: 0.85;
+}
+
+#order .table .body .col {
+  text-align: center;
+}
+
+#order .table .body .status span {
+  background: #27ae60;
+  border-radius: 6px;
+  color: #fff;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding: 3px 0;
+  cursor: default;
+}
+
+#order .table .body .status span:hover {
+  background: #2ecc71;
+}
+
+#order .table .body .status span[payment="false"] {
+  background: #e74c3c;
+  cursor: pointer;
+}
+
+#order .table .body .status span[payment="false"]:hover {
+  background: #f00;
+}
+
 .news-letter {
   padding: 30px 0;
   background: #f29018;

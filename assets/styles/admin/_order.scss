@@ -1,0 +1,50 @@
+#order {
+	.order-title {
+		font-size: $fs-title;
+		margin-bottom: 12px;
+		color: $cl-blue-3;
+		text-transform: uppercase;
+	}
+	.table {
+		.heading,
+		.body {
+			margin: 0 !important;
+		}
+		.body {
+			align-items: center;
+			border-bottom: 1px solid $cl-grey;
+			&:hover {
+				background: $cl-white-3;
+				opacity: 0.85;
+			}
+			.col {
+				text-align: center;
+			}
+			.status {
+				span {
+					background: $cl-green-2;
+					border-radius: 6px;
+					color: #fff;
+					transition: 0.3s ease-in-out;
+					width: 100%;
+					display: block;
+					text-align: center;
+					padding: 3px 0;
+					cursor: default;
+
+					&:hover {
+						background: $cl-green-1;
+					}
+					&[payment="false"] {
+						background: $cl-red-2;
+						cursor: pointer;
+
+						&:hover {
+							background: $cl-red;
+						}
+					}
+				}
+			}
+		}
+	}
+}
