@@ -42,6 +42,7 @@ class News_model extends CI_Model {
         if (!(is_null($limit) && is_null($offset))) {
             $this->db->limit($limit, $offset);
         }
+        $this->db->order_by('News_ID DESC');
         $query = $this->db->get();
         return $query->result_array();
     }
