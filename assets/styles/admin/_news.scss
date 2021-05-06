@@ -29,6 +29,38 @@ h2 {
 	background: $cl-white-2;
 	border-radius: 12px;
 
+	.search-from {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		position: relative;
+		margin-bottom: 24px;
+
+		input {
+			padding: 12px 54px 12px 12px;
+			border: 1px solid $cl-grey;
+			border-radius: 5px;
+			outline: none;
+			width: 320px;
+
+			&:focus {
+				border: 1px solid $cl-blue-3;
+			}
+		}
+		button {
+			position: absolute;
+			top: 0;
+			right: 0;
+			padding: 12px;
+			font-size: $fs-sub-title;
+			background: transparent;
+			height: 100%;
+			border: none;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+		}
+	}
 	.heading {
 		text-transform: uppercase;
 		font-weight: 700;

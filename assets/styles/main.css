@@ -4754,6 +4754,50 @@ h2 {
   border-radius: 12px;
 }
 
+.table .search-from {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.table .search-from input {
+  padding: 12px 54px 12px 12px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  outline: none;
+  width: 320px;
+}
+
+.table .search-from input:focus {
+  border: 1px solid #17699a;
+}
+
+.table .search-from button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 12px;
+  font-size: 18px;
+  background: transparent;
+  height: 100%;
+  border: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .table .heading {
   text-transform: uppercase;
   font-weight: 700;
