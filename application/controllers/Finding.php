@@ -203,11 +203,48 @@ class Finding extends CI_Controller {
                 }
             }
 
-            //Lưu dữ diệu vào database
+            //Dữ liệu chi tiết chuyến bay
+            $flight_detail['departure_date'] = $order['departure_date'];
+            $flight_detail['departure_time'] = $order['departure_time'];
+            if ($order['type'] == 'roundtrip') {
+                $flight_detail['return_date'] = $order['return_date'];
+                $flight_detail['return_time'] = $order['return_time'];
+            }
+            $flight_detail['flight_detail'] = $order['flight_detail'];
+
+            //Dữ liệu thông tin thanh toán
+            $payment_info['adults'] = $order['adults'];
+            $payment_info['adults_price'] = $order['adults_price'];
+            $payment_info['adults_names'] = $order['adults_names'];
+            if (array_key_exists("children", $order)) {
+                $payment_info['children'] = $order['children'];
+                $payment_info['children_price'] = $order['children_price'];
+                $payment_info['children_names'] = $order['children_names'];
+            }
+            if (array_key_exists("infants", $order)) {
+                $payment_info['infants'] = $order['infants'];
+                $payment_info['infants_price'] = $order['infants_price'];
+                $payment_info['infants_names'] = $order['infants_names'];
+            }
+            $payment_info['total_price'] = $order['total_price'];
+            $payment_info['contact_name'] = $order['contact_name'];
+            $payment_info['contact_phone'] = $order['contact_phone'];
+            $payment_info['contact_mail'] = $order['contact_mail'];
+            $payment_info['contact_address'] = $order['contact_address'];
+            $payment_info['contact_note'] = $order['contact_note'];
+
+            //Dữ liệu lưu vào database
             $data = [
                 'Order_Code' => $order_code,
-                'Order_Detail' => json_encode($order),
-                'Customer_ID' => $customer['Customer_ID']
+                'Booking_DateTime' => $order['booking_datetime'],
+                'Type' => $order['type'],
+                'Origin' => $order['origin'],
+                'Destination' => $order['destination'],
+                'Flight_Detail' => json_encode($flight_detail),
+                'Customer_ID' => $customer['Customer_ID'],
+                'Payment_Method' => $order['payment_method'],
+                'Payment_Info' => json_encode($payment_info),
+                'Status' => 0
             ];
 
             if ($this->Database_model->InsertRecord('tbl_order', $data) > 0) {

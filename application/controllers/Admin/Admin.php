@@ -18,6 +18,7 @@ class Admin extends CI_Controller {
                 $data['news'] = $this->Database_model->GetRecords('tbl_news', '', 'News_ID DESC', 10, 0);
                 $data['number_of_news'] = $this->Database_model->GetRecords('tbl_news', '', '', '', '', true);
                 $data['number_of_customer'] = $this->Database_model->GetRecords('tbl_customer', '', '', '', '', true);
+                $data['number_of_order'] = $this->Database_model->GetRecords('tbl_order', '', '', '', '', true);
                 $this->load->view('admin/master_layout', $data, FALSE);
             } else {
                 redirect(base_url());

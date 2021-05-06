@@ -33,6 +33,12 @@ class Database_model extends CI_Model {
         $this->db->insert($table, $data);
         return $this->db->insert_id();
     }
+
+    public function UpdateRecord($table, $where, $column, $value) {
+        $this->db->where($where);
+        $this->db->set($column, $value);
+        return $this->db->update($table);
+    }
 }
                         
 /* End of file Database_model.php */
