@@ -44,7 +44,7 @@
                         </p>
                     </div>
                     <div class="col l-1">
-                        <span><?= $payment_info['total_price'] ?></span>
+                        <span><?= number_format($payment_info['total_price'], 0, ".", ".") ?></span>
                     </div>
                     <div class="col l-4">
                         <?php foreach ($flight_detail['flight_detail'] as $flight) { ?>

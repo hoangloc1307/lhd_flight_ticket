@@ -837,8 +837,11 @@ $(document).on('click', '.flight-price-choose button', function() {
         flightTicketChooseInfo['date'] = [];
         flightTicketChooseInfo['time'] = [];
         flightTicketChooseInfo['carrier'] = [];
+        flightTicketChooseInfo['adults_baseprice'] = [];
         flightTicketChooseInfo['adults_price'] = [];
+        flightTicketChooseInfo['children_baseprice'] = [];
         flightTicketChooseInfo['children_price'] = [];
+        flightTicketChooseInfo['infants_baseprice'] = [];
         flightTicketChooseInfo['infants_price'] = [];
         flightTicketChooseInfo['flight_details'] = [];
     }
@@ -853,12 +856,18 @@ $(document).on('click', '.flight-price-choose button', function() {
         '.flight-detail-item:first-child .title-detail + .flight-detail-wrap .detail-from span:nth-child(3) p:nth-child(2)'
     ).text());
     flightTicketChooseInfo['carrier'].push($(this).parents('.flight-item').attr('value'));
+    var adults_baseprice = parseInt($(this).parents('.flight-item').find('.detail-fare.adults .price').text()
+        .replaceAll('.', ''));
+    flightTicketChooseInfo['adults_baseprice'].push(adults_baseprice);
     var adults_price = parseInt($(this).parents('.flight-item').find('.detail-fare.adults .price').text()
             .replaceAll('.', '')) +
         parseInt($(this).parents('.flight-item').find('.detail-fare.adults .taxes').text().replaceAll('.',
             ''));
     flightTicketChooseInfo['adults_price'].push(adults_price);
     if (userInput['children'] > 0) {
+        var children_baseprice = parseInt($(this).parents('.flight-item').find('.detail-fare.children .price')
+            .text().replaceAll('.', ''));
+        flightTicketChooseInfo['children_baseprice'].push(children_baseprice);
         var children_price = parseInt($(this).parents('.flight-item').find('.detail-fare.children .price')
                 .text().replaceAll('.', '')) +
             parseInt($(this).parents('.flight-item').find('.detail-fare.children .taxes').text()
@@ -867,6 +876,9 @@ $(document).on('click', '.flight-price-choose button', function() {
         flightTicketChooseInfo['children_price'].push(children_price);
     }
     if (userInput['infants'] > 0) {
+        var infants_baseprice = parseInt($(this).parents('.flight-item').find('.detail-fare.infants .price')
+            .text().replaceAll('.', ''));
+        flightTicketChooseInfo['infants_baseprice'].push(infants_baseprice);
         var infants_price = parseInt($(this).parents('.flight-item').find('.detail-fare.infants .price')
                 .text().replaceAll('.', '')) +
             parseInt($(this).parents('.flight-item').find('.detail-fare.infants .taxes').text().replaceAll(
@@ -1133,6 +1145,8 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
                 bill['return_time'] = flightTicketChooseInfo['time'][1];
             }
             bill['adults'] = userInput['adults'];
+            bill['adults_baseprice'] = flightTicketChooseInfo["adults_baseprice"][0] + (flightTicketChooseInfo[
+                "adults_baseprice"][1] == undefined ? 0 : flightTicketChooseInfo["adults_baseprice"][1]);
             bill['adults_price'] = flightTicketChooseInfo["adults_price"][0] + (flightTicketChooseInfo[
                 "adults_price"][1] == undefined ? 0 : flightTicketChooseInfo["adults_price"][1]);
             bill['adults_names'] = [];
@@ -1142,6 +1156,10 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
             }
             if (userInput['children'] > 0) {
                 bill['children'] = userInput['children'];
+                bill['children_baseprice'] = flightTicketChooseInfo["children_baseprice"][0] + (
+                    flightTicketChooseInfo[
+                        "children_baseprice"][1] == undefined ? 0 : flightTicketChooseInfo[
+                        "children_baseprice"][1]);
                 bill['children_price'] = flightTicketChooseInfo["children_price"][0] + (flightTicketChooseInfo[
                     "children_price"][1] == undefined ? 0 : flightTicketChooseInfo["children_price"][1]);
                 bill['children_names'] = [];
@@ -1152,6 +1170,10 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
             }
             if (userInput['infants'] > 0) {
                 bill['infants'] = userInput['infants'];
+                bill['infants_baseprice'] = flightTicketChooseInfo["infants_baseprice"][0] + (
+                    flightTicketChooseInfo[
+                        "infants_baseprice"][1] == undefined ? 0 : flightTicketChooseInfo[
+                        "infants_baseprice"][1]);
                 bill['infants_price'] = flightTicketChooseInfo["infants_price"][0] + (flightTicketChooseInfo[
                     "infants_price"][1] == undefined ? 0 : flightTicketChooseInfo["infants_price"][1]);
                 bill['infants_names'] = [];
@@ -1276,6 +1298,7 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
                         priceHTML += "<p>VND</p></span></div>";
 
                         $('.info-table').html(priceHTML);
+                        toastr["success"](response);
                     } else {
                         toastr["error"](response);
                     }

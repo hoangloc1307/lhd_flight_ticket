@@ -34,7 +34,11 @@ class Login extends CI_Controller {
                         ]
                     ];
                     if ($account['Role'] == 1) {
-                        $sess_account['user_links'] = ['Vào trang quản trị' => base_url() . 'admin'] + $sess_account['user_links'];
+                        // $sess_account['user_links'] = ['Vào trang quản trị' => base_url() . 'admin'] + $sess_account['user_links'];
+                        $sess_account['user_links'] = [
+                            'Vào trang quản trị' => base_url() . 'admin',
+                            'Đăng xuất' => base_url() . 'login/logout'
+                        ];
                     }
                     $this->session->set_userdata($sess_account);
                     echo json_encode("OK");

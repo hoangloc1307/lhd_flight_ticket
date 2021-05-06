@@ -214,15 +214,18 @@ class Finding extends CI_Controller {
 
             //Dữ liệu thông tin thanh toán
             $payment_info['adults'] = $order['adults'];
+            $payment_info['adults_baseprice'] = $order['adults_baseprice'];
             $payment_info['adults_price'] = $order['adults_price'];
             $payment_info['adults_names'] = $order['adults_names'];
             if (array_key_exists("children", $order)) {
                 $payment_info['children'] = $order['children'];
+                $payment_info['children_baseprice'] = $order['children_baseprice'];
                 $payment_info['children_price'] = $order['children_price'];
                 $payment_info['children_names'] = $order['children_names'];
             }
             if (array_key_exists("infants", $order)) {
                 $payment_info['infants'] = $order['infants'];
+                $payment_info['infants_baseprice'] = $order['infants_baseprice'];
                 $payment_info['infants_price'] = $order['infants_price'];
                 $payment_info['infants_names'] = $order['infants_names'];
             }
