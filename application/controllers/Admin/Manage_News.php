@@ -2,11 +2,9 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Manage_News extends CI_Controller
-{
+class Manage_News extends CI_Controller {
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->load->model('admin/News_model');
     }
@@ -16,20 +14,18 @@ class Manage_News extends CI_Controller
     /*----------------------------------- BÀI VIẾT ----------------------------------*/
     /*-------------------------------------------------------------------------------*/
 
-    public function Index()
-    {
+    public function Index() {
         $data['title'] = 'Bài viết';
         $data['view'] = 'admin/news';
         $this->load->view('admin/master_layout', $data, FALSE);
     }
 
-    public function Fetch()
-    {
+    public function Fetch() {
         if ($this->input->is_ajax_request()) {
-            $page = $this->input->post('page');
+            $offset = $this->input->post('offset');
 
             $total = $this->News_model->TotalNews();
-            $news = $this->News_model->GetNewsWithCategory(5, ($page - 1) * 5);
+            $news = $this->News_model->GetNewsWithCategory(5, $offset);
 
             $data = [
                 'total' => $total,
@@ -39,8 +35,7 @@ class Manage_News extends CI_Controller
         echo json_encode($data);
     }
 
-    public function Add()
-    {
+    public function Add() {
         if (isset($_POST['submit'])) {
             $target_dir = "assets/images/news/";
             $target_file = $target_dir . basename($_FILES["image"]["name"]);
@@ -70,8 +65,7 @@ class Manage_News extends CI_Controller
         }
     }
 
-    public function Delete()
-    {
+    public function Delete() {
         if ($this->input->is_ajax_request()) {
             $id = $this->input->post('id');
 
@@ -92,24 +86,21 @@ class Manage_News extends CI_Controller
     /*------------------------------ DANH MỤC BÀI VIẾT ------------------------------*/
     /*-------------------------------------------------------------------------------*/
 
-    public function Category()
-    {
+    public function Category() {
         $data['view'] = 'admin/category';
         $data['title'] = 'Danh mục bài viết';
         $this->load->view('admin/master_layout', $data, false);
     }
 
 
-    public function FetchCategory()
-    {
+    public function FetchCategory() {
         if ($this->input->is_ajax_request()) {
             $categories = $this->News_model->GetNewsCategory();
             echo json_encode($categories);
         }
     }
 
-    public function AddCategory()
-    {
+    public function AddCategory() {
         if ($this->input->is_ajax_request()) {
             $name = $this->input->post('name');
             if ($this->News_model->AddNewsCategory($name)) {
@@ -123,8 +114,7 @@ class Manage_News extends CI_Controller
         echo json_encode($data);
     }
 
-    public function DeleteCategory()
-    {
+    public function DeleteCategory() {
         if ($this->input->is_ajax_request()) {
             $id = $this->input->post('id');
 
@@ -139,8 +129,7 @@ class Manage_News extends CI_Controller
         echo json_encode($data);
     }
 
-    public function EditCategory()
-    {
+    public function EditCategory() {
         if ($this->input->is_ajax_request()) {
             $id = $this->input->post('id');
 
@@ -154,8 +143,7 @@ class Manage_News extends CI_Controller
         echo json_encode($data);
     }
 
-    public function UpdateCategory()
-    {
+    public function UpdateCategory() {
         if ($this->input->is_ajax_request()) {
             $id = $this->input->post('id');
             $name = $this->input->post('name');
