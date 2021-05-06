@@ -8,7 +8,7 @@
                             <p><?= $number_of_news ?></p>
                             <p>Bài viết</p>
                         </div>
-                        <div class="icon col l-4">
+                        <div class="block_icon col l-4">
                             <i class="fas fa-newspaper"></i>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                             <p><?= $number_of_customer ?></p>
                             <p>Khách hàng</p>
                         </div>
-                        <div class="icon col l-4">
+                        <div class="block_icon col l-4">
                             <i class="fas fa-users"></i>
                         </div>
                     </div>
@@ -31,11 +31,11 @@
                 <div class="block">
                     <div class="row">
                         <div class="content col l-8">
-                            <p>212</p>
-                            <p>Vé đã bán</p>
+                            <p><?= $number_of_order ?></p>
+                            <p>Hoá đơn đặt vé</p>
                         </div>
-                        <div class="icon col l-4">
-                            <i class="fas fa-ticket-alt"></i>
+                        <div class="block_icon col l-4">
+                            <i class="fas fa-scroll"></i>
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                             <p>9</p>
                             <p>Đối tác</p>
                         </div>
-                        <div class="icon col l-4">
+                        <div class="block_icon col l-4">
                             <i class="fas fa-handshake"></i>
                         </div>
                     </div>

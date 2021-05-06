@@ -1164,8 +1164,9 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
             bill['total_price'] = priceTotal;
             bill['flight_detail'] = flightTicketChooseInfo['flight_details'];
             var d = new Date();
-            var booking_dt = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d
-                .getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+            var booking_dt = ZeroPad(d.getDate(), 10) + '-' + ZeroPad((d.getMonth() + 1), 10) + '-' + d
+                .getFullYear() + ' ' + ZeroPad(d.getHours(), 10) + ':' + ZeroPad(d.getMinutes(), 10) + ':' +
+                ZeroPad(d.getSeconds(), 10);
             bill['booking_datetime'] = booking_dt;
             bill['contact_name'] = $('input[name="name"]').val();
             bill['contact_phone'] = $('input[name="phone"]').val();
@@ -1173,8 +1174,6 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
             bill['contact_address'] = $('input[name="address"]').val();
             bill['contact_note'] = $('textarea[name="note"]').val();
             bill['payment_method'] = payment;
-            bill['status'] = false;
-            console.log
             $.ajax({
                 type: "POST",
                 url: "<?= base_url() ?>finding/createorder",
@@ -1183,7 +1182,6 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
                 },
                 dataType: "json",
                 success: function(response) {
-                    console.log(response);
                     if (response == 'Đặt vé thành công') {
                         //Chuyển giao diện
                         $('.choose').css('display', 'none');

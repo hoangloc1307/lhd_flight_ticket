@@ -13,9 +13,10 @@
 		.body {
 			align-items: center;
 			border-bottom: 1px solid $cl-grey;
+			font-size: 13px;
+
 			&:hover {
-				background: $cl-white-3;
-				opacity: 0.85;
+				background: $cl-grey;
 			}
 			.col {
 				text-align: center;
@@ -43,6 +44,16 @@
 							background: $cl-red;
 						}
 					}
+				}
+			}
+
+			.amount {
+				span {
+					font-weight: bold;
+					border-bottom: 1px dashed $cl-black;
+					display: block;
+					width: max-content;
+					margin: 0 auto 5px;
 				}
 			}
 		}

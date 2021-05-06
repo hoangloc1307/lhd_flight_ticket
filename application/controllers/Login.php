@@ -29,7 +29,7 @@ class Login extends CI_Controller {
                         'email' => $email,
                         'role' => $account['Role'],
                         'user_links' => [
-                            'Thông tin tài khoản' => '#',
+                            'Thông tin tài khoản' => base_url() . 'account',
                             'Đăng xuất' => base_url() . 'login/logout'
                         ]
                     ];
@@ -67,12 +67,6 @@ class Login extends CI_Controller {
                 echo json_encode("Tài khoản đã tồn tại");
             }
         }
-    }
-
-    public function Infouser() {
-        $data['view'] = 'home/info';
-        $data['title'] = 'Thông tin tài khoản';
-        $this->load->view('home/header_footer', $data);
     }
 }
         

@@ -4633,7 +4633,7 @@ section .title i {
   font-weight: 700;
 }
 
-.info-card .block .icon {
+.info-card .block .block_icon {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4645,7 +4645,7 @@ section .title i {
           justify-content: center;
 }
 
-.info-card .block .icon i {
+.info-card .block .block_icon i {
   font-size: 40px;
 }
 
@@ -5238,11 +5238,11 @@ h2 {
       -ms-flex-align: center;
           align-items: center;
   border-bottom: 1px solid #dddddd;
+  font-size: 13px;
 }
 
 #order .table .body:hover {
-  background: #f9f9f9;
-  opacity: 0.85;
+  background: #dddddd;
 }
 
 #order .table .body .col {
@@ -5273,6 +5273,16 @@ h2 {
 
 #order .table .body .status span[payment="false"]:hover {
   background: #f00;
+}
+
+#order .table .body .amount span {
+  font-weight: bold;
+  border-bottom: 1px dashed #333;
+  display: block;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin: 0 auto 5px;
 }
 
 .news-letter {
