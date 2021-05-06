@@ -17,14 +17,21 @@ class Login_model extends CI_Model {
             'Role' => 2
         ];
         $this->db->insert('tbl_account', $tbl_account);
-        if ($this->db->insert_id()) {
-            $tbl_customer = [
-                'Email' => $email,
-                'Phone' => $phone
-            ];
+        $result = $this->db->insert_id();
+        if ($result) {
+            $this->db->where('Email', $email);
+            $customer = $this->db->get('tbl_customer');
+            if (is_null($customer->row_array())) {
+                $tbl_customer = [
+                    'Email' => $email,
+                    'Phone' => $phone
+                ];
+                $this->db->insert('tbl_customer', $tbl_customer);
+                return $this->db->insert_id();
+            }
+            return 1;
         }
-        $this->db->insert('tbl_customer', $tbl_customer);
-        return $this->db->insert_id();
+        return 0;
     }
 }
                         

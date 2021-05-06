@@ -81,7 +81,7 @@
                 <li class="user">
                     <span>
                         <i class="fas fa-user"></i>
-                        <?php echo is_null($this->session->userdata('username')) ? "" : "<p>" . $this->session->userdata('username') . "</p>"; ?>
+                        <?php echo is_null($this->session->userdata('email')) ? "" : "<p>" . $this->session->userdata('email') . "</p>"; ?>
                         <i class="fas fa-angle-down"></i>
                     </span>
                     <ul class="menu-user">
