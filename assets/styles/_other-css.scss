@@ -1,103 +1,199 @@
 /*==================== Button back to top ====================*/
 .to-top {
-  position: fixed;
-  right: 15px;
-  bottom: 15px;
-  width: 50px;
-  height: 50px;
-  background: $cl-black;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: $fs-title;
-  z-index: 99;
-  color: $cl-white-2;
-  border: none;
-  outline: none;
-  opacity: 0;
-  pointer-events: none;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-  transform: translateY(20px);
+	position: fixed;
+	right: 15px;
+	bottom: 15px;
+	width: 50px;
+	height: 50px;
+	background: $cl-black;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: $fs-title;
+	z-index: 99;
+	color: $cl-white-2;
+	border: none;
+	outline: none;
+	opacity: 0;
+	pointer-events: none;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+	transform: translateY(20px);
 
-  &:hover {
-    background: $cl-blue-3;
-  }
+	&:hover {
+		background: $cl-blue-3;
+	}
 
-  &.show {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
+	&.show {
+		opacity: 1;
+		pointer-events: auto;
+		transform: translateY(0);
+	}
 }
 /*==================== End Button back to top ====================*/
 
 /*==================== Loader ====================*/
 .loader-container {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #fff;
-  z-index: 9999;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #fff;
+	z-index: 9999;
 
-  &.hide {
-    display: none;
-  }
+	&.hide {
+		display: none;
+	}
 
-  .loader {
-    position: relative;
-    width: 120px;
-    height: 120px;
+	.loader {
+		position: relative;
+		width: 120px;
+		height: 120px;
 
-    span {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      transform: rotate(calc(var(--i) * 18deg));
+		span {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			transform: rotate(calc(var(--i) * 18deg));
 
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 15px;
-        height: 15px;
-        background: $cl-blue-3;
-        border-radius: 50%;
-        animation: loading 2s linear infinite;
-        animation-delay: calc(0.1s * var(--i));
-        transform: scale(0);
-      }
-    }
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 15px;
+				height: 15px;
+				background: $cl-blue-3;
+				border-radius: 50%;
+				animation: loading 2s linear infinite;
+				animation-delay: calc(0.1s * var(--i));
+				transform: scale(0);
+			}
+		}
 
-    .plane {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      animation: loading_plane 2s linear infinite -1s;
+		.plane {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			animation: loading_plane 2s linear infinite -1s;
 
-      &::before {
-        content: "\f072";
-        font-family: "Font Awesome 5 Free";
-        position: absolute;
-        top: 70px;
-        left: 80px;
-        color: $cl-blue-3;
-        font-size: 60px;
-        font-weight: 900;
-        transform: rotate(135deg);
-      }
-    }
-  }
+			&::before {
+				content: "\f072";
+				font-family: "Font Awesome 5 Free";
+				position: absolute;
+				top: 70px;
+				left: 80px;
+				color: $cl-blue-3;
+				font-size: 60px;
+				font-weight: 900;
+				transform: rotate(135deg);
+			}
+		}
+	}
 }
 /*==================== End Loader ====================*/
+
+/*==================== Form Search ====================*/
+.search-form {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	position: relative;
+	margin-bottom: 24px;
+
+	input {
+		padding: 12px 54px 12px 12px;
+		border: 1px solid $cl-grey;
+		border-radius: 5px;
+		outline: none;
+		width: 320px;
+
+		&:focus {
+			border: 1px solid $cl-blue-3;
+		}
+	}
+	button {
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 12px;
+		font-size: $fs-sub-title;
+		background: transparent;
+		height: 100%;
+		border: none;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		color: $cl-blue-3;
+	}
+}
+/*==================== End Form Search ====================*/
+
+/*==================== Form Them moi ====================*/
+.form-add {
+	margin-bottom: 24px;
+	padding: 12px;
+
+	input,
+	button {
+		padding: 8px 12px;
+		border: 1px solid $cl-grey;
+		transition: 0.3s ease-in-out;
+		border-radius: 10px;
+		font-size: $fs-text;
+		letter-spacing: 1.3px;
+	}
+	input {
+		width: 300px;
+		outline: none;
+		color: $cl-grey-2;
+		&:focus {
+			border: 1px solid $cl-blue-1;
+			color: $cl-blue-3;
+			box-shadow: 0 0 1px $cl-blue-5;
+		}
+	}
+	button {
+		background: $cl-grey;
+		font-weight: 500;
+		cursor: pointer;
+
+		&:hover {
+			background: $cl-blue-3;
+			border: 1px solid $cl-blue-1;
+			color: $cl-white-2;
+		}
+	}
+}
+
+/*==================== End Form Them moi ====================*/
+
+/*==================== Button Submit ====================*/
+.button-submit {
+	padding: 12px 24px;
+	background: $cl-green-1;
+	color: $cl-white-2;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	font-weight: 700;
+	transition: 0.2s ease-in-out;
+	width: max-content;
+	margin: 12px auto;
+	display: block;
+
+	&:hover {
+		background: $cl-green-2;
+	}
+}
+
+/*==================== End Button Submit ====================*/

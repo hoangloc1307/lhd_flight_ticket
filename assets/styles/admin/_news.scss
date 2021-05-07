@@ -29,39 +29,6 @@ h2 {
 	background: $cl-white-2;
 	border-radius: 12px;
 
-	.search-form {
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
-		position: relative;
-		margin-bottom: 24px;
-
-		input {
-			padding: 12px 54px 12px 12px;
-			border: 1px solid $cl-grey;
-			border-radius: 5px;
-			outline: none;
-			width: 320px;
-
-			&:focus {
-				border: 1px solid $cl-blue-3;
-			}
-		}
-		button {
-			position: absolute;
-			top: 0;
-			right: 0;
-			padding: 12px;
-			font-size: $fs-sub-title;
-			background: transparent;
-			height: 100%;
-			border: none;
-			cursor: pointer;
-			display: flex;
-			align-items: center;
-			color: $cl-blue-3;
-		}
-	}
 	.heading {
 		text-transform: uppercase;
 		font-weight: 700;
@@ -202,23 +169,7 @@ h2 {
 		}
 	}
 }
-.button-submit {
-	padding: 12px 24px;
-	background: $cl-green-1;
-	color: $cl-white-2;
-	border-radius: 5px;
-	border: none;
-	cursor: pointer;
-	font-weight: 700;
-	transition: 0.2s ease-in-out;
-	width: max-content;
-	margin: 12px auto;
-	display: block;
 
-	&:hover {
-		background: $cl-green-2;
-	}
-}
 
 #edit_modal {
 	position: fixed;
@@ -331,43 +282,4 @@ h2 {
 	}
 }
 
-.category-add {
-	margin-bottom: 24px;
-	padding: 12px;
-
-	input,
-	button {
-		padding: 12px;
-		border: 1px solid $cl-grey;
-		transition: 0.3s ease-in-out;
-		border-radius: 10px;
-		font-size: $fs-text;
-		letter-spacing: 1.3px;
-	}
-	input {
-		width: 300px;
-		outline: none;
-		color: $cl-grey-2;
-		&:focus {
-			border: 1px solid $cl-blue-1;
-			color: $cl-blue-3;
-			box-shadow: 0 0 1px $cl-blue-5;
-		}
-		&:focus + button {
-			color: $cl-white-2;
-			background: $cl-blue-3;
-		}
-	}
-	button {
-		background: $cl-grey;
-		font-weight: 500;
-		cursor: pointer;
-
-		&:hover {
-			background: $cl-blue-3;
-			border: 1px solid $cl-blue-1;
-			color: $cl-white-2;
-		}
-	}
-}
 // End

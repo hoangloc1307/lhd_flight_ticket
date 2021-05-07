@@ -1,60 +1,55 @@
-#order {
-	.order-title {
-		font-size: $fs-title;
-		margin-bottom: 12px;
-		color: $cl-blue-3;
-		text-transform: uppercase;
+.order {
+	.heading,
+	.body {
+		margin: 0 !important;
 	}
-	.table {
-		.heading,
-		.body {
-			margin: 0 !important;
-		}
-		.body {
-			align-items: center;
-			border-bottom: 1px solid $cl-grey;
-			font-size: 13px;
+	.body {
+		align-items: center;
+		border-bottom: 1px solid $cl-grey;
+		font-size: $fs-detail;
+		line-height: 1.8;
+		text-decoration: none;
+		color: unset;
 
-			&:hover {
-				background: $cl-grey;
-			}
-			.col {
+		&:hover {
+			background: $cl-grey;
+		}
+		.col {
+			text-align: center;
+		}
+		.status {
+			span {
+				background: $cl-green-2;
+				border-radius: 6px;
+				color: #fff;
+				transition: 0.3s ease-in-out;
+				width: 100%;
+				display: block;
 				text-align: center;
-			}
-			.status {
-				span {
-					background: $cl-green-2;
-					border-radius: 6px;
-					color: #fff;
-					transition: 0.3s ease-in-out;
-					width: 100%;
-					display: block;
-					text-align: center;
-					padding: 3px 0;
-					cursor: default;
+				padding: 3px 0;
+				cursor: default;
+
+				&:hover {
+					background: $cl-green-1;
+				}
+				&[payment="false"] {
+					background: $cl-red-2;
+					cursor: pointer;
 
 					&:hover {
-						background: $cl-green-1;
-					}
-					&[payment="false"] {
-						background: $cl-red-2;
-						cursor: pointer;
-
-						&:hover {
-							background: $cl-red;
-						}
+						background: $cl-red;
 					}
 				}
 			}
+		}
 
-			.amount {
-				span {
-					font-weight: bold;
-					border-bottom: 1px dashed $cl-black;
-					display: block;
-					width: max-content;
-					margin: 0 auto 5px;
-				}
+		.amount {
+			span {
+				font-weight: bold;
+				border-bottom: 1px dashed $cl-black;
+				display: block;
+				width: max-content;
+				margin: 0 auto 5px;
 			}
 		}
 	}

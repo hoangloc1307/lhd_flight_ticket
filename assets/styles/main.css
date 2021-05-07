@@ -774,6 +774,119 @@ html {
 }
 
 /*==================== End Loader ====================*/
+/*==================== Form Search ====================*/
+.search-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.search-form input {
+  padding: 12px 54px 12px 12px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  outline: none;
+  width: 320px;
+}
+
+.search-form input:focus {
+  border: 1px solid #17699a;
+}
+
+.search-form button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 12px;
+  font-size: 18px;
+  background: transparent;
+  height: 100%;
+  border: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #17699a;
+}
+
+/*==================== End Form Search ====================*/
+/*==================== Form Them moi ====================*/
+.form-add {
+  margin-bottom: 24px;
+  padding: 12px;
+}
+
+.form-add input,
+.form-add button {
+  padding: 8px 12px;
+  border: 1px solid #dddddd;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  border-radius: 10px;
+  font-size: 16px;
+  letter-spacing: 1.3px;
+}
+
+.form-add input {
+  width: 300px;
+  outline: none;
+  color: #777777;
+}
+
+.form-add input:focus {
+  border: 1px solid #89a9bc;
+  color: #17699a;
+  -webkit-box-shadow: 0 0 1px #034166;
+          box-shadow: 0 0 1px #034166;
+}
+
+.form-add button {
+  background: #dddddd;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.form-add button:hover {
+  background: #17699a;
+  border: 1px solid #89a9bc;
+  color: #fff;
+}
+
+/*==================== End Form Them moi ====================*/
+/*==================== Button Submit ====================*/
+.button-submit {
+  padding: 12px 24px;
+  background: #2ecc71;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin: 12px auto;
+  display: block;
+}
+
+.button-submit:hover {
+  background: #27ae60;
+}
+
+/*==================== End Button Submit ====================*/
 /*==================== Menu PC ====================*/
 header {
   position: -webkit-sticky;
@@ -4771,51 +4884,6 @@ h2 {
   border-radius: 12px;
 }
 
-.table .search-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: relative;
-  margin-bottom: 24px;
-}
-
-.table .search-form input {
-  padding: 12px 54px 12px 12px;
-  border: 1px solid #dddddd;
-  border-radius: 5px;
-  outline: none;
-  width: 320px;
-}
-
-.table .search-form input:focus {
-  border: 1px solid #17699a;
-}
-
-.table .search-form button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 12px;
-  font-size: 18px;
-  background: transparent;
-  height: 100%;
-  border: none;
-  cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: #17699a;
-}
-
 .table .heading {
   text-transform: uppercase;
   font-weight: 700;
@@ -4964,27 +5032,6 @@ h2 {
   resize: none;
 }
 
-.button-submit {
-  padding: 12px 24px;
-  background: #2ecc71;
-  color: #fff;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-weight: 700;
-  -webkit-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  margin: 12px auto;
-  display: block;
-}
-
-.button-submit:hover {
-  background: #27ae60;
-}
-
 #edit_modal {
   position: fixed;
   z-index: 9999;
@@ -5103,52 +5150,6 @@ h2 {
   display: block;
 }
 
-.category-add {
-  margin-bottom: 24px;
-  padding: 12px;
-}
-
-.category-add input,
-.category-add button {
-  padding: 12px;
-  border: 1px solid #dddddd;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-  border-radius: 10px;
-  font-size: 16px;
-  letter-spacing: 1.3px;
-}
-
-.category-add input {
-  width: 300px;
-  outline: none;
-  color: #777777;
-}
-
-.category-add input:focus {
-  border: 1px solid #89a9bc;
-  color: #17699a;
-  -webkit-box-shadow: 0 0 1px #034166;
-          box-shadow: 0 0 1px #034166;
-}
-
-.category-add input:focus + button {
-  color: #fff;
-  background: #17699a;
-}
-
-.category-add button {
-  background: #dddddd;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.category-add button:hover {
-  background: #17699a;
-  border: 1px solid #89a9bc;
-  color: #fff;
-}
-
 .why {
   background: #fff;
 }
@@ -5247,35 +5248,31 @@ h2 {
   border-radius: 5px;
 }
 
-#order .order-title {
-  font-size: 24px;
-  margin-bottom: 12px;
-  color: #17699a;
-  text-transform: uppercase;
-}
-
-#order .table .heading,
-#order .table .body {
+.order .heading,
+.order .body {
   margin: 0 !important;
 }
 
-#order .table .body {
+.order .body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   border-bottom: 1px solid #dddddd;
-  font-size: 13px;
+  font-size: 14px;
+  line-height: 1.8;
+  text-decoration: none;
+  color: unset;
 }
 
-#order .table .body:hover {
+.order .body:hover {
   background: #dddddd;
 }
 
-#order .table .body .col {
+.order .body .col {
   text-align: center;
 }
 
-#order .table .body .status span {
+.order .body .status span {
   background: #27ae60;
   border-radius: 6px;
   color: #fff;
@@ -5288,20 +5285,20 @@ h2 {
   cursor: default;
 }
 
-#order .table .body .status span:hover {
+.order .body .status span:hover {
   background: #2ecc71;
 }
 
-#order .table .body .status span[payment="false"] {
+.order .body .status span[payment="false"] {
   background: #e74c3c;
   cursor: pointer;
 }
 
-#order .table .body .status span[payment="false"]:hover {
+.order .body .status span[payment="false"]:hover {
   background: #f00;
 }
 
-#order .table .body .amount span {
+.order .body .amount span {
   font-weight: bold;
   border-bottom: 1px dashed #333;
   display: block;
@@ -5309,6 +5306,68 @@ h2 {
   width: -moz-max-content;
   width: max-content;
   margin: 0 auto 5px;
+}
+
+form .form-partner {
+  margin-bottom: 12px;
+}
+
+form .form-partner label {
+  font-weight: 600;
+  color: #777;
+  position: relative;
+  padding-right: 12px;
+}
+
+form .form-partner label::after {
+  position: absolute;
+  content: "*";
+  top: 0;
+  right: 0;
+  color: #f00;
+  font-size: 12px;
+}
+
+form .form-partner #partner-name {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 12px;
+  outline: none;
+  border: 1px solid #dddddd;
+}
+
+form .form-partner .partner-thumb {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  border: 1px solid #dddddd;
+  padding: 12px;
+  margin: 12px auto;
+}
+
+form .form-partner .partner-thumb img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+form .form-partner #partner-image {
+  margin-top: 12px;
+}
+
+form .button-submit {
+  padding: 8px 12px;
+}
+
+.partner .list-partner {
+  border-left: 1px solid #dddddd;
+}
+
+.partner .heading {
+  margin: 0 3px;
 }
 
 .news-letter {

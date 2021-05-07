@@ -27,6 +27,10 @@ class Order extends CI_Controller {
             }
         }
     }
+    public function ViewDetailOrder() {
+        $data['view'] = 'admin/order_detail';
+        $this->load->view('admin/master_layout', $data);
+    }
 }
         
     /* End of file  Login.php */
