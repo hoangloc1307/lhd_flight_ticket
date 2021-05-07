@@ -54,6 +54,7 @@ $route['default_controller'] = 'home';
 //Home
 $route['news'] = 'news/view';
 $route['news/(:any)'] = 'news/view/$1';
+// $route['news/getmorenews'] = 'news/getmorenews';
 //Admin
 $route['admin'] = 'admin/admin';
 $route['admin/news'] = 'admin/manage_news';

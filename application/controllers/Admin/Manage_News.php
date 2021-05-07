@@ -80,22 +80,34 @@ class Manage_News extends CI_Controller {
         echo json_encode($data);
     }
 
-    public function Search () {
+    public function Search() {
         if ($this->input->is_ajax_request()) {
             $keyword = $this->input->post("keyword");
             $this->load->model("Database_model");
-            $where = "Name LIKE '" . $keyword . " %' or Name LIKE '% ". $keyword . " %' or Name LIKE'% ". $keyword . "' or Name LIKE '". $keyword . "'";
-            $result = $this->Database_model->GetRecords("tbl_news", $where, "News_ID DESC","","");
+            $where = "Name LIKE '" . $keyword . " %' or Name LIKE '% " . $keyword . " %' or Name LIKE'% " . $keyword . "' or Name LIKE '" . $keyword . "'";
+            $result = $this->Database_model->GetRecords("tbl_news", $where, "News_ID DESC", "", "");
             if (!empty($result)) {
                 echo json_encode($result);
-           }
-           else {
-               echo json_encode("Không tìm thấy kết quả!");
-           }
+            } else {
+                echo json_encode("Không tìm thấy kết quả!");
+            }
         }
     }
-    
 
+    public function GetMoreNews() {
+        if ($this->input->is_ajax_request()) {
+            $offset = $this->input->post('offset');
+            $result = $this->News_model->GetNews(null, null, 9, $offset);
+            $total = $this->News_model->TotalNews();
+            if (!empty($result)) {
+                $data = [
+                    'total' => $total,
+                    'news' => $result
+                ];
+                echo json_encode($data);
+            }
+        }
+    }
 
 
     /*-------------------------------------------------------------------------------*/

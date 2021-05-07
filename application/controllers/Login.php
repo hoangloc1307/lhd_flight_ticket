@@ -12,7 +12,6 @@ class Login extends CI_Controller {
         $data['view'] = 'login';
         $data['title'] = 'Đăng nhập';
         $this->load->model('Admin/JSON_model');
-        $data['whychooseus'] = json_decode($this->JSON_model->get('WhyChooseUs')['Text'], true);
         $data['websitesetting'] = json_decode($this->JSON_model->get('WebsiteSetting')['Text'], true);
         $this->load->view('home/header_footer', $data);
     }
