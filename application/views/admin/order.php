@@ -34,7 +34,7 @@
 			$flight_detail = json_decode($item['Flight_Detail'], true);
 			$payment_info = json_decode($item['Payment_Info'], true);
 			?>
-			<a href="#" class="row body">
+			<a href="<?= base_url() . "admin/order/" . $item["Order_ID"]?>" class="row body">
 				<div class="col l-1">
 					<span><?= $item['Order_Code'] ?></span>
 				</div>
