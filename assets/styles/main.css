@@ -5308,6 +5308,317 @@ h2 {
   margin: 0 auto 5px;
 }
 
+.title-order-detail span:last-child {
+  color: #f29018;
+}
+
+.order-detail .title {
+  margin-bottom: 12px;
+  padding: 12px 24px;
+}
+
+.order-detail .info-flight,
+.order-detail .info-contact {
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  border-radius: 10px;
+  position: relative;
+}
+
+.order-detail .info-flight::after,
+.order-detail .info-contact::after {
+  content: "";
+  position: absolute;
+  border-right: 2px dashed #dddddd;
+  top: 7px;
+  bottom: 7px;
+  right: -1px;
+}
+
+.order-detail .info-flight .title,
+.order-detail .info-contact .title {
+  background: linear-gradient(80deg, #17699a, transparent);
+  color: #fff;
+  border-top-left-radius: 6px;
+}
+
+.order-detail .info-flight .title .from-to,
+.order-detail .info-contact .title .from-to {
+  font-weight: 700;
+  padding: 12px;
+}
+
+.order-detail .info-flight .class,
+.order-detail .info-contact .class {
+  padding: 12px 24px;
+  margin-bottom: 24px;
+}
+
+.order-detail .info-flight .class i,
+.order-detail .info-contact .class i {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  color: #17699a;
+}
+
+.order-detail .info-flight .class span:nth-child(2),
+.order-detail .info-contact .class span:nth-child(2) {
+  font-size: 18px;
+  color: #17699a;
+  font-weight: 700;
+}
+
+.order-detail .info-flight .class span:nth-child(3),
+.order-detail .info-contact .class span:nth-child(3) {
+  border-left: 1px solid #dddddd;
+  padding: 0 12px;
+  border-right: 1px solid #dddddd;
+}
+
+.order-detail .info-flight .flight-wrap,
+.order-detail .info-flight .depart-arrive,
+.order-detail .info-contact .flight-wrap,
+.order-detail .info-contact .depart-arrive {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 12px 24px;
+  margin-bottom: 24px;
+}
+
+.order-detail .info-flight .flight-wrap .base-from-to h6,
+.order-detail .info-flight .depart-arrive .base-from-to h6,
+.order-detail .info-contact .flight-wrap .base-from-to h6,
+.order-detail .info-contact .depart-arrive .base-from-to h6 {
+  font-size: 24px;
+  color: #333;
+}
+
+.order-detail .info-flight .flight-wrap .base-from-to p,
+.order-detail .info-flight .depart-arrive .base-from-to p,
+.order-detail .info-contact .flight-wrap .base-from-to p,
+.order-detail .info-contact .depart-arrive .base-from-to p {
+  color: #777777;
+}
+
+.order-detail .info-flight .flight-wrap i,
+.order-detail .info-flight .depart-arrive i,
+.order-detail .info-contact .flight-wrap i,
+.order-detail .info-contact .depart-arrive i {
+  margin: 0 50px;
+  text-align: center;
+  font-size: 22px;
+  color: #777777;
+}
+
+.order-detail .info-flight .depart-arrive div p,
+.order-detail .info-contact .depart-arrive div p {
+  color: #777777;
+}
+
+.order-detail .info-flight .depart-arrive div span,
+.order-detail .info-contact .depart-arrive div span {
+  font-weight: 700;
+  font-size: 18px;
+  color: #333;
+}
+
+.order-detail .info-flight .depart-arrive div span:nth-child(2),
+.order-detail .info-contact .depart-arrive div span:nth-child(2) {
+  padding-right: 12px;
+}
+
+.order-detail .info-flight .depart-arrive div span:last-child,
+.order-detail .info-contact .depart-arrive div span:last-child {
+  padding-left: 12px;
+  border-left: 1px solid #dddddd;
+}
+
+.order-detail .info-user {
+  padding: 0;
+  background: #fff;
+  border-radius: 10px;
+  margin: 0;
+}
+
+.order-detail .info-user .title {
+  background: linear-gradient(-80deg, #17699a, transparent);
+  border-top-right-radius: 6px;
+}
+
+.order-detail .info-user .title a {
+  color: #fff;
+  display: block;
+  text-align: right;
+  padding: 12px;
+}
+
+.order-detail .info-user .title a:hover {
+  text-decoration: underline;
+}
+
+.order-detail .info-user .code {
+  margin-bottom: 24px;
+  padding: 0 24px;
+}
+
+.order-detail .info-user .code span {
+  color: #777777;
+}
+
+.order-detail .info-user .code .order-datetime span:last-child {
+  border-left: 1px solid #dddddd;
+  padding-left: 6px;
+}
+
+.order-detail .info-user .traveller-info {
+  padding: 0 24px;
+  margin-bottom: 24px;
+  overflow-y: auto;
+  height: 200px;
+}
+
+.order-detail .info-user .traveller-info .col {
+  margin: 0;
+}
+
+.order-detail .info-user .traveller-info h6 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.order-detail .info-user .traveller-info .heading {
+  color: #777777;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.order-detail .info-user .traveller-info .heading .col:last-of-type {
+  text-align: right;
+}
+
+.order-detail .info-user .traveller-info .body .col {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.order-detail .info-user .traveller-info .body .col:last-of-type {
+  text-align: right;
+}
+
+.order-detail .flight-detail {
+  background: #fff;
+  margin-top: 24px;
+  border-radius: 10px;
+}
+
+.order-detail .flight-detail .flight-detail-wrap {
+  padding: 0px 24px;
+}
+
+.order-detail .flight-detail .flight-detail-wrap .row {
+  text-align: center;
+}
+
+.order-detail .flight-detail .flight-detail-wrap h6 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.order-detail .flight-detail .flight-detail-wrap .heading {
+  border-bottom: 1px solid #dddddd;
+}
+
+.order-detail .info-contact,
+.order-detail .payment-detail {
+  margin: 24px 0;
+  background: #fff;
+  padding: 12px 24px;
+  border-radius: 10px;
+}
+
+.order-detail .info-contact h6,
+.order-detail .payment-detail h6 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.order-detail .info-contact p,
+.order-detail .payment-detail p {
+  font-size: 14px;
+}
+
+.order-detail .info-contact p:first-child,
+.order-detail .payment-detail p:first-child {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #777777;
+}
+
+.order-detail .info-contact p:last-child,
+.order-detail .payment-detail p:last-child {
+  border-bottom: 1px solid #dddddd;
+  padding-bottom: 12px;
+}
+
+.order-detail .payment-detail .col {
+  margin: 0;
+}
+
+.order-detail .payment-detail .heading {
+  color: #777777;
+  font-weight: 700;
+}
+
+.order-detail .payment-detail .heading .col:last-child {
+  text-align: right;
+}
+
+.order-detail .payment-detail .body .col {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.order-detail .payment-detail .body .col:last-child {
+  text-align: right;
+}
+
+.order-detail .payment-detail .footer {
+  margin-top: 24px;
+  padding: 12px 0;
+  border-top: 1px solid #dddddd;
+}
+
+.order-detail .payment-detail .footer .bill {
+  font-size: 18px;
+  color: #333;
+  font-weight: 700;
+}
+
+.order-detail .payment-detail .footer .total-price {
+  text-align: right;
+}
+
+.order-detail .payment-detail .footer .total-price span {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f29018;
+}
+
+.order-detail .payment-detail .footer .total-price span:last-child {
+  color: #777777;
+}
+
 form .form-partner {
   margin-bottom: 12px;
 }
