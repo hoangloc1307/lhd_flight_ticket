@@ -9,11 +9,12 @@ class News_model extends CI_Model {
     2 - Trả về bài viết với link được chỉ định nếu không chỉ định $category.
     3 - Trả về danh sách các bài viết có cùng danh mục nếu cả hai biến được chỉ định.
     */
-    public function GetNews($link = null, $category = null, $limit = null) {
+    public function GetNews($link = null, $category = null, $limit = null, $offset = 0) {
         if (is_null($link)) {
             if (!is_null($limit)) {
-                $this->db->limit($limit, 0);
+                $this->db->limit($limit, $offset);
             }
+            $this->db->order_by('News_ID', 'DESC');
             $query = $this->db->get('tbl_news');
             return $query->result_array();
         } else {

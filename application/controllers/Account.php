@@ -13,7 +13,6 @@ class Account extends CI_Controller {
     public function index() {
         $data['view'] = 'home/info';
         $data['title'] = 'Thông tin tài khoản';
-        $data['whychooseus'] = json_decode($this->JSON_model->get('WhyChooseUs')['Text'], true);
         $data['websitesetting'] = json_decode($this->JSON_model->get('WebsiteSetting')['Text'], true);
 
 

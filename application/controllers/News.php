@@ -2,22 +2,19 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class News extends CI_Controller
-{
+class News extends CI_Controller {
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->load->model('Admin/News_model');
     }
 
-    public function View($link = null)
-    {
+    public function View($link = null) {
         //Nếu không chỉ định link sẽ hiển thị tất cả bài viết.
         if (is_null($link)) {
             $data['title'] = 'Bài viết';
             $data['view'] = 'home/news';
-            $data['news'] = $this->News_model->GetNews(); //Lấy tất cả bài viết.
+            $data['news'] = $this->News_model->GetNews(null, null, 9); //Lấy tất cả bài viết.
             $data['news_category'] = $this->News_model->GetNewsCategory();
         } else {
             //Lấy danh mục với link chỉ định.
@@ -50,6 +47,9 @@ class News extends CI_Controller
                 $data['news'] = $news;
             }
         }
+
+        $this->load->model('Admin/JSON_model');
+        $data['websitesetting'] = json_decode($this->JSON_model->get('WebsiteSetting')['Text'], true);
 
         $this->load->view('home/header_footer', $data, FALSE);
     }
