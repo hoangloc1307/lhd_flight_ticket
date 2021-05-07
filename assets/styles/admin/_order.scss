@@ -54,3 +54,269 @@
 		}
 	}
 }
+.title-order-detail {
+	span:last-child {
+		color: $cl-orange-3;
+	}
+}
+.order-detail {
+	.title {
+		margin-bottom: 12px;
+		padding: 12px 24px;
+	}
+	.info-flight,
+	.info-contact {
+		padding: 0;
+		margin: 0;
+		background: $cl-white-2;
+		border-radius: 10px;
+		position: relative;
+
+		&::after {
+			content: "";
+			position: absolute;
+			border-right: 2px dashed $cl-grey;
+			top: 7px;
+			bottom: 7px;
+			right: -1px;
+		}
+		.title {
+			background: linear-gradient(80deg, $cl-blue-3, transparent);
+			color: $cl-white-2;
+			border-top-left-radius: 6px;
+
+			.from-to {
+				font-weight: 700;
+				padding: 12px;
+			}
+		}
+		.class {
+			padding: 12px 24px;
+			margin-bottom: 24px;
+			i {
+				transform: rotate(-90deg);
+				color: $cl-blue-3;
+			}
+			span {
+				&:nth-child(2) {
+					font-size: $fs-sub-title;
+					color: $cl-blue-3;
+					font-weight: 700;
+				}
+				&:nth-child(3) {
+					border-left: 1px solid $cl-grey;
+					padding: 0 12px;
+					border-right: 1px solid $cl-grey;
+				}
+			}
+		}
+		.flight-wrap,
+		.depart-arrive {
+			display: flex;
+			align-items: center;
+			padding: 12px 24px;
+			margin-bottom: 24px;
+
+			.base-from-to {
+				h6 {
+					font-size: $fs-title;
+					color: $cl-black;
+				}
+				p {
+					color: $cl-grey-2;
+				}
+			}
+			i {
+				margin: 0 50px;
+				text-align: center;
+				font-size: $fs-small-title;
+				color: $cl-grey-2;
+			}
+		}
+		.depart-arrive {
+			div {
+				p {
+					color: $cl-grey-2;
+				}
+				span {
+					font-weight: 700;
+					font-size: $fs-sub-title;
+					color: $cl-black;
+					&:nth-child(2) {
+						padding-right: 12px;
+					}
+
+					&:last-child {
+						padding-left: 12px;
+						border-left: 1px solid $cl-grey;
+					}
+				}
+			}
+		}
+	}
+	.info-user {
+		padding: 0;
+		background: $cl-white-2;
+		border-radius: 10px;
+		margin: 0;
+		.title {
+			background: linear-gradient(-80deg, $cl-blue-3, transparent);
+			border-top-right-radius: 6px;
+
+			a {
+				color: $cl-white-2;
+				display: block;
+				text-align: right;
+				padding: 12px;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+		.code {
+			margin-bottom: 24px;
+			padding: 0 24px;
+
+			span {
+				color: $cl-grey-2;
+			}
+			.order-datetime {
+				span:last-child {
+					border-left: 1px solid $cl-grey;
+					padding-left: 6px;
+				}
+			}
+		}
+		.traveller-info {
+			padding: 0 24px;
+			margin-bottom: 24px;
+			overflow-y: auto;
+			height: 200px;
+			.col {
+				margin: 0;
+			}
+
+			h6 {
+				font-size: $fs-sub-title;
+				font-weight: 700;
+				color: $cl-black;
+				margin-bottom: 12px;
+			}
+			.heading {
+				color: $cl-grey-2;
+				font-weight: 700;
+				margin-bottom: 12px;
+
+				.col:last-of-type {
+					text-align: right;
+				}
+			}
+			.body {
+				.col {
+					font-size: $fs-detail;
+					line-height: 1.6;
+
+					&:last-of-type {
+						text-align: right;
+					}
+				}
+			}
+		}
+	}
+
+	.flight-detail {
+		background: $cl-white-2;
+		margin-top: 24px;
+		border-radius: 10px;
+
+		.flight-detail-wrap {
+			padding: 0px 24px;
+
+			.row {
+				text-align: center;
+			}
+			h6 {
+				font-size: 18px;
+				font-weight: 700;
+				color: #333;
+				margin-bottom: 12px;
+			}
+
+			.heading {
+				border-bottom: 1px solid $cl-grey;
+			}
+		}
+	}
+
+	.info-contact,
+	.payment-detail {
+		margin: 24px 0;
+		background: $cl-white-2;
+		padding: 12px 24px;
+		border-radius: 10px;
+
+		h6 {
+			font-size: $fs-sub-title;
+			font-weight: 700;
+			color: $cl-black;
+			margin-bottom: 12px;
+		}
+		p {
+			font-size: $fs-detail;
+			&:first-child {
+				font-weight: 700;
+				text-transform: uppercase;
+				color: $cl-grey-2;
+			}
+			&:last-child {
+				border-bottom: 1px solid $cl-grey;
+				padding-bottom: 12px;
+			}
+		}
+	}
+	.payment-detail {
+		.col {
+			margin: 0;
+		}
+		.heading {
+			color: $cl-grey-2;
+			font-weight: 700;
+			.col:last-child {
+				text-align: right;
+			}
+		}
+		.body {
+			.col {
+				font-size: $fs-detail;
+				line-height: 1.6;
+
+				&:last-child {
+					text-align: right;
+				}
+			}
+		}
+		.footer {
+			margin-top: 24px;
+			padding: 12px 0;
+			border-top: 1px solid $cl-grey;
+			.bill {
+				font-size: $fs-sub-title;
+				color: $cl-black;
+				font-weight: 700;
+			}
+			.total-price {
+				text-align: right;
+				span {
+					font-size: $fs-sub-title;
+					font-weight: 700;
+					color: $cl-orange-3;
+
+					&:last-child {
+						color: $cl-grey-2;
+					}
+				}
+			}
+		}
+	}
+}
