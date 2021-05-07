@@ -29,7 +29,7 @@ h2 {
 	background: $cl-white-2;
 	border-radius: 12px;
 
-	.search-from {
+	.search-form {
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
@@ -59,6 +59,7 @@ h2 {
 			cursor: pointer;
 			display: flex;
 			align-items: center;
+			color: $cl-blue-3;
 		}
 	}
 	.heading {
@@ -136,37 +137,10 @@ h2 {
 			}
 		}
 	}
-}
-
-.pagination {
-	list-style: none;
-	display: flex;
-	flex-wrap: wrap;
-	margin-top: 20px;
-	justify-content: flex-end;
-
-	li {
-		width: 30px;
-		height: 30px;
+	.empty {
 		text-align: center;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin-right: 10px;
-		border-radius: 50%;
-		cursor: pointer;
-		border: 1px solid $cl-blue-6;
-		color: $cl-black;
-
-		&:last-child {
-			margin-right: 0;
-		}
-
-		&:hover,
-		&.active {
-			background: $cl-blue-6;
-			color: #fff;
-		}
+		padding: 12px;
+		color: $cl-red-2;
 	}
 }
 

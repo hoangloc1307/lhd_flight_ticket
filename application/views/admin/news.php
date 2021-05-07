@@ -4,7 +4,7 @@
 </div>
 <section class="table news">
 	<div class="grid">
-		<div class="search-from">
+		<div class="search-form">
 			<input type="text" placeholder="Tìm kiếm">
 			<button><i class="fas fa-search"></i></button>
 		</div>
@@ -19,9 +19,7 @@
 		</div>
 		<div class="items">
 		</div>
-		<div class="view-more">
-			<button>View More</button>
-		</div>
+
 	</div>
 </section>
 
@@ -57,6 +55,7 @@ function fetch(offset) {
 				item += '</div>';
 				item += '</div>';
 			}
+			item += '<div class="view-more"><button>View More</button></div>';
 			$('.items').append(item);
 			offset['offset'] += 5;
 			offset['total'] = data['total'];
@@ -100,6 +99,65 @@ $(document).on('click', '.button.delete', function(e) {
 			}
 		});
 		$(this).parents('.item').remove();
+	}
+});
+
+// Xử lý click nút search
+$(document).on('click', '.search-form button', function(e) {
+	e.preventDefault();
+	if ($(".search-form input").val().length > 0) {
+		$.ajax({
+			type: "post",
+			url: "<?=base_url()?>admin/Manage_News/Search",
+			data: {
+				keyword: $(".search-form input").val()
+			},
+			dataType: "JSon",
+			success: function(data) {
+				var item = "";
+				if (data != "Không tìm thấy kết quả!") {
+					for (var i in data) {
+						item += '<div class="row item">';
+						item += '<div class="col l-1">' + data[i].News_ID +
+							'</div>';
+						item += '<div class="col l-2">';
+						item += '<div class="imgBx">';
+						item += '<img src="<?= base_url() ?>' + data[i].Image +
+							'">';
+						item += '</div>';
+						item += '</div>';
+						item += '<div class="news-name col l-3">' + data[i]
+							.Name +
+							'</div>';
+						item += '<div class="news-name col l-2">' + data[i]
+							.Category +
+							'</div>';
+						item += '<div class="col l-2">' + data[i].Date +
+							'</div>';
+						item += '<div class="col l-1">' + data[i].View +
+							'</div>';
+						item += '<div class="col l-1 action">';
+						item +=
+							'<a href="#" class="button edit"><i class="fas fa-edit"></i></a>';
+						item += '<a href="#" class="button delete" value="' + data[i]
+							.News_ID +
+							'"><i class="fas fa-trash"></i></a>';
+						item += '</div>';
+						item += '</div>';
+					}
+					$('.items').html(item);
+				} else {
+					item += '<div class="empty">' + data + '</div>';
+					$('.items').html(item);
+				}
+			}
+		});
+	}
+});
+// Nút ENTER
+$(document).on('keypress', function(e) {
+	if (e.which == 13) {
+		$(".search-form button").trigger("click");
 	}
 });
 </script>

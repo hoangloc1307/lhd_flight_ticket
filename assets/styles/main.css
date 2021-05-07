@@ -3973,7 +3973,8 @@ header {
           align-items: flex-start;
 }
 
-section .title {
+.infouser .title,
+.my-order .title {
   padding: 12px;
   background: #17699a;
   color: #fff;
@@ -3981,7 +3982,8 @@ section .title {
   border-radius: 6px 6px 0 0;
 }
 
-section .title i {
+.infouser .title i,
+.my-order .title i {
   margin: 0 12px;
 }
 
@@ -4659,6 +4661,10 @@ section .title i {
   border-radius: 10px;
 }
 
+.info-table .table .col {
+  margin: 0;
+}
+
 .info-table .table .link {
   margin-bottom: 20px;
 }
@@ -4693,16 +4699,18 @@ section .title i {
   font-weight: 600;
   border-top: 1px solid #dddddd;
   border-bottom: 1px solid #dddddd;
-  margin-bottom: 10px;
+  text-align: left;
 }
 
+.info-table .table .heading .date,
 .info-table .table .heading .view {
-  text-align: right;
+  text-align: center;
 }
 
 .info-table .table .item {
   padding: 5px 0;
   color: #333;
+  text-align: left;
 }
 
 .info-table .table .item:hover {
@@ -4715,7 +4723,16 @@ section .title i {
   text-overflow: ellipsis;
 }
 
-.info-table .table .item .view {
+.info-table .table .item .view,
+.info-table .table .item .date {
+  text-align: center;
+}
+
+.info-table .table .date {
+  text-align: center;
+}
+
+.info-table .table .price {
   text-align: right;
 }
 
@@ -4754,7 +4771,7 @@ h2 {
   border-radius: 12px;
 }
 
-.table .search-from {
+.table .search-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4768,7 +4785,7 @@ h2 {
   margin-bottom: 24px;
 }
 
-.table .search-from input {
+.table .search-form input {
   padding: 12px 54px 12px 12px;
   border: 1px solid #dddddd;
   border-radius: 5px;
@@ -4776,11 +4793,11 @@ h2 {
   width: 320px;
 }
 
-.table .search-from input:focus {
+.table .search-form input:focus {
   border: 1px solid #17699a;
 }
 
-.table .search-from button {
+.table .search-form button {
   position: absolute;
   top: 0;
   right: 0;
@@ -4796,6 +4813,7 @@ h2 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  color: #17699a;
 }
 
 .table .heading {
@@ -4884,46 +4902,10 @@ h2 {
      object-fit: cover;
 }
 
-.pagination {
-  list-style: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin-top: 20px;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
-.pagination li {
-  width: 30px;
-  height: 30px;
+.table .empty {
   text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-right: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  border: 1px solid #3498db;
-  color: #333;
-}
-
-.pagination li:last-child {
-  margin-right: 0;
-}
-
-.pagination li:hover, .pagination li.active {
-  background: #3498db;
-  color: #fff;
+  padding: 12px;
+  color: #e74c3c;
 }
 
 .news-title {
