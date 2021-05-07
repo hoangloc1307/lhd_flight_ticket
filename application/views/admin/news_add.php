@@ -67,7 +67,6 @@ CKFinder.setupCKEditor(editor);
 
 // Show image khi chọn file xong.
 $("#news-img-input").change(function() {
-
     var input = document.getElementById("news-img-input");
     var fReader = new FileReader();
     fReader.readAsDataURL(input.files[0]);
@@ -76,5 +75,4 @@ $("#news-img-input").change(function() {
         img.src = event.target.result;
     }
 });
-// End
 </script>
