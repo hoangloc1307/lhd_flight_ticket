@@ -8,10 +8,18 @@ class Order extends CI_Controller {
         parent::__construct();
         $this->load->model('Database_model');
     }
-    public function index() {
-        $data['view'] = 'admin/order';
-        $data['title'] = 'Hoá đơn';
-        $data['orders'] = $this->Database_model->GetRecords('tbl_order', '', 'Order_ID DESC', '', '');
+    public function view($order_id = null) {
+        if(is_null($order_id)) {
+            $data['view'] = 'admin/order';
+            $data['title'] = 'Hoá đơn';
+            $data['orders'] = $this->Database_model->GetRecords('tbl_order', '', 'Order_ID DESC', '', '');
+        }
+        else {
+            $data['view'] = 'admin/order_detail';
+            $data['title'] = 'Chi tiết hoá đơn'; 
+            $where = "Order_ID = '" . $order_id . "'";
+            $data['order'] = $this->Database_model->GetRecord('tbl_order',$where);
+        }
 
         $this->load->view('admin/master_layout', $data);
     }

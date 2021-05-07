@@ -5677,6 +5677,19 @@ form .button-submit {
   border-left: 1px solid #dddddd;
 }
 
+.partner .list-partner .items .col {
+  margin: 0;
+}
+
+.partner .list-partner .items .imgBx {
+  height: 55px;
+}
+
+.partner .list-partner .items .imgBx img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .partner .heading {
   margin: 0 3px;
 }

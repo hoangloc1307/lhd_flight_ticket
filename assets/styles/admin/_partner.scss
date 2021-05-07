@@ -55,6 +55,19 @@ form {
 .partner {
 	.list-partner {
 		border-left: 1px solid $cl-grey;
+
+		.items {
+			.col {
+				margin: 0;
+			}
+			.imgBx {
+				height: 55px;
+
+				img {
+					object-fit: contain;
+				}
+			}
+		}
 	}
 	.heading {
 		margin: 0 3px;
