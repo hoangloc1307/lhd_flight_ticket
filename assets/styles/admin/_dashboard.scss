@@ -44,6 +44,9 @@
 .info-table {
 	margin-top: 24px;
 	.table {
+		.col {
+			margin: 0;
+		}
 		background: $cl-white-2;
 		padding: 20px;
 		border-radius: 10px;
@@ -78,30 +81,37 @@
 			font-weight: 600;
 			border-top: 1px solid $cl-grey;
 			border-bottom: 1px solid $cl-grey;
-			margin-bottom: 10px;
-
+			text-align: left;
+			.date,
 			.view {
-				text-align: right;
+				text-align: center;
 			}
 		}
 
 		.item {
 			padding: 5px 0;
 			color: $cl-black;
+			text-align: left;
 
 			&:hover {
 				background: $cl-grey;
 			}
-
 			.name {
 				overflow: hidden;
 				white-space: nowrap;
 				text-overflow: ellipsis;
 			}
 
-			.view {
-				text-align: right;
+			.view,
+			.date {
+				text-align: center;
 			}
+		}
+		.date {
+			text-align: center;
+		}
+		.price {
+			text-align: right;
 		}
 	}
 }

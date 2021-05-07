@@ -80,6 +80,22 @@ class Manage_News extends CI_Controller {
         echo json_encode($data);
     }
 
+    public function Search () {
+        if ($this->input->is_ajax_request()) {
+            $keyword = $this->input->post("keyword");
+            $this->load->model("Database_model");
+            $where = "Name LIKE '" . $keyword . " %' or Name LIKE '% ". $keyword . " %' or Name LIKE'% ". $keyword . "' or Name LIKE '". $keyword . "'";
+            $result = $this->Database_model->GetRecords("tbl_news", $where, "News_ID DESC","","");
+            if (!empty($result)) {
+                echo json_encode($result);
+           }
+           else {
+               echo json_encode("Không tìm thấy kết quả!");
+           }
+        }
+    }
+    
+
 
 
     /*-------------------------------------------------------------------------------*/
