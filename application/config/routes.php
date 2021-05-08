@@ -62,4 +62,4 @@ $route['admin/news/category'] = 'admin/manage_news/category';
 $route['admin/news/add'] = 'admin/manage_news/add';
 $route['admin/news/delete'] = 'admin/manage_news/delete';
 $route['admin/order'] = 'admin/order/view';
-$route['admin/order/(:any)'] = 'admin/order/view/$1';
+$route['admin/order/detail/(:any)'] = 'admin/order/view/$1';
