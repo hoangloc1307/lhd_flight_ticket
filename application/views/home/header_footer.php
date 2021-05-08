@@ -242,7 +242,7 @@
 
         <div class="copyright">
             <p><i class="far fa-copyright"></i> 2021 - Bản quyền thuộc LHD.<br><span>Dự án website bán vé máy
-                    bay</span></p>
+                    bay - Đồ án ra trường</span></p>
         </div>
     </footer>
     <!-- End Footer -->
