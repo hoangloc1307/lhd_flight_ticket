@@ -2,7 +2,7 @@
 	background-image: url("../images/background-signin-out.png");
 	background-size: cover;
 	background-position: 50%;
-	min-height: 100vh;
+	min-height: 90vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -116,9 +116,10 @@
 
 		& > p {
 			color: $cl-white-2;
+			margin: 12px 0;
 
 			a {
-				color: $cl-blue-1;
+				color: $cl-orange-3;
 				text-decoration: none;
 				cursor: pointer;
 
@@ -132,6 +133,14 @@
 		input::-webkit-inner-spin-button {
 			-webkit-appearance: none;
 			margin: 0;
+		}
+
+		.forgot-password {
+			color: $cl-orange-3;
+
+			&:hover {
+				text-decoration: underline;
+			}
 		}
 	}
 }
