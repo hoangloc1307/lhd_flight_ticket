@@ -197,3 +197,25 @@
 }
 
 /*==================== End Button Submit ====================*/
+
+/*==================== Xem thêm ====================*/
+.view-more {
+	text-align: center;
+	margin: 12px 0;
+	button {
+		padding: 8px 24px;
+		background: transparent;
+		cursor: pointer;
+		font-weight: 700;
+		color: $cl-blue-3;
+		transition: 0.2s ease-in-out;
+		border: 2px solid $cl-blue-3;
+		border-radius: 6px;
+
+		&:hover {
+			background-image: linear-gradient(to left, #034166, #06527f, #17699a);
+			color: $cl-white-2;
+		}
+	}
+}
+/*==================== End Xem thêm ====================*/

@@ -1,7 +1,7 @@
 <section id="news-detail">
 	<div class="grid wide">
 		<div class="row">
-			<div class="col l-8 m-8 c-12 news-detail">
+			<div class="col l-8 m-8 s-12 news-detail">
 				<h1 class="title">
 					<?= $news['Name'] ?>
 				</h1>
@@ -12,7 +12,7 @@
 					<?= $news['Date'] ?>
 				</p>
 			</div>
-			<div class="col l-4 m-4 c-12 news-related">
+			<div class="col l-4 m-4 s-12 news-related">
 				<div class="news-related-wrap">
 					<h3 class="related-title">
 						Bài viết liên quan

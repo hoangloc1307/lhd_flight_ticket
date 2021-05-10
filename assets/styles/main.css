@@ -887,6 +887,31 @@ html {
 }
 
 /*==================== End Button Submit ====================*/
+/*==================== Xem thêm ====================*/
+.view-more {
+  text-align: center;
+  margin: 12px 0;
+}
+
+.view-more button {
+  padding: 8px 24px;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 700;
+  color: #17699a;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  border: 2px solid #17699a;
+  border-radius: 6px;
+}
+
+.view-more button:hover {
+  background-image: -webkit-gradient(linear, right top, left top, from(#034166), color-stop(#06527f), to(#17699a));
+  background-image: linear-gradient(to left, #034166, #06527f, #17699a);
+  color: #fff;
+}
+
+/*==================== End Xem thêm ====================*/
 /*==================== Menu PC ====================*/
 header {
   position: -webkit-sticky;
@@ -1294,10 +1319,8 @@ header {
   position: absolute;
   content: "";
   top: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  width: 50px;
+  left: 0;
+  width: 100%;
   height: 3px;
   background: #17699a;
 }
@@ -1316,7 +1339,6 @@ header {
   display: block;
   text-decoration: none;
   padding: 12px;
-  border-left: 2px solid #034166;
   -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
   color: #2c3e50;
@@ -1328,15 +1350,11 @@ header {
   border-radius: 20px;
 }
 
-#news .news-item .news-wrap {
-  padding: 12px;
-}
-
 #news .news-item .news-wrap .img-wrap {
   display: block;
   text-decoration: none;
   width: 100%;
-  height: 250px;
+  height: 200px;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -1356,20 +1374,18 @@ header {
 }
 
 #news .news-item .news-wrap .heading-description .news-heading {
-  display: block;
   color: #034166;
   font-weight: 700;
   font-size: 18px;
   text-decoration: none;
-  padding: 10px 0;
-  margin-bottom: 10px;
   position: relative;
   padding: 10px 0;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
-  height: 68px;
+  height: 73px;
+  line-height: 1.6;
 }
 
 #news .news-item .news-wrap .heading-description .news-heading::after {
@@ -1383,7 +1399,6 @@ header {
 }
 
 #news .news-item .news-wrap .heading-description .news-description {
-  margin-top: 10px;
   padding: 10px 0;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -1402,6 +1417,10 @@ header {
   opacity: 0.5;
   font-weight: 600;
   font-size: 14px;
+}
+
+#news .news-item .news-wrap .heading-description .date-view i {
+  margin-right: 6px;
 }
 
 #news-detail {
@@ -6205,6 +6224,18 @@ form .button-submit {
     text-align: center;
   }
   /*========== End Footer ==========*/
+  /*========== News ==========*/
+  .search-form input {
+    width: 100%;
+    padding: 12px;
+  }
+  #news .category .category-title {
+    font-size: 18px;
+  }
+  #news .news-item .news-wrap .img-wrap {
+    height: 150px;
+  }
+  /*========== End News ==========*/
 }
 
 @media (max-width: 480px) {
@@ -6366,5 +6397,29 @@ form .button-submit {
     text-transform: none;
   }
   /*========== End Finding ==========*/
+  /*========== News ==========*/
+  .search-form input {
+    width: 100%;
+    padding: 12px;
+  }
+  #news .news-header .news-title h2 {
+    margin-bottom: 0;
+    font-size: 24px;
+  }
+  #news .news-header .news-icon::before, #news .news-header .news-icon::after {
+    width: 20%;
+  }
+  #news .category .category-list {
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 12px;
+  }
+  #news .news-item .news-wrap .img-wrap {
+    height: 220px;
+  }
+  #news .news-item .heading-description .date-view {
+    margin-bottom: 30px;
+  }
+  /*========== End News ==========*/
 }
 /*# sourceMappingURL=main.css.map */
