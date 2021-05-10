@@ -182,17 +182,89 @@ class Order extends CI_Controller {
         }
     }
 
+    public function SendSuccessPaymentMail($order, $to) {
+        $subject = "Thanh toán thành công";
+        $from = 'LHD Flight Ticket';
+
+        $payment_info = json_decode($order['Payment_Info'], true);
+        $flight_detail = json_decode($order['Flight_Detail'], true);
+
+        $message = "<!DOCTYPE html><html lang='en' style='font-family: Arial, Helvetica, sans-serif;font-size: 14px;'><head></head><body style='margin: 0;padding: 0;box-sizing: border-box;'>";
+        $message .= "<section style='background: #f9f9f9;padding: 30px 0;'>";
+        $message .= "<div style='max-width: 480px;margin: 0 auto;background: #fff;border-radius: 6px;'>";
+        $message .= "<div style='padding: 24px;background: #17699a;font-size: 24px;color: #fff;border-radius: 6px 6px 0 0;'>Cảm ơn bạn đã đặt vé</div>";
+        $message .= "<div style='padding: 12px;color: #777;'>";
+        $message .= "<div class='greeting'>";
+        $message .= "<p>Xin chào " . $payment_info['contact_name'] . ",</p>";
+        $message .= "<p>Đơn hàng " . $order['Order_Code'] . " đã được thanh toán thành công</p>";
+        $message .= "</div>";
+        $message .= "<div class='order-detail'>";
+        $message .= "<h4 style='color: #17699a;font-size: 18px;'>[Đơn hàng] <span>" . $order['Order_Code'] . "</span> <span>" . $order['Booking_DateTime'] . "</span></h4>";
+        $message .= "<table style='width: 100%;text-align: left;border: 1px solid #ccc;line-height: 1.6;'><tbody>";
+        $message .= "<tr><th style='padding: 6px;'>Loại vé</th><td style='padding: 6px;'>" . ($order['Type'] == 'oneway' ? 'Một chiều' : 'Khứ hồi') . "</td></tr>";
+        $message .= "<tr><th style='padding: 6px;'>Điểm đi</th><td style='padding: 6px;'>" . $order['Origin'] . "</td></tr>";
+        $message .= "<tr><th style='padding: 6px;'>Điểm đến</th><td style='padding: 6px;'>" . $order['Destination'] . "</td></tr>";
+        $message .= "<tr><th style='padding: 6px;'>Ngày khởi hành</th><td style='padding: 6px;'>" . $flight_detail['departure_date'] . "</td></tr>";
+        $message .= "<tr><th style='padding: 6px;'>Giờ khởi hành</th><td style='padding: 6px;'>" . $flight_detail['departure_time'] . "</td></tr>";
+        $message .= "<tr><th style='padding: 6px;'>Người lớn</th><td style='padding: 6px;'>" . $payment_info['adults'] . " x " . number_format($payment_info['adults_price'], 0, ".", ".") . "</td></tr>";
+        if (array_key_exists("children", $payment_info)) {
+            $message .= "<tr><th style='padding: 6px;'>Trẻ em</th><td style='padding: 6px;'>" . $payment_info['children'] . " x " . number_format($payment_info['children_price'], 0, ".", ".") . "</td></tr>";
+        }
+        if (array_key_exists("infants", $payment_info)) {
+            $message .= "<tr><th style='padding: 6px;'>Em bé</th><td style='padding: 6px;'>" . $payment_info['infants'] . " x " . number_format($payment_info['infants_price'], 0, ".", ".") . "</td></tr>";
+        }
+        $message .= "<tr><th style='padding: 6px;'>Phương thức thanh toán</th><td style='padding: 6px;'>" . $order['Payment_Method'] . "</td></tr>";
+        $message .= "<tr><th style='padding: 6px;'>Tổng cộng</th><td style='padding: 6px; font-weight: bold;'>" . number_format($payment_info['total_price'], 0, ".", ".") . " VND</td></tr>";
+        $message .= "</tbody></table>";
+        $message .= "<h4>Thông tin thanh toán</h4>";
+        $message .= "<div style='padding: 0 12px;border: 1px solid #ccc;'>";
+        $message .= "<p>Họ tên: " . $payment_info['contact_name'] . "</p>";
+        $message .= "<p>Số điện thoại: " . $payment_info['contact_phone'] . "</p>";
+        $message .= "<p>Địa chỉ: " . $payment_info['contact_address'] . "</p>";
+        $message .= "<p>Email: " . $payment_info['contact_mail'] . "</p>";
+        $message .= "<p>Ghi chú: " . $payment_info['contact_note'] . "</p>";
+        $message .= "</div></div>";
+        $message .= "<a style='text-decoration: none;color: #034166;padding: 12px;display: block;text-align: center;' href='" . base_url() . "'>Flight Ticket</a>";
+        $message .= "</div></div></section></body>";
+        $message .= "</html>";
+
+        $config = array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'lhdflightticket@gmail.com',
+            'smtp_pass' => 'P@ss123456',
+            'mailtype' => 'html',
+            'charset' => 'utf-8',
+            'wordwrap' => TRUE
+        );
+
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+        $this->email->from($from);
+        $this->email->to($to);
+        $this->email->subject($subject);
+        $this->email->message($message);
+        $this->email->send();
+    }
+
     public function UpdateStatus() {
         if ($this->input->is_ajax_request()) {
             $id = $this->input->post('order_id');
             $where = "Order_ID = " . $id;
             if ($this->Database_model->UpdateRecord('tbl_order', $where, 'Status', 1) > 0) {
+                $order = $this->Database_model->GetRecord('tbl_order', $where);
+                $order_mail = json_decode($order['Payment_Info'], true);
+                $this->SendSuccessPaymentMail($order, $order_mail['contact_mail']);
                 echo json_encode("Xác nhận thành công");
+                var_dump($order);
             } else {
                 echo json_encode("Xác nhận không thành công");
             }
         }
     }
+
+
     public function ViewDetailOrder() {
         $data['view'] = 'admin/order_detail';
         $this->load->view('admin/master_layout', $data);
