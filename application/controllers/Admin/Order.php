@@ -25,7 +25,7 @@ class Order extends CI_Controller {
 
     function SendBookingSuccessMail($order_code, $order, $to) {
         $subject = "Đặt vé thành công";
-        $from = 'FLD Flight Ticket';
+        $from = 'LHD Flight Ticket';
 
         $message = "<!DOCTYPE html><html lang='en' style='font-family: Arial, Helvetica, sans-serif;font-size: 14px;'><head></head><body style='margin: 0;padding: 0;box-sizing: border-box;'>";
         $message .= "<section style='background: #f9f9f9;padding: 30px 0;'>";
@@ -33,7 +33,7 @@ class Order extends CI_Controller {
         $message .= "<div style='padding: 24px;background: #17699a;font-size: 24px;color: #fff;border-radius: 6px 6px 0 0;'>Cảm ơn bạn đã đặt vé</div>";
         $message .= "<div style='padding: 12px;color: #777;'>";
         $message .= "<div class='greeting'>";
-        $message .= "<p>" . $order['contact_name'] . "</p>";
+        $message .= "<p>Xin chào " . $order['contact_name'] . ",</p>";
         $message .= "<p>Đơn hàng " . $order_code . " đã được đặt thành công và chúng tôi đang xử lý</p>";
         $message .= "</div>";
         $message .= "<div class='order-detail'>";
@@ -44,23 +44,23 @@ class Order extends CI_Controller {
         $message .= "<tr><th style='padding: 6px;'>Điểm đến</th><td style='padding: 6px;'>" . $order['destination'] . "</td></tr>";
         $message .= "<tr><th style='padding: 6px;'>Ngày khởi hành</th><td style='padding: 6px;'>" . $order['departure_date'] . "</td></tr>";
         $message .= "<tr><th style='padding: 6px;'>Giờ khởi hành</th><td style='padding: 6px;'>" . $order['departure_time'] . "</td></tr>";
-        $message .= "<tr><th style='padding: 6px;'>Người lớn</th><td style='padding: 6px;'>" . $order['adults'] . " x " . $order['adults_price'] . "</td></tr>";
+        $message .= "<tr><th style='padding: 6px;'>Người lớn</th><td style='padding: 6px;'>" . $order['adults'] . " x " . number_format($order['adults_price'], 0, ".", ".") . "</td></tr>";
         if (array_key_exists("children", $order)) {
-            $message .= "<tr><th style='padding: 6px;'>Trẻ em</th><td style='padding: 6px;'>" . $order['children'] . " x " . $order['children_price'] . "</td></tr>";
+            $message .= "<tr><th style='padding: 6px;'>Trẻ em</th><td style='padding: 6px;'>" . $order['children'] . " x " . number_format($order['children_price'], 0, ".", ".") . "</td></tr>";
         }
         if (array_key_exists("infants", $order)) {
-            $message .= "<tr><th style='padding: 6px;'>Em bé</th><td style='padding: 6px;'>" . $order['infants'] . " x " . $order['infants_price'] . "</td></tr>";
+            $message .= "<tr><th style='padding: 6px;'>Em bé</th><td style='padding: 6px;'>" . $order['infants'] . " x " . number_format($order['infants_price'], 0, ".", ".") . "</td></tr>";
         }
-        $message .= "<tr><th>Phương thức thanh toán</th><td>" . $order['payment_method'] . "</td></tr>";
-        $message .= "<tr><th>Tổng cộng</th><td>" . $order['total_price'] . " VND</td></tr>";
+        $message .= "<tr><th style='padding: 6px;'>Phương thức thanh toán</th><td style='padding: 6px;'>" . $order['payment_method'] . "</td></tr>";
+        $message .= "<tr><th style='padding: 6px;'>Tổng cộng</th><td style='padding: 6px; font-weight: bold;'>" . number_format($order['total_price'], 0, ".", ".") . " VND</td></tr>";
         $message .= "</tbody></table>";
         $message .= "<h4>Thông tin thanh toán</h4>";
         $message .= "<div style='padding: 0 12px;border: 1px solid #ccc;'>";
-        $message .= "<p>" . $order['contact_name'] . "</p>";
-        $message .= "<p>" . $order['contact_phone'] . "</p>";
-        $message .= "<p>" . $order['contact_address'] . "</p>";
-        $message .= "<p>" . $order['contact_mail'] . "</p>";
-        $message .= "<p>" . $order['contact_note'] . "</p>";
+        $message .= "<p>Họ tên: " . $order['contact_name'] . "</p>";
+        $message .= "<p>Số điện thoại: " . $order['contact_phone'] . "</p>";
+        $message .= "<p>Địa chỉ: " . $order['contact_address'] . "</p>";
+        $message .= "<p>Email: " . $order['contact_mail'] . "</p>";
+        $message .= "<p>Ghi chú: " . $order['contact_note'] . "</p>";
         $message .= "</div></div>";
         $message .= "<a style='text-decoration: none;color: #034166;padding: 12px;display: block;text-align: center;' href='" . base_url() . "'>Flight Ticket</a>";
         $message .= "</div></div></section></body>";
@@ -70,8 +70,8 @@ class Order extends CI_Controller {
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_port' => 465,
-            'smtp_user' => 'hoangloc1307@gmail.com',
-            'smtp_pass' => 'Hoangloc137*',
+            'smtp_user' => 'lhdflightticket@gmail.com',
+            'smtp_pass' => 'P@ss123456',
             'mailtype' => 'html',
             'charset' => 'utf-8',
             'wordwrap' => TRUE
