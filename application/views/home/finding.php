@@ -837,8 +837,8 @@ $(document).on('click', '.flight-price-choose button', function() {
     if (number_ticket_chose == 0) {
         flightTicketChooseInfo['origin'] = [];
         flightTicketChooseInfo['destination'] = [];
-        flightTicketChooseInfo['date'] = [];
-        flightTicketChooseInfo['time'] = [];
+        flightTicketChooseInfo['departure_date'] = [];
+        flightTicketChooseInfo['departure_time'] = [];
         flightTicketChooseInfo['carrier'] = [];
         flightTicketChooseInfo['adults_baseprice'] = [];
         flightTicketChooseInfo['adults_price'] = [];
@@ -847,15 +847,16 @@ $(document).on('click', '.flight-price-choose button', function() {
         flightTicketChooseInfo['infants_baseprice'] = [];
         flightTicketChooseInfo['infants_price'] = [];
         flightTicketChooseInfo['flight_details'] = [];
+        flightTicketChooseInfo['class'] = [];
     }
     flightTicketChooseInfo['origin'].push($(this).parents('.flight-item').find(
         '.flight-detail-item:first-child .detail-from span:nth-child(2)').text().substr(-3));
     flightTicketChooseInfo['destination'].push($(this).parents('.flight-item').find(
         '.flight-detail-item:first-child .detail-to span:nth-child(2)').text().substr(-3));
-    flightTicketChooseInfo['date'].push($(this).parents('.flight-item').find(
+    flightTicketChooseInfo['departure_date'].push($(this).parents('.flight-item').find(
         '.flight-detail-item:first-child .title-detail + .flight-detail-wrap .detail-from span:nth-child(4) p:nth-child(2)'
     ).text());
-    flightTicketChooseInfo['time'].push($(this).parents('.flight-item').find(
+    flightTicketChooseInfo['departure_time'].push($(this).parents('.flight-item').find(
         '.flight-detail-item:first-child .title-detail + .flight-detail-wrap .detail-from span:nth-child(3) p:nth-child(2)'
     ).text());
     flightTicketChooseInfo['carrier'].push($(this).parents('.flight-item').attr('value'));
@@ -908,6 +909,9 @@ $(document).on('click', '.flight-price-choose button', function() {
                 .text();
             flightTicketChooseInfo['flight_details'].push(detail_flight);
         });
+    flightTicketChooseInfo['class'].push($(this).parents('.flight-item').find(
+        '.flight-detail-item:first-child .title-detail + .flight-detail-wrap .detail-flight span:nth-child(4) p:nth-child(2)'
+    ).text());
 
     //Xoá nút chọn
     $(this).remove();
@@ -938,8 +942,8 @@ $(document).on('click', '.flight-price-choose button', function() {
             detail_ticket_text += "</div>";
             detail_ticket_text += "<div class='date-time'>";
             detail_ticket_text += "<i class='far fa-clock'></i>";
-            detail_ticket_text += "<p class='time'>" + flightTicketChooseInfo['time'][i] + "</p>";
-            detail_ticket_text += "<p class='date'>" + flightTicketChooseInfo['date'][i] + "</p>";
+            detail_ticket_text += "<p class='time'>" + flightTicketChooseInfo['departure_time'][i] + "</p>";
+            detail_ticket_text += "<p class='date'>" + flightTicketChooseInfo['departure_date'][i] + "</p>";
             detail_ticket_text += "</div>";
             detail_ticket_text += "<div class='image'>";
             detail_ticket_text += "<img src='<?= base_url() ?>" + GetAirlinesImageByIATA(
@@ -1148,11 +1152,11 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
             bill['type'] = userInput['type'];
             bill['origin'] = userInput['origin'];
             bill['destination'] = userInput['destination'];
-            bill['departure_date'] = flightTicketChooseInfo['date'][0];
-            bill['departure_time'] = flightTicketChooseInfo['time'][0];
+            bill['departure_date'] = flightTicketChooseInfo['departure_date'][0];
+            bill['departure_time'] = flightTicketChooseInfo['departure_time'][0];
             if (userInput['type'] == 'roundtrip') {
-                bill['return_date'] = flightTicketChooseInfo['date'][1];
-                bill['return_time'] = flightTicketChooseInfo['time'][1];
+                bill['return_date'] = flightTicketChooseInfo['departure_date'][1];
+                bill['return_time'] = flightTicketChooseInfo['departure_time'][1];
             }
             bill['adults'] = userInput['adults'];
             bill['adults_baseprice'] = flightTicketChooseInfo["adults_baseprice"][0] + (

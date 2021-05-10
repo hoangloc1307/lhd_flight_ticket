@@ -12,7 +12,13 @@ function DateOrTimeString(dateTimeString, dateOrTime = "date") {
 	if (dateOrTime == "time") {
 		return ZeroPad(x.getHours(), 10) + ":" + ZeroPad(x.getMinutes(), 10);
 	}
-	return x.getDate() + "-" + (x.getMonth() + 1) + "-" + x.getFullYear();
+	return (
+		ZeroPad(x.getDate(), 10) +
+		"-" +
+		ZeroPad(x.getMonth() + 1, 10) +
+		"-" +
+		x.getFullYear()
+	);
 }
 
 //SORT DATA
@@ -44,13 +50,13 @@ function SortPrice(a, b) {
 	}
 }
 
-function SortID(a, b) {
-	if (parseInt(a.id) === parseInt(b.id)) {
-		return 0;
-	} else {
-		return parseInt(a.id) < parseInt(b.id) ? -1 : 1;
-	}
-}
+// function SortID(a, b) {
+// 	if (parseInt(a.id) === parseInt(b.id)) {
+// 		return 0;
+// 	} else {
+// 		return parseInt(a.id) < parseInt(b.id) ? -1 : 1;
+// 	}
+// }
 
 //GET VALUE BY IATA CODE
 function GetAirlinesImageByIATA(iataCode) {
@@ -267,5 +273,171 @@ function GetCityNameByIATA(iata) {
 			name = iata;
 	}
 
+	return name;
+}
+
+function GetAirPortByIATA(iata) {
+	var name = "";
+
+	switch (iata) {
+		case "SGN":
+			name = "Sân bay Tân Sơn Nhất";
+			break;
+		case "HAN":
+			name = "Sân bay Nội Bài";
+			break;
+		case "BMV":
+			name = "Sây bay Buôn Ma Thuột";
+			break;
+		case "VCA":
+			name = "Sân bay Trà Nóc";
+			break;
+		case "VCL":
+			name = "Sân bay Trà Nóc";
+			break;
+		case "DLI":
+			name = "Sân bay Liên Khương";
+			break;
+		case "DAD":
+			name = "Sân bay Đà Nẵng";
+			break;
+		case "VDH":
+			name = "Sân bay Đồng Hới";
+			break;
+		case "HPH":
+			name = "Sân bay Cát Bi";
+			break;
+		case "HUI":
+			name = "Sân bay Phú Bài";
+			break;
+		case "CXR":
+			name = "Sân bay Cam Ranh";
+			break;
+		case "PQC":
+			name = "Sân bay Phú Quốc";
+			break;
+		case "PXU":
+			name = "Sân bay Pleiku";
+			break;
+		case "UIH":
+			name = "Sân bay Phù Cát";
+			break;
+		case "THD":
+			name = "Sân bay Thọ Xuân";
+			break;
+		case "TBB":
+			name = "Sân bay Tuy Hoà";
+			break;
+		case "VDO":
+			name = "Sân bay Quốc tế Vân Đồn";
+			break;
+		case "VII":
+			name = "Sân bay Quốc tế Vinh";
+			break;
+		case "BKK":
+			name = "Sân bay Suvarnabhumi";
+			break;
+		case "CNX":
+			name = "Sân bay quốc tế Chiang Mai";
+			break;
+		case "CEI":
+			name = "Sân bay quốc tế Chiang Rai";
+			break;
+		case "HDY":
+			name = "Sân bay Quốc tế Hat Yai";
+			break;
+		case "KKC":
+			name = "Sân bay Khon Kaen";
+			break;
+		case "KBV":
+			name = "Sân bay quốc tế Krabi";
+			break;
+		case "NST":
+			name = "Sân bay Nakhon Si Thammarat";
+			break;
+		case "HKT":
+			name = "Sân bay quốc tế Phuket";
+			break;
+		case "URT":
+			name = "Sân bay Surat Thani";
+			break;
+		case "UBP":
+			name = "Sân bay Ubon Ratchathani";
+			break;
+		case "UTH":
+			name = "Sân bay quốc tế Udon Thani";
+			break;
+		case "PUS":
+			name = "Sân bay quốc tế Gimhae";
+			break;
+		case "KHH":
+			name = "Sân bay quốc tế Cao Hùng";
+			break;
+		case "TAE":
+			name = "Sân bay quốc tế Daegu";
+			break;
+		case "TPE":
+			name = "Sân bay quốc tế Đào viên - Nhà ga 1";
+			break;
+		case "TNN":
+			name = "Sân bay Đài Nam";
+			break;
+		case "RMQ":
+			name = "Sân bay quốc tế Đài Trung";
+			break;
+		case "HND":
+			name = "Sân bay Haneda - Nhà ga 3";
+			break;
+		case "HAK":
+			name = "Sân bay quốc tế Mỹ Lan Hải Khẩu";
+			break;
+		case "HKG":
+			name = "Sân ban quốc tế Hồng Kông - Nhà ga 1";
+			break;
+		case "HFE":
+			name = "Sân bay quốc tế Tân Kiều Hợp Phì";
+			break;
+		case "CGK":
+			name = "Sân bay quốc tế Soekarno-Hatta";
+			break;
+		case "KUL":
+			name = "Sân bay quốc tế Kuala Lumpur";
+			break;
+		case "MFM":
+			name = "Sân bay quốc tế Macao";
+			break;
+		case "BOM":
+			name = "Sân bay quốc tế Chhatrapati Shivaji";
+			break;
+		case "DEL":
+			name = "Sân bay quốc tế Indira Gandhi";
+			break;
+		case "DPS":
+			name = "Ngurah Rai - Bali";
+			break;
+		case "KIX":
+			name = "Sân bay quốc tế Kansai - Nhà ga 1";
+			break;
+		case "PNH":
+			name = "Phnôm Pênh";
+			break;
+		case "ICN":
+			name = "Sân bay quốc tế Incheon";
+			break;
+		case "REP":
+			name = "Sân bay quốc tế Xiêm Riệp";
+			break;
+		case "SIN":
+			name = "Sân bay quốc tế Changi - Nhà ga 4";
+			break;
+		case "NRT":
+			name = "Sân bay quốc tế Naria - Nhà ga 2";
+			break;
+		case "RGN":
+			name = "Sân bay quốc tế Yangon";
+			break;
+		default:
+			name = iata;
+	}
 	return name;
 }
