@@ -30,13 +30,13 @@
         </div>
         <div class="items">
             <?php
-			foreach ($orders as $item) :
-				$flight_detail = json_decode($item['Flight_Detail'], true);
-				$payment_info = json_decode($item['Payment_Info'], true);
-			?>
-            <a href="<?= base_url() . "admin/order/detail" . $item["Order_ID"] ?>" class="row body">
+            foreach ($orders as $item) :
+                $flight_detail = json_decode($item['Flight_Detail'], true);
+                $payment_info = json_decode($item['Payment_Info'], true);
+            ?>
+            <div class="row body">
                 <div class="col l-1">
-                    <span><?= $item['Order_Code'] ?></span>
+                    <a href="<?= base_url("admin/order/detail/") . $item['Order_ID'] ?>"><?= $item['Order_Code'] ?></a>
                 </div>
                 <div class="col l-1 amount">
                     <span><?php echo $payment_info['adults'] + (array_key_exists("children", $payment_info) ? $payment_info['children'] : 0) + (array_key_exists("infants", $payment_info) ? $payment_info['infants'] : 0) . ($item['Type'] == 'oneway' ? ' MC' : ' KH'); ?></span>
@@ -66,7 +66,7 @@
                     <span payment="<?php echo $item['Status'] == 0 ? 'false' : 'true'; ?>"
                         value='<?= $item['Order_ID'] ?>'><?php echo $item['Status'] == 0 ? 'Chưa TT' : 'Đã TT'; ?></span>
                 </div>
-            </a>
+            </div>
             <?php endforeach; ?>
         </div>
 
@@ -74,7 +74,6 @@
 </section>
 <script>
 $(document).ready(function() {
-
     $(document).on("click", ".status span[payment='false']", function() {
         var pay = confirm("Xác nhận đã thanh toán");
         if (pay == true) {
@@ -97,6 +96,5 @@ $(document).ready(function() {
             $(this).text("Đã TT");
         }
     });
-
 });
 </script>

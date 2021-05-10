@@ -49,7 +49,7 @@ class Finding extends CI_Controller {
                 $maxprice = $this->input->post('fmaxprice');
 
                 //Custom
-                $max = '3';
+                $max = '20';
                 $nonstop = 'false';
 
                 //Lấy chuyến đi

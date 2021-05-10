@@ -175,4 +175,338 @@ if (!function_exists('vietdecode')) {
             return $code;
         }
     }
+
+    if (!function_exists('airport_by_iata')) {
+        function airport_by_iata($iata) {
+            $airport = "";
+            switch ($iata) {
+                case "SGN":
+                    $airport = "Sân bay Tân Sơn Nhất";
+                    break;
+                case "HAN":
+                    $airport = "Sân bay Nội Bài";
+                    break;
+                case "BMV":
+                    $airport = "Sây bay Buôn Ma Thuột";
+                    break;
+                case "VCA":
+                    $airport = "Sân bay Trà Nóc";
+                    break;
+                case "VCL":
+                    $airport = "Sân bay Trà Nóc";
+                    break;
+                case "DLI":
+                    $airport = "Sân bay Liên Khương";
+                    break;
+                case "DAD":
+                    $airport = "Sân bay Đà Nẵng";
+                    break;
+                case "VDH":
+                    $airport = "Sân bay Đồng Hới";
+                    break;
+                case "HPH":
+                    $airport = "Sân bay Cát Bi";
+                    break;
+                case "HUI":
+                    $airport = "Sân bay Phú Bài";
+                    break;
+                case "CXR":
+                    $airport = "Sân bay Cam Ranh";
+                    break;
+                case "PQC":
+                    $airport = "Sân bay Phú Quốc";
+                    break;
+                case "PXU":
+                    $airport = "Sân bay Pleiku";
+                    break;
+                case "UIH":
+                    $airport = "Sân bay Phù Cát";
+                    break;
+                case "THD":
+                    $airport = "Sân bay Thọ Xuân";
+                    break;
+                case "TBB":
+                    $airport = "Sân bay Tuy Hoà";
+                    break;
+                case "VDO":
+                    $airport = "Sân bay Quốc tế Vân Đồn";
+                    break;
+                case "VII":
+                    $airport = "Sân bay Quốc tế Vinh";
+                    break;
+                case "BKK":
+                    $airport = "Sân bay Suvarnabhumi";
+                    break;
+                case "CNX":
+                    $airport = "Sân bay quốc tế Chiang Mai";
+                    break;
+                case "CEI":
+                    $airport = "Sân bay quốc tế Chiang Rai";
+                    break;
+                case "HDY":
+                    $airport = "Sân bay Quốc tế Hat Yai";
+                    break;
+                case "KKC":
+                    $airport = "Sân bay Khon Kaen";
+                    break;
+                case "KBV":
+                    $airport = "Sân bay quốc tế Krabi";
+                    break;
+                case "NST":
+                    $airport = "Sân bay Nakhon Si Thammarat";
+                    break;
+                case "HKT":
+                    $airport = "Sân bay quốc tế Phuket";
+                    break;
+                case "URT":
+                    $airport = "Sân bay Surat Thani";
+                    break;
+                case "UBP":
+                    $airport = "Sân bay Ubon Ratchathani";
+                    break;
+                case "UTH":
+                    $airport = "Sân bay quốc tế Udon Thani";
+                    break;
+                case "PUS":
+                    $airport = "Sân bay quốc tế Gimhae";
+                    break;
+                case "KHH":
+                    $airport = "Sân bay quốc tế Cao Hùng";
+                    break;
+                case "TAE":
+                    $airport = "Sân bay quốc tế Daegu";
+                    break;
+                case "TPE":
+                    $airport = "Sân bay quốc tế Đào viên - Nhà ga 1";
+                    break;
+                case "TNN":
+                    $airport = "Sân bay Đài Nam";
+                    break;
+                case "RMQ":
+                    $airport = "Sân bay quốc tế Đài Trung";
+                    break;
+                case "HND":
+                    $airport = "Sân bay Haneda - Nhà ga 3";
+                    break;
+                case "HAK":
+                    $airport = "Sân bay quốc tế Mỹ Lan Hải Khẩu";
+                    break;
+                case "HKG":
+                    $airport = "Sân ban quốc tế Hồng Kông - Nhà ga 1";
+                    break;
+                case "HFE":
+                    $airport = "Sân bay quốc tế Tân Kiều Hợp Phì";
+                    break;
+                case "CGK":
+                    $airport = "Sân bay quốc tế Soekarno-Hatta";
+                    break;
+                case "KUL":
+                    $airport = "Sân bay quốc tế Kuala Lumpur";
+                    break;
+                case "MFM":
+                    $airport = "Sân bay quốc tế Macao";
+                    break;
+                case "BOM":
+                    $airport = "Sân bay quốc tế Chhatrapati Shivaji";
+                    break;
+                case "DEL":
+                    $airport = "Sân bay quốc tế Indira Gandhi";
+                    break;
+                case "DPS":
+                    $airport = "Ngurah Rai - Bali";
+                    break;
+                case "KIX":
+                    $airport = "Sân bay quốc tế Kansai - Nhà ga 1";
+                    break;
+                case "PNH":
+                    $airport = "Phnôm Pênh";
+                    break;
+                case "ICN":
+                    $airport = "Sân bay quốc tế Incheon";
+                    break;
+                case "REP":
+                    $airport = "Sân bay quốc tế Xiêm Riệp";
+                    break;
+                case "SIN":
+                    $airport = "Sân bay quốc tế Changi - Nhà ga 4";
+                    break;
+                case "NRT":
+                    $airport = "Sân bay quốc tế Naria - Nhà ga 2";
+                    break;
+                case "RGN":
+                    $airport = "Sân bay quốc tế Yangon";
+                    break;
+                default:
+                    $airport = $iata;
+            }
+            return $airport;
+        }
+    }
+
+    if (!function_exists('city_by_iata')) {
+        function city_by_iata($iata) {
+            $city = "";
+            switch ($iata) {
+                case "SGN":
+                    $city = "Tp. Hồ Chí Minh";
+                    break;
+                case "HAN":
+                    $city = "Hà Nội";
+                    break;
+                case "BMV":
+                    $city = "Buôn Ma Thuột";
+                    break;
+                case "VCA":
+                    $city = "Cần Thơ";
+                    break;
+                case "VCL":
+                    $city = "Chu Lai";
+                    break;
+                case "DLI":
+                    $city = "Đà Lạt";
+                    break;
+                case "DAD":
+                    $city = "Đà Nẵng";
+                    break;
+                case "VDH":
+                    $city = "Đồng Hởi";
+                    break;
+                case "HPH":
+                    $city = "Hải Phòng";
+                    break;
+                case "HUI":
+                    $city = "Huế";
+                    break;
+                case "CXR":
+                    $city = "Nha Trang";
+                    break;
+                case "PQC":
+                    $city = "Phú Quốc";
+                    break;
+                case "PXU":
+                    $city = "Pleiku";
+                    break;
+                case "UIH":
+                    $city = "Quy Nhơn";
+                    break;
+                case "THD":
+                    $city = "Thanh Hóa";
+                    break;
+                case "TBB":
+                    $city = "Tuy Hòa";
+                    break;
+                case "VDO":
+                    $city = "Vân Đồn";
+                    break;
+                case "VII":
+                    $city = "Vinh";
+                    break;
+                case "BKK":
+                    $city = "Bangkok - Suvamabhumi";
+                    break;
+                case "CNX":
+                    $city = "Chiang Mai";
+                    break;
+                case "CEI":
+                    $city = "Chiang Rai";
+                    break;
+                case "HDY":
+                    $city = "Hat Yai Int Airport";
+                    break;
+                case "KKC":
+                    $city = "Khon Kaen";
+                    break;
+                case "KBV":
+                    $city = "Krabi";
+                    break;
+                case "NST":
+                    $city = "Nakhon Si Thammarat";
+                    break;
+                case "HKT":
+                    $city = "Phuket";
+                    break;
+                case "URT":
+                    $city = "Surat Thani";
+                    break;
+                case "UBP":
+                    $city = "Ubon Ratchathani";
+                    break;
+                case "UTH":
+                    $city = "Udon Thani";
+                    break;
+                case "PUS":
+                    $city = "Busan";
+                    break;
+                case "KHH":
+                    $city = "Cao Hùng";
+                    break;
+                case "TAE":
+                    $city = "Daegu";
+                    break;
+                case "TPE":
+                    $city = "Đài Bắc";
+                    break;
+                case "TNN":
+                    $city = "Đài Nam";
+                    break;
+                case "RMQ":
+                    $city = "Đài Trung";
+                    break;
+                case "HND":
+                    $city = "Haneda Tokyo";
+                    break;
+                case "HAK":
+                    $city = "Hải Khẩu";
+                    break;
+                case "HKG":
+                    $city = "Hong Kong - Terminal 1";
+                    break;
+                case "HFE":
+                    $city = "Hợp Phì";
+                    break;
+                case "CGK":
+                    $city = "Jakarta";
+                    break;
+                case "KUL":
+                    $city = "Kuala Lumpur - KLIA";
+                    break;
+                case "MFM":
+                    $city = "Macau";
+                    break;
+                case "BOM":
+                    $city = "Munbai - Terminal 2";
+                    break;
+                case "DEL":
+                    $city = "New Delhi";
+                    break;
+                case "DPS":
+                    $city = "Ngurah Rai - Bali";
+                    break;
+                case "KIX":
+                    $city = "Osaka - Terminal 1";
+                    break;
+                case "PNH":
+                    $city = "Phnôm Pênh";
+                    break;
+                case "ICN":
+                    $city = "Seoul";
+                    break;
+                case "REP":
+                    $city = "Siem Reap";
+                    break;
+                case "SIN":
+                    $city = "Singapore - Terminal 1";
+                    break;
+                case "NRT":
+                    $city = "Tokyo Narita";
+                    break;
+                case "RGN":
+                    $city = "Yangon";
+                    break;
+                default:
+                    $city = $iata;
+            }
+            return $city;
+        }
+    }
 }
