@@ -16,6 +16,7 @@
 	<script src="<?= base_url() ?>assets/ckeditor/ckeditor.js"></script>
 	<script src="<?= base_url() ?>assets/ckfinder/ckfinder.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body id="admin-page">

@@ -126,3 +126,45 @@
 		</div>
 	</div>
 </section>
+
+<section>
+	<div id="chart_div" style="width: 100%; height: 500px;"></div>
+</section>
+
+<script type="text/javascript">
+google.charts.load('current', {
+	'packages': ['corechart']
+});
+google.charts.setOnLoadCallback(drawVisualization);
+
+function drawVisualization() {
+	// Some raw data (not necessarily accurate)
+	var data = google.visualization.arrayToDataTable([
+		['Month', 'Vé', 'Doanh thu'],
+		['2021/05', 165, 1000],
+		['2021/06', 135, 900],
+		['2021/07', 157, 400],
+		['2021/08', 139, 200],
+		['2021/09', 136, 100]
+	]);
+
+	var options = {
+		title: 'Thống kế vé bán được trong năm 2021',
+		vAxis: {
+			title: 'Vé'
+		},
+		hAxis: {
+			title: 'Tháng'
+		},
+		seriesType: 'bars',
+		series: {
+			5: {
+				type: 'line'
+			}
+		}
+	};
+
+	var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+	chart.draw(data, options);
+}
+</script>

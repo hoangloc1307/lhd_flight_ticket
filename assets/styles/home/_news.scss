@@ -52,7 +52,10 @@
 		}
 	}
 	.category {
-		span {
+		.search-form {
+			input {
+				width: 100%;
+			}
 		}
 		.category-title {
 			padding: 12px;

@@ -1304,6 +1304,10 @@ header {
   right: 50%;
 }
 
+#news .category .search-form input {
+  width: 100%;
+}
+
 #news .category .category-title {
   padding: 12px;
   margin-top: 12px;
@@ -2418,7 +2422,7 @@ header {
   background-image: url("../images/background-signin-out.png");
   background-size: cover;
   background-position: 50%;
-  min-height: 100vh;
+  min-height: 90vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2571,10 +2575,11 @@ header {
 
 .form-box form > p {
   color: #fff;
+  margin: 12px 0;
 }
 
 .form-box form > p a {
-  color: #89a9bc;
+  color: #f29018;
   text-decoration: none;
   cursor: pointer;
 }
@@ -2587,6 +2592,14 @@ header {
 .form-box form input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.form-box form .forgot-password {
+  color: #f29018;
+}
+
+.form-box form .forgot-password:hover {
+  text-decoration: underline;
 }
 
 .finding {
@@ -6225,10 +6238,6 @@ form .button-submit {
   }
   /*========== End Footer ==========*/
   /*========== News ==========*/
-  .search-form input {
-    width: 100%;
-    padding: 12px;
-  }
   #news .category .category-title {
     font-size: 18px;
   }

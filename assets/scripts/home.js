@@ -20,41 +20,59 @@ $(document).ready(function () {
 
 	$(".choose").click(function () {
 		$(".way-popup").removeClass("show");
-		$(this).next(".way-popup").addClass("show");
+		$(this).nextAll(".way-popup").addClass("show");
 	});
 	/*===== End ===== */
 
 	/* Tab điểm đi, điểm đến */
 
-	$(document).on("click", "label:first-child .tab-container > li", function () {
-		$("label .tab-container > li").removeClass("tab-active");
-		$(this).addClass("tab-active");
+	$(document).on(
+		"click",
+		".way label:first-child .tab-container > li",
+		function () {
+			$(this).removeClass("tab-active");
+			$(this).addClass("tab-active");
 
-		var index = $(this).index() + 1;
-		$(".list-city-wrap .list-city").removeClass("list-active");
-		$(".list-city-wrap .list-city:nth-child(" + index + ")").addClass(
-			"list-active"
-		);
-		$("label:first-child .tab-container > li")
-			.not(this)
-			.removeClass("tab-active");
-		$(this).addClass("tab-active");
-	});
+			var index = $(this).index() + 1;
+			$("label:first-child .list-city-wrap .list-city").hide();
+			$(
+				"label:first-child .list-city-wrap .list-city:nth-of-type(" +
+					index +
+					")"
+			).show();
+			$(".way label:first-child .tab-container > li")
+				.not(this)
+				.removeClass("tab-active");
+			$(this).addClass("tab-active");
+		}
+	);
 
-	$(document).on("click", "label:last-child .tab-container > li", function () {
-		$("label .tab-container > li").removeClass("tab-active");
-		$(this).addClass("tab-active");
+	$(document).on(
+		"click",
+		".way label:last-child .tab-container > li",
+		function () {
+			$(this).removeClass("tab-active");
+			$(this).addClass("tab-active");
 
-		var list = $(this).index() + 1;
-		$(".list-city-wrap .list-city").removeClass("list-active");
-		$(".list-city-wrap .list-city:nth-child(" + list + ")").addClass(
-			"list-active"
-		);
-		$("label:last-child .tab-container > li")
-			.not(this)
-			.removeClass("tab-active");
-		$(this).addClass("tab-active");
-	});
+			var index = $(this).index() + 1;
+			$("label:last-child .list-city-wrap .list-city").hide();
+			$(
+				"label:last-child .list-city-wrap .list-city:nth-of-type(" + index + ")"
+			).show();
+			$("label:last-child .tab-container > li")
+				.not(this)
+				.removeClass("tab-active");
+			$(this).addClass("tab-active");
+		}
+	);
+
+	// function activeTab(obj) {
+	// 	$(".way label .tab-container > li").removeClass("tab-active");
+
+	// 	$(obj).addClass("tab-active");
+
+	// 	var content = $(obj).find
+	// }
 
 	/*===== End ===== */
 
