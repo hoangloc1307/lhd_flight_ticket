@@ -32,20 +32,21 @@
                             <form action="" class="password">
                                 <div class="form-group">
                                     <label for="">Mật khẩu cũ</label>
-                                    <input class="input-edit" type="password" disabled name="" id="" value=""
+                                    <input class="input-edit" type="password" disabled name="old-password"
                                         placeholder="Nhập mật khẩu cũ">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Mật khẩu mới</label>
-                                    <input class="input-edit" type="password" disabled name="" id="" value=""
+                                    <input class="input-edit" type="password" name="password" disabled
                                         placeholder="Nhập mật khẩu mới">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Xác nhận mật khẩu</label>
-                                    <input class="input-edit" type="password" disabled name="" id="" value=""
+                                    <input class="input-edit" type="password" disabled name="cfm-password"
                                         placeholder="Xác nhận mật khẩu mới">
                                 </div>
                                 <button class="button-password">Đổi mật khẩu</button>
+                                <button class="button-submit change-password" style="display: none;">Xác nhận</button>
                             </form>
 
                         </div>
@@ -74,10 +75,10 @@
                         <li class="order-status"><i class="fas fa-record-vinyl"></i>Trạng thái</li>
                     </ul>
                     <?php
-					foreach ($orders as $item) :
-						$flight_detail = json_decode($item['Flight_Detail'], true);
-						$payment_info = json_decode($item['Payment_Info'], true);
-					?>
+                    foreach ($orders as $item) :
+                        $flight_detail = json_decode($item['Flight_Detail'], true);
+                        $payment_info = json_decode($item['Payment_Info'], true);
+                    ?>
                     <div class="order-item">
                         <ul class="order-body">
                             <li class="order-code">
@@ -243,9 +244,9 @@
                                     <div class="price-ticket">
                                         <p>Giá vé: </p>
                                         <p><?php
-												$baseprice = $payment_info['adults_baseprice'] + (array_key_exists("children", $payment_info) ? $payment_info['children_baseprice'] : 0) + (array_key_exists("infants", $payment_info) ? $payment_info['infants_baseprice'] : 0);
-												echo number_format($baseprice, 0, ".", ".");
-												?></p>
+                                                $baseprice = $payment_info['adults_baseprice'] + (array_key_exists("children", $payment_info) ? $payment_info['children_baseprice'] : 0) + (array_key_exists("infants", $payment_info) ? $payment_info['infants_baseprice'] : 0);
+                                                echo number_format($baseprice, 0, ".", ".");
+                                                ?></p>
                                         <p>VND</p>
                                     </div>
                                     <div class="taxes-fess">
@@ -273,9 +274,43 @@
 </section>
 <script>
 $(document).ready(function() {
+    //Bấm nút đổi mật khẩu
     $(document).on("click", ".button-password", function(e) {
         e.preventDefault();
         $(".password .form-group .input-edit").prop("disabled", false);
+        $('.change-password').attr('style', 'display: block;');
+        $(this).attr('style', 'display: none;');
+    });
+
+    //Bấm nút xác nhận
+    $(document).on('click', '.change-password', function(e) {
+        e.preventDefault();
+        if ($('.input-edit[name="password"]').val() == $('.input-edit[name="cfm-password"]').val()) {
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url() ?>account/changepassword",
+                data: {
+                    old_password: $('.input-edit[name="old-password"]').val(),
+                    new_password: $('.input-edit[name="password"]').val()
+                },
+                dataType: "json",
+                success: function(response) {
+                    if (response == "Đổi mật khẩu thành công") {
+                        $('.change-password').attr('style', 'display: none;');
+                        $('.button-password').attr('style', 'display: block;');
+                        $('form.password input').each(function() {
+                            $(this).val('');
+                            $(this).prop("disabled", true)
+                        });
+                        toastr["success"](response);
+                    } else {
+                        toastr["error"](response);
+                    }
+                }
+            });
+        } else {
+            toastr["error"]("Xác nhận mật khẩu không khớp");
+        }
     });
 
 
@@ -287,7 +322,6 @@ $(document).ready(function() {
             $(this).css("color", "#e74c3c");
         }
     });
-    // End
 
     // Bấm vào mã đơn hàng
     $(document).on("click", ".order-code > a", function(e) {
@@ -296,7 +330,5 @@ $(document).ready(function() {
         $(this).parents(".order-body").next(".order-detail").slideToggle();
 
     });
-
-
 });
 </script>

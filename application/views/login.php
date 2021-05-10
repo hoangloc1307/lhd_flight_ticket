@@ -13,6 +13,7 @@
                         Bạn chưa có tài khoản?
                         <a onclick="toggleForm()">Đăng ký</a>
                     </p>
+                    <a href="<?= base_url() ?>account/forgetpassword">Quên mật khẩu</a>
                 </form>
             </div>
 

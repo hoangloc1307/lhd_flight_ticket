@@ -166,28 +166,25 @@
                 <script>
                 /* Lấy dữ liệu sân bay */
                 $.ajax({
-                    url: "https://www.vietjetair.com/AirportList.aspx?lang=vi-VN",
+                    url: "https://vietjetcms-api.vietjetair.com/api/v1/airport?languageId=a6ca5a9f-6a9c-4f35-bf1c-c42ea3d62f14&requestId=XPFRKE4H6H1J-1620611815236",
                     type: "GET",
                     dataType: "json",
                     success: function(json) {
-                        json = json.AirportList;
-                        for (let i = 0; i < json.length; i++) {
+                        for (let i = 0; i < json['airportGroups'].length; i++) {
                             $(".tab-container").append(
-                                "<li>" + json[i]["CountryName"] + "</span></li>"
+                                "<li>" + json['airportGroups'][i]["name"] + "</li>"
                             );
 
                             let txt = '<div class="list-city">';
                             txt += '<ul class="list-point">';
 
-                            for (let j = 0; j < json[i]["List"].length; j++) {
-                                txt +=
-                                    '<li value="' +
-                                    json[i]["List"][j]["Code"] +
-                                    '">' +
-                                    json[i]["List"][j]["Name"] +
-                                    " (" +
-                                    json[i]["List"][j]["Code"] +
-                                    ")</li>";
+                            for (let j = 0; j < json['airportGroups'][i]['airports'].length; j++) {
+                                txt += '<li>';
+                                txt += json['airportGroups'][i]['airports'][j]['province']['provinceName'];
+                                txt += ' (';
+                                txt += json['airportGroups'][i]['airports'][j]['code'];
+                                txt += ')';
+                                txt += '</li>';
                             }
                             txt += "</ul>";
                             txt += "</div>";
@@ -199,7 +196,12 @@
                     },
 
                 });
-                /*===== End ===== */
+
+                $('button[name="search-flight"]').click(function() {
+                    if ($('input[name="forigin"]').val() != '' && $('input[name="fdestination"]').val() != '') {
+                        $('.loader-container').removeClass('hide');
+                    }
+                })
                 </script>
 
             </div>

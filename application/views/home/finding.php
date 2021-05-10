@@ -1102,6 +1102,8 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
     if (checkInfoStatus == true) {
         var confirm_booking = confirm("Xác nhận đặt vé");
         if (confirm_booking == true) {
+            $('.loader-container').removeClass('hide');
+
             var flightTicketDetailHTML = [];
             var customerNames = [];
             var payment = '';
@@ -1225,6 +1227,7 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
                         $('.confirm').css('display', 'none');
                         $('.finish-payment').css('display', 'block');
                         $('.filter-tab .filter-step li:nth-child(3)').addClass('active');
+                        $('.loader-container').addClass('hide');
 
                         //Đổ dữ liệu
                         var goDetailHTML = "<div class='title-flight'> " +
