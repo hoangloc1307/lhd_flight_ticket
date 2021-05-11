@@ -54,10 +54,10 @@ $route['default_controller'] = 'home';
 //Home
 $route['news'] = 'news/view';
 $route['news/(:any)'] = 'news/view/$1';
-// $route['news/getmorenews'] = 'news/getmorenews';
 //Admin
 $route['admin'] = 'admin/admin';
 $route['admin/news'] = 'admin/manage_news';
+$route['admin/news/edit/(:num)'] = 'admin/manage_news/edit/$1';
 $route['admin/news/category'] = 'admin/manage_news/category';
 $route['admin/news/add'] = 'admin/manage_news/add';
 $route['admin/news/delete'] = 'admin/manage_news/delete';

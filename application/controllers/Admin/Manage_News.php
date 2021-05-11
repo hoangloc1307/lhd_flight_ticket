@@ -48,15 +48,13 @@ class Manage_News extends CI_Controller {
             $linkcustom = $this->input->post('linkcustom');
             $category = $this->input->post('category');
 
-            $this->load->model('Admin/News_model');
             $result = $this->News_model->AddNews($name, $description, $content, $image, $linkcustom, $category);
             if ($result > 0) {
                 $this->session->set_tempdata('add_alert', '<p class="success">Thêm thành công</p>', 1);
-                redirect(base_url() . 'admin/news');
             } else {
                 $this->session->set_tempdata('add_alert', '<p class="error">Thêm thất bại</p>', 1);
-                redirect(base_url() . 'admin/news');
             }
+            redirect(base_url() . 'admin/news');
         } else {
             $data['category'] = $this->News_model->GetNewsCategory();
             $data['view'] = 'admin/news_add';
@@ -78,6 +76,52 @@ class Manage_News extends CI_Controller {
             }
         }
         echo json_encode($data);
+    }
+
+    public function Edit($id) {
+        $this->load->model('Database_model');
+
+        if (isset($_POST['submit'])) {
+            $name = $this->input->post('name');
+            $description = $this->input->post('description');
+            $content = $this->input->post('content');
+            $linkcustom = $this->input->post('linkcustom');
+            $category = $this->input->post('category');
+            $oldfile = $this->input->post('oldfile');
+
+            if (!empty($_FILES["image"]["name"])) {
+                $target_dir = "assets/images/news/";
+                $target_file = $target_dir . basename($_FILES["image"]["name"]);
+                move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+                $image = $target_file;
+            } else {
+                $image = $oldfile;
+            }
+
+            $update = [
+                'Name' => $name,
+                'Description' => $description,
+                'Content' => $content,
+                'Image' => $image,
+                'LinkCustom' => $linkcustom,
+                'Category' => $category
+            ];
+
+            $where = "News_ID = '" . $id . "'";
+            if ($this->Database_model->UpdateRecordMultiColumn('tbl_news', $where, $update)) {
+                $this->session->set_tempdata('add_alert', '<p class="success">Sửa thành công</p>', 1);
+            } else {
+                $this->session->set_tempdata('add_alert', '<p class="error">Sửa thất bại</p>', 1);
+            }
+            redirect(base_url() . 'admin/news');
+        } else {
+            $data['category'] = $this->News_model->GetNewsCategory();
+            $where = "News_ID = '" . $id . "'";
+            $data['news'] = $this->Database_model->GetRecord('tbl_news', $where);
+            $data['view'] = 'admin/news_edit';
+            $data['title'] = 'Chỉnh sửa bài viết';
+            $this->load->view('admin/master_layout', $data, FALSE);
+        }
     }
 
     public function Search() {
