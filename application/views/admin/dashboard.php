@@ -89,10 +89,10 @@
 			<div class="col l-5">
 				<div class="table order">
 					<div class="row link">
-						<div class="col l-8">
+						<div class="col l-7">
 							<h3>Đơn hàng gần đây</h3>
 						</div>
-						<div class="col l-4 button">
+						<div class="col l-5 button">
 							<a href="<?= base_url() ?>admin/order">
 								Xem tất cả <i class="fas fa-long-arrow-alt-right"></i>
 							</a>

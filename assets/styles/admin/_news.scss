@@ -54,7 +54,7 @@ h2 {
 
 		.action {
 			display: flex;
-			justify-content: space-around;
+			justify-content: center;
 
 			.button {
 				display: block;
@@ -169,7 +169,6 @@ h2 {
 		}
 	}
 }
-
 
 #edit_modal {
 	position: fixed;

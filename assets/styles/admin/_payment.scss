@@ -1,0 +1,17 @@
+.payment {
+	.form-add {
+		background: $cl-white-1;
+		border-radius: 8px;
+		label {
+			font-weight: 600;
+			color: #777;
+			display: block;
+			margin: 6px 0;
+		}
+		input {
+			display: block;
+			width: 500px;
+			padding: 12px;
+		}
+	}
+}

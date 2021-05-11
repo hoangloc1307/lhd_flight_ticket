@@ -145,7 +145,7 @@
 
 	input,
 	button {
-		padding: 8px 12px;
+		padding: 12px;
 		border: 1px solid $cl-grey;
 		transition: 0.3s ease-in-out;
 		border-radius: 10px;
@@ -163,12 +163,13 @@
 		}
 	}
 	button {
-		background: $cl-grey;
+		background: $cl-green-2;
 		font-weight: 500;
 		cursor: pointer;
+		color: $cl-white-2;
 
 		&:hover {
-			background: $cl-blue-3;
+			background: $cl-green-1;
 			border: 1px solid $cl-blue-1;
 			color: $cl-white-2;
 		}
@@ -179,7 +180,7 @@
 
 /*==================== Button Submit ====================*/
 .button-submit {
-	padding: 12px 24px;
+	padding: 12px 24px !important;
 	background: $cl-green-1;
 	color: $cl-white-2;
 	border-radius: 5px;
