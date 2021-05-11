@@ -69,24 +69,32 @@
             </div>
             <?php endforeach; ?>
         </div>
-
+        <div class="view-more">
+            <button>Xem thêm</button>
+        </div>
     </div>
 </section>
 <script>
 $(document).ready(function() {
+    var myObj = {
+        offset: 5,
+    };
+    //Xác nhận thanh toán
     $(document).on("click", ".status span[payment='false']", function() {
         var pay = confirm("Xác nhận đã thanh toán");
         if (pay == true) {
+            $('.loader-container').removeClass('hide');
             $.ajax({
                 type: "POST",
                 url: "<?= base_url() ?>admin/order/updatestatus",
                 data: {
-                    order_id: $(".status span[payment='false']").attr('value')
+                    order_id: $(this).attr('value')
                 },
                 dataType: "json",
                 success: function(response) {
                     if (response == "Xác nhận thành công") {
                         toastr["success"](response);
+                        $('.loader-container').addClass('hide');
                     } else {
                         toastr["error"](response);
                     }
@@ -94,6 +102,148 @@ $(document).ready(function() {
             });
             $(this).removeAttr("payment");
             $(this).text("Đã TT");
+        }
+    });
+
+    //Xem thêm
+    $(document).on("click", '.view-more button', function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('admin/order/viewmore') ?>",
+            data: {
+                offset: myObj['offset']
+            },
+            dataType: "json",
+            success: function(data) {
+                myObj['offset'] += 5;
+                txt = "";
+                for (var i in data) {
+                    var flight_detail = JSON.parse(data[i]['Flight_Detail']);
+                    var payment_info = JSON.parse(data[i]['Payment_Info']);
+
+                    txt += "<div class='row body'>";
+                    txt += "<div class='col l-1'>";
+                    txt += "<a href='<?= base_url('admin/order/detail/') ?>" + data[i][
+                        'Order_ID'
+                    ] + "'>" + data[i]['Order_Code'] + "</a>";
+                    txt += "</div>";
+                    txt += "<div class='col l-1 amount'>";
+                    txt +=
+                        "<span>" + payment_info['adults'] + (data[i]['Type'] == 'oneway' ?
+                            ' MC' : ' KH') + "</span>";
+                    txt += "<p>" + payment_info['adults'] + ' NL' + "</p>";
+                    txt += "</div>";
+                    txt += "<div class='col l-1'>";
+                    txt += "<span>" + payment_info['total_price'] + "</span>";
+                    txt += "</div>";
+                    txt += "<div class='col l-4'>";
+                    for (var j in flight_detail['flight_detail']) {
+                        txt += "<p>" + flight_detail['flight_detail'][j]['carrierCode'] +
+                            flight_detail['flight_detail'][j]['number'] + ' ' +
+                            flight_detail['flight_detail'][j]['date'] + ' ' + flight_detail[
+                                'flight_detail'][j]['from'] + ' ' + flight_detail[
+                                'flight_detail'][j]['to'] + ' ' + flight_detail[
+                                'flight_detail'][j]['departure_time'] + ' ' + flight_detail[
+                                'flight_detail'][j]['arrival_time'] +
+                            "</p>";
+                    }
+                    txt += "</div>";
+                    txt += "<div class='col l-2'>";
+                    txt += "<p>" + payment_info['contact_name'] + "</p>";
+                    txt += "<p>" + payment_info['contact_phone'] + "</p>";
+                    txt += "</div>";
+                    txt += "<div class='col l-2'>";
+                    txt += "<span>" + data[i]['Booking_DateTime'] + "</span>";
+                    txt += "</div>";
+                    txt += "<div class='status col l-1'>";
+                    txt += "<span payment='" + (data[i]['Status'] == 0 ? 'false' : 'true') +
+                        "' value='" + data[i]['Order_ID'] + "'>" + (data[i]['Status'] == 0 ?
+                            'Chưa TT' : 'Đã TT') + "</span>";
+                    txt += "</div></div>";
+                }
+                $('.items').append(txt);
+            }
+        });
+    });
+
+    //Search
+    $('.search-form button').click(function(e) {
+        e.preventDefault();
+        if ($('.search-form input').val() != '') {
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('admin/order/search') ?>",
+                data: {
+                    keyword: $('.search-form input').val()
+                },
+                dataType: "json",
+                success: function(data) {
+                    var txt = "";
+                    if (data != "Không tìm thấy kết quả!") {
+                        for (var i in data) {
+                            var flight_detail = JSON.parse(data[i]['Flight_Detail']);
+                            var payment_info = JSON.parse(data[i]['Payment_Info']);
+
+                            txt += "<div class='row body'>";
+                            txt += "<div class='col l-1'>";
+                            txt += "<a href='<?= base_url('admin/order/detail/') ?>" + data[
+                                i][
+                                'Order_ID'
+                            ] + "'>" + data[i]['Order_Code'] + "</a>";
+                            txt += "</div>";
+                            txt += "<div class='col l-1 amount'>";
+                            txt +=
+                                "<span>" + payment_info['adults'] + (data[i]['Type'] ==
+                                    'oneway' ?
+                                    ' MC' : ' KH') + "</span>";
+                            txt += "<p>" + payment_info['adults'] + ' NL' + "</p>";
+                            txt += "</div>";
+                            txt += "<div class='col l-1'>";
+                            txt += "<span>" + payment_info['total_price'] + "</span>";
+                            txt += "</div>";
+                            txt += "<div class='col l-4'>";
+                            for (var j in flight_detail['flight_detail']) {
+                                txt += "<p>" + flight_detail['flight_detail'][j][
+                                        'carrierCode'
+                                    ] +
+                                    flight_detail['flight_detail'][j]['number'] + ' ' +
+                                    flight_detail['flight_detail'][j]['date'] + ' ' +
+                                    flight_detail[
+                                        'flight_detail'][j]['from'] + ' ' + flight_detail[
+                                        'flight_detail'][j]['to'] + ' ' + flight_detail[
+                                        'flight_detail'][j]['departure_time'] + ' ' +
+                                    flight_detail[
+                                        'flight_detail'][j]['arrival_time'] +
+                                    "</p>";
+                            }
+                            txt += "</div>";
+                            txt += "<div class='col l-2'>";
+                            txt += "<p>" + payment_info['contact_name'] + "</p>";
+                            txt += "<p>" + payment_info['contact_phone'] + "</p>";
+                            txt += "</div>";
+                            txt += "<div class='col l-2'>";
+                            txt += "<span>" + data[i]['Booking_DateTime'] + "</span>";
+                            txt += "</div>";
+                            txt += "<div class='status col l-1'>";
+                            txt += "<span payment='" + (data[i]['Status'] == 0 ? 'false' :
+                                    'true') +
+                                "' value='" + data[i]['Order_ID'] + "'>" + (data[i][
+                                        'Status'
+                                    ] == 0 ?
+                                    'Chưa TT' : 'Đã TT') + "</span>";
+                            txt += "</div></div>";
+                        }
+                    } else {
+                        txt += '<div class="empty">' + data + '</div>';
+                    }
+                    $('.view-more').remove();
+                    $('.items').html(txt);
+                }
+            });
+        } else {
+            toastr["error"]("Vui lòng nhập từ khoá");
+            $('.search-form input').focus();
         }
     });
 });

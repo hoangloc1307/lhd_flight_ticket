@@ -18,7 +18,7 @@ $payment_info = json_decode($order["Payment_Info"], true);
                 </div>
                 <div class="class">
                     <i class="fas fa-plane"></i>
-                    <span><?= $order["Class"] ?> CLASS</span>
+                    <span>CLASS</span>
                     <span><?= $order["Type"] == "oneway" ? "Một chiều" : "Khứ hồi" ?></span>
                     <span><?= $order["Status"] == "1" ? "Đã thanh toán" : "Chưa thanh toán" ?></span>
                 </div>
@@ -42,12 +42,6 @@ $payment_info = json_decode($order["Payment_Info"], true);
                         <span><?= $flight_detail["departure_date"] ?></span>
                         <span><?= $flight_detail["departure_time"] ?></span>
                     </div>
-                    <i class="fas fa-plane"></i>
-                    <div>
-                        <p>Đến</p>
-                        <span>31/05/2021</span>
-                        <span>15h00</span>
-                    </div>
                 </div>
             </div>
             <div class="col l-4 info-user">
@@ -64,7 +58,7 @@ $payment_info = json_decode($order["Payment_Info"], true);
                         <span><?= $order["Order_Code"] ?></span>
                     </div>
                     <div class="order-datetime">
-                        <span>Ngày / Thời gian đặt:</span>
+                        <span>Ngày đặt:</span>
                         <span><?= $order["Booking_DateTime"] ?></span>
                     </div>
                 </div>
@@ -91,8 +85,8 @@ $payment_info = json_decode($order["Payment_Info"], true);
                         <?php endfor; ?>
 
                         <?php
-						if (array_key_exists("children", $payment_info)) :
-							for ($i = 0; $i < count($payment_info["children_names"]); $i++) : ?>
+                        if (array_key_exists("children", $payment_info)) :
+                            for ($i = 0; $i < count($payment_info["children_names"]); $i++) : ?>
                         <div class="row body">
                             <div class="col l-8">
                                 <?= $payment_info["children_names"][$i] ?>
@@ -105,8 +99,8 @@ $payment_info = json_decode($order["Payment_Info"], true);
                         <?php endif; ?>
 
                         <?php
-						if (array_key_exists("infants", $payment_info)) :
-							for ($i = 0; $i < count($payment_info["infants_names"]); $i++) : ?>
+                        if (array_key_exists("infants", $payment_info)) :
+                            for ($i = 0; $i < count($payment_info["infants_names"]); $i++) : ?>
                         <div class="row body">
                             <div class="col l-8">
                                 <?= $payment_info["infants_names"][$i] ?>
@@ -230,9 +224,9 @@ $payment_info = json_decode($order["Payment_Info"], true);
                 <?php endfor ?>
 
                 <?php
-				if (array_key_exists("children", $payment_info)) :
-					for ($i = 0; $i < count($payment_info["children_names"]); $i++) :
-				?>
+                if (array_key_exists("children", $payment_info)) :
+                    for ($i = 0; $i < count($payment_info["children_names"]); $i++) :
+                ?>
                 <div class="row body">
                     <div class="col l-6">
                         <?= $payment_info["children_names"][$i] ?>
@@ -245,9 +239,9 @@ $payment_info = json_decode($order["Payment_Info"], true);
                 <?php endif ?>
 
                 <?php
-				if (array_key_exists("infants", $payment_info)) :
-					for ($i = 0; $i < count($payment_info["infants_names"]); $i++) :
-				?>
+                if (array_key_exists("infants", $payment_info)) :
+                    for ($i = 0; $i < count($payment_info["infants_names"]); $i++) :
+                ?>
                 <div class="row body">
                     <div class="col l-6">
                         <?= $payment_info["infants_names"][$i] ?>

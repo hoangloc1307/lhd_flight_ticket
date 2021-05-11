@@ -12,7 +12,7 @@ class Order extends CI_Controller {
         if (is_null($order_id)) {
             $data['view'] = 'admin/order';
             $data['title'] = 'Hoá đơn';
-            $data['orders'] = $this->Database_model->GetRecords('tbl_order', '', 'Order_ID DESC', '', '');
+            $data['orders'] = $this->Database_model->GetRecords('tbl_order', '', 'Order_ID DESC', '5', '');
         } else {
             $data['view'] = 'admin/order_detail';
             $data['title'] = 'Chi tiết hoá đơn';
@@ -21,6 +21,28 @@ class Order extends CI_Controller {
         }
 
         $this->load->view('admin/master_layout', $data);
+    }
+
+    public function ViewMore() {
+        if ($this->input->is_ajax_request()) {
+            $offset = $this->input->post('offset');
+            $result = $this->Database_model->GetRecords('tbl_order', '', 'Order_ID DESC', '5', $offset);
+            echo json_encode($result);
+        }
+    }
+
+    public function Search() {
+        if ($this->input->is_ajax_request()) {
+            $keyword = $this->input->post("keyword");
+            $this->load->model("Database_model");
+            $where = "Order_Code LIKE '" . $keyword . "%' or Order_Code LIKE '%" . $keyword . "%' or Order_Code LIKE '%" . $keyword . "' or Order_Code LIKE '" . $keyword . "'";
+            $result = $this->Database_model->GetRecords("tbl_order", $where, "Order_ID DESC", "", "");
+            if (!empty($result)) {
+                echo json_encode($result);
+            } else {
+                echo json_encode("Không tìm thấy kết quả!");
+            }
+        }
     }
 
     function SendBookingSuccessMail($order_code, $order, $to) {
@@ -74,12 +96,12 @@ class Order extends CI_Controller {
             'smtp_pass' => 'P@ss123456',
             'mailtype' => 'html',
             'charset' => 'utf-8',
+            'newline' => "\r\n",
             'wordwrap' => TRUE
         );
 
         $this->load->library('email', $config);
-        $this->email->set_newline("\r\n");
-        $this->email->from($from);
+        $this->email->from('lhdflightticket@gmai.com', 'LHD Flight Ticket');
         $this->email->to($to);
         $this->email->subject($subject);
         $this->email->message($message);
@@ -184,7 +206,6 @@ class Order extends CI_Controller {
 
     public function SendSuccessPaymentMail($order, $to) {
         $subject = "Thanh toán thành công";
-        $from = 'LHD Flight Ticket';
 
         $payment_info = json_decode($order['Payment_Info'], true);
         $flight_detail = json_decode($order['Flight_Detail'], true);
@@ -192,7 +213,7 @@ class Order extends CI_Controller {
         $message = "<!DOCTYPE html><html lang='en' style='font-family: Arial, Helvetica, sans-serif;font-size: 14px;'><head></head><body style='margin: 0;padding: 0;box-sizing: border-box;'>";
         $message .= "<section style='background: #f9f9f9;padding: 30px 0;'>";
         $message .= "<div style='max-width: 480px;margin: 0 auto;background: #fff;border-radius: 6px;'>";
-        $message .= "<div style='padding: 24px;background: #17699a;font-size: 24px;color: #fff;border-radius: 6px 6px 0 0;'>Cảm ơn bạn đã đặt vé</div>";
+        $message .= "<div style='padding: 24px;background: #17699a;font-size: 24px;color: #fff;border-radius: 6px 6px 0 0;'>Thanh toán thành công</div>";
         $message .= "<div style='padding: 12px;color: #777;'>";
         $message .= "<div class='greeting'>";
         $message .= "<p>Xin chào " . $payment_info['contact_name'] . ",</p>";
@@ -236,12 +257,12 @@ class Order extends CI_Controller {
             'smtp_pass' => 'P@ss123456',
             'mailtype' => 'html',
             'charset' => 'utf-8',
+            'newline' => "\r\n",
             'wordwrap' => TRUE
         );
 
         $this->load->library('email', $config);
-        $this->email->set_newline("\r\n");
-        $this->email->from($from);
+        $this->email->from('lhdflightticket@gmai.com', 'LHD Flight Ticket');
         $this->email->to($to);
         $this->email->subject($subject);
         $this->email->message($message);
@@ -257,7 +278,6 @@ class Order extends CI_Controller {
                 $order_mail = json_decode($order['Payment_Info'], true);
                 $this->SendSuccessPaymentMail($order, $order_mail['contact_mail']);
                 echo json_encode("Xác nhận thành công");
-                var_dump($order);
             } else {
                 echo json_encode("Xác nhận không thành công");
             }

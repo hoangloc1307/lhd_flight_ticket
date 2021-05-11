@@ -39,6 +39,12 @@ class Database_model extends CI_Model {
         $this->db->set($column, $value);
         return $this->db->update($table);
     }
+
+    public function UpdateRecordMultiColumn($table, $where, $data) {
+        $this->db->where($where);
+        $this->db->set($data);
+        return $this->db->update($table);
+    }
 }
                         
 /* End of file Database_model.php */
