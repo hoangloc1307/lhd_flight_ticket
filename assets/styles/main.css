@@ -829,7 +829,7 @@ html {
 
 .form-add input,
 .form-add button {
-  padding: 8px 12px;
+  padding: 12px;
   border: 1px solid #dddddd;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
@@ -852,13 +852,14 @@ html {
 }
 
 .form-add button {
-  background: #dddddd;
+  background: #27ae60;
   font-weight: 500;
   cursor: pointer;
+  color: #fff;
 }
 
 .form-add button:hover {
-  background: #17699a;
+  background: #2ecc71;
   border: 1px solid #89a9bc;
   color: #fff;
 }
@@ -866,7 +867,7 @@ html {
 /*==================== End Form Them moi ====================*/
 /*==================== Button Submit ====================*/
 .button-submit {
-  padding: 12px 24px;
+  padding: 12px 24px !important;
   background: #2ecc71;
   color: #fff;
   border-radius: 5px;
@@ -1689,10 +1690,6 @@ header {
   font-size: 14px;
   border-radius: 8px;
   display: none;
-}
-
-.booking-form form .way label .way-popup.show {
-  display: block;
 }
 
 .booking-form form .way label .way-popup .header {
@@ -2988,7 +2985,7 @@ header {
 .finding .finding-detail .content .detail-ticket .date-time p,
 .finding .flight-selected__base .content .detail-ticket .from-to p,
 .finding .flight-selected__base .content .detail-ticket .date-time p {
-  padding: 0 6px;
+  padding: 0 2px;
 }
 
 .finding .finding-detail .content .detail-ticket .image,
@@ -4949,8 +4946,9 @@ h2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .table .item .action .button {
@@ -5278,11 +5276,6 @@ h2 {
   border: 1px solid #dddddd;
   padding: 12px 24px;
   border-radius: 5px;
-}
-
-.order .heading,
-.order .body {
-  margin: 0 !important;
 }
 
 .order .body {
@@ -5659,16 +5652,6 @@ form .form-partner label {
   font-weight: 600;
   color: #777;
   position: relative;
-  padding-right: 12px;
-}
-
-form .form-partner label::after {
-  position: absolute;
-  content: "*";
-  top: 0;
-  right: 0;
-  color: #f00;
-  font-size: 12px;
 }
 
 form .form-partner #partner-name {
@@ -5724,6 +5707,24 @@ form .button-submit {
 
 .partner .heading {
   margin: 0 3px;
+}
+
+.payment .form-add {
+  background: #f3f4f8;
+  border-radius: 8px;
+}
+
+.payment .form-add label {
+  font-weight: 600;
+  color: #777;
+  display: block;
+  margin: 6px 0;
+}
+
+.payment .form-add input {
+  display: block;
+  width: 500px;
+  padding: 12px;
 }
 
 .news-letter {

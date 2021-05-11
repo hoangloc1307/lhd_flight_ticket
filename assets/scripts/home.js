@@ -15,12 +15,12 @@ $(document).ready(function () {
 
 	/* Input điểm đi, điểm đến focus */
 	$(".close").click(function () {
-		$(".way-popup").removeClass("show");
+		$(".way-popup").hide();
 	});
 
 	$(".choose").click(function () {
-		$(".way-popup").removeClass("show");
-		$(this).nextAll(".way-popup").addClass("show");
+		$(".way-popup").hide();
+		$(this).nextAll(".way-popup").show();
 	});
 	/*===== End ===== */
 
@@ -66,19 +66,15 @@ $(document).ready(function () {
 		}
 	);
 
-	// function activeTab(obj) {
-	// 	$(".way label .tab-container > li").removeClass("tab-active");
-
-	// 	$(obj).addClass("tab-active");
-
-	// 	var content = $(obj).find
-	// }
-
 	/*===== End ===== */
 
 	/* Chọn điểm di, điểm đến */
 	$(document).on("click", ".list-point li", function () {
 		$(this).parents(".way-popup").prev(".choose").val($(this).text());
+		if ($("input[name='forigin']").val() != "") {
+			// $("input[name='forigin'] .way-popup .header .close").trigger("click");
+			$("input[name='fdestination']").focus();
+		}
 	});
 	/*===== End ===== */
 

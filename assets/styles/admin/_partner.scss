@@ -1,21 +1,10 @@
 form {
 	.form-partner {
 		margin-bottom: 12px;
-
 		label {
 			font-weight: 600;
 			color: #777;
 			position: relative;
-			padding-right: 12px;
-
-			&::after {
-				position: absolute;
-				content: "*";
-				top: 0;
-				right: 0;
-				color: $cl-red;
-				font-size: 12px;
-			}
 		}
 
 		#partner-name {
