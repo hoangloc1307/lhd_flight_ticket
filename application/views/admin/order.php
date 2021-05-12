@@ -116,6 +116,7 @@ $(document).ready(function() {
             },
             dataType: "json",
             success: function(data) {
+                console.log(data);
                 myObj['offset'] += 5;
                 txt = "";
                 for (var i in data) {
@@ -129,10 +130,21 @@ $(document).ready(function() {
                     ] + "'>" + data[i]['Order_Code'] + "</a>";
                     txt += "</div>";
                     txt += "<div class='col l-1 amount'>";
-                    txt +=
-                        "<span>" + payment_info['adults'] + (data[i]['Type'] == 'oneway' ?
-                            ' MC' : ' KH') + "</span>";
+                    txt += "<span>" + (parseInt(payment_info['adults']) + parseInt(
+                        payment_info
+                        .hasOwnProperty('children') == true ? payment_info[
+                            'children'] : 0) + parseInt(payment_info.hasOwnProperty(
+                        'infants') == true ? payment_info['infants'] : 0)) + (data[i][
+                            'Type'
+                        ] ==
+                        'oneway' ? ' MC' : ' KH') + "</span>";
                     txt += "<p>" + payment_info['adults'] + ' NL' + "</p>";
+                    if (payment_info.hasOwnProperty('children')) {
+                        txt += "<p>" + payment_info['children'] + ' TE' + "</p>";
+                    }
+                    if (payment_info.hasOwnProperty('infants')) {
+                        txt += "<p>" + payment_info['infants'] + ' EB' + "</p>";
+                    }
                     txt += "</div>";
                     txt += "<div class='col l-1'>";
                     txt += "<span>" + payment_info['total_price'] + "</span>";
