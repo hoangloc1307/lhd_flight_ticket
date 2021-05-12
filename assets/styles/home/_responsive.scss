@@ -157,8 +157,15 @@
 
 	/*========== News ==========*/
 	#news {
-		.category .category-title {
-			font-size: $fs-sub-title;
+		.category {
+			.category-title {
+				font-size: $fs-sub-title;
+			}
+			.category-list {
+				height: 400px;
+				overflow-y: auto;
+				margin-bottom: 12px;
+			}
 		}
 		.news-item .news-wrap .img-wrap {
 			height: 150px;
@@ -385,8 +392,6 @@
 		.category {
 			.category-list {
 				height: 300px;
-				overflow-y: auto;
-				margin-bottom: 12px;
 			}
 		}
 

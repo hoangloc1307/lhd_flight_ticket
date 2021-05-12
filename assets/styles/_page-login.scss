@@ -42,7 +42,7 @@
 		.img-box {
 			width: 50%;
 			height: 100%;
-			padding: 30px;
+			padding: 20px;
 
 			img {
 				width: 100%;
@@ -71,7 +71,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 30px;
+	padding: 20px;
 
 	form {
 		h2 {
@@ -142,5 +142,8 @@
 				text-decoration: underline;
 			}
 		}
+	}
+	.error {
+		color: $cl-yellow-1;
 	}
 }

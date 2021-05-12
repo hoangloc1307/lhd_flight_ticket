@@ -130,19 +130,19 @@
 					font-size: $fs-sub-title;
 					text-decoration: none;
 					position: relative;
-					padding: 10px 0;
+					padding-bottom: 6px;
 					display: -webkit-box;
 					-webkit-box-orient: vertical;
 					-webkit-line-clamp: 2;
 					overflow: hidden;
-					height: 73px;
 					line-height: 1.6;
+					margin-top: 12px;
 
 					&::after {
 						content: "";
 						position: absolute;
 						bottom: 0;
-						left: 0%;
+						left: 0;
 						height: 2px;
 						width: 30%;
 						background: $cl-blue-5;
@@ -150,12 +150,12 @@
 				}
 
 				.news-description {
-					padding: 10px 0;
 					display: -webkit-box;
 					-webkit-box-orient: vertical;
 					-webkit-line-clamp: 3;
 					overflow: hidden;
-					height: 78px;
+					margin: 12px 0;
+					color: $cl-grey-2;
 				}
 
 				.date-view {
@@ -164,6 +164,7 @@
 					opacity: 0.5;
 					font-weight: 600;
 					font-size: 14px;
+					margin-top: 6px;
 
 					i {
 						margin-right: 6px;
