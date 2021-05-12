@@ -47,7 +47,6 @@ class Order extends CI_Controller {
 
     function SendBookingSuccessMail($order_code, $order, $to) {
         $subject = "Đặt vé thành công";
-        $from = 'LHD Flight Ticket';
 
         $message = "<!DOCTYPE html><html lang='en' style='font-family: Arial, Helvetica, sans-serif;font-size: 14px;'><head></head><body style='margin: 0;padding: 0;box-sizing: border-box;'>";
         $message .= "<section style='background: #f9f9f9;padding: 30px 0;'>";

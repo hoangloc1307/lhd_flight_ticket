@@ -45,12 +45,10 @@ class Account extends CI_Controller {
     }
 
     function SendForgetPasswordMail($code, $to) {
-        $subject = "Mật khẩu đăng nhập LHD";
-        $from = 'LHD Flight Ticket';
+        $subject = "Mã xác thực quên mật khẩu";
 
         $message = "<!DOCTYPE html><html lang='en' style='font-family: Arial, Helvetica, sans-serif;font-size: 14px;'><head></head><body style='margin: 0;padding: 0;box-sizing: border-box;'>";
-        $message .= "<p>Mật khẩu mới của bạn là: <b>" . $code . "</b></p>";
-        $message .= "<p style='color: red;'>Vui lòng đăng nhập và đổi mật khẩu ngay lập tức. <a href='" . base_url('login') . "'>Đăng nhập</a><p>";
+        $message .= "<p>Mã xác thực của bạn là: <b>" . $code . "</b></p>";
         $message .= "</body></html>";
 
         $config = array(
@@ -61,12 +59,12 @@ class Account extends CI_Controller {
             'smtp_pass' => 'P@ss123456',
             'mailtype' => 'html',
             'charset' => 'utf-8',
+            'newline' => "\r\n",
             'wordwrap' => TRUE
         );
 
         $this->load->library('email', $config);
-        $this->email->set_newline("\r\n");
-        $this->email->from($from);
+        $this->email->from('lhdflightticket@gmai.com', 'LHD Flight Ticket');
         $this->email->to($to);
         $this->email->subject($subject);
         $this->email->message($message);
@@ -74,16 +72,29 @@ class Account extends CI_Controller {
     }
 
     public function ForgetPassword() {
-        if ($this->input->is_ajax_request()) {
+        if (isset($_POST['submit-button'])) {
+            $code = create_oder_code();
             $email = $this->input->post('email');
-            $code = create_oder_code() . create_oder_code();
-            $this->SendForgetPasswordMail($code, $email);
+
             $where = "Email = '" . $email . "'";
-            if ($this->Database_model->UpdateRecord('tbl_account', $where, 'Password', md5($code))) {
-                echo json_encode("Vui lòng kiểm tra email để lấy mật khẩu mới");
+            $account = $this->Database_model->GetRecord('tbl_account', $where);
+
+            if (!is_null($account)) {
+                $tempdata = [
+                    'email_forget' => $email,
+                    'code' => $code
+                ];
+                $this->session->set_tempdata($tempdata, NULL, 300);
+                $this->SendForgetPasswordMail($code, $email);
+                $data['view'] = 'verification';
+                $data['title'] = 'Nhập mã xác thực';
             } else {
-                echo json_encode("Khôi phục mật khẩu thất bại");
+                $this->session->set_tempdata('alert', 'Email không tồn tại', 3);
+                $data['view'] = 'forget_password';
+                $data['title'] = 'Quên mật khẩu';
             }
+            $data['websitesetting'] = json_decode($this->JSON_model->get('WebsiteSetting')['Text'], true);
+            $this->load->view('home/header_footer', $data);
         } else {
             $data['view'] = 'forget_password';
             $data['title'] = 'Quên mật khẩu';
@@ -92,9 +103,18 @@ class Account extends CI_Controller {
         }
     }
 
-    public function Verification() {
-        $data['view'] = 'verification';
-        $this->load->view('home/header_footer', $data);
+    public function RestorePassword() {
+        if ($this->input->is_ajax_request()) {
+            $email = $this->session->tempdata('email_forget');
+            $password = $this->input->post('password');
+
+            $where = "Email = '" . $email . "'";
+            if ($this->Database_model->UpdateRecord('tbl_account', $where, 'Password', md5($password))) {
+                echo json_encode("Khôi phục mật khẩu thành công");
+            } else {
+                echo json_encode("Khôi phục mật khẩu thất bại");
+            }
+        }
     }
 }
         
