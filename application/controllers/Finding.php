@@ -156,6 +156,7 @@ class Finding extends CI_Controller {
                 }
                 $this->load->model('Admin/JSON_model');
                 $data['websitesetting'] = json_decode($this->JSON_model->get('WebsiteSetting')['Text'], true);
+                $data['payment_method'] = json_decode($this->JSON_model->get('PaymentMethod')['Text'], true);
                 $this->load->view('home/header_footer', $data);
             }
         } else {

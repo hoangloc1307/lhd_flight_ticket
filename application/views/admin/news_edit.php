@@ -27,7 +27,7 @@
                     Tên bài viết
                     <font color="red">*</font>
                 </div>
-                <input required class="news-input" type="text" name="name" value="<?= $news['Name'] ?>">
+                <input required class="news-input" type="text" name="name" value='<?= $news["Name"] ?>'>
             </label>
             <label class="news-category" for="">
                 <div class="news-title">

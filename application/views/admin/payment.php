@@ -41,9 +41,10 @@ function fetch() {
         dataType: "json",
         success: function(data) {
             var txt = "";
+            var stt = 1;
             for (i in data) {
                 txt += "<div class='row item'>";
-                txt += "<div class='col l-2'>" + (parseInt(i) + 1) + "</div>";
+                txt += "<div class='col l-2'>" + stt + "</div>";
                 txt += "<div class='col l-8 name'>" + data[i].Name + "</div>";
                 txt += "<div class='col l-2 action'>";
                 txt += "<input type='hidden' value='" + data[i].Content + "'>";
@@ -51,6 +52,7 @@ function fetch() {
                 txt += "<a href='#' name='" + data[i].Name +
                     "' class='button delete'><i class='fas fa-trash'></i></a>";
                 txt += "</div></div>";
+                stt++;
             }
             $('.items').html(txt);
         }

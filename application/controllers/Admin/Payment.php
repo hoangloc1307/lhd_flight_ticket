@@ -21,7 +21,7 @@ class Payment extends CI_Controller {
 
             $payment_method = $this->JSON_model->get('PaymentMethod');
             $payment_method = json_decode($payment_method['Text'], true);
-            // if($payment_method)
+
             if (is_null($payment_method)) {
                 $payment_method = [];
             }
