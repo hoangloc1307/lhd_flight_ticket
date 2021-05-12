@@ -147,11 +147,11 @@ $(document).on('click', '.search-form button', function(e) {
                         item += '</div>';
                         item += '</div>';
                     }
-                    $('.items').html(item);
                 } else {
                     item += '<div class="empty">' + data + '</div>';
-                    $('.items').html(item);
                 }
+                $('.items').html(item);
+                $('.view-more').remove();
             }
         });
     }
