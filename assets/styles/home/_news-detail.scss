@@ -5,14 +5,29 @@
 		border-right: 1px solid $cl-grey;
 		.title {
 			padding-bottom: 24px;
-			font-size: $fs-main-title;
+			font-size: $fs-title;
 			color: $cl-blue-5;
 			font-weight: 400;
-			text-transform: capitalize;
+			text-transform: uppercase;
+			font-weight: 700;
+		}
+		.img-box {
+			width: 100%;
+			height: auto;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+			}
 		}
 		.detail {
 			padding: 24px 10px;
 			text-align: justify;
+
+			& * {
+				max-width: 100%;
+			}
 		}
 		.date {
 			padding-top: 24px;
