@@ -253,60 +253,17 @@
                                 </h3>
                                 <div class="box-option">
                                     <ul class="option-payment">
-                                        <li class="payment-method active">
+                                        <?php foreach ($payment_method as $item) : ?>
+                                        <li class="payment-method">
                                             <div class="title">
                                                 <i class="far fa-check-circle active"></i>
-                                                <p>Thanh toán tại văn phòng FlightTicket</p>
+                                                <p><?= $item['Name'] ?></p>
                                             </div>
                                             <div class="content">
-                                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                                    Sapiente itaque, eveniet minus eligendi eaque veniam,
-                                                    iste sit a ut delectus, deserunt error esse repellat.
-                                                    Numquam fugiat magni ipsam ullam repellendus?
-                                                </p>
-                                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                                    Sapiente itaque, eveniet minus eligendi eaque veniam,
-                                                    iste sit a ut delectus, deserunt error esse repellat.
-                                                    Numquam fugiat magni ipsam ullam repellendus?
-                                                </p>
+                                                <?= $item['Content'] ?>
                                             </div>
                                         </li>
-                                        <li class="payment-method">
-                                            <div class="title">
-                                                <i class="far fa-check-circle"></i>
-                                                <p>Thanh toán tận nơi</p>
-                                            </div>
-                                            <div class="content">
-                                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                                    Sapiente itaque, eveniet minus eligendi eaque veniam,
-                                                    iste sit a ut delectus, deserunt error esse repellat.
-                                                    Numquam fugiat magni ipsam ullam repellendus?
-                                                </p>
-                                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                                    Sapiente itaque, eveniet minus eligendi eaque veniam,
-                                                    iste sit a ut delectus, deserunt error esse repellat.
-                                                    Numquam fugiat magni ipsam ullam repellendus?
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li class="payment-method">
-                                            <div class="title">
-                                                <i class="far fa-check-circle"></i>
-                                                <p>Thanh toán online</p>
-                                            </div>
-                                            <div class="content">
-                                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                                    Sapiente itaque, eveniet minus eligendi eaque veniam,
-                                                    iste sit a ut delectus, deserunt error esse repellat.
-                                                    Numquam fugiat magni ipsam ullam repellendus?
-                                                </p>
-                                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                                    Sapiente itaque, eveniet minus eligendi eaque veniam,
-                                                    iste sit a ut delectus, deserunt error esse repellat.
-                                                    Numquam fugiat magni ipsam ullam repellendus?
-                                                </p>
-                                            </div>
-                                        </li>
+                                        <?php endforeach; ?>
                                     </ul>
                                 </div>
                             </div>
@@ -806,6 +763,7 @@ $(document).ready(function() {
     });
 
     // Phương thức thanh toán
+    $(".payment-method:first-child").addClass('active');
     $(".payment-method").click(function() {
         $(".payment-method").not(this).removeClass('active');
         $(this).addClass('active');
