@@ -2591,11 +2591,11 @@ header {
   margin: 0;
 }
 
-.form-box form .forgot-password {
+.form-box form a {
   color: #f29018;
 }
 
-.form-box form .forgot-password:hover {
+.form-box form a:hover {
   text-decoration: underline;
 }
 

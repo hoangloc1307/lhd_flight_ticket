@@ -91,6 +91,11 @@ class Account extends CI_Controller {
             $this->load->view('home/header_footer', $data);
         }
     }
+
+    public function Verification() {
+        $data['view'] = 'verification';
+        $this->load->view('home/header_footer', $data);
+    }
 }
         
     /* End of file  Account.php */
