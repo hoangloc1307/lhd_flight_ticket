@@ -3230,7 +3230,6 @@ header {
 }
 
 .finding .info-customer .box-info .box-title,
-.finding .info-customer .box-info .customer-people,
 .finding .info-customer .box-info .customer-user {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3238,12 +3237,17 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .finding .info-customer .box-info .box-user,
-.finding .info-customer .box-info .box-name {
-  text-align: center;
-  width: 50%;
+.finding .info-customer .box-info .box-name,
+.finding .info-customer .box-info .box-date {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .finding .info-customer .box-info .box-title {
@@ -3253,13 +3257,20 @@ header {
 }
 
 .finding .info-customer .box-info .customer-people {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 12px;
   border-bottom: 1px dashed #dddddd;
   background: #f9f9f9;
-}
-
-.finding .info-customer .box-info .customer-people .customer-user {
-  width: 50%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .finding .info-customer .box-info .customer-people .customer-user i {
@@ -3270,19 +3281,64 @@ header {
   padding: 0 8px;
 }
 
-.finding .info-customer .box-info .customer-people .name {
-  width: 50%;
+.finding .info-customer .box-info .customer-people .name,
+.finding .info-customer .box-info .customer-people .date {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 100%;
+  padding: 0 12px;
 }
 
-.finding .info-customer .box-info .customer-people .name input {
+.finding .info-customer .box-info .customer-people .name input,
+.finding .info-customer .box-info .customer-people .date input {
   padding: 12px 6px;
   border-radius: 6px;
-  width: 100%;
   border: 1px solid #dddddd;
   outline: none;
+  width: 100%;
 }
 
-.finding .info-customer .box-info .customer-people .name input:focus {
+.finding .info-customer .box-info .customer-people .name input:focus,
+.finding .info-customer .box-info .customer-people .date input:focus {
+  border: 1px solid #17699a;
+}
+
+.finding .info-customer .box-info .customer-people .bag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.finding .info-customer .box-info .customer-people .bag .bag-img {
+  width: 150px;
+  height: 100px;
+}
+
+.finding .info-customer .box-info .customer-people .bag .bag-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.finding .info-customer .box-info .customer-people .bag .bag-select {
+  padding: 12px 6px;
+  border-radius: 6px;
+  border: 1px solid #dddddd;
+  outline: none;
+  width: 100%;
+  margin: 0 12px;
+}
+
+.finding .info-customer .box-info .customer-people .bag .bag-select:focus {
   border: 1px solid #17699a;
 }
 
@@ -5427,7 +5483,7 @@ h2 {
 .order-detail .info-flight .class span:nth-child(3),
 .order-detail .info-contact .class span:nth-child(3) {
   border-left: 1px solid #dddddd;
-  padding: 0 12px;
+  padding: 0 6px;
   border-right: 1px solid #dddddd;
 }
 
@@ -5525,9 +5581,8 @@ h2 {
   color: #777777;
 }
 
-.order-detail .info-user .code .order-datetime span:last-child {
-  border-left: 1px solid #dddddd;
-  padding-left: 6px;
+.order-detail .info-user .code .order-code span:last-child {
+  color: #f29018;
 }
 
 .order-detail .info-user .traveller-info {
@@ -5593,7 +5648,7 @@ h2 {
 }
 
 .order-detail .info-contact,
-.order-detail .payment-detail {
+.order-detail .total-order {
   margin: 24px 0;
   background: #fff;
   padding: 12px 24px;
@@ -5601,7 +5656,7 @@ h2 {
 }
 
 .order-detail .info-contact h6,
-.order-detail .payment-detail h6 {
+.order-detail .total-order h6 {
   font-size: 18px;
   font-weight: 700;
   color: #333;
@@ -5609,68 +5664,68 @@ h2 {
 }
 
 .order-detail .info-contact p,
-.order-detail .payment-detail p {
+.order-detail .total-order p {
   font-size: 14px;
 }
 
 .order-detail .info-contact p:first-child,
-.order-detail .payment-detail p:first-child {
+.order-detail .total-order p:first-child {
   font-weight: 700;
   text-transform: uppercase;
   color: #777777;
 }
 
 .order-detail .info-contact p:last-child,
-.order-detail .payment-detail p:last-child {
+.order-detail .total-order p:last-child {
   border-bottom: 1px solid #dddddd;
   padding-bottom: 12px;
 }
 
-.order-detail .payment-detail .col {
+.order-detail .total-order .col {
   margin: 0;
 }
 
-.order-detail .payment-detail .heading {
+.order-detail .total-order .heading {
   color: #777777;
   font-weight: 700;
 }
 
-.order-detail .payment-detail .heading .col:last-child {
+.order-detail .total-order .heading .col:last-child {
   text-align: right;
 }
 
-.order-detail .payment-detail .body .col {
+.order-detail .total-order .body .col {
   font-size: 14px;
   line-height: 1.6;
 }
 
-.order-detail .payment-detail .body .col:last-child {
+.order-detail .total-order .body .col:last-child {
   text-align: right;
 }
 
-.order-detail .payment-detail .footer {
+.order-detail .total-order .footer {
   margin-top: 24px;
   padding: 12px 0;
   border-top: 1px solid #dddddd;
 }
 
-.order-detail .payment-detail .footer .bill {
+.order-detail .total-order .footer .bill {
   font-size: 18px;
   color: #333;
   font-weight: 700;
 }
 
-.order-detail .payment-detail .footer .total-price {
+.order-detail .total-order .footer .total-price {
   text-align: right;
 }
 
-.order-detail .payment-detail .footer .total-price span {
+.order-detail .total-order .footer .total-price span {
   font-size: 18px;
   font-weight: 700;
   color: #f29018;
 }
 
-.order-detail .payment-detail .footer .total-price span:last-child {
+.order-detail .total-order .footer .total-price span:last-child {
   color: #777777;
 }
 

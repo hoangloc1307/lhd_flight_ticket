@@ -109,7 +109,7 @@
 				}
 				&:nth-child(3) {
 					border-left: 1px solid $cl-grey;
-					padding: 0 12px;
+					padding: 0 6px;
 					border-right: 1px solid $cl-grey;
 				}
 			}
@@ -185,10 +185,10 @@
 			span {
 				color: $cl-grey-2;
 			}
-			.order-datetime {
+
+			.order-code {
 				span:last-child {
-					border-left: 1px solid $cl-grey;
-					padding-left: 6px;
+					color: $cl-orange-3;
 				}
 			}
 		}
@@ -254,7 +254,7 @@
 	}
 
 	.info-contact,
-	.payment-detail {
+	.total-order {
 		margin: 24px 0;
 		background: $cl-white-2;
 		padding: 12px 24px;
@@ -279,7 +279,7 @@
 			}
 		}
 	}
-	.payment-detail {
+	.total-order {
 		.col {
 			margin: 0;
 		}
