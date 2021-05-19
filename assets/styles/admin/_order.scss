@@ -8,7 +8,7 @@
 		color: unset;
 
 		&:hover {
-			background: $cl-grey;
+			background: $cl-white-1;
 		}
 		.col {
 			text-align: center;
@@ -195,8 +195,7 @@
 		.traveller-info {
 			padding: 0 24px;
 			margin-bottom: 24px;
-			overflow-y: auto;
-			height: 200px;
+
 			.col {
 				margin: 0;
 			}
@@ -213,17 +212,44 @@
 				margin-bottom: 12px;
 
 				.col:last-of-type {
-					text-align: right;
+					text-align: center;
 				}
 			}
-			.body {
-				.col {
-					font-size: $fs-detail;
-					line-height: 1.6;
+		}
+	}
 
-					&:last-of-type {
-						text-align: right;
-					}
+	// Items sử dụng chung
+	.items {
+		overflow-y: auto;
+		overflow-x: hidden;
+		height: 150px;
+
+		&::-webkit-scrollbar-track {
+			-webkit-box-shadow: inset 0 0 6px $cl-grey;
+			background-color: $cl-white-1;
+		}
+
+		&::-webkit-scrollbar {
+			width: 6px;
+			background-color: $cl-white-1;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: $cl-grey-2;
+		}
+
+		.body {
+			padding: 6px 0;
+			border-top: 1px dashed $cl-white-1;
+
+			&:nth-of-type(even) {
+				background: $cl-white-3;
+			}
+			.col {
+				font-size: $fs-detail;
+				line-height: 1.6;
+				&:last-child {
+					text-align: center;
 				}
 			}
 		}
@@ -249,6 +275,20 @@
 
 			.heading {
 				border-bottom: 1px solid $cl-grey;
+				background: $cl-white-3;
+				font-weight: 700;
+			}
+			.items {
+				height: unset;
+				overflow: hidden;
+
+				.body {
+					font-size: unset;
+
+					&:nth-of-type(even) {
+						background: unset;
+					}
+				}
 			}
 		}
 	}
@@ -286,20 +326,13 @@
 		.heading {
 			color: $cl-grey-2;
 			font-weight: 700;
-			.col:last-child {
-				text-align: right;
-			}
-		}
-		.body {
-			.col {
-				font-size: $fs-detail;
-				line-height: 1.6;
+			margin-bottom: 12px;
 
-				&:last-child {
-					text-align: right;
-				}
+			.col:last-child {
+				text-align: center;
 			}
 		}
+
 		.footer {
 			margin-top: 24px;
 			padding: 12px 0;

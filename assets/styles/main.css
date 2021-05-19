@@ -3876,6 +3876,12 @@ header {
   font-size: 14px;
 }
 
+.finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-from span:nth-child(2) span,
+.finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-to span:nth-child(2) span,
+.finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-flight span:nth-child(2) span {
+  padding-left: 6px;
+}
+
 .finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-from span:nth-child(3) p:first-child,
 .finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-from span:nth-child(4) p:first-child,
 .finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-to span:nth-child(3) p:first-child,
@@ -5368,7 +5374,7 @@ h2 {
 }
 
 .order .body:hover {
-  background: #dddddd;
+  background: #f3f4f8;
 }
 
 .order .body .col {
@@ -5588,8 +5594,6 @@ h2 {
 .order-detail .info-user .traveller-info {
   padding: 0 24px;
   margin-bottom: 24px;
-  overflow-y: auto;
-  height: 200px;
 }
 
 .order-detail .info-user .traveller-info .col {
@@ -5610,16 +5614,45 @@ h2 {
 }
 
 .order-detail .info-user .traveller-info .heading .col:last-of-type {
-  text-align: right;
+  text-align: center;
 }
 
-.order-detail .info-user .traveller-info .body .col {
+.order-detail .items {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 150px;
+}
+
+.order-detail .items::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #dddddd;
+  background-color: #f3f4f8;
+}
+
+.order-detail .items::-webkit-scrollbar {
+  width: 6px;
+  background-color: #f3f4f8;
+}
+
+.order-detail .items::-webkit-scrollbar-thumb {
+  background-color: #777777;
+}
+
+.order-detail .items .body {
+  padding: 6px 0;
+  border-top: 1px dashed #f3f4f8;
+}
+
+.order-detail .items .body:nth-of-type(even) {
+  background: #f9f9f9;
+}
+
+.order-detail .items .body .col {
   font-size: 14px;
   line-height: 1.6;
 }
 
-.order-detail .info-user .traveller-info .body .col:last-of-type {
-  text-align: right;
+.order-detail .items .body .col:last-child {
+  text-align: center;
 }
 
 .order-detail .flight-detail {
@@ -5645,6 +5678,21 @@ h2 {
 
 .order-detail .flight-detail .flight-detail-wrap .heading {
   border-bottom: 1px solid #dddddd;
+  background: #f9f9f9;
+  font-weight: 700;
+}
+
+.order-detail .flight-detail .flight-detail-wrap .items {
+  height: unset;
+  overflow: hidden;
+}
+
+.order-detail .flight-detail .flight-detail-wrap .items .body {
+  font-size: unset;
+}
+
+.order-detail .flight-detail .flight-detail-wrap .items .body:nth-of-type(even) {
+  background: unset;
 }
 
 .order-detail .info-contact,
@@ -5688,19 +5736,11 @@ h2 {
 .order-detail .total-order .heading {
   color: #777777;
   font-weight: 700;
+  margin-bottom: 12px;
 }
 
 .order-detail .total-order .heading .col:last-child {
-  text-align: right;
-}
-
-.order-detail .total-order .body .col {
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.order-detail .total-order .body .col:last-child {
-  text-align: right;
+  text-align: center;
 }
 
 .order-detail .total-order .footer {
