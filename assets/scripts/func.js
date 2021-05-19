@@ -7,6 +7,10 @@ function NumberWithCommas(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
+function NumberCommasToInt(x) {
+	return parseInt(x.replaceAll(".", ""));
+}
+
 function DateOrTimeString(dateTimeString, dateOrTime = "date") {
 	var x = new Date(dateTimeString);
 	if (dateOrTime == "time") {
