@@ -1005,6 +1005,11 @@
 							align-items: center;
 							font-size: $fs-detail;
 						}
+						span:nth-child(2) {
+							span {
+								padding-left: 6px;
+							}
+						}
 						span:nth-child(3),
 						span:nth-child(4) {
 							p:first-child {

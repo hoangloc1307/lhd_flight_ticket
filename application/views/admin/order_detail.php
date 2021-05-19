@@ -168,7 +168,7 @@ $payment_info = json_decode($order["Payment_Info"], true);
 		</div>
 	</div>
 	<div class="row">
-		<div class="col l-8 info-contact">
+		<div class="col l-7 info-contact">
 			<h6>Thông tin liên hệ</h6>
 			<div class="row">
 				<div class="col l-6">
@@ -201,13 +201,16 @@ $payment_info = json_decode($order["Payment_Info"], true);
 				</div>
 			</div>
 		</div>
-		<div class="col l-4 total-order">
+		<div class="col l-5 total-order">
 			<h6>Chi tiết thanh toán</h6>
 			<div class="row heading">
 				<div class="col l-6">
 					Tên
 				</div>
-				<div class="col l-6">
+				<div class="col l-3">
+					Hành lý
+				</div>
+				<div class="col l-3">
 					Giá
 				</div>
 			</div>
@@ -217,7 +220,10 @@ $payment_info = json_decode($order["Payment_Info"], true);
 					<div class="col l-6">
 						<?= $payment_info["adults_names"][$i] ?>
 					</div>
-					<div class="col l-6">
+					<div class="col l-3">
+						1.000.000 vnđ
+					</div>
+					<div class="col l-3">
 						<?= number_format($payment_info['adults_price'], 0, ".", ".") ?>
 					</div>
 				</div>
@@ -231,7 +237,10 @@ $payment_info = json_decode($order["Payment_Info"], true);
 					<div class="col l-6">
 						<?= $payment_info["children_names"][$i] ?>
 					</div>
-					<div class="col l-6">
+					<div class="col l-3">
+						1.000.000 vnđ
+					</div>
+					<div class="col l-3">
 						<?= number_format($payment_info['children_price'], 0, ".", ".") ?>
 					</div>
 				</div>
@@ -246,7 +255,10 @@ $payment_info = json_decode($order["Payment_Info"], true);
 					<div class="col l-6">
 						<?= $payment_info["infants_names"][$i] ?>
 					</div>
-					<div class="col l-6">
+					<div class="col l-3">
+
+					</div>
+					<div class="col l-3">
 						<?= number_format($payment_info['infants_price'], 0, ".", ".") ?>
 					</div>
 				</div>
