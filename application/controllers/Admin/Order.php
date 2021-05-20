@@ -61,16 +61,17 @@ class Order extends CI_Controller {
         $message .= "<h4 style='color: #17699a;font-size: 18px;'>[Đơn hàng] <span>" . $order_code . "</span> <span>" . $order['booking_datetime'] . "</span></h4>";
         $message .= "<table style='width: 100%;text-align: left;border: 1px solid #ccc;line-height: 1.6;'><tbody>";
         $message .= "<tr><th style='padding: 6px;'>Loại vé</th><td style='padding: 6px;'>" . ($order['type'] == 'oneway' ? 'Một chiều' : 'Khứ hồi') . "</td></tr>";
+        $message .= "<tr><th style='padding: 6px;'>Hạng</th><td style='padding: 6px;'>" . $order['class'] . "</td></tr>";
         $message .= "<tr><th style='padding: 6px;'>Điểm đi</th><td style='padding: 6px;'>" . $order['origin'] . "</td></tr>";
         $message .= "<tr><th style='padding: 6px;'>Điểm đến</th><td style='padding: 6px;'>" . $order['destination'] . "</td></tr>";
         $message .= "<tr><th style='padding: 6px;'>Ngày khởi hành</th><td style='padding: 6px;'>" . $order['departure_date'] . "</td></tr>";
         $message .= "<tr><th style='padding: 6px;'>Giờ khởi hành</th><td style='padding: 6px;'>" . $order['departure_time'] . "</td></tr>";
-        $message .= "<tr><th style='padding: 6px;'>Người lớn</th><td style='padding: 6px;'>" . $order['adults'] . " x " . number_format($order['adults_price'], 0, ".", ".") . "</td></tr>";
+        $message .= "<tr><th style='padding: 6px;'>Người lớn</th><td style='padding: 6px;'>" . $order['adults'] . " x " . number_format(($order['adults_baseprice'] + $order['adults_fee']), 0, ".", ".") . "</td></tr>";
         if (array_key_exists("children", $order)) {
-            $message .= "<tr><th style='padding: 6px;'>Trẻ em</th><td style='padding: 6px;'>" . $order['children'] . " x " . number_format($order['children_price'], 0, ".", ".") . "</td></tr>";
+            $message .= "<tr><th style='padding: 6px;'>Trẻ em</th><td style='padding: 6px;'>" . $order['children'] . " x " . number_format(($order['children_baseprice'] + $order['children_fee']), 0, ".", ".") . "</td></tr>";
         }
         if (array_key_exists("infants", $order)) {
-            $message .= "<tr><th style='padding: 6px;'>Em bé</th><td style='padding: 6px;'>" . $order['infants'] . " x " . number_format($order['infants_price'], 0, ".", ".") . "</td></tr>";
+            $message .= "<tr><th style='padding: 6px;'>Em bé</th><td style='padding: 6px;'>" . $order['infants'] . " x " . number_format(($order['infants_baseprice'] + $order['infants_fee']), 0, ".", ".") . "</td></tr>";
         }
         $message .= "<tr><th style='padding: 6px;'>Phương thức thanh toán</th><td style='padding: 6px;'>" . $order['payment_method'] . "</td></tr>";
         $message .= "<tr><th style='padding: 6px;'>Tổng cộng</th><td style='padding: 6px; font-weight: bold;'>" . number_format($order['total_price'], 0, ".", ".") . " VND</td></tr>";
@@ -91,8 +92,8 @@ class Order extends CI_Controller {
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_port' => 465,
-            'smtp_user' => 'lhdflightticket@gmail.com',
-            'smtp_pass' => 'P@ss123456',
+            'smtp_user' => 'flightticketlhd@gmail.com',
+            'smtp_pass' => '{!P@ss123!}',
             'mailtype' => 'html',
             'charset' => 'utf-8',
             'newline' => "\r\n",
@@ -100,7 +101,7 @@ class Order extends CI_Controller {
         );
 
         $this->load->library('email', $config);
-        $this->email->from('lhdflightticket@gmai.com', 'LHD Flight Ticket');
+        $this->email->from('flightticketlhd@gmail.com', 'LHD Flight Ticket');
         $this->email->to($to);
         $this->email->subject($subject);
         $this->email->message($message);
@@ -159,21 +160,26 @@ class Order extends CI_Controller {
             //Dữ liệu thông tin thanh toán
             $payment_info['adults'] = $order['adults'];
             $payment_info['adults_baseprice'] = $order['adults_baseprice'];
-            $payment_info['adults_price'] = $order['adults_price'];
+            $payment_info['adults_fee'] = $order['adults_fee'];
             $payment_info['adults_names'] = $order['adults_names'];
+            $payment_info['adults_luggage'] = $order['adults_luggage'];
             if (array_key_exists("children", $order)) {
                 $payment_info['children'] = $order['children'];
                 $payment_info['children_baseprice'] = $order['children_baseprice'];
-                $payment_info['children_price'] = $order['children_price'];
+                $payment_info['children_fee'] = $order['children_fee'];
                 $payment_info['children_names'] = $order['children_names'];
+                $payment_info['children_luggage'] = $order['children_luggage'];
+                $payment_info['children_dob'] = $order['children_dob'];
             }
             if (array_key_exists("infants", $order)) {
                 $payment_info['infants'] = $order['infants'];
                 $payment_info['infants_baseprice'] = $order['infants_baseprice'];
-                $payment_info['infants_price'] = $order['infants_price'];
+                $payment_info['infants_fee'] = $order['infants_fee'];
                 $payment_info['infants_names'] = $order['infants_names'];
+                $payment_info['infants_dob'] = $order['infants_dob'];
             }
             $payment_info['total_price'] = $order['total_price'];
+            $payment_info['old_price'] = $order['old_price'];
             $payment_info['contact_name'] = $order['contact_name'];
             $payment_info['contact_phone'] = $order['contact_phone'];
             $payment_info['contact_mail'] = $order['contact_mail'];
@@ -185,6 +191,7 @@ class Order extends CI_Controller {
                 'Order_Code' => $order_code,
                 'Booking_DateTime' => $order['booking_datetime'],
                 'Type' => $order['type'],
+                'Class' => $order['class'],
                 'Origin' => $order['origin'],
                 'Destination' => $order['destination'],
                 'Flight_Detail' => json_encode($flight_detail),
@@ -226,7 +233,7 @@ class Order extends CI_Controller {
         $message .= "<tr><th style='padding: 6px;'>Điểm đến</th><td style='padding: 6px;'>" . $order['Destination'] . "</td></tr>";
         $message .= "<tr><th style='padding: 6px;'>Ngày khởi hành</th><td style='padding: 6px;'>" . $flight_detail['departure_date'] . "</td></tr>";
         $message .= "<tr><th style='padding: 6px;'>Giờ khởi hành</th><td style='padding: 6px;'>" . $flight_detail['departure_time'] . "</td></tr>";
-        $message .= "<tr><th style='padding: 6px;'>Người lớn</th><td style='padding: 6px;'>" . $payment_info['adults'] . " x " . number_format($payment_info['adults_price'], 0, ".", ".") . "</td></tr>";
+        $message .= "<tr><th style='padding: 6px;'>Người lớn</th><td style='padding: 6px;'>" . $payment_info['adults'] . " x " . number_format($payment_info['adults_baseprice'], 0, ".", ".") . "</td></tr>";
         if (array_key_exists("children", $payment_info)) {
             $message .= "<tr><th style='padding: 6px;'>Trẻ em</th><td style='padding: 6px;'>" . $payment_info['children'] . " x " . number_format($payment_info['children_price'], 0, ".", ".") . "</td></tr>";
         }
@@ -252,8 +259,8 @@ class Order extends CI_Controller {
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_port' => 465,
-            'smtp_user' => 'lhdflightticket@gmail.com',
-            'smtp_pass' => 'P@ss123456',
+            'smtp_user' => 'flightticketlhd@gmail.com',
+            'smtp_pass' => '{!P@ss123!}',
             'mailtype' => 'html',
             'charset' => 'utf-8',
             'newline' => "\r\n",
@@ -261,7 +268,7 @@ class Order extends CI_Controller {
         );
 
         $this->load->library('email', $config);
-        $this->email->from('lhdflightticket@gmai.com', 'LHD Flight Ticket');
+        $this->email->from('flightticketlhd@gmail.com', 'LHD Flight Ticket');
         $this->email->to($to);
         $this->email->subject($subject);
         $this->email->message($message);
