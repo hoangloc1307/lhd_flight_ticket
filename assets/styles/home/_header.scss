@@ -145,15 +145,15 @@ header {
 	display: none;
 }
 .icon {
-	padding: 8px 12px;
+	padding: 6px 10px;
 	border: 1px solid $cl-blue-3;
-	border-radius: 10px;
+	border-radius: 8px;
 	transition: 0.3s ease-in-out;
 	&:hover {
 		background: $cl-blue-3;
 	}
 	.icon-menu {
-		font-size: $fs-title;
+		font-size: $fs-small-title;
 		color: $cl-blue-3;
 		&:hover {
 			color: $cl-white-2;

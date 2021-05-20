@@ -173,6 +173,62 @@
 	}
 
 	/*========== End News ==========*/
+
+	/*========== Info ==========*/
+	.infouser .info-user {
+		.info-edit {
+			.col {
+				&:last-of-type {
+					border-top: 2px dashed $cl-grey-2;
+					border-bottom: 2px dashed $cl-grey-2;
+					padding-top: 12px;
+					padding-bottom: 12px;
+				}
+			}
+		}
+	}
+
+	.my-order .view-order {
+		.order-head li {
+			font-size: $fs-text;
+		}
+		.order-item {
+			.order-body {
+				li {
+					font-size: $fs-detail;
+				}
+				.order-total {
+					p {
+						padding-left: 3px;
+					}
+				}
+			}
+
+			.order-detail {
+				.order-passenger,
+				.order-total {
+					.passenger-detail,
+					.total-detail {
+						flex-direction: column;
+						align-items: flex-start;
+
+						div {
+							line-height: 1.6;
+
+							p:first-child {
+								margin-right: 6px;
+							}
+							p:last-child {
+								margin-left: 0px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/*========== End Info ==========*/
 }
 
 @media (max-width: 480px) {
@@ -408,6 +464,97 @@
 	}
 
 	/*========== End News ==========*/
+
+	/*========== Info ==========*/
+	.infouser,
+	.my-order {
+		.title {
+			font-size: $fs-detail;
+		}
+	}
+	.infouser .info-user .info-edit .form-group {
+		label {
+			font-size: $fs-detail;
+			i {
+				margin-right: 6px;
+			}
+		}
+		.input-edit {
+			width: 55%;
+			margin: 0;
+		}
+	}
+
+	.my-order {
+		.view-order {
+			padding: 6px;
+
+			.order-head,
+			.order-body {
+				padding: 6px;
+				li {
+					i {
+						display: none;
+					}
+				}
+			}
+			.order-item {
+				.order-body {
+					li {
+						font-size: $fs-small-text;
+					}
+				}
+				.order-detail {
+					.order-passenger,
+					.order-contact,
+					.order-payment,
+					.order-departure,
+					.order-destination,
+					.order-total {
+						padding: 12px;
+						margin: 0;
+						background: $cl-white-2;
+						border-radius: 6px;
+						height: 100%;
+					}
+					.col {
+						&:first-child,
+						&:last-child {
+							padding: 0;
+						}
+					}
+					.heading {
+						font-size: $fs-small-text;
+						text-transform: none;
+					}
+					.order-passenger,
+					.order-total {
+						.passenger-detail,
+						.total-detail {
+							flex-direction: column;
+							align-items: flex-start;
+
+							div {
+								p:first-child {
+									margin-right: 6px;
+									width: unset;
+								}
+								p:last-child {
+									margin-left: 6px;
+								}
+							}
+						}
+					}
+
+					.row {
+						margin: 0;
+					}
+				}
+			}
+		}
+	}
+
+	/*========== End Info ==========*/
 }
 
 @media (max-width: 320px) {
