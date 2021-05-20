@@ -13,6 +13,7 @@
 	}
 }
 .infouser {
+	padding: 20px 0;
 	.info-user {
 		.info-edit {
 			background: $cl-white-1;
@@ -83,7 +84,7 @@
 }
 
 .my-order {
-	padding-bottom: 50px;
+	padding-bottom: 20px;
 
 	.view-order {
 		padding: 12px;
@@ -97,10 +98,7 @@
 			list-style: none;
 			padding: 12px;
 			background: $cl-white-2;
-
-			&:not(:last-child) {
-				border-bottom: 1px dashed $cl-grey;
-			}
+			border-bottom: 1px dashed $cl-grey;
 
 			li {
 				flex: 1;
@@ -140,9 +138,11 @@
 					font-size: $fs-text;
 					color: $cl-blue-5;
 					font-weight: 400;
+					flex-wrap: wrap;
 					a {
 						position: relative;
-						padding-right: 24px;
+						color: $cl-orange-3;
+						text-decoration: underline;
 
 						&:hover {
 							color: $cl-blue-3;
@@ -175,7 +175,7 @@
 				}
 				.order-total {
 					p {
-						padding-left: 12px;
+						padding-left: 6px;
 					}
 				}
 			}
@@ -186,13 +186,10 @@
 				background: $cl-white-2;
 				display: none;
 				.col {
-					margin-bottom: 12px;
-				}
-				.col:first-child {
-					padding-right: 0;
-				}
-				.col:last-child {
-					padding-left: 0;
+					&:first-child,
+					&:last-child {
+						margin-top: 0px;
+					}
 				}
 
 				.heading {
@@ -207,6 +204,7 @@
 					h4:nth-child(2) {
 						position: relative;
 						padding: 0 18px 0 6px;
+						color: $cl-orange-3;
 
 						&::after {
 							position: absolute;
@@ -230,7 +228,7 @@
 				.order-departure,
 				.order-destination,
 				.order-total {
-					margin: 12px;
+					margin: 12px 12px 0 12px;
 					padding: 12px;
 					background: $cl-white-1;
 					border-radius: 6px;
@@ -265,11 +263,11 @@
 						align-items: center;
 						justify-content: space-between;
 						line-height: 1.6;
-						padding: 12px 0;
 
 						div {
 							display: flex;
 							align-items: center;
+							flex-wrap: wrap;
 							p:first-child {
 								margin-right: 6px;
 								font-weight: 600;
@@ -281,23 +279,10 @@
 
 						// div của flight-code bên Thông tin khách hàng
 						.flight-code {
+							p:nth-child(2),
 							p:nth-child(3),
-							p:nth-child(4),
-							p:last-child {
-								margin: 0 6px;
-								position: relative;
-								padding-left: 12px;
-
-								&::before {
-									content: "";
-									position: absolute;
-									top: 50%;
-									transform: translateY(-50%);
-									left: 0;
-									background: $cl-blue-5;
-									height: 20px;
-									width: 2px;
-								}
+							p:nth-child(4) {
+								padding-right: 6px;
 							}
 						}
 						// div của total-price bên Tổng chi phí
@@ -305,8 +290,9 @@
 							p {
 								font-size: $fs-title;
 							}
-							p:nth-child(2),
-							p:last-child {
+							span:nth-child(2),
+							span:last-child {
+								font-size: $fs-title;
 								color: $cl-orange-3;
 							}
 						}
@@ -319,21 +305,14 @@
 					.payment-detail {
 						line-height: 1.6;
 						div {
+							display: flex;
+							align-items: center;
+							flex-wrap: wrap;
+
 							p:first-child {
 								margin-right: 6px;
 								font-weight: 600;
 							}
-						}
-
-						div:not(div:last-child) {
-							margin-bottom: 6px;
-						}
-
-						div:first-of-type,
-						div:nth-child(2),
-						div:nth-child(3) {
-							display: flex;
-							align-items: center;
 						}
 
 						.address {
@@ -357,6 +336,7 @@
 						div {
 							display: flex;
 							align-items: center;
+							flex-wrap: wrap;
 
 							p:first-child {
 								margin-right: 6px;

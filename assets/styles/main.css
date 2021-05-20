@@ -1088,9 +1088,9 @@ header {
 }
 
 .icon {
-  padding: 8px 12px;
+  padding: 6px 10px;
   border: 1px solid #17699a;
-  border-radius: 10px;
+  border-radius: 8px;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
@@ -1100,7 +1100,7 @@ header {
 }
 
 .icon .icon-menu {
-  font-size: 24px;
+  font-size: 22px;
   color: #17699a;
 }
 
@@ -1961,11 +1961,6 @@ header {
 
 .booking-form form .class label {
   padding-bottom: 12px;
-}
-
-.booking-form form .class label:nth-child(4),
-.booking-form form .class label:last-child {
-  padding-bottom: 0;
 }
 
 .booking-form form .max-price label {
@@ -4213,6 +4208,10 @@ header {
   margin: 0 12px;
 }
 
+.infouser {
+  padding: 20px 0;
+}
+
 .infouser .info-user .info-edit {
   background: #f3f4f8;
   padding: 12px;
@@ -4292,7 +4291,7 @@ header {
 }
 
 .my-order {
-  padding-bottom: 50px;
+  padding-bottom: 20px;
 }
 
 .my-order .view-order {
@@ -4312,10 +4311,6 @@ header {
   list-style: none;
   padding: 12px;
   background: #fff;
-}
-
-.my-order .view-order .order-head:not(:last-child),
-.my-order .view-order .order-body:not(:last-child) {
   border-bottom: 1px dashed #dddddd;
 }
 
@@ -4369,11 +4364,14 @@ header {
   font-size: 16px;
   color: #034166;
   font-weight: 400;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .my-order .view-order .order-item .order-body li a {
   position: relative;
-  padding-right: 24px;
+  color: #f29018;
+  text-decoration: underline;
 }
 
 .my-order .view-order .order-item .order-body li a:hover {
@@ -4396,7 +4394,7 @@ header {
 }
 
 .my-order .view-order .order-item .order-body .order-total p {
-  padding-left: 12px;
+  padding-left: 6px;
 }
 
 .my-order .view-order .order-item .order-detail {
@@ -4407,16 +4405,8 @@ header {
   display: none;
 }
 
-.my-order .view-order .order-item .order-detail .col {
-  margin-bottom: 12px;
-}
-
-.my-order .view-order .order-item .order-detail .col:first-child {
-  padding-right: 0;
-}
-
-.my-order .view-order .order-item .order-detail .col:last-child {
-  padding-left: 0;
+.my-order .view-order .order-item .order-detail .col:first-child, .my-order .view-order .order-item .order-detail .col:last-child {
+  margin-top: 0px;
 }
 
 .my-order .view-order .order-item .order-detail .heading {
@@ -4438,6 +4428,7 @@ header {
 .my-order .view-order .order-item .order-detail .heading h4:nth-child(2) {
   position: relative;
   padding: 0 18px 0 6px;
+  color: #f29018;
 }
 
 .my-order .view-order .order-item .order-detail .heading h4:nth-child(2)::after {
@@ -4462,7 +4453,7 @@ header {
 .my-order .view-order .order-item .order-detail .order-departure,
 .my-order .view-order .order-item .order-detail .order-destination,
 .my-order .view-order .order-item .order-detail .order-total {
-  margin: 12px;
+  margin: 12px 12px 0 12px;
   padding: 12px;
   background: #f3f4f8;
   border-radius: 6px;
@@ -4512,7 +4503,6 @@ header {
       -ms-flex-pack: justify;
           justify-content: space-between;
   line-height: 1.6;
-  padding: 12px 0;
 }
 
 .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div,
@@ -4525,6 +4515,8 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div p:first-child,
@@ -4542,44 +4534,19 @@ header {
   margin-left: 6px;
 }
 
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:nth-child(2),
 .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:nth-child(3),
 .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:nth-child(4),
-.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:last-child,
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail .flight-code p:nth-child(2),
 .my-order .view-order .order-item .order-detail .order-passenger .total-detail .flight-code p:nth-child(3),
 .my-order .view-order .order-item .order-detail .order-passenger .total-detail .flight-code p:nth-child(4),
-.my-order .view-order .order-item .order-detail .order-passenger .total-detail .flight-code p:last-child,
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail .flight-code p:nth-child(2),
 .my-order .view-order .order-item .order-detail .order-total .passenger-detail .flight-code p:nth-child(3),
 .my-order .view-order .order-item .order-detail .order-total .passenger-detail .flight-code p:nth-child(4),
-.my-order .view-order .order-item .order-detail .order-total .passenger-detail .flight-code p:last-child,
+.my-order .view-order .order-item .order-detail .order-total .total-detail .flight-code p:nth-child(2),
 .my-order .view-order .order-item .order-detail .order-total .total-detail .flight-code p:nth-child(3),
-.my-order .view-order .order-item .order-detail .order-total .total-detail .flight-code p:nth-child(4),
-.my-order .view-order .order-item .order-detail .order-total .total-detail .flight-code p:last-child {
-  margin: 0 6px;
-  position: relative;
-  padding-left: 12px;
-}
-
-.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:nth-child(3)::before,
-.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:nth-child(4)::before,
-.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .flight-code p:last-child::before,
-.my-order .view-order .order-item .order-detail .order-passenger .total-detail .flight-code p:nth-child(3)::before,
-.my-order .view-order .order-item .order-detail .order-passenger .total-detail .flight-code p:nth-child(4)::before,
-.my-order .view-order .order-item .order-detail .order-passenger .total-detail .flight-code p:last-child::before,
-.my-order .view-order .order-item .order-detail .order-total .passenger-detail .flight-code p:nth-child(3)::before,
-.my-order .view-order .order-item .order-detail .order-total .passenger-detail .flight-code p:nth-child(4)::before,
-.my-order .view-order .order-item .order-detail .order-total .passenger-detail .flight-code p:last-child::before,
-.my-order .view-order .order-item .order-detail .order-total .total-detail .flight-code p:nth-child(3)::before,
-.my-order .view-order .order-item .order-detail .order-total .total-detail .flight-code p:nth-child(4)::before,
-.my-order .view-order .order-item .order-detail .order-total .total-detail .flight-code p:last-child::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  left: 0;
-  background: #034166;
-  height: 20px;
-  width: 2px;
+.my-order .view-order .order-item .order-detail .order-total .total-detail .flight-code p:nth-child(4) {
+  padding-right: 6px;
 }
 
 .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .total-price p,
@@ -4589,14 +4556,15 @@ header {
   font-size: 24px;
 }
 
-.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .total-price p:nth-child(2),
-.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .total-price p:last-child,
-.my-order .view-order .order-item .order-detail .order-passenger .total-detail .total-price p:nth-child(2),
-.my-order .view-order .order-item .order-detail .order-passenger .total-detail .total-price p:last-child,
-.my-order .view-order .order-item .order-detail .order-total .passenger-detail .total-price p:nth-child(2),
-.my-order .view-order .order-item .order-detail .order-total .passenger-detail .total-price p:last-child,
-.my-order .view-order .order-item .order-detail .order-total .total-detail .total-price p:nth-child(2),
-.my-order .view-order .order-item .order-detail .order-total .total-detail .total-price p:last-child {
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .total-price span:nth-child(2),
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail .total-price span:last-child,
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail .total-price span:nth-child(2),
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail .total-price span:last-child,
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail .total-price span:nth-child(2),
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail .total-price span:last-child,
+.my-order .view-order .order-item .order-detail .order-total .total-detail .total-price span:nth-child(2),
+.my-order .view-order .order-item .order-detail .order-total .total-detail .total-price span:last-child {
+  font-size: 24px;
   color: #f29018;
 }
 
@@ -4607,39 +4575,26 @@ header {
   line-height: 1.6;
 }
 
-.my-order .view-order .order-item .order-detail .order-contact .contact-detail div p:first-child,
-.my-order .view-order .order-item .order-detail .order-contact .payment-detail div p:first-child,
-.my-order .view-order .order-item .order-detail .order-payment .contact-detail div p:first-child,
-.my-order .view-order .order-item .order-detail .order-payment .payment-detail div p:first-child {
-  margin-right: 6px;
-  font-weight: 600;
-}
-
-.my-order .view-order .order-item .order-detail .order-contact .contact-detail div:not(div:last-child),
-.my-order .view-order .order-item .order-detail .order-contact .payment-detail div:not(div:last-child),
-.my-order .view-order .order-item .order-detail .order-payment .contact-detail div:not(div:last-child),
-.my-order .view-order .order-item .order-detail .order-payment .payment-detail div:not(div:last-child) {
-  margin-bottom: 6px;
-}
-
-.my-order .view-order .order-item .order-detail .order-contact .contact-detail div:first-of-type,
-.my-order .view-order .order-item .order-detail .order-contact .contact-detail div:nth-child(2),
-.my-order .view-order .order-item .order-detail .order-contact .contact-detail div:nth-child(3),
-.my-order .view-order .order-item .order-detail .order-contact .payment-detail div:first-of-type,
-.my-order .view-order .order-item .order-detail .order-contact .payment-detail div:nth-child(2),
-.my-order .view-order .order-item .order-detail .order-contact .payment-detail div:nth-child(3),
-.my-order .view-order .order-item .order-detail .order-payment .contact-detail div:first-of-type,
-.my-order .view-order .order-item .order-detail .order-payment .contact-detail div:nth-child(2),
-.my-order .view-order .order-item .order-detail .order-payment .contact-detail div:nth-child(3),
-.my-order .view-order .order-item .order-detail .order-payment .payment-detail div:first-of-type,
-.my-order .view-order .order-item .order-detail .order-payment .payment-detail div:nth-child(2),
-.my-order .view-order .order-item .order-detail .order-payment .payment-detail div:nth-child(3) {
+.my-order .view-order .order-item .order-detail .order-contact .contact-detail div,
+.my-order .view-order .order-item .order-detail .order-contact .payment-detail div,
+.my-order .view-order .order-item .order-detail .order-payment .contact-detail div,
+.my-order .view-order .order-item .order-detail .order-payment .payment-detail div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.my-order .view-order .order-item .order-detail .order-contact .contact-detail div p:first-child,
+.my-order .view-order .order-item .order-detail .order-contact .payment-detail div p:first-child,
+.my-order .view-order .order-item .order-detail .order-payment .contact-detail div p:first-child,
+.my-order .view-order .order-item .order-detail .order-payment .payment-detail div p:first-child {
+  margin-right: 6px;
+  font-weight: 600;
 }
 
 .my-order .view-order .order-item .order-detail .order-contact .contact-detail .address p:last-child,
@@ -4673,6 +4628,8 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .my-order .view-order .order-item .order-detail .order-departure .departure-detail div p:first-child,
@@ -6376,6 +6333,53 @@ form .button-submit {
     height: 150px;
   }
   /*========== End News ==========*/
+  /*========== Info ==========*/
+  .infouser .info-user .info-edit .col:last-of-type {
+    border-top: 2px dashed #777777;
+    border-bottom: 2px dashed #777777;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .my-order .view-order .order-head li {
+    font-size: 16px;
+  }
+  .my-order .view-order .order-item .order-body li {
+    font-size: 14px;
+  }
+  .my-order .view-order .order-item .order-body .order-total p {
+    padding-left: 3px;
+  }
+  .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail,
+  .my-order .view-order .order-item .order-detail .order-passenger .total-detail,
+  .my-order .view-order .order-item .order-detail .order-total .passenger-detail,
+  .my-order .view-order .order-item .order-detail .order-total .total-detail {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div,
+  .my-order .view-order .order-item .order-detail .order-passenger .total-detail div,
+  .my-order .view-order .order-item .order-detail .order-total .passenger-detail div,
+  .my-order .view-order .order-item .order-detail .order-total .total-detail div {
+    line-height: 1.6;
+  }
+  .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div p:first-child,
+  .my-order .view-order .order-item .order-detail .order-passenger .total-detail div p:first-child,
+  .my-order .view-order .order-item .order-detail .order-total .passenger-detail div p:first-child,
+  .my-order .view-order .order-item .order-detail .order-total .total-detail div p:first-child {
+    margin-right: 6px;
+  }
+  .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div p:last-child,
+  .my-order .view-order .order-item .order-detail .order-passenger .total-detail div p:last-child,
+  .my-order .view-order .order-item .order-detail .order-total .passenger-detail div p:last-child,
+  .my-order .view-order .order-item .order-detail .order-total .total-detail div p:last-child {
+    margin-left: 0px;
+  }
+  /*========== End Info ==========*/
 }
 
 @media (max-width: 480px) {
@@ -6559,5 +6563,82 @@ form .button-submit {
     margin-bottom: 30px;
   }
   /*========== End News ==========*/
+  /*========== Info ==========*/
+  .infouser .title,
+  .my-order .title {
+    font-size: 14px;
+  }
+  .infouser .info-user .info-edit .form-group label {
+    font-size: 14px;
+  }
+  .infouser .info-user .info-edit .form-group label i {
+    margin-right: 6px;
+  }
+  .infouser .info-user .info-edit .form-group .input-edit {
+    width: 55%;
+    margin: 0;
+  }
+  .my-order .view-order {
+    padding: 6px;
+  }
+  .my-order .view-order .order-head,
+  .my-order .view-order .order-body {
+    padding: 6px;
+  }
+  .my-order .view-order .order-head li i,
+  .my-order .view-order .order-body li i {
+    display: none;
+  }
+  .my-order .view-order .order-item .order-body li {
+    font-size: 12px;
+  }
+  .my-order .view-order .order-item .order-detail .order-passenger,
+  .my-order .view-order .order-item .order-detail .order-contact,
+  .my-order .view-order .order-item .order-detail .order-payment,
+  .my-order .view-order .order-item .order-detail .order-departure,
+  .my-order .view-order .order-item .order-detail .order-destination,
+  .my-order .view-order .order-item .order-detail .order-total {
+    padding: 12px;
+    margin: 0;
+    background: #fff;
+    border-radius: 6px;
+    height: 100%;
+  }
+  .my-order .view-order .order-item .order-detail .col:first-child, .my-order .view-order .order-item .order-detail .col:last-child {
+    padding: 0;
+  }
+  .my-order .view-order .order-item .order-detail .heading {
+    font-size: 12px;
+    text-transform: none;
+  }
+  .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail,
+  .my-order .view-order .order-item .order-detail .order-passenger .total-detail,
+  .my-order .view-order .order-item .order-detail .order-total .passenger-detail,
+  .my-order .view-order .order-item .order-detail .order-total .total-detail {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div p:first-child,
+  .my-order .view-order .order-item .order-detail .order-passenger .total-detail div p:first-child,
+  .my-order .view-order .order-item .order-detail .order-total .passenger-detail div p:first-child,
+  .my-order .view-order .order-item .order-detail .order-total .total-detail div p:first-child {
+    margin-right: 6px;
+    width: unset;
+  }
+  .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div p:last-child,
+  .my-order .view-order .order-item .order-detail .order-passenger .total-detail div p:last-child,
+  .my-order .view-order .order-item .order-detail .order-total .passenger-detail div p:last-child,
+  .my-order .view-order .order-item .order-detail .order-total .total-detail div p:last-child {
+    margin-left: 6px;
+  }
+  .my-order .view-order .order-item .order-detail .row {
+    margin: 0;
+  }
+  /*========== End Info ==========*/
 }
 /*# sourceMappingURL=main.css.map */
