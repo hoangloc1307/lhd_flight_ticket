@@ -49,7 +49,7 @@ class Finding extends CI_Controller {
                 $maxprice = $this->input->post('fmaxprice');
 
                 //Custom
-                $max = '1';
+                $max = '5';
                 $nonstop = 'false';
 
                 //Lấy chuyến đi
@@ -65,9 +65,7 @@ class Finding extends CI_Controller {
                 if ($infants > 0) {
                     $url .= '&infants=' . $infants;
                 }
-                if ($class != 'ALL') {
-                    $url .= '&travelClass=' . $class;
-                }
+                $url .= '&travelClass=' . $class;
                 if ($maxprice != "") {
                     $url .= '&maxPrice=' . $maxprice;
                 }
@@ -107,9 +105,7 @@ class Finding extends CI_Controller {
                     if ($infants > 0) {
                         $url .= '&infants=' . $infants;
                     }
-                    if ($class != 'ALL') {
-                        $url .= '&travelClass=' . $class;
-                    }
+                    $url .= '&travelClass=' . $class;
                     if ($maxprice != "") {
                         $url .= '&maxPrice=' . $maxprice;
                     }
@@ -161,6 +157,49 @@ class Finding extends CI_Controller {
             }
         } else {
             show_404();
+        }
+    }
+
+    public function GetLuggage() {
+        $luggage['VJ'] = [
+            '15kg' => 140000,
+            '20kg' => 160000,
+            '25kg' => 220000,
+            '30kg' => 320000,
+            '35kg' => 370000,
+            '40kg' => 420000
+        ];
+        $luggage['QH'] = [
+            '15kg' => 155000,
+            '20kg' => 180000,
+            '25kg' => 230000,
+            '30kg' => 330000,
+            '35kg' => 380000,
+            '40kg' => 480000
+        ];
+        $luggage['VN'] = [
+            '15kg' => 270000,
+            '20kg' => 330000,
+            '25kg' => 440000,
+            '30kg' => 550000,
+            '35kg' => 650000,
+            '40kg' => 750000
+        ];
+
+        if ($this->input->is_ajax_request()) {
+            $iata = $this->input->post('iata');
+            $result = "";
+            switch ($iata) {
+                case 'VJ':
+                    echo json_encode($luggage['VJ']);
+                    break;
+                case 'QH':
+                    echo json_encode($luggage['QH']);
+                    break;
+                case 'VN':
+                    echo json_encode($luggage['VN']);
+                    break;
+            }
         }
     }
 }

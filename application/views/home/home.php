@@ -132,11 +132,7 @@
                         <p>Hạng</p>
                         <div class="class-wrap">
                             <label>
-                                <input type="radio" name="fclass" value="ALL" checked /> Tất cả
-                                <span class="radiobtn"></span>
-                            </label>
-                            <label>
-                                <input type="radio" name="fclass" value="ECONOMY" /> Phổ thông
+                                <input type="radio" name="fclass" value="ECONOMY" checked /> Phổ thông
                                 <span class="radiobtn"></span>
                             </label>
                             <label>
