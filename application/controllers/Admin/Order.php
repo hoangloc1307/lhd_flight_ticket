@@ -189,7 +189,7 @@ class Order extends CI_Controller {
             //Dữ liệu lưu vào database
             $data = [
                 'Order_Code' => $order_code,
-                'Booking_DateTime' => $order['booking_datetime'],
+                'Booking_DateTime' => date_format(date_create($order['booking_datetime']), "Y-m-d H:i:s"),
                 'Type' => $order['type'],
                 'Class' => $order['class'],
                 'Origin' => $order['origin'],
