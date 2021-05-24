@@ -343,9 +343,20 @@
 				.summary-cart {
 					border-top: 1px solid $cl-white-1;
 					border-bottom: 1px solid $cl-white-1;
+
+					.people {
+						flex: 2;
+					}
+					.total {
+						flex: 1;
+						text-align: right;
+					}
 				}
 				.amount-wrap {
 					padding: 0;
+					flex: 1;
+					justify-content: flex-end;
+
 					i {
 						padding: 0 6px;
 					}

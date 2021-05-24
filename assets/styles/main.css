@@ -3050,9 +3050,30 @@ header {
   border-bottom: 1px solid #f3f4f8;
 }
 
+.finding .finding-detail .content .detail-summary .summary-cart .people,
+.finding .flight-selected__base .content .detail-summary .summary-cart .people {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+.finding .finding-detail .content .detail-summary .summary-cart .total,
+.finding .flight-selected__base .content .detail-summary .summary-cart .total {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: right;
+}
+
 .finding .finding-detail .content .detail-summary .amount-wrap,
 .finding .flight-selected__base .content .detail-summary .amount-wrap {
   padding: 0;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .finding .finding-detail .content .detail-summary .amount-wrap i,
@@ -5848,6 +5869,106 @@ form .button-submit {
   display: block;
   width: 500px;
   padding: 12px;
+}
+
+.statistic .statistic-content {
+  margin-bottom: 24px;
+}
+
+.statistic .statistic-content .col:nth-of-type(3n + 1) {
+  background: #3e789b;
+}
+
+.statistic .statistic-content .col:nth-of-type(3n + 2) {
+  background: #f29018;
+}
+
+.statistic .statistic-content .col:nth-of-type(3n + 3) {
+  background: #f1c40f;
+}
+
+.statistic .statistic-content .col div {
+  padding: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.statistic .statistic-content .col div i {
+  padding: 12px;
+  font-size: 32px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.statistic .statistic-content .col div i.revenue-icon {
+  color: #3e789b;
+}
+
+.statistic .statistic-content .col div i.bill-icon {
+  color: #f29018;
+}
+
+.statistic .statistic-content .col div i.profit-icon {
+  color: #f1c40f;
+}
+
+.statistic .statistic-content .col div p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 12px;
+  color: #fff;
+}
+
+.statistic .statistic-content .col div p span:first-child {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.statistic .fill-content h4 {
+  margin-bottom: 12px;
+  color: #777777;
+  font-size: 18px;
+}
+
+.statistic .fill-content select,
+.statistic .fill-content input {
+  padding: 12px 6px;
+  border-radius: 6px;
+  border: 1px solid #dddddd;
+  outline: none;
+  width: 100%;
+}
+
+.statistic .fill-content .button-fill {
+  margin: 12px;
+}
+
+.statistic .fill-content .button-fill button {
+  width: 100px;
+  border-radius: 6px;
+  padding: 12px 6px;
+  border: 1px solid #dddddd;
+  outline: none;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  background: #27ae60;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+  color: #fff;
+}
+
+.statistic .fill-content .button-fill button:hover {
+  background: #2ecc71;
 }
 
 .news-letter {
