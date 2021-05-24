@@ -355,12 +355,12 @@ var carriers = JSON.parse('<?= $flight_data ?>')['dictionaries']['carriers']; //
 var includetaxes = false;
 
 //Danh sách hãng hàng không
-// var carriers_text = "<li value='all'><span class='checkmark active'></span><span>Tất cả các hãng</span></li>";
-// for (var i in carriers) {
-//     carriers_text += "<li value=" + i + "><span class='checkmark active'></span>";
-//     carriers_text += "<span>" + carriers[i] + "</span></li>";
-// }
-// $('.finding-airline__airline .box').html(carriers_text);
+var carriers_text = "<li value='all'><span class='checkmark active'></span><span>Tất cả các hãng</span></li>";
+for (var i in carriers) {
+    carriers_text += "<li value=" + i + "><span class='checkmark active'></span>";
+    carriers_text += "<span>" + carriers[i] + "</span></li>";
+}
+$('.finding-airline__airline .box').html(carriers_text);
 
 /*====================================================================================================
 ======================================== HIỂN THỊ CÁC CHUYẾN BAY ========================================
@@ -1346,12 +1346,34 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
                             priceHTML += "<p>" + NumberWithCommas(finfants_price) + "</p>";
                             priceHTML += "</div>";
                         }
+                        for (var i in bill['adults_luggage']) {
+                            for (var j in bill['adults_luggage'][i]) {
+                                priceHTML += "<div class='info-body'>";
+                                priceHTML += "<p>" + (++customerIndex) + "</p>";
+                                priceHTML += "<p> Hành lý người lớn " + (i + 1) + " (" + j +
+                                    ")</p>";
+                                priceHTML += "<p> " + NumberWithCommas(bill['adults_luggage'][i][
+                                    j
+                                ]) + "</p></div>";
+                            }
+                        }
+                        for (var i in bill['children_luggage']) {
+                            for (var j in bill['children_luggage'][i]) {
+                                priceHTML += "<div class='info-body'>";
+                                priceHTML += "<p>" + (++customerIndex) + "</p>";
+                                priceHTML += "<p> Hành lý trẻ em " + (i + 1) + " (" + j + ")</p>";
+                                priceHTML += "<p> " + NumberWithCommas(bill['children_luggage'][i][
+                                    j
+                                ]) + "</p></div>";
+                            }
+                        }
                         priceHTML +=
                             "<div class='info-footer'><p>Tổng chi phí:</p><span>";
                         priceHTML += "<p>" + NumberWithCommas(priceTotal) + "</p>";
                         priceHTML += "<p>VND</p></span></div>";
 
                         $('.info-table').html(priceHTML);
+                        $(document).scrollTop(0);
                         toastr["success"](response);
                     } else {
                         toastr["error"](response);
