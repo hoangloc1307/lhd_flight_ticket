@@ -4413,9 +4413,9 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -4423,6 +4423,17 @@ header {
   padding: 12px;
   background: #dddddd;
   color: #034166;
+}
+
+.my-order .view-order .order-item .order-detail .heading .heading-detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.my-order .view-order .order-item .order-detail .heading .heading-close {
+  margin-right: 24px;
+  cursor: pointer;
 }
 
 .my-order .view-order .order-item .order-detail .heading h4:nth-child(2) {
@@ -4638,6 +4649,36 @@ header {
 .my-order .view-order .order-item .order-detail .order-destination .destination-detail div p:first-child {
   margin-right: 6px;
   font-weight: 600;
+}
+
+.my-order .view-order .order-item .order-detail .compact {
+  width: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px auto;
+  border-radius: 8px;
+  background: #034166;
+  cursor: pointer;
+  color: #fff;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.my-order .view-order .order-item .order-detail .compact:hover {
+  -webkit-box-shadow: 1px 2px 5px #777777;
+          box-shadow: 1px 2px 5px #777777;
+}
+
+.my-order .view-order .order-item .order-detail .compact span {
+  margin-left: 8px;
 }
 
 #admin-page nav {

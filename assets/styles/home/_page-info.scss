@@ -194,12 +194,19 @@
 
 				.heading {
 					display: flex;
-					justify-content: center;
+					justify-content: space-between;
 					align-items: center;
 					text-transform: uppercase;
 					padding: 12px;
 					background: $cl-grey;
 					color: $cl-blue-5;
+					.heading-detail {
+						display: flex;
+					}
+					.heading-close {
+						margin-right: 24px;
+						cursor: pointer;
+					}
 
 					h4:nth-child(2) {
 						position: relative;
@@ -343,6 +350,28 @@
 								font-weight: 600;
 							}
 						}
+					}
+				}
+
+				.compact {
+					width: 150px;
+					display: flex;
+					justify-content: center;
+					padding: 10px;
+					align-items: center;
+					margin: 10px auto;
+					border-radius: 8px;
+					background: $cl-blue-5;
+					cursor: pointer;
+					color: $cl-white-2;
+					transition: 0.3s ease-in-out;
+
+					&:hover {
+						box-shadow: 1px 2px 5px $cl-grey-2;
+					}
+
+					span {
+						margin-left: 8px;
 					}
 				}
 			}
