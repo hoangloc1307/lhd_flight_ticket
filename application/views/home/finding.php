@@ -969,70 +969,92 @@ $(document).on('click', '.flight-price-choose button', function() {
         }
         $('.summary-cart-container').html(price_text);
         $('.detail-summary + .total-price .price p:first-child').text(NumberWithCommas(total_price));
-        priceTotal = total_price;
 
         //Tạo form nhập thông tin
-        var customer_text = "";
-        for (let i = 0; i < userInput['adults']; i++) {
-            customer_text += "<div class='customer-people'>";
-            customer_text += "<div class='customer-user'>";
-            customer_text += "<i class='fas fa-user-edit'></i>";
-            customer_text += "<p>Người lớn " + (i + 1) + "</p>";
-            customer_text += "</div>";
-            customer_text += "<div class='name'>";
-            customer_text += "<input type='text' placeholder='Họ & tên' name='names[]'>";
-            customer_text += "</div>";
-            customer_text += "<div class ='bag'>";
-            customer_text += "<div class ='bag-img'>";
-            customer_text += "<img src='<?= base_url('assets/images/partner/flexflight.png') ?>'>";
-            customer_text += "</div>";
-            customer_text += "<select class='bag-select'>";
-            customer_text += "<option value=''>Chọn hành lý ký gửi</option>";
-            customer_text += "<option value=''>15 kg: 170,500 VND</option>";
-            customer_text += "<option value=''>15 kg: 170,500 VND</option>";
-            customer_text += "</select>";
-            customer_text += "</div>";
-            customer_text += "</div>";
-
-        }
-        for (let i = 0; i < userInput['children']; i++) {
-            customer_text += "<div class='customer-people'>";
-            customer_text += "<div class='customer-user'>";
-            customer_text += "<i class='fas fa-user-edit'></i>";
-            customer_text += "<p>Trẻ em " + (i + 1) + "</p>";
-            customer_text += "</div>";
-            customer_text += "<div class='name'>";
-            customer_text += "<input type='text' placeholder='Họ tên' name='names[]'>";
-            customer_text += "</div>";
-            customer_text += "<div class='date'>";
-            customer_text += "<input type='date' placeholder='Ngày sinh' name=''>";
-            customer_text += "</div>";
-            customer_text += "<div class ='bag'>";
-            customer_text += "<div class ='bag-img'>";
-            customer_text += "<img src='<?= base_url('assets/images/partner/flexflight.png') ?>'>";
-            customer_text += "</div>";
-            customer_text += "<select class='bag-select'>";
-            customer_text += "<option value=''>Chọn hành lý ký gửi</option>";
-            customer_text += "<option value=''>15 kg: 170,500 VND</option>";
-            customer_text += "<option value=''>15 kg: 170,500 VND</option>";
-            customer_text += "</select>";
-            customer_text += "</div>";
-            customer_text += "</div>";
-        }
-        for (let i = 0; i < userInput['infants']; i++) {
-            customer_text += "<div class='customer-people'>";
-            customer_text += "<div class='customer-user'>";
-            customer_text += "<i class='fas fa-user-edit'></i>";
-            customer_text += "<p>Em bé " + (i + 1) + "</p>";
-            customer_text += "</div>";
-            customer_text += "<div class='name'>";
-            customer_text += "<input type='text' placeholder='Họ tên' name='names[]'>";
-            customer_text += "</div>";
-            customer_text += "<div class='date'>";
-            customer_text += "<input type='date' placeholder='Ngày sinh' name=''>";
-            customer_text += "</div></div>";
-        }
-        $('.info-customer .box-info .box-container').html(customer_text);
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('finding/GetLuggage') ?>",
+            data: {
+                iata: $('.confirm .box-selected .flight-choose .flight-item:first-child').attr('value')
+            },
+            dataType: "json",
+            success: function(data) {
+                var customer_text = "";
+                for (let i = 0; i < userInput['adults']; i++) {
+                    customer_text += "<div class='customer-people'>";
+                    customer_text += "<div class='customer-user'>";
+                    customer_text += "<i class='fas fa-user-edit'></i>";
+                    customer_text += "<p>Người lớn " + (i + 1) + "</p>";
+                    customer_text += "</div>";
+                    customer_text += "<div class='name'>";
+                    customer_text += "<input type='text' placeholder='Họ & tên' name='names[]'>";
+                    customer_text += "</div>";
+                    customer_text += "<div class ='bag'>";
+                    customer_text += "<div class ='bag-img'>";
+                    customer_text +=
+                        "<img src='<?= base_url() ?>" + GetAirlinesImageByIATA($(
+                                '.confirm .box-selected .flight-choose .flight-item:first-child')
+                            .attr('value')) + "'>";
+                    customer_text += "</div>";
+                    customer_text += "<select class='bag-select' adults_luggage='" + i +
+                        "' kg='Mặc định'>";
+                    for (let j in data) {
+                        customer_text += "<option value='" + data[j] + "' kg='" + j + "' price='" +
+                            data[j] + "'>" + j + ": " +
+                            NumberWithCommas(data[j]) + " VND</option>";
+                    }
+                    customer_text += "</select>";
+                    customer_text += "</div>";
+                    customer_text += "</div>";
+                }
+                for (let i = 0; i < userInput['children']; i++) {
+                    customer_text += "<div class='customer-people'>";
+                    customer_text += "<div class='customer-user'>";
+                    customer_text += "<i class='fas fa-user-edit'></i>";
+                    customer_text += "<p>Trẻ em " + (i + 1) + "</p>";
+                    customer_text += "</div>";
+                    customer_text += "<div class='name'>";
+                    customer_text += "<input type='text' placeholder='Họ tên' name='names[]'>";
+                    customer_text += "</div>";
+                    customer_text += "<div class='date'>";
+                    customer_text +=
+                        "<input type='date' placeholder='Ngày sinh' name='dob[]' min='<?= date("Y-m-d", strtotime(' -12 year')) ?>' max='<?= date("Y-m-d", strtotime(' -2 year')) ?>'>";
+                    customer_text += "</div>";
+                    customer_text += "<div class ='bag'>";
+                    customer_text += "<div class ='bag-img'>";
+                    customer_text +=
+                        "<img src='<?= base_url() ?>" + GetAirlinesImageByIATA($(
+                                '.confirm .box-selected .flight-choose .flight-item:first-child')
+                            .attr('value')) + "'>";
+                    customer_text += "</div>";
+                    customer_text += "<select class='bag-select' children_luggage='" + i +
+                        "' kg='Mặc định'>";
+                    for (let j in data) {
+                        customer_text += "<option value='" + data[j] + "' kg='" + j + "' price='" +
+                            data[j] + "'>" + j + ": " +
+                            NumberWithCommas(data[j]) + " VND</option>";
+                    }
+                    customer_text += "</select>";
+                    customer_text += "</div>";
+                    customer_text += "</div>";
+                }
+                for (let i = 0; i < userInput['infants']; i++) {
+                    customer_text += "<div class='customer-people'>";
+                    customer_text += "<div class='customer-user'>";
+                    customer_text += "<i class='fas fa-user-edit'></i>";
+                    customer_text += "<p>Em bé " + (i + 1) + "</p>";
+                    customer_text += "</div>";
+                    customer_text += "<div class='name'>";
+                    customer_text += "<input type='text' placeholder='Họ tên' name='names[]'>";
+                    customer_text += "</div>";
+                    customer_text += "<div class='date'>";
+                    customer_text +=
+                        "<input type='date' placeholder='Ngày sinh' name='dob[]' min='<?= date("Y-m-d", strtotime(' -2 year')) ?>'>";
+                    customer_text += "</div></div>";
+                }
+                $('.info-customer .box-info .box-container').html(customer_text);
+            }
+        });
     }
 });
 
@@ -1074,14 +1096,20 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
     if (checkInfoStatus == true) {
         var confirm_booking = confirm("Xác nhận đặt vé");
         if (confirm_booking == true) {
+            priceTotal = NumberCommasToInt($('.confirm .finding-detail .total-price .price p:first-child')
+                .text());
             $('.loader-container').removeClass('hide');
 
             var flightTicketDetailHTML = [];
             var customerNames = [];
+            var customerDOB = [];
+            var customerLuggage = [];
             var payment = '';
+            var luggageFee = 0;
 
             flightTicketDetailHTML['go'] = [];
             flightTicketDetailHTML['back'] = [];
+
             //Lấy chi tiết chuyến bay
             $('.confirm .flight-item').each(function(index) {
                 if (index == 0) {
@@ -1102,9 +1130,21 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
                     });
                 }
             });
+
             //Lấy thông tin người dùng nhập vào
             $('input[name="names[]"]').each(function() {
                 customerNames.push($(this).val());
+            });
+            $('input[name="dob[]"]').each(function() {
+                customerDOB.push($(this).val());
+            });
+            $('.bag-select').each(function() {
+                var obj = {};
+                obj[$(this).attr('kg')] = $(this).val();
+                customerLuggage.push(obj);
+            });
+            $('.summary-cart.luggage').each(function() {
+                luggageFee += NumberCommasToInt($(this).find('.total').text());
             });
             $('.option-payment .payment-method').each(function() {
                 if ($(this).hasClass('active')) {
@@ -1113,7 +1153,7 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
                 }
             });
 
-            //Lưu vào database
+            //Tạo dữ liệu để lưu vào database
             bill['type'] = userInput['type'];
             bill['origin'] = userInput['origin'];
             bill['destination'] = userInput['destination'];
@@ -1133,9 +1173,11 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
             bill['adults_baseprice'] = badults_price;
             bill['adults_fee'] = badults_fee;
             bill['adults_names'] = [];
+            bill['adults_luggage'] = [];
             customerIndex = 0;
             for (customerIndex; customerIndex < userInput['adults']; customerIndex++) {
                 bill['adults_names'].push(customerNames[customerIndex]);
+                bill['adults_luggage'].push(customerLuggage[customerIndex]);
             }
             if (userInput['children'] > 0) {
                 bill['children'] = userInput['children'];
@@ -1148,9 +1190,15 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
                 bill['children_baseprice'] = bchildren_price;
                 bill['children_fee'] = bchildren_fee;
                 bill['children_names'] = [];
+                bill['children_luggage'] = [];
                 for (customerIndex; customerIndex < parseInt(userInput['adults']) + parseInt(userInput[
                         'children']); customerIndex++) {
                     bill['children_names'].push(customerNames[customerIndex]);
+                    bill['children_luggage'].push(customerLuggage[customerIndex]);
+                }
+                bill['children_dob'] = [];
+                for (let i = 0; i < parseInt(userInput['children']); i++) {
+                    bill['children_dob'].push(customerDOB[i]);
                 }
             }
             if (userInput['infants'] > 0) {
@@ -1169,6 +1217,12 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
                         'infants']); customerIndex++) {
                     bill['infants_names'].push(customerNames[customerIndex]);
                 }
+                bill['infants_dob'] = [];
+                for (let i = (userInput['children'] == "" ? 0 : parseInt(userInput['children'])); i < ((
+                        userInput['children'] == "" ? 0 : parseInt(userInput['children'])) + parseInt(
+                        userInput['infants'])); i++) {
+                    bill['infants_dob'].push(customerDOB[i]);
+                }
             }
             bill['total_price'] = priceTotal;
             bill['flight_detail'] = flightTicketChooseInfo['flight_details'];
@@ -1184,9 +1238,126 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
             bill['contact_address'] = $('input[name="address"]').val();
             bill['contact_note'] = $('textarea[name="note"]').val();
             bill['payment_method'] = payment;
-            bill['old_price'] = flightTicketChooseInfo['total_baseprice'][0] + flightTicketChooseInfo[
-                'total_baseprice'][1];
-            console.log(bill);
+            var oprice = 0;
+            for (let i in flightTicketChooseInfo['total_baseprice']) {
+                oprice += flightTicketChooseInfo['total_baseprice'][i];
+            }
+            bill['old_price'] = oprice + luggageFee;
+            bill['class'] = userInput['class'];
+
+            //Gọi ajax lưu vào database
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url() ?>admin/order/createorder",
+                data: {
+                    dulieu: bill
+                },
+                dataType: "json",
+                success: function(response) {
+                    if (response == 'Đặt vé thành công') {
+                        //Chuyển giao diện
+                        $('.choose').css('display', 'none');
+                        $('.confirm').css('display', 'none');
+                        $('.finish-payment').css('display', 'block');
+                        $('.filter-tab .filter-step li:nth-child(3)').addClass('active');
+                        $('.loader-container').addClass('hide');
+
+                        //Đổ dữ liệu
+                        var goDetailHTML = "<div class='title-flight'> " +
+                            GetCityNameByIATA(
+                                userInput['origin']) +
+                            "<i class='fas fa-long-arrow-alt-right'></i>" +
+                            GetCityNameByIATA(
+                                userInput[
+                                    'destination']) + "</div>";
+                        for (let i = 0; i < flightTicketDetailHTML['go'].length; i++) {
+                            goDetailHTML += flightTicketDetailHTML['go'][i];
+                        }
+                        $('.flight-detail-container .go').html(goDetailHTML);
+
+                        if (userInput['type'] == 'roundtrip') {
+                            var backDetailHTML = "<div class='title-flight'> " +
+                                GetCityNameByIATA(
+                                    userInput[
+                                        'destination']) +
+                                "<i class='fas fa-long-arrow-alt-right'></i>" +
+                                GetCityNameByIATA(
+                                    userInput[
+                                        'origin']) + "</div>";
+                            for (let i = 0; i < flightTicketDetailHTML['back']
+                                .length; i++) {
+                                backDetailHTML += flightTicketDetailHTML['back'][i];
+                            }
+                            $('.flight-detail-container .back').html(backDetailHTML);
+                        }
+
+                        $('.finish-payment .contact-detail .name p:nth-child(2)').text($(
+                            'input[name="name"]').val());
+                        $('.finish-payment .contact-detail .phone p:nth-child(2)').text(
+                            $('input[name="phone"]').val());
+                        $('.finish-payment .contact-detail .email p:nth-child(2)').text(
+                            $('input[name="email"]').val());
+                        $('.finish-payment .contact-detail .address p:nth-child(2)')
+                            .text($('input[name="address"]').val());
+                        $('.finish-payment .contact-detail .request p:nth-child(2)')
+                            .text($('textarea[name="note"]').val());
+                        $('.finish-payment .contact-detail .method p:nth-child(2)').text(payment);
+
+                        var priceHTML =
+                            "<div class='info-heading'><p>STT</p><p>Hành khách</p><p>Tổng</p></div>";
+                        var customerIndex = 0;
+                        for (customerIndex; customerIndex < userInput['adults']; customerIndex++) {
+                            priceHTML += "<div class='info-body'>";
+                            priceHTML += "<p>" + (customerIndex + 1) + "</p>";
+                            priceHTML += "<p>" + customerNames[customerIndex] + "</p>";
+                            var fadults_price = 0;
+                            for (let i in flightTicketChooseInfo['adults_baseprice']) {
+                                fadults_price += flightTicketChooseInfo['adults_baseprice'][i] +
+                                    flightTicketChooseInfo['adults_fee'][i];
+                            }
+                            priceHTML += "<p>" + NumberWithCommas(fadults_price) + "</p>";
+                            priceHTML += "</div>";
+                        }
+                        for (customerIndex; customerIndex < parseInt(userInput['adults']) +
+                            parseInt(userInput['children']); customerIndex++) {
+                            priceHTML += "<div class='info-body'>";
+                            priceHTML += "<p>" + (customerIndex + 1) + "</p>";
+                            priceHTML += "<p>" + customerNames[customerIndex] + "</p>";
+                            var fchildren_price = 0;
+                            for (let i in flightTicketChooseInfo['children_baseprice']) {
+                                fchildren_price += flightTicketChooseInfo['children_baseprice'][i] +
+                                    flightTicketChooseInfo['children_fee'][i];
+                            }
+                            priceHTML += "<p>" + NumberWithCommas(fchildren_price) + "</p>";
+                            priceHTML += "</div>";
+                        }
+                        for (customerIndex; customerIndex < parseInt(userInput['adults']) + (
+                                parseInt(userInput['children']) > 0 ? parseInt(userInput[
+                                    'children']) : 0) + parseInt(userInput[
+                                'infants']); customerIndex++) {
+                            priceHTML += "<div class='info-body'>";
+                            priceHTML += "<p>" + (customerIndex + 1) + "</p>";
+                            priceHTML += "<p>" + customerNames[customerIndex] + "</p>";
+                            var finfants_price = 0;
+                            for (let i in flightTicketChooseInfo['infants_baseprice']) {
+                                finfants_price += flightTicketChooseInfo['infants_baseprice'][i] +
+                                    flightTicketChooseInfo['infants_fee'][i];
+                            }
+                            priceHTML += "<p>" + NumberWithCommas(finfants_price) + "</p>";
+                            priceHTML += "</div>";
+                        }
+                        priceHTML +=
+                            "<div class='info-footer'><p>Tổng chi phí:</p><span>";
+                        priceHTML += "<p>" + NumberWithCommas(priceTotal) + "</p>";
+                        priceHTML += "<p>VND</p></span></div>";
+
+                        $('.info-table').html(priceHTML);
+                        toastr["success"](response);
+                    } else {
+                        toastr["error"](response);
+                    }
+                }
+            });
         }
     }
 });
@@ -1248,6 +1419,83 @@ $(document).ready(function() {
     $(".payment-method").click(function() {
         $(".payment-method").not(this).removeClass('active');
         $(this).addClass('active');
+    });
+
+    //Chọn thêm hành lý
+    $(document).on('change', '.bag-select', function() {
+        $(this).attr('kg', $(this).find("option[value='" + $(this).val() + "']").attr('kg'));
+
+        if ($(this).attr('adults_luggage') != undefined) {
+            var index = $(this).attr('adults_luggage');
+            if ($(this).val() == 0) {
+                $('.summary-cart-container > div').each(function() {
+                    if ($(this).attr('adults_luggage') == index) {
+                        $(this).remove();
+                        return false;
+                    }
+                });
+            } else {
+                var option = $(this).find("option[value='" + $(this).val() + "']");
+                var kg = option.attr('kg');
+                var price = option.attr('price');
+                $('.summary-cart-container > div').each(function(i) {
+                    if ($(this).attr('adults_luggage') == index) {
+                        $(this).find('div.amount-wrap > p').text(kg);
+                        $(this).find('p.total').text(NumberWithCommas(price));
+                        return false;
+                    } else if (i == $('.summary-cart-container > div').length - 1) {
+                        var txt = "<div class='summary-cart luggage' adults_luggage='" + index +
+                            "'>";
+                        txt += "<p>Hành lý người lớn " + (parseInt(index) + 1) + "</p>";
+                        txt += "<div class='amount-wrap'><p>" + kg + "</p></div>";
+                        txt += "<p class='total'>" + NumberWithCommas(price) + "</p></div>";
+                        $('.summary-cart-container').append(txt);
+                        return false;
+                    }
+                });
+            }
+            var total = 0;
+            $('.summary-cart-container .summary-cart').each(function() {
+                total += NumberCommasToInt($(this).find('p.total').text());
+            });
+            $('.total-price .price p:first-child').text(NumberWithCommas(total));
+        }
+        //Trẻ em
+        else {
+            var index = $(this).attr('children_luggage');
+            if ($(this).val() == 0) {
+                $('.summary-cart-container > div').each(function() {
+                    if ($(this).attr('children_luggage') == index) {
+                        $(this).remove();
+                        return false;
+                    }
+                });
+            } else {
+                var option = $(this).find("option[value='" + $(this).val() + "']");
+                var kg = option.attr('kg');
+                var price = option.attr('price');
+                $('.summary-cart-container > div').each(function(i) {
+                    if ($(this).attr('children_luggage') == index) {
+                        $(this).find('div.amount-wrap > p').text(kg);
+                        $(this).find('p.total').text(NumberWithCommas(price));
+                        return false;
+                    } else if (i == $('.summary-cart-container > div').length - 1) {
+                        var txt = "<div class='summary-cart luggage' children_luggage='" +
+                            index + "'>";
+                        txt += "<p>Hành lý trẻ em " + (parseInt(index) + 1) + "</p>";
+                        txt += "<div class='amount-wrap'><p>" + kg + "</p></div>";
+                        txt += "<p class='total'>" + NumberWithCommas(price) + "</p></div>";
+                        $('.summary-cart-container').append(txt);
+                        return false;
+                    }
+                });
+            }
+            var total = 0;
+            $('.summary-cart-container .summary-cart').each(function() {
+                total += NumberCommasToInt($(this).find('p.total').text());
+            });
+            $('.total-price .price p:first-child').text(NumberWithCommas(total));
+        }
     });
 });
 </script>

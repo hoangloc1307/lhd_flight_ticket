@@ -111,54 +111,53 @@
 								</button>
 							</div>
 						</div>
-
-						<div class="infants">
-							<div class="passenger-name">
-								<p>Trẻ sơ sinh</p>
-								<p>0 - 2 tuổi</p>
-							</div>
-							<div class="passenger-number">
-								<button type="button" class="minus-button unactive">
-									<i class="fas fa-minus"></i>
-								</button>
-								<input type="hidden" name="finfants">
-								<span class="amount">0</span>
-								<button type="button" class="plus-button active">
-									<i class="fas fa-plus"></i>
-								</button>
-							</div>
-						</div>
-					</div>
-					<div class="class">
-						<p>Hạng</p>
-						<div class="class-wrap">
-							<label>
-								<input type="radio" name="fclass" value="ECONOMY" checked /> Phổ thông
-								<span class="radiobtn"></span>
-							</label>
-							<label>
-								<input type="radio" name="fclass" value="PREMIUM_ECONOMY" /> Phổ thông cao cấp
-								<span class="radiobtn"></span>
-							</label>
-							<label>
-								<input type="radio" name="fclass" value="BUSINESS" /> Thương gia
-								<span class="radiobtn"></span>
-							</label>
-							<label>
-								<input type="radio" name="fclass" value="FIRST" /> Nhất
-								<span class="radiobtn"></span>
-							</label>
-						</div>
-					</div>
-					<div class="max-price">
-						<label>
-							Ngân sách tối đa<br /><input name="fmaxprice" type="number"
-								placeholder="Ví dụ: 500.000 VND" />
-						</label>
-					</div>
-					<button type="submit" name="search-flight"><i class="fas fa-search"></i> Tìm Chuyến Bay
-					</button>
-				</form>
+                        <div class="infants">
+                            <div class="passenger-name">
+                                <p>Trẻ sơ sinh</p>
+                                <p>0 - 2 tuổi</p>
+                            </div>
+                            <div class="passenger-number">
+                                <button type="button" class="minus-button unactive">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <input type="hidden" name="finfants">
+                                <span class="amount">0</span>
+                                <button type="button" class="plus-button active">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="class">
+                        <p>Hạng</p>
+                        <div class="class-wrap">
+                            <label>
+                                <input type="radio" name="fclass" value="ECONOMY" checked /> Phổ thông
+                                <span class="radiobtn"></span>
+                            </label>
+                            <label>
+                                <input type="radio" name="fclass" value="PREMIUM_ECONOMY" /> Phổ thông cao cấp
+                                <span class="radiobtn"></span>
+                            </label>
+                            <label>
+                                <input type="radio" name="fclass" value="BUSINESS" /> Thương gia
+                                <span class="radiobtn"></span>
+                            </label>
+                            <label>
+                                <input type="radio" name="fclass" value="FIRST" /> Nhất
+                                <span class="radiobtn"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="max-price">
+                        <label>
+                            Ngân sách tối đa<br /><input name="fmaxprice" type="number"
+                                placeholder="Ví dụ: 500.000 VND" />
+                        </label>
+                    </div>
+                    <button type="submit" name="search-flight"><i class="fas fa-search"></i> Tìm Chuyến Bay
+                    </button>
+                </form>
 
 				<script>
 				/* Lấy dữ liệu sân bay */
