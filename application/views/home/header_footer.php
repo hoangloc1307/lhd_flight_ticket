@@ -77,9 +77,9 @@
 			</div>
 			<ul>
 				<li><a class="menu-link" href="<?= base_url() ?>">Trang chủ</a></li>
-				<li><a class="menu-link" href="<?= base_url() ?>gioi-thieu">Giới thiệu</a></li>
+				<li><a class="menu-link" href="<?= base_url('news/gioi-thieu') ?>">Giới thiệu</a></li>
 				<li><a class="menu-link" href="<?= base_url() ?>news">Tin tức</a></li>
-				<li><a class="menu-link" href="<?= base_url() ?>#">Câu hỏi thường gặp</a></li>
+				<li><a class="menu-link" href="<?= base_url() ?>news/cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
 				<li class="user">
 					<span>
 						<i class="fas fa-user"></i>

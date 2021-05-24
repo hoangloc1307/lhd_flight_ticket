@@ -1,0 +1,88 @@
+.statistic {
+	.statistic-content {
+		margin-bottom: 24px;
+		.col {
+			&:nth-of-type(3n + 1) {
+				background: $cl-blue-2;
+			}
+			&:nth-of-type(3n + 2) {
+				background: $cl-orange-3;
+			}
+			&:nth-of-type(3n + 3) {
+				background: $cl-yellow-1;
+			}
+
+			div {
+				padding: 12px;
+				display: flex;
+				align-items: center;
+
+				i {
+					padding: 12px;
+					font-size: 32px;
+					border-radius: 8px;
+					background: $cl-white-2;
+
+					&.revenue-icon {
+						color: $cl-blue-2;
+					}
+					&.bill-icon {
+						color: $cl-orange-3;
+					}
+					&.profit-icon {
+						color: $cl-yellow-1;
+					}
+				}
+
+				p {
+					display: flex;
+					flex-direction: column;
+					margin-left: 12px;
+					color: $cl-white-2;
+
+					span:first-child {
+						font-weight: 700;
+						font-size: $fs-title;
+					}
+				}
+			}
+		}
+	}
+
+	.fill-content {
+		h4 {
+			margin-bottom: 12px;
+			color: $cl-grey-2;
+			font-size: $fs-sub-title;
+		}
+		select,
+		input {
+			padding: 12px 6px;
+			border-radius: 6px;
+			border: 1px solid #dddddd;
+			outline: none;
+			width: 100%;
+		}
+
+		.button-fill {
+			margin: 12px;
+			button {
+				width: 100px;
+				border-radius: 6px;
+				padding: 12px 6px;
+				border: 1px solid #dddddd;
+				outline: none;
+				font-size: 16px;
+				font-weight: 700;
+				cursor: pointer;
+				background: $cl-green-2;
+				transition: 0.2s linear;
+				color: $cl-white-2;
+
+				&:hover {
+					background: $cl-green-1;
+				}
+			}
+		}
+	}
+}

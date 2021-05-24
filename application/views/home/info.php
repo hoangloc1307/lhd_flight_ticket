@@ -107,10 +107,16 @@
 						<div class="order-detail">
 
 							<div class="heading">
-								<h4>Chi tiết đơn hàng:</h4>
-								<h4><?= $item['Order_Code'] ?></h4>
-								<h4><?php echo $item['Status'] == 1 ? 'Đã thanh toán' : 'Chưa thanh toán'; ?>
-								</h4>
+								<div class="heading-detail">
+									<h4>Chi tiết đơn hàng:</h4>
+									<h4><?= $item['Order_Code'] ?></h4>
+									<h4><?php echo $item['Status'] == 1 ? 'Đã thanh toán' : 'Chưa thanh toán'; ?>
+									</h4>
+								</div>
+								<div class="heading-close">
+									<i class="fas fa-times"></i>
+								</div>
+
 							</div>
 
 							<div class="order-passenger">
@@ -281,7 +287,11 @@
 										<span>VND</span>
 									</div>
 								</div>
+							</div>
 
+							<div class="compact">
+								<i class="fas fa-angle-up"></i>
+								<span>Thu gọn </span>
 							</div>
 						</div>
 
@@ -349,7 +359,19 @@ $(document).ready(function() {
 		e.preventDefault();
 		$(this).find("i").toggleClass("active");
 		$(this).parents(".order-body").next(".order-detail").slideToggle();
-
 	});
+
+	// Bấm vào thu gọn
+	$(document).on("click", ".compact", function() {
+		$(this).parents(".order-detail").prev().find(".order-code a i").removeClass("active");
+		$(this).parents(".order-detail").slideToggle();
+		$(document).scrollTop($(this).parents(".order-detail").prev().offset().top);
+	});
+
+	$(document).on("click", ".heading-close > i", function() {
+		$(this).parents(".order-detail").prev().find(".order-code a i").removeClass("active");
+		$(this).parents(".order-detail").slideToggle();
+	});
+
 });
 </script>
