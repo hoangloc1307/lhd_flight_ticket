@@ -996,10 +996,11 @@ $(document).on('click', '.flight-price-choose button', function() {
                                 '.confirm .box-selected .flight-choose .flight-item:first-child')
                             .attr('value')) + "'>";
                     customer_text += "</div>";
-                    customer_text += "<select class='bag-select'>";
-                    customer_text += "<option value='0'>Chọn hành lý ký gửi</option>";
+                    customer_text += "<select class='bag-select' adults_luggage='" + i +
+                        "' kg='Mặc định'>";
                     for (let j in data) {
-                        customer_text += "<option value='" + data[j] + "'>" + j + ": " +
+                        customer_text += "<option value='" + data[j] + "' kg='" + j + "' price='" +
+                            data[j] + "'>" + j + ": " +
                             NumberWithCommas(data[j]) + " VND</option>";
                     }
                     customer_text += "</select>";
@@ -1026,10 +1027,11 @@ $(document).on('click', '.flight-price-choose button', function() {
                                 '.confirm .box-selected .flight-choose .flight-item:first-child')
                             .attr('value')) + "'>";
                     customer_text += "</div>";
-                    customer_text += "<select class='bag-select'>";
-                    customer_text += "<option value='0'>Chọn hành lý ký gửi</option>";
+                    customer_text += "<select class='bag-select' children_luggage='" + i +
+                        "' kg='Mặc định'>";
                     for (let j in data) {
-                        customer_text += "<option value='" + data[j] + "'>" + j + ": " +
+                        customer_text += "<option value='" + data[j] + "' kg='" + j + "' price='" +
+                            data[j] + "'>" + j + ": " +
                             NumberWithCommas(data[j]) + " VND</option>";
                     }
                     customer_text += "</select>";
@@ -1103,6 +1105,7 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
             var customerDOB = [];
             var customerLuggage = [];
             var payment = '';
+            var luggageFee = 0;
 
             flightTicketDetailHTML['go'] = [];
             flightTicketDetailHTML['back'] = [];
@@ -1136,7 +1139,12 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
                 customerDOB.push($(this).val());
             });
             $('.bag-select').each(function() {
-                customerLuggage.push($(this).val());
+                var obj = {};
+                obj[$(this).attr('kg')] = $(this).val();
+                customerLuggage.push(obj);
+            });
+            $('.summary-cart.luggage').each(function() {
+                luggageFee += NumberCommasToInt($(this).find('.total').text());
             });
             $('.option-payment .payment-method').each(function() {
                 if ($(this).hasClass('active')) {
@@ -1234,7 +1242,7 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
             for (let i in flightTicketChooseInfo['total_baseprice']) {
                 oprice += flightTicketChooseInfo['total_baseprice'][i];
             }
-            bill['old_price'] = oprice;
+            bill['old_price'] = oprice + luggageFee;
             bill['class'] = userInput['class'];
 
             //Gọi ajax lưu vào database
@@ -1411,6 +1419,83 @@ $(document).ready(function() {
     $(".payment-method").click(function() {
         $(".payment-method").not(this).removeClass('active');
         $(this).addClass('active');
+    });
+
+    //Chọn thêm hành lý
+    $(document).on('change', '.bag-select', function() {
+        $(this).attr('kg', $(this).find("option[value='" + $(this).val() + "']").attr('kg'));
+
+        if ($(this).attr('adults_luggage') != undefined) {
+            var index = $(this).attr('adults_luggage');
+            if ($(this).val() == 0) {
+                $('.summary-cart-container > div').each(function() {
+                    if ($(this).attr('adults_luggage') == index) {
+                        $(this).remove();
+                        return false;
+                    }
+                });
+            } else {
+                var option = $(this).find("option[value='" + $(this).val() + "']");
+                var kg = option.attr('kg');
+                var price = option.attr('price');
+                $('.summary-cart-container > div').each(function(i) {
+                    if ($(this).attr('adults_luggage') == index) {
+                        $(this).find('div.amount-wrap > p').text(kg);
+                        $(this).find('p.total').text(NumberWithCommas(price));
+                        return false;
+                    } else if (i == $('.summary-cart-container > div').length - 1) {
+                        var txt = "<div class='summary-cart luggage' adults_luggage='" + index +
+                            "'>";
+                        txt += "<p>Hành lý người lớn " + (parseInt(index) + 1) + "</p>";
+                        txt += "<div class='amount-wrap'><p>" + kg + "</p></div>";
+                        txt += "<p class='total'>" + NumberWithCommas(price) + "</p></div>";
+                        $('.summary-cart-container').append(txt);
+                        return false;
+                    }
+                });
+            }
+            var total = 0;
+            $('.summary-cart-container .summary-cart').each(function() {
+                total += NumberCommasToInt($(this).find('p.total').text());
+            });
+            $('.total-price .price p:first-child').text(NumberWithCommas(total));
+        }
+        //Trẻ em
+        else {
+            var index = $(this).attr('children_luggage');
+            if ($(this).val() == 0) {
+                $('.summary-cart-container > div').each(function() {
+                    if ($(this).attr('children_luggage') == index) {
+                        $(this).remove();
+                        return false;
+                    }
+                });
+            } else {
+                var option = $(this).find("option[value='" + $(this).val() + "']");
+                var kg = option.attr('kg');
+                var price = option.attr('price');
+                $('.summary-cart-container > div').each(function(i) {
+                    if ($(this).attr('children_luggage') == index) {
+                        $(this).find('div.amount-wrap > p').text(kg);
+                        $(this).find('p.total').text(NumberWithCommas(price));
+                        return false;
+                    } else if (i == $('.summary-cart-container > div').length - 1) {
+                        var txt = "<div class='summary-cart luggage' children_luggage='" +
+                            index + "'>";
+                        txt += "<p>Hành lý trẻ em " + (parseInt(index) + 1) + "</p>";
+                        txt += "<div class='amount-wrap'><p>" + kg + "</p></div>";
+                        txt += "<p class='total'>" + NumberWithCommas(price) + "</p></div>";
+                        $('.summary-cart-container').append(txt);
+                        return false;
+                    }
+                });
+            }
+            var total = 0;
+            $('.summary-cart-container .summary-cart').each(function() {
+                total += NumberCommasToInt($(this).find('p.total').text());
+            });
+            $('.total-price .price p:first-child').text(NumberWithCommas(total));
+        }
     });
 });
 </script>
