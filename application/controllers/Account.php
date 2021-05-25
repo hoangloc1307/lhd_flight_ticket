@@ -25,7 +25,7 @@ class Account extends CI_Controller {
 
             $this->load->view('home/header_footer', $data);
         } else {
-            show_404();
+            redirect(base_url("login"));
         }
     }
 

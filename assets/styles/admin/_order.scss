@@ -114,11 +114,23 @@
 				}
 			}
 		}
+		.ticket-wrap {
+			padding: 12px 24px;
+			margin-bottom: 24px;
+			h4 {
+				padding-bottom: 12px;
+				margin-bottom: 24px;
+				font-weight: 700;
+				text-transform: uppercase;
+				color: $cl-orange-3;
+				font-size: $fs-sub-title;
+				border-bottom: 1px solid $cl-grey;
+			}
+		}
 		.flight-wrap,
-		.depart-arrive {
+		.depart-destination-arrive {
 			display: flex;
 			align-items: center;
-			padding: 12px 24px;
 			margin-bottom: 24px;
 
 			.base-from-to {
@@ -137,7 +149,7 @@
 				color: $cl-grey-2;
 			}
 		}
-		.depart-arrive {
+		.depart-destination-arrive {
 			div {
 				p {
 					color: $cl-grey-2;

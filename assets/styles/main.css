@@ -5537,64 +5537,80 @@ h2 {
   border-right: 1px solid #dddddd;
 }
 
+.order-detail .info-flight .ticket-wrap,
+.order-detail .info-contact .ticket-wrap {
+  padding: 12px 24px;
+  margin-bottom: 24px;
+}
+
+.order-detail .info-flight .ticket-wrap h4,
+.order-detail .info-contact .ticket-wrap h4 {
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #f29018;
+  font-size: 18px;
+  border-bottom: 1px solid #dddddd;
+}
+
 .order-detail .info-flight .flight-wrap,
-.order-detail .info-flight .depart-arrive,
+.order-detail .info-flight .depart-destination-arrive,
 .order-detail .info-contact .flight-wrap,
-.order-detail .info-contact .depart-arrive {
+.order-detail .info-contact .depart-destination-arrive {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 12px 24px;
   margin-bottom: 24px;
 }
 
 .order-detail .info-flight .flight-wrap .base-from-to h6,
-.order-detail .info-flight .depart-arrive .base-from-to h6,
+.order-detail .info-flight .depart-destination-arrive .base-from-to h6,
 .order-detail .info-contact .flight-wrap .base-from-to h6,
-.order-detail .info-contact .depart-arrive .base-from-to h6 {
+.order-detail .info-contact .depart-destination-arrive .base-from-to h6 {
   font-size: 24px;
   color: #333;
 }
 
 .order-detail .info-flight .flight-wrap .base-from-to p,
-.order-detail .info-flight .depart-arrive .base-from-to p,
+.order-detail .info-flight .depart-destination-arrive .base-from-to p,
 .order-detail .info-contact .flight-wrap .base-from-to p,
-.order-detail .info-contact .depart-arrive .base-from-to p {
+.order-detail .info-contact .depart-destination-arrive .base-from-to p {
   color: #777777;
 }
 
 .order-detail .info-flight .flight-wrap i,
-.order-detail .info-flight .depart-arrive i,
+.order-detail .info-flight .depart-destination-arrive i,
 .order-detail .info-contact .flight-wrap i,
-.order-detail .info-contact .depart-arrive i {
+.order-detail .info-contact .depart-destination-arrive i {
   margin: 0 50px;
   text-align: center;
   font-size: 22px;
   color: #777777;
 }
 
-.order-detail .info-flight .depart-arrive div p,
-.order-detail .info-contact .depart-arrive div p {
+.order-detail .info-flight .depart-destination-arrive div p,
+.order-detail .info-contact .depart-destination-arrive div p {
   color: #777777;
 }
 
-.order-detail .info-flight .depart-arrive div span,
-.order-detail .info-contact .depart-arrive div span {
+.order-detail .info-flight .depart-destination-arrive div span,
+.order-detail .info-contact .depart-destination-arrive div span {
   font-weight: 700;
   font-size: 18px;
   color: #333;
 }
 
-.order-detail .info-flight .depart-arrive div span:nth-child(2),
-.order-detail .info-contact .depart-arrive div span:nth-child(2) {
+.order-detail .info-flight .depart-destination-arrive div span:nth-child(2),
+.order-detail .info-contact .depart-destination-arrive div span:nth-child(2) {
   padding-right: 12px;
 }
 
-.order-detail .info-flight .depart-arrive div span:last-child,
-.order-detail .info-contact .depart-arrive div span:last-child {
+.order-detail .info-flight .depart-destination-arrive div span:last-child,
+.order-detail .info-contact .depart-destination-arrive div span:last-child {
   padding-left: 12px;
   border-left: 1px solid #dddddd;
 }
