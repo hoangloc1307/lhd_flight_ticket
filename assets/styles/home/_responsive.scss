@@ -16,7 +16,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		height: 100px;
+		height: 70px;
 	}
 	/*========== End Header ==========*/
 
@@ -95,7 +95,7 @@
 				button[type="submit"] {
 					color: $cl-white-2;
 					background: $cl-orange-3;
-					box-shadow: 1px 2px 5px $cl-white-2;
+					box-shadow: 1px 1px 2px $cl-white-2;
 				}
 			}
 		}
@@ -205,6 +205,11 @@
 			}
 
 			.order-detail {
+				.heading {
+					.heading-close {
+						margin-right: 0;
+					}
+				}
 				.order-passenger,
 				.order-total {
 					.passenger-detail,
@@ -213,7 +218,7 @@
 						align-items: flex-start;
 
 						div {
-							line-height: 1.6;
+							line-height: 2.1;
 
 							p:first-child {
 								margin-right: 6px;
@@ -222,6 +227,12 @@
 								margin-left: 0px;
 							}
 						}
+					}
+				}
+				.ticket-row {
+					&::after {
+						transform: rotate(90deg);
+						top: 55%;
 					}
 				}
 			}
@@ -249,6 +260,9 @@
 	.menu-mobile {
 		.logo {
 			margin-left: 12px;
+			h1 {
+				font-size: $fs-title;
+			}
 		}
 		.icon {
 			margin-right: 12px;
