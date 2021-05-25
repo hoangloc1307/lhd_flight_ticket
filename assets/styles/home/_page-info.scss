@@ -185,12 +185,6 @@
 				border-radius: 0 0 6px 6px;
 				background: $cl-white-2;
 				display: none;
-				.col {
-					&:first-child,
-					&:last-child {
-						margin-top: 0px;
-					}
-				}
 
 				.heading {
 					display: flex;
@@ -235,7 +229,7 @@
 				.order-departure,
 				.order-destination,
 				.order-total {
-					margin: 12px 12px 0 12px;
+					margin: 0 12px;
 					padding: 12px;
 					background: $cl-white-1;
 					border-radius: 6px;
@@ -264,22 +258,24 @@
 				// Thông tin khách hàng & Tổng chi phí
 				.order-passenger,
 				.order-total {
+					margin: 12px;
 					.passenger-detail,
 					.total-detail {
 						display: flex;
 						align-items: center;
 						justify-content: space-between;
-						line-height: 1.6;
+						line-height: 2.1;
 
 						div {
 							display: flex;
 							align-items: center;
 							flex-wrap: wrap;
-							p:first-child {
+
+							p {
 								margin-right: 6px;
 								font-weight: 600;
 							}
-							p:last-child {
+							span:last-child {
 								margin-left: 6px;
 							}
 						}
@@ -310,7 +306,7 @@
 				.order-payment {
 					.contact-detail,
 					.payment-detail {
-						line-height: 1.6;
+						line-height: 2.1;
 						div {
 							display: flex;
 							align-items: center;
@@ -339,7 +335,7 @@
 				.order-destination {
 					.departure-detail,
 					.destination-detail {
-						line-height: 1.6;
+						line-height: 2.1;
 						div {
 							display: flex;
 							align-items: center;
@@ -350,6 +346,30 @@
 								font-weight: 600;
 							}
 						}
+					}
+				}
+
+				// ticket-row- ticket-row 
+				.ticket-row {
+					position: relative;
+					&::after {
+						position: absolute;
+						content: "\f061";
+						font-family: "Font Awesome 5 Free"; 
+						font-weight: 900;
+						top: 50%;
+						left: 49%;
+						transform: translate(50%, 50%);
+						color: $cl-blue-3;
+					}
+					.title {
+						padding: 12px;
+						background: $cl-orange-2;
+						color: $cl-white-2;
+						margin: 0 12px;
+						text-transform: uppercase;
+						border-radius: 6px;
+
 					}
 				}
 

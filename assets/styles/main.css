@@ -1027,7 +1027,7 @@ header {
 
 .menu-pc .links ul li.user .menu-user {
   position: absolute;
-  top: 60px;
+  top: 50px;
   right: -20px;
   width: 200px;
   -webkit-box-orient: vertical;
@@ -1100,7 +1100,7 @@ header {
 }
 
 .icon .icon-menu {
-  font-size: 22px;
+  font-size: 16px;
   color: #17699a;
 }
 
@@ -4426,10 +4426,6 @@ header {
   display: none;
 }
 
-.my-order .view-order .order-item .order-detail .col:first-child, .my-order .view-order .order-item .order-detail .col:last-child {
-  margin-top: 0px;
-}
-
 .my-order .view-order .order-item .order-detail .heading {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4485,7 +4481,7 @@ header {
 .my-order .view-order .order-item .order-detail .order-departure,
 .my-order .view-order .order-item .order-detail .order-destination,
 .my-order .view-order .order-item .order-detail .order-total {
-  margin: 12px 12px 0 12px;
+  margin: 0 12px;
   padding: 12px;
   background: #f3f4f8;
   border-radius: 6px;
@@ -4521,6 +4517,11 @@ header {
   margin-right: 12px;
 }
 
+.my-order .view-order .order-item .order-detail .order-passenger,
+.my-order .view-order .order-item .order-detail .order-total {
+  margin: 12px;
+}
+
 .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail,
 .my-order .view-order .order-item .order-detail .order-passenger .total-detail,
 .my-order .view-order .order-item .order-detail .order-total .passenger-detail,
@@ -4534,7 +4535,7 @@ header {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  line-height: 1.6;
+  line-height: 2.1;
 }
 
 .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div,
@@ -4551,18 +4552,18 @@ header {
       flex-wrap: wrap;
 }
 
-.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div p:first-child,
-.my-order .view-order .order-item .order-detail .order-passenger .total-detail div p:first-child,
-.my-order .view-order .order-item .order-detail .order-total .passenger-detail div p:first-child,
-.my-order .view-order .order-item .order-detail .order-total .total-detail div p:first-child {
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div p,
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail div p,
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail div p,
+.my-order .view-order .order-item .order-detail .order-total .total-detail div p {
   margin-right: 6px;
   font-weight: 600;
 }
 
-.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div p:last-child,
-.my-order .view-order .order-item .order-detail .order-passenger .total-detail div p:last-child,
-.my-order .view-order .order-item .order-detail .order-total .passenger-detail div p:last-child,
-.my-order .view-order .order-item .order-detail .order-total .total-detail div p:last-child {
+.my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div span:last-child,
+.my-order .view-order .order-item .order-detail .order-passenger .total-detail div span:last-child,
+.my-order .view-order .order-item .order-detail .order-total .passenger-detail div span:last-child,
+.my-order .view-order .order-item .order-detail .order-total .total-detail div span:last-child {
   margin-left: 6px;
 }
 
@@ -4604,7 +4605,7 @@ header {
 .my-order .view-order .order-item .order-detail .order-contact .payment-detail,
 .my-order .view-order .order-item .order-detail .order-payment .contact-detail,
 .my-order .view-order .order-item .order-detail .order-payment .payment-detail {
-  line-height: 1.6;
+  line-height: 2.1;
 }
 
 .my-order .view-order .order-item .order-detail .order-contact .contact-detail div,
@@ -4647,7 +4648,7 @@ header {
 .my-order .view-order .order-item .order-detail .order-departure .destination-detail,
 .my-order .view-order .order-item .order-detail .order-destination .departure-detail,
 .my-order .view-order .order-item .order-detail .order-destination .destination-detail {
-  line-height: 1.6;
+  line-height: 2.1;
 }
 
 .my-order .view-order .order-item .order-detail .order-departure .departure-detail div,
@@ -4670,6 +4671,31 @@ header {
 .my-order .view-order .order-item .order-detail .order-destination .destination-detail div p:first-child {
   margin-right: 6px;
   font-weight: 600;
+}
+
+.my-order .view-order .order-item .order-detail .ticket-row {
+  position: relative;
+}
+
+.my-order .view-order .order-item .order-detail .ticket-row::after {
+  position: absolute;
+  content: "\f061";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  top: 50%;
+  left: 49%;
+  -webkit-transform: translate(50%, 50%);
+          transform: translate(50%, 50%);
+  color: #17699a;
+}
+
+.my-order .view-order .order-item .order-detail .ticket-row .title {
+  padding: 12px;
+  background: #f3ae59;
+  color: #fff;
+  margin: 0 12px;
+  text-transform: uppercase;
+  border-radius: 6px;
 }
 
 .my-order .view-order .order-item .order-detail .compact {
@@ -4942,7 +4968,6 @@ header {
 .info-table .table .heading {
   padding: 5px 0;
   font-weight: 600;
-  border-top: 1px solid #dddddd;
   border-bottom: 1px solid #dddddd;
   text-align: left;
 }
@@ -6323,7 +6348,7 @@ form .button-submit {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: 100px;
+    height: 70px;
   }
   /*========== End Header ==========*/
   /*========== Home Page ==========*/
@@ -6437,8 +6462,8 @@ form .button-submit {
   #hero .booking-form form button[type="submit"] {
     color: #fff;
     background: #f29018;
-    -webkit-box-shadow: 1px 2px 5px #fff;
-            box-shadow: 1px 2px 5px #fff;
+    -webkit-box-shadow: 1px 1px 2px #fff;
+            box-shadow: 1px 1px 2px #fff;
   }
   #hero .hero-content {
     display: none;
@@ -6511,6 +6536,9 @@ form .button-submit {
   .my-order .view-order .order-item .order-body .order-total p {
     padding-left: 3px;
   }
+  .my-order .view-order .order-item .order-detail .heading .heading-close {
+    margin-right: 0;
+  }
   .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail,
   .my-order .view-order .order-item .order-detail .order-passenger .total-detail,
   .my-order .view-order .order-item .order-detail .order-total .passenger-detail,
@@ -6527,7 +6555,7 @@ form .button-submit {
   .my-order .view-order .order-item .order-detail .order-passenger .total-detail div,
   .my-order .view-order .order-item .order-detail .order-total .passenger-detail div,
   .my-order .view-order .order-item .order-detail .order-total .total-detail div {
-    line-height: 1.6;
+    line-height: 2.1;
   }
   .my-order .view-order .order-item .order-detail .order-passenger .passenger-detail div p:first-child,
   .my-order .view-order .order-item .order-detail .order-passenger .total-detail div p:first-child,
@@ -6540,6 +6568,11 @@ form .button-submit {
   .my-order .view-order .order-item .order-detail .order-total .passenger-detail div p:last-child,
   .my-order .view-order .order-item .order-detail .order-total .total-detail div p:last-child {
     margin-left: 0px;
+  }
+  .my-order .view-order .order-item .order-detail .ticket-row::after {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+    top: 55%;
   }
   /*========== End Info ==========*/
 }
@@ -6559,6 +6592,9 @@ form .button-submit {
   /*========== Header ==========*/
   .menu-mobile .logo {
     margin-left: 12px;
+  }
+  .menu-mobile .logo h1 {
+    font-size: 24px;
   }
   .menu-mobile .icon {
     margin-right: 12px;

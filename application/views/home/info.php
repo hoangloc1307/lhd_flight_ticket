@@ -77,10 +77,10 @@
 						<li class="order-status"><i class="fas fa-record-vinyl"></i>Trạng thái</li>
 					</ul>
 					<?php
-                    foreach ($orders as $item) :
-                        $flight_detail = json_decode($item['Flight_Detail'], true);
-                        $payment_info = json_decode($item['Payment_Info'], true);
-                    ?>
+						foreach ($orders as $item) :
+						$flight_detail = json_decode($item['Flight_Detail'], true);
+						$payment_info = json_decode($item['Payment_Info'], true);
+					?>
 					<div class="order-item">
 						<ul class="order-body">
 							<li class="order-code">
@@ -200,7 +200,10 @@
 									</div>
 								</div>
 							</div>
-							<div class="row">
+							<div class="row ticket-row">
+								<div class="col l-12 m-12 s-12">
+									<h4 class="title">Chi tiết vé đi</h4>
+								</div>
 								<div class="col l-6 m-12 s-12">
 									<div class="order-departure">
 										<div class="departure-title">
@@ -219,6 +222,10 @@
 											<div class="city">
 												<p>Thành phố: </p>
 												<p>Ho Chi Minh City</p>
+											</div>
+											<div class="date-departure">
+												<p>Ngày khởi hành: </p>
+												<p>05/05/2021</p>
 											</div>
 											<div class="time-departure">
 												<p>Thời gian khởi hành: </p>
@@ -246,6 +253,10 @@
 												<p>Thành phố: </p>
 												<p>Ha Noi City</p>
 											</div>
+											<div class="date-destination">
+												<p>Ngày đến nơi: </p>
+												<p>05/05</p>
+											</div>
 											<div class="time-destination">
 												<p>Thời gian đến nơi: </p>
 												<p>3h15</p>
@@ -254,6 +265,74 @@
 									</div>
 								</div>
 							</div>
+
+							<div class="row ticket-row">
+								<div class="col l-12 m-12 s-12">
+									<h4 class="title">Chi tiết vé về</h4>
+								</div>
+								<div class="col l-6 m-12 s-12">
+									<div class="order-departure">
+										<div class="departure-title">
+											<i class="fas fa-plane-departure"></i>
+											<p>Điểm khởi hành</p>
+										</div>
+										<div class="departure-detail">
+											<div class="airport">
+												<p>Sân bay: </p>
+												<p>Tan Son Nhat International Airport</p>
+											</div>
+											<div class="code-airport">
+												<p>Mã sân bay: </p>
+												<p><?= $item['Origin'] ?></p>
+											</div>
+											<div class="city">
+												<p>Thành phố: </p>
+												<p>Ho Chi Minh City</p>
+											</div>
+											<div class="date-departure">
+												<p>Ngày khởi hành: </p>
+												<p>05/05/2021</p>
+											</div>
+											<div class="time-departure">
+												<p>Thời gian khởi hành: </p>
+												<p>2h15</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col l-6 m-12 s-12">
+									<div class="order-destination">
+										<div class="destination-title">
+											<i class="fas fa-plane-arrival"></i>
+											<p>Điểm đến</p>
+										</div>
+										<div class="destination-detail">
+											<div class="airport">
+												<p>Sân bay: </p>
+												<p>Noi Bai International Airport</p>
+											</div>
+											<div class="code-airport">
+												<p>Mã sân bay: </p>
+												<p><?= $item['Destination'] ?></p>
+											</div>
+											<div class="city">
+												<p>Thành phố: </p>
+												<p>Ha Noi City</p>
+											</div>
+											<div class="date-destination">
+												<p>Ngày đến nơi: </p>
+												<p>05/05</p>
+											</div>
+											<div class="time-destination">
+												<p>Thời gian đến nơi: </p>
+												<p>3h15</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
 
 							<div class="order-total">
 								<div class="total-title">
