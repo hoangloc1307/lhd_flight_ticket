@@ -162,7 +162,7 @@ class Finding extends CI_Controller {
 
     public function GetLuggage() {
         $luggage['VJ'] = [
-            'Mặc định' => 0,
+            '7kg' => 0,
             '15kg' => 140000,
             '20kg' => 160000,
             '25kg' => 220000,
@@ -171,7 +171,7 @@ class Finding extends CI_Controller {
             '40kg' => 420000
         ];
         $luggage['QH'] = [
-            'Mặc định' => 0,
+            '7kg' => 0,
             '15kg' => 155000,
             '20kg' => 180000,
             '25kg' => 230000,
@@ -180,7 +180,7 @@ class Finding extends CI_Controller {
             '40kg' => 480000
         ];
         $luggage['VN'] = [
-            'Mặc định' => 0,
+            '7kg' => 0,
             '15kg' => 270000,
             '20kg' => 330000,
             '25kg' => 440000,
