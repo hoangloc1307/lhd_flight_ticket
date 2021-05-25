@@ -63,3 +63,5 @@ $route['admin/news/add'] = 'admin/manage_news/add';
 $route['admin/news/delete'] = 'admin/manage_news/delete';
 $route['admin/order'] = 'admin/order/view';
 $route['admin/order/detail/(:any)'] = 'admin/order/view/$1';
+//404
+$route['404_override'] = 'Error404';

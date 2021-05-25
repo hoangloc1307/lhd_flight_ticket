@@ -997,7 +997,7 @@ $(document).on('click', '.flight-price-choose button', function() {
                             .attr('value')) + "'>";
                     customer_text += "</div>";
                     customer_text += "<select class='bag-select' adults_luggage='" + i +
-                        "' kg='Mặc định'>";
+                        "' kg='7kg'>";
                     for (let j in data) {
                         customer_text += "<option value='" + data[j] + "' kg='" + j + "' price='" +
                             data[j] + "'>" + j + ": " +
@@ -1028,7 +1028,7 @@ $(document).on('click', '.flight-price-choose button', function() {
                             .attr('value')) + "'>";
                     customer_text += "</div>";
                     customer_text += "<select class='bag-select' children_luggage='" + i +
-                        "' kg='Mặc định'>";
+                        "' kg='7kg'>";
                     for (let j in data) {
                         customer_text += "<option value='" + data[j] + "' kg='" + j + "' price='" +
                             data[j] + "'>" + j + ": " +
@@ -1142,6 +1142,7 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
                 var obj = {};
                 obj[$(this).attr('kg')] = $(this).val();
                 customerLuggage.push(obj);
+                console.log(customerLuggage);
             });
             $('.summary-cart.luggage').each(function() {
                 luggageFee += NumberCommasToInt($(this).find('.total').text());
@@ -1178,6 +1179,7 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
             for (customerIndex; customerIndex < userInput['adults']; customerIndex++) {
                 bill['adults_names'].push(customerNames[customerIndex]);
                 bill['adults_luggage'].push(customerLuggage[customerIndex]);
+                console.log(customerLuggage[customerIndex]);
             }
             if (userInput['children'] > 0) {
                 bill['children'] = userInput['children'];
@@ -1348,23 +1350,31 @@ $(document).on('click', '.button-step button:nth-child(2)', function() {
                         }
                         for (var i in bill['adults_luggage']) {
                             for (var j in bill['adults_luggage'][i]) {
-                                priceHTML += "<div class='info-body'>";
-                                priceHTML += "<p>" + (++customerIndex) + "</p>";
-                                priceHTML += "<p> Hành lý người lớn " + (i + 1) + " (" + j +
-                                    ")</p>";
-                                priceHTML += "<p> " + NumberWithCommas(bill['adults_luggage'][i][
-                                    j
-                                ]) + "</p></div>";
+                                if (j != '7kg') {
+                                    priceHTML += "<div class='info-body'>";
+                                    priceHTML += "<p>" + (++customerIndex) + "</p>";
+                                    priceHTML += "<p> Hành lý người lớn " + (i + 1) + " (" + j +
+                                        ")</p>";
+                                    priceHTML += "<p> " + NumberWithCommas(bill['adults_luggage'][i]
+                                        [
+                                            j
+                                        ]) + "</p></div>";
+                                }
                             }
                         }
                         for (var i in bill['children_luggage']) {
                             for (var j in bill['children_luggage'][i]) {
-                                priceHTML += "<div class='info-body'>";
-                                priceHTML += "<p>" + (++customerIndex) + "</p>";
-                                priceHTML += "<p> Hành lý trẻ em " + (i + 1) + " (" + j + ")</p>";
-                                priceHTML += "<p> " + NumberWithCommas(bill['children_luggage'][i][
-                                    j
-                                ]) + "</p></div>";
+                                if (j != '7kg') {
+                                    priceHTML += "<div class='info-body'>";
+                                    priceHTML += "<p>" + (++customerIndex) + "</p>";
+                                    priceHTML += "<p> Hành lý trẻ em " + (i + 1) + " (" + j +
+                                        ")</p>";
+                                    priceHTML += "<p> " + NumberWithCommas(bill['children_luggage'][
+                                        i
+                                    ][
+                                        j
+                                    ]) + "</p></div>";
+                                }
                             }
                         }
                         priceHTML +=
