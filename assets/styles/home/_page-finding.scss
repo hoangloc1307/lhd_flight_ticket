@@ -960,11 +960,17 @@
 				.detail-flight {
 					flex: 1;
 					padding: 10px;
+					line-height: 2.1;
 
 					span {
 						overflow: hidden;
 						text-overflow: ellipsis;
 						white-space: nowrap;
+					}
+					span:nth-child(2) {
+						span {
+							margin-left: 3px;
+						}
 					}
 				}
 
@@ -1016,11 +1022,7 @@
 							align-items: center;
 							font-size: $fs-detail;
 						}
-						span:nth-child(2) {
-							span {
-								padding-left: 6px;
-							}
-						}
+
 						span:nth-child(3),
 						span:nth-child(4) {
 							p:first-child {
@@ -1120,11 +1122,17 @@
 			.detail-flight {
 				flex: 1;
 				padding: 10px;
+				line-height: 2.1;
 
 				span {
 					overflow: hidden;
 					text-overflow: ellipsis;
 					white-space: nowrap;
+				}
+				span:nth-child(2) {
+					span {
+						margin-left: 3px;
+					}
 				}
 			}
 
@@ -1252,6 +1260,7 @@
 				background: $cl-white-1;
 
 				.col {
+					margin: 0;
 					div {
 						display: flex;
 						align-items: center;
@@ -1266,6 +1275,10 @@
 					.request {
 						flex-direction: column;
 						align-items: flex-start;
+						p:last-child {
+							overflow-wrap: anywhere;
+							line-height: 1.8;
+						}
 					}
 				}
 			}

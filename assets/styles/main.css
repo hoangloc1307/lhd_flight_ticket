@@ -3815,6 +3815,7 @@ header {
       -ms-flex: 1;
           flex: 1;
   padding: 10px;
+  line-height: 2.1;
 }
 
 .finding .flight-item .flight-box-detail .flight-detail-item .detail-img span,
@@ -3824,6 +3825,13 @@ header {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.finding .flight-item .flight-box-detail .flight-detail-item .detail-img span:nth-child(2) span,
+.finding .flight-item .flight-box-detail .flight-detail-item .detail-from span:nth-child(2) span,
+.finding .flight-item .flight-box-detail .flight-detail-item .detail-to span:nth-child(2) span,
+.finding .flight-item .flight-box-detail .flight-detail-item .detail-flight span:nth-child(2) span {
+  margin-left: 3px;
 }
 
 .finding .flight-item .flight-box-detail .flight-detail-item .title-detail {
@@ -3890,12 +3898,6 @@ header {
       -ms-flex-align: center;
           align-items: center;
   font-size: 14px;
-}
-
-.finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-from span:nth-child(2) span,
-.finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-to span:nth-child(2) span,
-.finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-flight span:nth-child(2) span {
-  padding-left: 6px;
 }
 
 .finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-from span:nth-child(3) p:first-child,
@@ -4011,6 +4013,7 @@ header {
       -ms-flex: 1;
           flex: 1;
   padding: 10px;
+  line-height: 2.1;
 }
 
 .finding .finish-payment .flight-detail .detail-img span,
@@ -4020,6 +4023,13 @@ header {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.finding .finish-payment .flight-detail .detail-img span:nth-child(2) span,
+.finding .finish-payment .flight-detail .detail-from span:nth-child(2) span,
+.finding .finish-payment .flight-detail .detail-to span:nth-child(2) span,
+.finding .finish-payment .flight-detail .detail-flight span:nth-child(2) span {
+  margin-left: 3px;
 }
 
 .finding .finish-payment .flight-detail .title-flight {
@@ -4188,6 +4198,10 @@ header {
   background: #f3f4f8;
 }
 
+.finding .finish-payment .contact .contact-detail .col {
+  margin: 0;
+}
+
 .finding .finish-payment .contact .contact-detail .col div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4213,6 +4227,11 @@ header {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+}
+
+.finding .finish-payment .contact .contact-detail .col .request p:last-child {
+  overflow-wrap: anywhere;
+  line-height: 1.8;
 }
 
 .infouser .title,
@@ -5787,6 +5806,7 @@ h2 {
 .order-detail .total-order p:last-child {
   border-bottom: 1px solid #dddddd;
   padding-bottom: 12px;
+  overflow-wrap: anywhere;
 }
 
 .order-detail .total-order .col {
