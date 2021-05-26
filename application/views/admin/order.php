@@ -30,10 +30,10 @@
         </div>
         <div class="items">
             <?php
-			foreach ($orders as $item) :
-				$flight_detail = json_decode($item['Flight_Detail'], true);
-				$payment_info = json_decode($item['Payment_Info'], true);
-			?>
+            foreach ($orders as $item) :
+                $flight_detail = json_decode($item['Flight_Detail'], true);
+                $payment_info = json_decode($item['Payment_Info'], true);
+            ?>
             <div class="row body">
                 <div class="col l-1 code">
                     <a href="<?= base_url("admin/order/detail/") . $item['Order_ID'] ?>"><?= $item['Order_Code'] ?></a>
@@ -47,7 +47,7 @@
                     </p>
                 </div>
                 <div class="col l-1">
-                    <span><?= number_format($payment_info['total_price'], 0, ".", ".") ?></span>
+                    <span><?= number_format($item['Price'], 0, ".", ".") ?></span>
                 </div>
                 <div class="col l-4">
                     <?php foreach ($flight_detail['flight_detail'] as $flight) { ?>
