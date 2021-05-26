@@ -109,9 +109,7 @@
                             Giá
                         </div>
                     </div>
-                    <?php foreach ($orders as $item) :
-						$payment_info = json_decode($item['Payment_Info'], true);
-					?>
+                    <?php foreach ($orders as $item) : ?>
                     <a href="<?= base_url('admin/order/detail/') . $item['Order_ID'] ?>" class="row item">
                         <div class="col l-3 code">
                             <?= $item['Order_Code'] ?>
@@ -120,7 +118,7 @@
                             <?= $item['Booking_DateTime'] ?>
                         </div>
                         <div class="col l-4 price">
-                            <span><?= number_format($payment_info['total_price'], 0, ".", ".") ?></span>
+                            <span><?= number_format($item['Price'], 0, ".", ".") ?></span>
                             <span>VND</span>
                         </div>
                     </a>
