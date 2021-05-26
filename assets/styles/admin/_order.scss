@@ -328,6 +328,7 @@
 			&:last-child {
 				border-bottom: 1px solid $cl-grey;
 				padding-bottom: 12px;
+				overflow-wrap: anywhere;
 			}
 		}
 	}

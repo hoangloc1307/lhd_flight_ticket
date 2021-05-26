@@ -157,11 +157,11 @@ class Order extends CI_Controller {
         $message .= '</tr>';
         $message .= '<tr>';
         $message .= '<th style="padding: 6px">Ngày đến nơi</th>';
-        $message .= '<td style="padding: 6px">Chưa có dữ liệu</td>';
+        $message .= '<td style="padding: 6px">'. $order["departure_landing_date"] .'</td>';
         $message .= '</tr>';
         $message .= '<tr>';
         $message .= '<th style="padding: 6px">Giờ đến nơi</th>';
-        $message .= '<td style="padding: 6px">Chưa có dữ liệu</td>';
+        $message .= '<td style="padding: 6px">'. $order["departure_landing_time"] .'</td>';
         $message .= '</tr>';
         $message .= '</tbody>';
         $message .= '</table>';
@@ -192,11 +192,11 @@ class Order extends CI_Controller {
             $message .= '</tr>';
             $message .= '<tr>';
             $message .= '<th style="padding: 6px">Ngày đến nơi</th>';
-            $message .= '<td style="padding: 6px">Chưa có dữ liệu</td>';
+            $message .= '<td style="padding: 6px">'. $order["return_landing_date"] .'</td>';
             $message .= '</tr>';
             $message .= '<tr>';
             $message .= '<th style="padding: 6px">Giờ đến nơi</th>';
-            $message .= '<td style="padding: 6px">Chưa có dữ liệu</td>';
+            $message .= '<td style="padding: 6px">'. $order["return_landing_time"] .'</td>';
             $message .= '</tr>';
             $message .= '</tbody>';
             $message .= '</table>';
