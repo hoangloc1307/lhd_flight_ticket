@@ -45,6 +45,29 @@ class Database_model extends CI_Model {
         $this->db->set($data);
         return $this->db->update($table);
     }
+
+    public function StoreProcedures($name) {
+        $sql = "CALL $name()";
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
+        $query->next_result();
+        $query->free_result();
+        return $result;
+    }
+
+    public function StoreProceduresWithParams($name, $params) {
+        $sql = "CALL $name(";
+        for ($i = 0; $i < count($params); $i++) {
+            $sql .= "?,";
+        }
+        $sql = rtrim($sql, ",");
+        $sql .= ")";
+        $query = $this->db->query($sql, $params);
+        $result = $query->result_array();
+        $query->next_result();
+        $query->free_result();
+        return $result;
+    }
 }
                         
 /* End of file Database_model.php */

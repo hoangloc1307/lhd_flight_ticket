@@ -509,4 +509,21 @@ if (!function_exists('vietdecode')) {
             return $city;
         }
     }
+
+    if (!function_exists('collapse_money')) {
+        function collapse_money($money) {
+            $result = '';
+            if ($money >= 1000000000) {
+                $money /= 1000000000;
+                $result = round($money, 1) . ' Tỉ';
+            } elseif ($money >= 1000000) {
+                $money /= 1000000;
+                $result = round($money, 1) . ' Triệu';
+            } elseif ($money >= 1000) {
+                $money /= 1000;
+                $result = round($money) . ' Nghìn';
+            }
+            return $result;
+        }
+    }
 }

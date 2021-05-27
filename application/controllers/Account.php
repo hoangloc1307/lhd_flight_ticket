@@ -59,8 +59,8 @@ class Account extends CI_Controller {
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_port' => 465,
-            'smtp_user' => 'lhdflightticket@gmail.com',
-            'smtp_pass' => 'P@ss123456',
+            'smtp_user' => 'flightticketlhd@gmail.com',
+            'smtp_pass' => '{!P@ss123!}',
             'mailtype' => 'html',
             'charset' => 'utf-8',
             'newline' => "\r\n",
@@ -68,7 +68,7 @@ class Account extends CI_Controller {
         );
 
         $this->load->library('email', $config);
-        $this->email->from('lhdflightticket@gmai.com', 'LHD Flight Ticket');
+        $this->email->from('flightticketlhd@gmail.com', 'LHD Flight Ticket');
         $this->email->to($to);
         $this->email->subject($subject);
         $this->email->message($message);

@@ -44,11 +44,11 @@
                 <div class="block">
                     <div class="row">
                         <div class="content col l-8">
-                            <p><?= $number_of_partner ?></p>
-                            <p>Đối tác</p>
+                            <p><?= collapse_money($profit) ?></p>
+                            <p>Lợi nhuận</p>
                         </div>
                         <div class="block_icon col l-4">
-                            <i class="fas fa-handshake"></i>
+                            <i class="fas fa-coins"></i>
                         </div>
                     </div>
                 </div>
