@@ -18,12 +18,10 @@ class Admin extends CI_Controller {
                 $data['title'] = 'Admin';
                 $data['news'] = $this->Database_model->GetRecords('tbl_news', '', 'News_ID DESC', 10, 0);
                 $data['orders'] = $this->Database_model->GetRecords('tbl_order', '', 'Order_ID DESC', 6, 0);
-                $data['number_of_news'] = $this->Database_model->GetRecords('tbl_news', '', '', '', '', true);
-                $data['number_of_customer'] = $this->Database_model->GetRecords('tbl_customer', '', '', '', '', true);
-                $data['number_of_order'] = $this->Database_model->GetRecords('tbl_order', '', '', '', '', true);
-                $partner = $this->JSON_model->get('Partner')['Text'];
-                $partner = json_decode($partner, true);
-                $data['number_of_partner'] = count($partner);
+                $data['number_of_news'] = $this->Database_model->StoreProcedures('TongSoBaiViet')[0]['Result'];
+                $data['number_of_customer'] = $this->Database_model->StoreProcedures('TongSoKhachHang')[0]['Result'];
+                $data['number_of_order'] = $this->Database_model->StoreProcedures('TongSoHoaDon')[0]['Result'];
+                $data['profit'] = $this->Database_model->StoreProcedures('TongLoiNhuan')[0]['Result'];
                 $this->load->view('admin/master_layout', $data, FALSE);
             } else {
                 redirect(base_url());
