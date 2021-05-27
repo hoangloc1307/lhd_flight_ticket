@@ -354,8 +354,8 @@
 				}
 				.amount-wrap {
 					padding: 0;
-					flex: 1;
-					justify-content: flex-end;
+					flex: 2;
+					justify-content: center;
 
 					i {
 						padding: 0 6px;
@@ -523,10 +523,14 @@
 				display: flex;
 				align-items: center;
 				padding: 12px;
-				border-bottom: 1px dashed $cl-grey;
+
 				background: $cl-white-3;
 				flex: 1;
 				flex-wrap: wrap;
+
+				&:not(.customer-people:last-of-type) {
+					border-bottom: 1px dashed $cl-grey;
+				}
 				.customer-user {
 					i {
 						color: $cl-blue-3;
@@ -641,6 +645,7 @@
 		.box-info {
 			display: flex;
 			padding: 10px;
+			flex-wrap: wrap;
 
 			.box-customer,
 			.box-note {
@@ -652,7 +657,7 @@
 				}
 				input {
 					width: 100%;
-					padding: 6px 12px;
+					padding: 12px 6px;
 					border-radius: 6px;
 					width: 100%;
 					border: 1px solid $cl-grey;
@@ -788,6 +793,8 @@
 			border: 1px solid #ddd;
 			margin-top: 12px;
 			border-radius: 10px;
+			width: 100%;
+			flex-wrap: wrap;
 
 			.flight-img,
 			.flight-from,

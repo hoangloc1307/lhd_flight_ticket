@@ -240,6 +240,14 @@
 	}
 
 	/*========== End Info ==========*/
+
+	/*========== Page Finding==========*/
+	.finding {
+		.choose {
+		}
+	}
+
+	/*========== End Page Finding ==========*/
 }
 
 @media (max-width: 480px) {
@@ -419,23 +427,264 @@
 
 	/*========== Finding ==========*/
 	.finding {
-		.filter-step li {
-			.number-step {
-				width: 20px;
-				height: 20px;
-				border-radius: 50%;
-				border: 1px solid #fff;
-				line-height: 1.4;
-				font-size: $fs-small-text;
+		.finding-col {
+			padding: 0;
+		}
+		.choose {
+			margin: 0;
 
-				&:nth-of-type(2),
-				&:nth-of-type(3) {
-					margin: 0 3px 0 12px;
+			#filter-left,
+			#filter-content {
+				padding: 0;
+			}
+		}
+		.confirm {
+			margin: 0;
+
+			& > .col {
+				padding: 0;
+			}
+		}
+
+		.filter-step {
+			li {
+				&.active {
+					&::after {
+						display: none;
+					}
+				}
+				&::after {
+					display: none;
+				}
+				&:nth-child(2)::before,
+				&:last-child::before {
+					display: none;
+				}
+
+				&:first-child {
+					border-radius: 3px 0 0 3px;
+				}
+				&:last-child {
+					border-radius: 0px 3px 3px 0;
+				}
+				&:nth-child(2) {
+					border-radius: 0;
+					border-left: 1px solid $cl-white-3;
+					border-right: 1px solid $cl-white-3;
+				}
+
+				.number-step {
+					width: 20px;
+					height: 20px;
+					border: 1px solid #fff;
+					line-height: 1.4;
+					font-size: $fs-small-text;
+					margin: 0 6px 0 0;
+
+					&:nth-of-type(2),
+					&:nth-of-type(3) {
+						margin: 0 3px 0 12px;
+					}
+				}
+				.tilte-step {
+					font-size: 11px;
+					text-transform: none;
 				}
 			}
-			.tilte-step {
-				font-size: $fs-small-text;
-				text-transform: none;
+		}
+
+		.flight-item {
+			.flight-info {
+				padding: 5px;
+
+				.flight-img {
+					order: 4;
+					border: 0;
+					background: $cl-orange-1;
+
+					.box-img {
+						width: 75px;
+					}
+				}
+				.flight-from {
+					order: 1;
+				}
+				.flight-wrap-detail {
+					order: 2;
+					margin: 0 20px;
+
+					.flight-number-code {
+						font-size: $fs-sub-title;
+					}
+					.flight-detail {
+						&::before {
+							right: 12px;
+						}
+					}
+				}
+				.flight-to {
+					order: 3;
+					.flight-city {
+						font-size: 20px;
+					}
+				}
+				.flight-price-choose {
+					flex-direction: row;
+					order: 5;
+					flex: 3;
+					border: 0;
+					background: $cl-orange-1;
+
+					.flight-price {
+						margin-right: 20px;
+					}
+					button {
+						margin-top: 0;
+						width: 75px;
+						height: 47px;
+						line-height: 32px;
+						font-size: $fs-detail;
+						overflow: hidden;
+					}
+				}
+			}
+			.flight-box-detail {
+				padding: 5px;
+				.flight-detail-item {
+					margin: 0 0 10px 0;
+
+					&:last-of-type {
+						margin-bottom: 0;
+					}
+
+					.flight-detail-wrap {
+						padding: 5px;
+
+						& > div {
+							line-height: 1.6;
+						}
+						.detail-img {
+							order: 4;
+							.box-img {
+								width: 120px !important;
+							}
+						}
+						.detail-from {
+							position: relative;
+							&::after {
+								position: absolute;
+								content: "\f061";
+								top: 50%;
+								right: -15px;
+								transform: translateY(-50%);
+								font-family: "Font Awesome 5 Free";
+								font-weight: 700;
+							}
+						}
+
+						.detail-to {
+							span {
+								justify-content: flex-end;
+							}
+						}
+
+						.total-title {
+							font-size: $fs-sub-title !important;
+						}
+
+						.detail-fare {
+							li {
+								font-size: $fs-small-text;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// Step 2
+		.finding-detail {
+			.content {
+				.detail-ticket {
+					.date-time {
+						i {
+							display: none;
+						}
+					}
+					.image {
+						width: 85px;
+					}
+				}
+			}
+		}
+
+		.flight-selected {
+			.box-selected {
+				.flight-item {
+					padding: 0;
+
+					.flight-info {
+						border: 0;
+						border-radius: 0 0 10px 10px;
+					}
+				}
+			}
+		}
+
+		.info-customer {
+			.box-info {
+				.box-title {
+					display: none;
+				}
+				.customer-people {
+					.name,
+					.date {
+						flex: none;
+						margin: 6px 0;
+						padding: 0;
+					}
+
+					.bag {
+						margin: 6px 0;
+						.bag-img {
+							height: unset;
+						}
+					}
+				}
+			}
+		}
+		.info-contact {
+			.box-info {
+				.box-customer,
+				.box-note {
+					width: 100%;
+					padding: 10px;
+				}
+			}
+		}
+
+		// Step 3
+		.finish-payment {
+			margin: 0;
+			& > .col {
+				padding: 0;
+			}
+
+			.title {
+				font-size: $fs-text;
+			}
+
+			.flight-detail {
+				margin: 0;
+
+				.flight-detail-wrap {
+					.detail-img {
+						order: 4;
+						.box-img {
+							width: 120px;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -569,6 +818,19 @@
 	}
 
 	/*========== End Info ==========*/
+}
+@media (max-width: 376px) {
+	/*========== Finding ==========*/
+	.finding {
+		.flight-item {
+			.flight-info {
+				.flight-wrap-detail {
+					margin: 0 !important;
+				}
+			}
+		}
+	}
+	/*========== End Finding ==========*/
 }
 
 @media (max-width: 320px) {

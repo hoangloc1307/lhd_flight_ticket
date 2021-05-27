@@ -358,8 +358,22 @@
 									</div>
 									<div class="bag-price">
 										<p>Hành lý: </p>
-										<span><?= number_format(($item['Price'] - $baseprice), 0, ".", "."); ?>
-										</span>
+										<?php 
+											$total_bag = 0;
+											for($i = 0; $i < count($payment_info['adults_luggage']); $i++) {
+												foreach($payment_info['adults_luggage'][$i] as $key => $value) {
+													$total_bag += $value;
+												}
+											}
+											if (array_key_exists("children", $payment_info)) {
+												for($i = 0; $i < count($payment_info['children_luggage']); $i++) {
+													foreach($payment_info['children_luggage'][$i] as $key => $value) {
+														$total_bag += $value;
+													}
+												}
+											}
+										?>
+										<span><?= number_format($total_bag, 0, ".", "."); ?></span>
 										<span>VND</span>
 									</div>
 									<div class="total-price">
