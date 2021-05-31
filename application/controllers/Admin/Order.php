@@ -137,20 +137,29 @@ class Order extends CI_Controller {
         $message .= '<tbody>';
         $message .= '<tr>';
         $message .= '<th style="padding: 6px">Điểm đi</th>';
-        $message .= '<td style="padding: 6px">' . city_by_iata($order["origin"]) . ' (' . $order["origin"] . ')</td>';
+        $message .= '<td style="padding: 6px">' . city_by_iata($order["origin"]) .'</td>';
         $message .= '</tr>';
+
         $message .= '<tr>';
         $message .= '<th style="padding: 6px">Sân bay</th>';
-        $message .= '<td style="padding: 6px">' . airport_by_iata($order["origin"]) . '</td>';
+        $message .= '<td style="padding: 6px">' . airport_by_iata($order["origin"]) . ' ('. $order["origin"]. ')</td>';
         $message .= '</tr>';
+
         $message .= '<tr>';
         $message .= '<th style="padding: 6px">Điểm đến</th>';
-        $message .= '<td style="padding: 6px">' . city_by_iata($order["destination"]) . ' (' . $order["destination"] . ')</td>';
+        $message .= '<td style="padding: 6px">' . city_by_iata($order["destination"]) . '</td>';
         $message .= '</tr>';
+
+        $message .= '<tr>';
+        $message .= '<th style="padding: 6px">Sân bay</th>';
+        $message .= '<td style="padding: 6px">' . airport_by_iata($order["destination"]) . ' (' . $order["destination"] . ')</td>';
+        $message .= '</tr>';
+
         $message .= '<tr>';
         $message .= '<th style="padding: 6px">Ngày khởi hành</th>';
         $message .= '<td style="padding: 6px">' . $order["departure_date"] . '</td>';
         $message .= '</tr>';
+
         $message .= '<tr>';
         $message .= '<th style="padding: 6px">Giờ khởi hành</th>';
         $message .= '<td style="padding: 6px">' . $order["departure_time"] . '</td>';
@@ -172,20 +181,27 @@ class Order extends CI_Controller {
             $message .= '<tbody>';
             $message .= '<tr>';
             $message .= '<th style="padding: 6px">Điểm đi</th>';
-            $message .= '<td style="padding: 6px">' . city_by_iata($order["destination"]) . ' (' . $order["destination"] . ')</td>';
+            $message .= '<td style="padding: 6px">' . city_by_iata($order["destination"]) . '</td>';
             $message .= '</tr>';
             $message .= '<tr>';
             $message .= '<th style="padding: 6px">Sân bay</th>';
-            $message .= '<td style="padding: 6px">' . airport_by_iata($order["destination"]) . '</td>';
+            $message .= '<td style="padding: 6px">' . airport_by_iata($order["destination"]) . ' (' . $order["destination"] . ')</td>';
             $message .= '</tr>';
             $message .= '<tr>';
             $message .= '<th style="padding: 6px">Điểm đến</th>';
-            $message .= '<td style="padding: 6px">' . city_by_iata($order["origin"]) . ' (' . $order["origin"] . ')</td>';
+            $message .= '<td style="padding: 6px">' . city_by_iata($order["origin"]) . '</td>';
             $message .= '</tr>';
+
+            $message .= '<tr>';
+            $message .= '<th style="padding: 6px">Sân bay</th>';
+            $message .= '<td style="padding: 6px">' . airport_by_iata($order["origin"]) . ' (' . $order["origin"] . ')</td>';
+            $message .= '</tr>';
+
             $message .= '<tr>';
             $message .= '<th style="padding: 6px">Ngày khởi hành</th>';
             $message .= '<td style="padding: 6px">' . $order["return_date"] . '</td>';
             $message .= '</tr>';
+
             $message .= '<tr>';
             $message .= '<th style="padding: 6px">Giờ khởi hành</th>';
             $message .= '<td style="padding: 6px">' . $order["return_time"] . '</td>';
@@ -378,44 +394,220 @@ class Order extends CI_Controller {
         $payment_info = json_decode($order['Payment_Info'], true);
         $flight_detail = json_decode($order['Flight_Detail'], true);
 
-        $message = "<!DOCTYPE html><html lang='en' style='font-family: Arial, Helvetica, sans-serif;font-size: 14px;'><head></head><body style='margin: 0;padding: 0;box-sizing: border-box;'>";
-        $message .= "<section style='background: #f9f9f9;padding: 30px 0;'>";
-        $message .= "<div style='max-width: 480px;margin: 0 auto;background: #fff;border-radius: 6px;'>";
-        $message .= "<div style='padding: 24px;background: #17699a;font-size: 24px;color: #fff;border-radius: 6px 6px 0 0;'>Thanh toán thành công</div>";
-        $message .= "<div style='padding: 12px;color: #777;'>";
-        $message .= "<div class='greeting'>";
-        $message .= "<p>Xin chào " . $payment_info['contact_name'] . ",</p>";
-        $message .= "<p>Đơn hàng " . $order['Order_Code'] . " đã được thanh toán thành công</p>";
-        $message .= "</div>";
-        $message .= "<div class='order-detail'>";
-        $message .= "<h4 style='color: #17699a;font-size: 18px;'>[Đơn hàng] <span>" . $order['Order_Code'] . "</span> <span>" . $order['Booking_DateTime'] . "</span></h4>";
-        $message .= "<table style='width: 100%;text-align: left;border: 1px solid #ccc;line-height: 1.6;'><tbody>";
-        $message .= "<tr><th style='padding: 6px;'>Loại vé</th><td style='padding: 6px;'>" . ($order['Type'] == 'oneway' ? 'Một chiều' : 'Khứ hồi') . "</td></tr>";
-        $message .= "<tr><th style='padding: 6px;'>Điểm đi</th><td style='padding: 6px;'>" . $order['Origin'] . "</td></tr>";
-        $message .= "<tr><th style='padding: 6px;'>Điểm đến</th><td style='padding: 6px;'>" . $order['Destination'] . "</td></tr>";
-        $message .= "<tr><th style='padding: 6px;'>Ngày khởi hành</th><td style='padding: 6px;'>" . $flight_detail['departure_date'] . "</td></tr>";
-        $message .= "<tr><th style='padding: 6px;'>Giờ khởi hành</th><td style='padding: 6px;'>" . $flight_detail['departure_time'] . "</td></tr>";
-        $message .= "<tr><th style='padding: 6px;'>Người lớn</th><td style='padding: 6px;'>" . $payment_info['adults'] . " x " . number_format($payment_info['adults_baseprice'], 0, ".", ".") . "</td></tr>";
+        $message = '<!DOCTYPE html>';
+        $message .= '<html lang="en" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px">';
+        $message .= '<head></head>';
+        $message .= '<body style="margin: 0; padding: 0; box-sizing: border-box">';
+        $message .= '<section>';
+        $message .= '<div style="max-width: 100%; background: #fff; border-radius: 6px;">';
+        $message .= '<div style="padding: 24px;background: #17699a; font-size: 24px; color: #fff;">Cảm ơn bạn đã đặt vé</div>';
+        $message .= '<div style="padding: 12px; color: #777">';
+        $message .= '<div class="greeting">';
+        $message .= '<p>Xin chào ' . $payment_info["contact_name"] . '</p>';
+        $message .= '<p> Đơn hàng <span style="color: #f29018">' . $order["Order_Code"] . '</span> đã được đặt thành công và chúng tôi đang xử lý </p>';
+        $message .= '</div>';
+        $message .= '<div class="order-detail">';
+
+        $message .= '<h4 style="color: #17699a; font-size: 18px">[Đơn hàng] ';
+        $message .= '<span style="color: #f29018">' . $order["Order_Code"] . '</span> ' . $order["Booking_DateTime"];
+        $message .= '</h4>';
+
+        $message .= '<h5 style="font-weight: 700; font-size: 16px; text-transform: uppercase; margin-bottom: 12px;">Thông tin chung</h5>';
+        $message .= '<table style="width: 100%; text-align: left; border: 1px solid #ccc; line-height: 1.6; border-collapse: collapse;">';
+        $message .= '<tbody>';
+        $message .= '<tr>';
+        $message .= '<th style="padding: 6px">Loại vé </th>';
+        $message .= '<td style="padding: 6px">' . ($order["Type"] == "roundtrip" ? "Khứ hồi" : "Một chiều") . '</td>';
+        $message .= '</tr>';
+        $message .= '<tr>';
+        $message .= '<th style="padding: 6px">Hạng</th>';
+        $message .= '<td style="padding: 6px">' . $order["Class"] . '</td>';
+        $message .= '</tr>';
+        $message .= '<tr style="border-bottom: 1px solid #ccc">';
+        $message .= '<th style="padding: 6px">Phương thức thanh toán</th>';
+        $message .= '<td style="padding: 6px">' . $order["Payment_Method"] . '</td>';
+        $message .= '</tr>';
+        for ($i = 0; $i < $payment_info["adults"]; $i++) {
+            $message .= '<tr>';
+            $message .= '<th style="padding: 6px">Người lớn ' . (int)$i + 1 . '</th>';
+            $message .= '<td style="padding: 6px; font-style: italic; font-weight: 700;">' . $payment_info["adults_names"][$i] . '</td>';
+            $message .= '</tr>';
+            $message .= '<tr style="border-bottom: 1px solid #ccc">';
+            $message .= '<td style="padding: 6px; font-weight: bold"> Giá vé: <p style="font-weight: 400; margin: 0;">' . number_format($payment_info["adults_baseprice"] + $payment_info["adults_fee"], 0, ".", ".") . ' VND</p></td>';
+            foreach ($payment_info["adults_luggage"][$i] as $key => $value) {
+                $message .= '<td style="padding: 6px; font-weight: bold"> Hành lý: <p style="font-weight: 400; margin: 0;">(' . $key . ') ' . number_format($value, 0, ".", ".") . ' VND</p></td>';
+            }
+            $message .= '</tr>';
+        }
+
+
         if (array_key_exists("children", $payment_info)) {
-            $message .= "<tr><th style='padding: 6px;'>Trẻ em</th><td style='padding: 6px;'>" . $payment_info['children'] . " x " . number_format($payment_info['children_price'], 0, ".", ".") . "</td></tr>";
+            for ($i = 0; $i < $payment_info["children"]; $i++) {
+                $message .= '<tr>';
+                $message .= '<th style="padding: 6px">Trẻ em ' . (int)$i + 1 . '</th>';
+                $message .= '<td style="padding: 6px; font-style: italic; font-weight: 700;">' . $payment_info["children_names"][$i] . ' (' . $payment_info["children_dob"][$i] . ')</td>';
+                $message .= '</tr>';
+                $message .= '<tr style="border-bottom: 1px solid #ccc">';
+                $message .= '<td style="padding: 6px; font-weight: bold"> Giá vé: <p style="font-weight: 400; margin: 0;">' . number_format($payment_info["children_baseprice"] + $payment_info["children_fee"], 0, ".", ".") . ' VND</p></td>';
+                foreach ($payment_info["children_luggage"][$i] as $key => $value) {
+                    $message .= '<td style="padding: 6px; font-weight: bold"> Hành lý: <p style="font-weight: 400; margin: 0;">(' . $key . ') ' . number_format($value, 0, ".", ".") . ' VND</p></td>';
+                }
+                $message .= '</tr>';
+            }
         }
+
         if (array_key_exists("infants", $payment_info)) {
-            $message .= "<tr><th style='padding: 6px;'>Em bé</th><td style='padding: 6px;'>" . $payment_info['infants'] . " x " . number_format($payment_info['infants_price'], 0, ".", ".") . "</td></tr>";
+            for ($i = 0; $i < $payment_info["infants"]; $i++) {
+                $message .= '<tr>';
+                $message .= '<th style="padding: 6px">Em bé ' . (int)$i + 1 . '</th>';
+                $message .= '<td style="padding: 6px; font-style: italic; font-weight: 700;">' . $payment_info["infants_names"][$i] . ' (' . $payment_info["infants_dob"][$i] . ')</td>';
+                $message .= '</tr>';
+                $message .= '<tr style="border-bottom: 1px solid #ccc">';
+                $message .= '<td style="padding: 6px; font-weight: bold"> Giá vé: <p style="font-weight: 400; margin: 0;">' . number_format($payment_info["infants_baseprice"] + $payment_info["infants_fee"], 0, ".", ".") . ' VND</p></td>';
+                $message .= '<td></td>';
+                $message .= '</tr>';
+            }
         }
-        $message .= "<tr><th style='padding: 6px;'>Phương thức thanh toán</th><td style='padding: 6px;'>" . $order['Payment_Method'] . "</td></tr>";
-        $message .= "<tr><th style='padding: 6px;'>Tổng cộng</th><td style='padding: 6px; font-weight: bold;'>" . number_format($payment_info['total_price'], 0, ".", ".") . " VND</td></tr>";
-        $message .= "</tbody></table>";
-        $message .= "<h4>Thông tin thanh toán</h4>";
-        $message .= "<div style='padding: 0 12px;border: 1px solid #ccc;'>";
-        $message .= "<p>Họ tên: " . $payment_info['contact_name'] . "</p>";
-        $message .= "<p>Số điện thoại: " . $payment_info['contact_phone'] . "</p>";
-        $message .= "<p>Địa chỉ: " . $payment_info['contact_address'] . "</p>";
-        $message .= "<p>Email: " . $payment_info['contact_mail'] . "</p>";
-        $message .= "<p>Ghi chú: " . $payment_info['contact_note'] . "</p>";
-        $message .= "</div></div>";
-        $message .= "<a style='text-decoration: none;color: #034166;padding: 12px;display: block;text-align: center;' href='" . base_url() . "'>Flight Ticket</a>";
-        $message .= "</div></div></section></body>";
-        $message .= "</html>";
+
+        $message .= '<tr style="border-top: 2px dashed #ccc;">';
+        $message .= '<th style="padding: 12px 6px; text-transform: uppercase; font-size: 16px; color: #034166;">Tổng cộng</th>';
+        $message .= '<td style="padding: 6px; font-weight: bold; font-size: 16px; color: #034166; text-align: left;"> ' . number_format($order["Price"], 0, ".", ".") . ' VND</td>';
+        $message .= '</tr>';
+        $message .= '</tbody>';
+        $message .= '</table>';
+        $message .= '</tbody>';
+        $message .= '</table>';
+
+        $message .= '<h5 style="font-weight: 700; font-size: 16px; text-transform: uppercase; margin-bottom: 12px;">Vé đi</h5>';
+        $message .= '<table style="width: 100%; text-align: left; border: 1px solid #ccc; line-height: 1.6; border-collapse: collapse;">';
+        $message .= '<tbody>';
+        $message .= '<tr>';
+        $message .= '<th style="padding: 6px">Điểm đi</th>';
+        $message .= '<td style="padding: 6px">' . city_by_iata($order["Origin"]) . '</td>';
+        $message .= '</tr>';
+        $message .= '<tr>';
+        $message .= '<th style="padding: 6px">Sân bay</th>';
+        $message .= '<td style="padding: 6px">' . airport_by_iata($order["Origin"]) . ' (' . $order["Origin"] . ')</td>';
+        $message .= '</tr>';
+
+        $message .= '<tr>';
+        $message .= '<th style="padding: 6px">Điểm đến</th>';
+        $message .= '<td style="padding: 6px">' . city_by_iata($order["Destination"]) . '</td>';
+        $message .= '</tr>';
+
+        $message .= '<tr>';
+        $message .= '<th style="padding: 6px">Sân bay</th>';
+        $message .= '<td style="padding: 6px">' . airport_by_iata($order["Destination"]) . ' (' . $order["Destination"] . ')</td>';
+        $message .= '</tr>';
+        
+        $message .= '<tr>';
+        $message .= '<th style="padding: 6px">Ngày khởi hành</th>';
+        $message .= '<td style="padding: 6px">' . $flight_detail["departure_date"] . '</td>';
+        $message .= '</tr>';
+        $message .= '<tr>';
+        $message .= '<th style="padding: 6px">Giờ khởi hành</th>';
+        $message .= '<td style="padding: 6px">' . $flight_detail["departure_time"] . '</td>';
+        $message .= '</tr>';
+        $message .= '<tr>';
+        $message .= '<th style="padding: 6px">Ngày đến nơi</th>';
+        $message .= '<td style="padding: 6px">'. $flight_detail["departure_landing_date"] .'</td>';
+        $message .= '</tr>';
+        $message .= '<tr>';
+        $message .= '<th style="padding: 6px">Giờ đến nơi</th>';
+        $message .= '<td style="padding: 6px">'. $flight_detail["departure_landing_time"] .'</td>';
+        $message .= '</tr>';
+        $message .= '</tbody>';
+        $message .= '</table>';
+
+        if ($order["Type"] == "roundtrip") {
+            $message .= '<h5 style="font-weight: 700; font-size: 16px; text-transform: uppercase; margin-bottom: 12px;">Vé về</h5>';
+            $message .= '<table style="width: 100%; text-align: left; border: 1px solid #ccc; line-height: 1.6; border-collapse: collapse;">';
+            $message .= '<tbody>';
+            $message .= '<tr>';
+            $message .= '<th style="padding: 6px">Điểm đi</th>';
+            $message .= '<td style="padding: 6px">' . city_by_iata($order["Destination"]) . '</td>';
+            $message .= '</tr>';
+
+            $message .= '<tr>';
+            $message .= '<th style="padding: 6px">Sân bay</th>';
+            $message .= '<td style="padding: 6px">' . airport_by_iata($order["Destination"]) . ' (' . $order["Destination"] . ')</td>';
+            $message .= '</tr>';
+
+            $message .= '<tr>';
+            $message .= '<th style="padding: 6px">Điểm đến</th>';
+            $message .= '<td style="padding: 6px">' . city_by_iata($order["Origin"]) . '</td>';
+            $message .= '</tr>';
+
+            $message .= '<tr>';
+            $message .= '<th style="padding: 6px">Sân bay</th>';
+            $message .= '<td style="padding: 6px">' . airport_by_iata($order["Origin"]) . ' (' . $order["Origin"] . ')</td>';
+            $message .= '</tr>';
+
+            $message .= '<tr>';
+            $message .= '<th style="padding: 6px">Ngày khởi hành</th>';
+            $message .= '<td style="padding: 6px">' . $flight_detail["return_date"] . '</td>';
+            $message .= '</tr>';
+
+            $message .= '<tr>';
+            $message .= '<th style="padding: 6px">Giờ khởi hành</th>';
+            $message .= '<td style="padding: 6px">' . $flight_detail["return_time"] . '</td>';
+            $message .= '</tr>';
+
+            $message .= '<tr>';
+            $message .= '<th style="padding: 6px">Ngày đến nơi</th>';
+            $message .= '<td style="padding: 6px">'. $flight_detail["return_landing_date"] .'</td>';
+            $message .= '</tr>';
+
+            $message .= '<tr>';
+            $message .= '<th style="padding: 6px">Giờ đến nơi</th>';
+            $message .= '<td style="padding: 6px">'. $flight_detail["return_landing_time"] .'</td>';
+            $message .= '</tr>';
+            $message .= '</tbody>';
+            $message .= '</table>';
+        }
+
+        $message .= '<h5 style="font-weight: 700; font-size: 16px; text-transform: uppercase; margin-bottom: 12px;">Chi tiết chặng bay</h5>';
+        $message .= '<div style="overflow-x: auto;">';
+        $message .= '<table style="width: 100%; min-width: 768px; text-align: center; border: 1px solid #ccc; line-height: 1.6; border-collapse: collapse;">';
+        $message .= '<tbody>';
+        $message .= '<tr>';
+        $message .= '<th style="padding: 6px">Mã chuyến bay</th>';
+        $message .= '<th style="padding: 6px">Điểm đi</th>';
+        $message .= '<th style="padding: 6px">Điểm đến</th>';
+        $message .= '<th style="padding: 6px">Ngày cất cánh</th>';
+        $message .= '<th style="padding: 6px">Thời gian cất cánh</th>';
+        $message .= '<th style="padding: 6px">Ngày hạ cánh</th>';
+        $message .= '<th style="padding: 6px">Thời gian hạ cánh</th>';
+        $message .= '</tr>';
+        for ($i = 0; $i < count($flight_detail["flight_detail"]); $i++) {
+            $message .= '<tr>';
+            $message .= '<td style="padding: 6px">' . $flight_detail["flight_detail"][$i]["carrierCode"] . $flight_detail["flight_detail"][$i]["number"] . '</td>';
+            $message .= '<td style="padding: 6px">' . city_by_iata($flight_detail["flight_detail"][$i]["from"]) . ' (' . $flight_detail["flight_detail"][$i]["from"] . ')</td>';
+            $message .= '<td style="padding: 6px">' . city_by_iata($flight_detail["flight_detail"][$i]["to"]) . ' (' . $flight_detail["flight_detail"][$i]["to"] . ')</td>';
+            $message .= '<td style="padding: 6px">' . $flight_detail["flight_detail"][$i]["departure_date"] . '</td>';
+            $message .= '<td style="padding: 6px">' . $flight_detail["flight_detail"][$i]["departure_time"] . '</td>';
+            $message .= '<td style="padding: 6px">' . $flight_detail["flight_detail"][$i]["arrival_date"] . '</td>';
+            $message .= '<td style="padding: 6px">' . $flight_detail["flight_detail"][$i]["arrival_time"] . '</td>';
+            $message .= '</tr>';
+        }
+        $message .= '</tbody>';
+        $message .= '</table>';
+        $message .= '</div>';
+
+        $message .= '<h5 style="font-weight: 700; font-size: 16px; text-transform: uppercase; margin-bottom: 12px;">Thông tin liên hệ</h5>';
+        $message .= '<div style="padding: 0 12px; border: 1px solid #ccc">';
+        $message .= '<p>Họ tên: ' . $payment_info["contact_name"] . '</p>';
+        $message .= '<p>Số điện thoại: ' . $payment_info["contact_phone"] . '</p>';
+        $message .= '<p>Địa chỉ: ' . $payment_info["contact_address"] . '</p>';
+        $message .= '<p>Email: ' . $payment_info["contact_mail"] . '</p>';
+        $message .= '<p>Ghi chú: ' . $payment_info["contact_note"] . '</p>';
+        $message .= '</div>';
+        $message .= '</div>';
+        $message .= '<a style="text-decoration: none;color: #034166;padding: 12px; display: block;text-align: center;" href="' . base_url() . '">Flight Ticket</a>';
+        $message .= '</div>';
+        $message .= '</section>';
+        $message .= '</body>';
+        $message .= '</html>';
 
         $config = array(
             'protocol' => 'smtp',
