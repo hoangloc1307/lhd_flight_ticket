@@ -45,7 +45,7 @@
             <div class="col l-4">
                 <div class="start-date">
                     <h4>Từ ngày</h4>
-                    <input type="date" name="date-start" value="<?= date("Y-m-01") ?>">
+                    <input type="date" name="date-start" value="<?= date("Y-m-d", strtotime('-7 day')) ?>">
                 </div>
             </div>
             <div class="col l-4">
@@ -64,11 +64,13 @@
         </div>
     </div>
 </section>
-<section>
-    <div id="piechart" style="width: 300px; height: 300px;"></div>
-    <div id="chart_div"></div>
+<section class="charts" style="display: flex; flex-wrap: wrap;">
+    <div id="piechart" style="width: 45%;"></div>
+    <div id="barchart" style="width: 55%;"></div>
+    <div id="linechart" style="width: 100%;"></div>
 </section>
 <script>
+//Bấm nút lọc
 $('.button-fill').click(function() {
     $.ajax({
         type: "POST",
@@ -81,7 +83,6 @@ $('.button-fill').click(function() {
         dataType: "json",
         success: function(data) {
             console.log(data);
-
         }
     });
 
@@ -92,9 +93,53 @@ $('.button-fill').click(function() {
         data: {
             date_start: $('input[name="date-start"]').val(),
             date_end: $('input[name="date-end"]').val(),
+            status: $('.status-payment select').val(),
         },
         dataType: "json",
         success: function(dulieu) {
+
+            //Bar chart
+            google.charts.load('current', {
+                packages: ['corechart', 'bar']
+            });
+            google.charts.setOnLoadCallback(drawBasic);
+
+            function drawBasic() {
+
+                var data = google.visualization.arrayToDataTable([
+                    ['Tên', 'Số tiền', {
+                        type: 'string',
+                        role: 'annotation'
+                    }, {
+                        role: 'style'
+                    }],
+                    ['Doanh thu', parseInt(dulieu['bar_data'][0]['Revenue']),
+                        NumberWithCommas(dulieu['bar_data'][0]['Revenue']),
+                        'color: #3498db',
+                    ],
+                    ['Tiền gốc', parseInt(dulieu['bar_data'][0]['BasePrice']),
+                        NumberWithCommas(dulieu['bar_data'][0]['BasePrice']),
+                        'color: #e74c3c',
+                    ],
+                    ['Lợi nhuận', parseInt(dulieu['bar_data'][0]['Profit']),
+                        NumberWithCommas(dulieu['bar_data'][0]['Profit']),
+                        'color: #f1c40f',
+                    ],
+                ]);
+
+                var options = {
+                    title: 'Biểu đồ thống kế doanh thu và lợi nhuận',
+                    legend: 'none',
+                    backgroundColor: '#f3f4f8',
+                };
+
+                var chart = new google.visualization.BarChart(document.getElementById(
+                    'barchart'));
+
+                chart.draw(data, options);
+            }
+
+            //Line chart
             google.charts.load('current', {
                 packages: ['corechart', 'line']
             });
@@ -105,64 +150,49 @@ $('.button-fill').click(function() {
                 data.addColumn('string', 'Ngày');
                 data.addColumn('number', 'Hoá đơn');
 
-                var arrs = [];
-                for (let i in dulieu) {
-                    var arr = [];
-                    arr.push(dulieu[i].Date);
-                    arr.push(parseInt(dulieu[i].Total));
-                    arrs.push(arr);
-                }
-
-                data.addRows(arrs);
+                data.addRows(dulieu['line_data']);
 
                 var options = {
-                    hAxis: {
-                        title: 'Time'
-                    },
-                    vAxis: {
-                        title: 'Popularity'
-                    },
-                    colors: ['#a52714', '#097138']
+                    title: 'Số lượng hoá đơn theo ngày',
+                    colors: ['#3498db'],
+                    backgroundColor: '#f3f4f8',
+                    legend: 'none',
                 };
 
                 var chart = new google.visualization.LineChart(document.getElementById(
-                    'chart_div'));
+                    'linechart'));
+                chart.draw(data, options);
+            }
+
+            //Pie chart
+            google.charts.load('current', {
+                'packages': ['corechart']
+            });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+
+                var data = google.visualization.arrayToDataTable([
+                    ['Trạng thái', '%'],
+                    ['Chưa thanh toán', parseInt(dulieu['pie_data'][0]['Total'])],
+                    ['Đã thanh toán', parseInt(dulieu['pie_data'][1]['Total'])]
+                ]);
+
+                var options = {
+                    title: 'Tình trạng thanh toán hoá đơn',
+                    is3D: true,
+                    backgroundColor: '#f3f4f8',
+                    titleTextStyle: {
+                        fontSize: 12,
+                    },
+                    colors: ['#e74c3c', '#2ecc71']
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
                 chart.draw(data, options);
             }
         }
     });
 });
-
-/*====================================================================================================
-============================================= BIỂU ĐỒ ===============================================
-====================================================================================================*/
-
-//Tỉ lệ thanh toán hoá đơn
-google.charts.load('current', {
-    'packages': ['corechart']
-});
-google.charts.setOnLoadCallback(drawChart);
-
-function drawChart() {
-
-    var data = google.visualization.arrayToDataTable([
-        ['Trạng thái', '%'],
-        ['Chưa thanh toán', <?= $payment_status_rate[0]['Total'] ?>],
-        ['Đã thanh toán', <?= $payment_status_rate[1]['Total'] ?>]
-    ]);
-
-    var options = {
-        title: 'Tình trạng thanh toán hoá đơn',
-        is3D: true,
-        legend: 'none',
-        backgroundColor: '#f3f4f8',
-        titleTextStyle: {
-            fontSize: 12,
-        }
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-    chart.draw(data, options);
-}
 </script>
