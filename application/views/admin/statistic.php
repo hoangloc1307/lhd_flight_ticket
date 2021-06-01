@@ -65,9 +65,11 @@
     </div>
 </section>
 <section class="charts" style="display: flex; flex-wrap: wrap;">
+    <div id="tablechart" style="width: 100%; margin-bottom: 0px;"></div>
+    <div id="linechart" style="width: 100%;"></div>
     <div id="piechart" style="width: 45%;"></div>
     <div id="barchart" style="width: 55%;"></div>
-    <div id="linechart" style="width: 100%;"></div>
+
 </section>
 <script>
 //Bấm nút lọc
@@ -81,8 +83,40 @@ $('.button-fill').click(function() {
             date_end: $('input[name="date-end"]').val(),
         },
         dataType: "json",
-        success: function(data) {
-            console.log(data);
+        success: function(dulieu) {
+            google.charts.load('current', {
+                'packages': ['table']
+            });
+            google.charts.setOnLoadCallback(drawTable);
+
+            function drawTable() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Mã hoá đơn');
+                data.addColumn('string', 'Loại vé');
+                data.addColumn('string', 'Điểm đi');
+                data.addColumn('string', 'Điểm đến');
+                data.addColumn('string', 'Ngày đặt');
+                data.addColumn('number', 'Giá');
+                data.addColumn('number', 'Thực thu');
+                data.addColumn('number', 'Lợi nhuận');
+                data.addColumn('string', 'Trạng thái');
+
+                data.addRows(dulieu);
+
+                var table = new google.visualization.Table(document.getElementById('tablechart'));
+
+                var cssClass = {
+
+                }
+
+                table.draw(data, {
+                    showRowNumber: true,
+                    width: '100%',
+                    height: '100%',
+                    pageSize: 10,
+                });
+            }
+            console.log(dulieu);
         }
     });
 
@@ -128,10 +162,12 @@ $('.button-fill').click(function() {
                 ]);
 
                 var options = {
-                    title: 'Biểu đồ thống kế doanh thu và lợi nhuận',
+                    title: 'Biểu đồ thống kế doanh thu và lợi nhuận (Hoá đơn đã thanh toán)',
                     legend: 'none',
                     backgroundColor: '#f3f4f8',
                 };
+
+
 
                 var chart = new google.visualization.BarChart(document.getElementById(
                     'barchart'));
