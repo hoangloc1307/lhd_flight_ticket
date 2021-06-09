@@ -506,15 +506,24 @@
 						width: 75px;
 					}
 				}
-				.flight-from {
+				// Chung
+				.flight-from,
+				.flight-to {
 					order: 1;
+					.flight-city {
+						font-size: $fs-detail;
+					}
+					.flight-time {
+						font-size: $fs-sub-title;
+					}
 				}
+
 				.flight-wrap-detail {
 					order: 2;
 					margin: 0 20px;
 
 					.flight-number-code {
-						font-size: $fs-sub-title;
+						font-size: $fs-detail;
 					}
 					.flight-detail {
 						&::before {
@@ -524,9 +533,6 @@
 				}
 				.flight-to {
 					order: 3;
-					.flight-city {
-						font-size: 20px;
-					}
 				}
 				.flight-price-choose {
 					flex-direction: row;
@@ -537,6 +543,9 @@
 
 					.flight-price {
 						margin-right: 20px;
+						span {
+							font-size: $fs-sub-title !important;
+						}
 					}
 					button {
 						margin-top: 0;
@@ -603,7 +612,12 @@
 		}
 
 		// Step 2
-		.finding-detail {
+
+		.finding-detail,
+		.flight-selected__base {
+			.header {
+				font-size: $fs-detail;
+			}
 			.content {
 				.detail-ticket {
 					.date-time {
@@ -649,6 +663,9 @@
 						.bag-img {
 							height: unset;
 						}
+						.bag-select {
+							margin: 0 0 0 12px;
+						}
 					}
 				}
 			}
@@ -671,17 +688,63 @@
 			}
 
 			.title {
-				font-size: $fs-text;
+				font-size: 13px;
 			}
 
 			.flight-detail {
 				margin: 0;
 
+				.title-flight {
+					font-size: $fs-detail;
+				}
+
 				.flight-detail-wrap {
+					padding: 5px;
 					.detail-img {
 						order: 4;
 						.box-img {
 							width: 120px;
+						}
+					}
+					.detail-from,
+					.detail-to,
+					.detail-flight {
+						span {
+							font-size: $fs-small-text;
+						}
+					}
+				}
+			}
+
+			.info {
+				.info-detail {
+					padding: 5px;
+					font-size: $fs-detail;
+
+					.info-table {
+						padding: 5px;
+
+						.info-heading,
+						.info-body,
+						.info-footer {
+							padding: 5px;
+						}
+
+						.info-footer {
+							p {
+								font-size: $fs-text;
+							}
+						}
+					}
+				}
+			}
+			.contact {
+				.contact-detail {
+					padding: 5px;
+
+					.col {
+						div {
+							font-size: $fs-detail;
 						}
 					}
 				}
@@ -819,8 +882,13 @@
 
 	/*========== End Info ==========*/
 }
+
+@media (max-width: 420px) {
+}
+
 @media (max-width: 376px) {
 	/*========== Finding ==========*/
+
 	.finding {
 		.flight-item {
 			.flight-info {
@@ -834,4 +902,180 @@
 }
 
 @media (max-width: 320px) {
+	// Home
+	#hero .booking-form {
+		h2 {
+			font-size: $fs-text;
+		}
+		form {
+			.passenger-number {
+				button {
+					margin: 8px;
+				}
+			}
+		}
+	}
+
+	#why .heading,
+	#favorite .heading,
+	#partner .heading {
+		font-size: $fs-sub-title;
+	}
+
+	// Finding
+
+	.finding {
+		#filter-left {
+			.title {
+				font-size: $fs-detail;
+			}
+		}
+
+		#filter-content {
+			.filter-header {
+				.title .title-flight h5 {
+					font-size: $fs-text;
+				}
+				.icon {
+					font-size: $fs-small-title;
+				}
+			}
+		}
+
+		.flight-item {
+			.flight-info {
+				// Chung
+				.flight-from,
+				.flight-to {
+					.flight-city {
+						font-size: $fs-small-text;
+					}
+					.flight-time {
+						font-size: $fs-sub-title;
+					}
+				}
+
+				.flight-price-choose {
+					.flight-price {
+						span {
+							font-size: $fs-detail !important;
+						}
+					}
+					button {
+						width: 50px;
+						height: 40px;
+						line-height: 26px;
+						font-size: 11px;
+					}
+				}
+
+				.flight-wrap-detail {
+					.flight-number-code {
+						font-size: $fs-small-text;
+					}
+					.flight-detail {
+						font-size: $fs-small-text;
+					}
+				}
+			}
+
+			.flight-box-detail {
+				.flight-detail-item {
+					.flight-detail-wrap {
+						.detail-img {
+							.box-img {
+								width: 100px !important;
+							}
+						}
+
+						.detail-from,
+						.detail-to,
+						.detail-flight {
+							span {
+								font-size: $fs-small-text;
+							}
+						}
+
+						.detail-from {
+							&::after {
+								font-size: $fs-small-text;
+							}
+						}
+
+						.detail-total {
+							span {
+								font-size: $fs-detail !important;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.finding-detail {
+			.header {
+				font-size: $fs-detail;
+			}
+			.content {
+				.detail-ticket {
+					font-size: 13px;
+					.image {
+						width: 70px;
+					}
+				}
+				.detail-summary {
+					.summary {
+						font-size: $fs-detail;
+					}
+					.summary-cart {
+						font-size: $fs-detail;
+					}
+				}
+				.total-price {
+					font-size: $fs-text;
+				}
+			}
+		}
+
+		.finish-payment {
+			.flight-detail {
+				margin: 0;
+
+				.title-flight {
+					font-size: $fs-detail;
+				}
+
+				.flight-detail-wrap {
+					padding: 5px;
+					.detail-img {
+						order: 4;
+						.box-img {
+							width: 120px;
+						}
+					}
+					.detail-from,
+					.detail-to,
+					.detail-flight {
+						span {
+							font-size: $fs-small-text;
+						}
+					}
+				}
+			}
+
+			.info {
+				.info-detail {
+					font-size: $fs-small-text;
+
+					.info-table {
+						.info-footer {
+							p {
+								font-size: $fs-detail;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
