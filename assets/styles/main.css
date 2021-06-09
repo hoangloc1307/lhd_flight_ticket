@@ -2032,17 +2032,44 @@ header {
 
 .hero-content .content h2 {
   font-size: 32px;
-  color: #777777;
+  background: -webkit-linear-gradient(#3e789b, #034166);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-content .content p {
   font-weight: 300;
-  font-size: 32px;
+  font-size: 24px;
   letter-spacing: 0.5px;
   margin: 10px 0;
-  color: #17699a;
+  color: #777777;
   position: relative;
   text-transform: capitalize;
+  font-style: italic;
+  font-weight: 600;
+  padding: 0 12px;
+  position: relative;
+}
+
+.hero-content .content p::before, .hero-content .content p::after {
+  content: "";
+  position: absolute;
+  font-family: "Font Awesome 5 Free";
+  top: 0;
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.hero-content .content p::before {
+  content: "\f10d";
+  top: 0;
+  right: 280px;
+}
+
+.hero-content .content p::after {
+  content: "\f10e";
+  top: 10px;
+  right: -10px;
 }
 
 .hero-content .content a {
@@ -4186,9 +4213,8 @@ header {
 
 .finding .finish-payment .info .info-detail .info-table .info-footer p {
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 700;
   color: #17699a;
-  padding: 0 6px;
 }
 
 .finding .finish-payment .info .info-detail .info-table .info-footer span {
@@ -6042,6 +6068,7 @@ form .button-submit {
 }
 
 .news-letter {
+  display: none;
   padding: 30px 0;
   background: #f29018;
 }
@@ -6834,10 +6861,19 @@ form .button-submit {
   .finding .flight-item .flight-info .flight-img .box-img {
     width: 75px;
   }
-  .finding .flight-item .flight-info .flight-from {
+  .finding .flight-item .flight-info .flight-from,
+  .finding .flight-item .flight-info .flight-to {
     -webkit-box-ordinal-group: 2;
         -ms-flex-order: 1;
             order: 1;
+  }
+  .finding .flight-item .flight-info .flight-from .flight-city,
+  .finding .flight-item .flight-info .flight-to .flight-city {
+    font-size: 14px;
+  }
+  .finding .flight-item .flight-info .flight-from .flight-time,
+  .finding .flight-item .flight-info .flight-to .flight-time {
+    font-size: 18px;
   }
   .finding .flight-item .flight-info .flight-wrap-detail {
     -webkit-box-ordinal-group: 3;
@@ -6846,7 +6882,7 @@ form .button-submit {
     margin: 0 20px;
   }
   .finding .flight-item .flight-info .flight-wrap-detail .flight-number-code {
-    font-size: 18px;
+    font-size: 14px;
   }
   .finding .flight-item .flight-info .flight-wrap-detail .flight-detail::before {
     right: 12px;
@@ -6855,9 +6891,6 @@ form .button-submit {
     -webkit-box-ordinal-group: 4;
         -ms-flex-order: 3;
             order: 3;
-  }
-  .finding .flight-item .flight-info .flight-to .flight-city {
-    font-size: 20px;
   }
   .finding .flight-item .flight-info .flight-price-choose {
     -webkit-box-orient: horizontal;
@@ -6875,6 +6908,9 @@ form .button-submit {
   }
   .finding .flight-item .flight-info .flight-price-choose .flight-price {
     margin-right: 20px;
+  }
+  .finding .flight-item .flight-info .flight-price-choose .flight-price span {
+    font-size: 18px !important;
   }
   .finding .flight-item .flight-info .flight-price-choose button {
     margin-top: 0;
@@ -6931,10 +6967,16 @@ form .button-submit {
   .finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-fare li {
     font-size: 12px;
   }
-  .finding .finding-detail .content .detail-ticket .date-time i {
+  .finding .finding-detail .header,
+  .finding .flight-selected__base .header {
+    font-size: 14px;
+  }
+  .finding .finding-detail .content .detail-ticket .date-time i,
+  .finding .flight-selected__base .content .detail-ticket .date-time i {
     display: none;
   }
-  .finding .finding-detail .content .detail-ticket .image {
+  .finding .finding-detail .content .detail-ticket .image,
+  .finding .flight-selected__base .content .detail-ticket .image {
     width: 85px;
   }
   .finding .flight-selected .box-selected .flight-item {
@@ -6961,6 +7003,9 @@ form .button-submit {
   .finding .info-customer .box-info .customer-people .bag .bag-img {
     height: unset;
   }
+  .finding .info-customer .box-info .customer-people .bag .bag-select {
+    margin: 0 0 0 12px;
+  }
   .finding .info-contact .box-info .box-customer,
   .finding .info-contact .box-info .box-note {
     width: 100%;
@@ -6973,10 +7018,16 @@ form .button-submit {
     padding: 0;
   }
   .finding .finish-payment .title {
-    font-size: 16px;
+    font-size: 13px;
   }
   .finding .finish-payment .flight-detail {
     margin: 0;
+  }
+  .finding .finish-payment .flight-detail .title-flight {
+    font-size: 14px;
+  }
+  .finding .finish-payment .flight-detail .flight-detail-wrap {
+    padding: 5px;
   }
   .finding .finish-payment .flight-detail .flight-detail-wrap .detail-img {
     -webkit-box-ordinal-group: 5;
@@ -6985,6 +7036,32 @@ form .button-submit {
   }
   .finding .finish-payment .flight-detail .flight-detail-wrap .detail-img .box-img {
     width: 120px;
+  }
+  .finding .finish-payment .flight-detail .flight-detail-wrap .detail-from span,
+  .finding .finish-payment .flight-detail .flight-detail-wrap .detail-to span,
+  .finding .finish-payment .flight-detail .flight-detail-wrap .detail-flight span {
+    font-size: 12px;
+  }
+  .finding .finish-payment .info .info-detail {
+    padding: 5px;
+    font-size: 14px;
+  }
+  .finding .finish-payment .info .info-detail .info-table {
+    padding: 5px;
+  }
+  .finding .finish-payment .info .info-detail .info-table .info-heading,
+  .finding .finish-payment .info .info-detail .info-table .info-body,
+  .finding .finish-payment .info .info-detail .info-table .info-footer {
+    padding: 5px;
+  }
+  .finding .finish-payment .info .info-detail .info-table .info-footer p {
+    font-size: 16px;
+  }
+  .finding .finish-payment .contact .contact-detail {
+    padding: 5px;
+  }
+  .finding .finish-payment .contact .contact-detail .col div {
+    font-size: 14px;
   }
   /*========== End Finding ==========*/
   /*========== News ==========*/
@@ -7094,5 +7171,111 @@ form .button-submit {
     margin: 0 !important;
   }
   /*========== End Finding ==========*/
+}
+
+@media (max-width: 320px) {
+  #hero .booking-form h2 {
+    font-size: 16px;
+  }
+  #hero .booking-form form .passenger-number button {
+    margin: 8px;
+  }
+  #why .heading,
+  #favorite .heading,
+  #partner .heading {
+    font-size: 18px;
+  }
+  .finding #filter-left .title {
+    font-size: 14px;
+  }
+  .finding #filter-content .filter-header .title .title-flight h5 {
+    font-size: 16px;
+  }
+  .finding #filter-content .filter-header .icon {
+    font-size: 22px;
+  }
+  .finding .flight-item .flight-info .flight-from .flight-city,
+  .finding .flight-item .flight-info .flight-to .flight-city {
+    font-size: 12px;
+  }
+  .finding .flight-item .flight-info .flight-from .flight-time,
+  .finding .flight-item .flight-info .flight-to .flight-time {
+    font-size: 18px;
+  }
+  .finding .flight-item .flight-info .flight-price-choose .flight-price span {
+    font-size: 14px !important;
+  }
+  .finding .flight-item .flight-info .flight-price-choose button {
+    width: 50px;
+    height: 40px;
+    line-height: 26px;
+    font-size: 11px;
+  }
+  .finding .flight-item .flight-info .flight-wrap-detail .flight-number-code {
+    font-size: 12px;
+  }
+  .finding .flight-item .flight-info .flight-wrap-detail .flight-detail {
+    font-size: 12px;
+  }
+  .finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-img .box-img {
+    width: 100px !important;
+  }
+  .finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-from span,
+  .finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-to span,
+  .finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-flight span {
+    font-size: 12px;
+  }
+  .finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-from::after {
+    font-size: 12px;
+  }
+  .finding .flight-item .flight-box-detail .flight-detail-item .flight-detail-wrap .detail-total span {
+    font-size: 14px !important;
+  }
+  .finding .finding-detail .header {
+    font-size: 14px;
+  }
+  .finding .finding-detail .content .detail-ticket {
+    font-size: 13px;
+  }
+  .finding .finding-detail .content .detail-ticket .image {
+    width: 70px;
+  }
+  .finding .finding-detail .content .detail-summary .summary {
+    font-size: 14px;
+  }
+  .finding .finding-detail .content .detail-summary .summary-cart {
+    font-size: 14px;
+  }
+  .finding .finding-detail .content .total-price {
+    font-size: 16px;
+  }
+  .finding .finish-payment .flight-detail {
+    margin: 0;
+  }
+  .finding .finish-payment .flight-detail .title-flight {
+    font-size: 14px;
+  }
+  .finding .finish-payment .flight-detail .flight-detail-wrap {
+    padding: 5px;
+  }
+  .finding .finish-payment .flight-detail .flight-detail-wrap .detail-img {
+    -webkit-box-ordinal-group: 5;
+        -ms-flex-order: 4;
+            order: 4;
+  }
+  .finding .finish-payment .flight-detail .flight-detail-wrap .detail-img .box-img {
+    width: 120px;
+  }
+  .finding .finish-payment .flight-detail .flight-detail-wrap .detail-from span,
+  .finding .finish-payment .flight-detail .flight-detail-wrap .detail-to span,
+  .finding .finish-payment .flight-detail .flight-detail-wrap .detail-flight span {
+    font-size: 12px;
+  }
+  .finding .finish-payment .info .info-detail {
+    font-size: 12px;
+  }
+  .finding .finish-payment .info .info-detail .info-table .info-footer p {
+    font-size: 14px;
+  }
 }
 /*# sourceMappingURL=main.css.map */

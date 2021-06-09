@@ -403,17 +403,43 @@
 
 		h2 {
 			font-size: $fs-main-title;
-			color: $cl-grey-2;
+			background: -webkit-linear-gradient($cl-blue-2, $cl-blue-5);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
 		}
 
 		p {
 			font-weight: 300;
-			font-size: $fs-main-title;
+			font-size: $fs-title;
 			letter-spacing: 0.5px;
 			margin: 10px 0;
-			color: $cl-blue-3;
+			color: $cl-grey-2;
 			position: relative;
 			text-transform: capitalize;
+			font-style: italic;
+			font-weight: 600;
+			padding: 0 12px;
+			position: relative;
+
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				font-family: "Font Awesome 5 Free";
+				top: 0;
+				font-weight: 900;
+				font-size: $fs-sub-title;
+			}
+			&::before {
+				content: "\f10d";
+				top: 0;
+				right: 280px;
+			}
+			&::after {
+				content: "\f10e";
+				top: 10px;
+				right: -10px;
+			}
 		}
 
 		a {
