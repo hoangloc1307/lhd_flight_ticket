@@ -1,7 +1,7 @@
 <section id="news-detail">
 	<div class="grid wide">
 		<div class="row">
-			<div class="col l-9 m-9 s-12 news-detail">
+			<div class="col l-8 m-8 s-12 news-detail">
 				<h1 class="title">
 					<?= $news['Name'] ?>
 				</h1>
@@ -12,10 +12,10 @@
 					<?= $news['Content'] ?>
 				</div>
 				<p class="date">
-					<?= $news['Date'] ?>
+					<i class="far fa-calendar-alt"></i><?= $news['Date'] ?>
 				</p>
 			</div>
-			<div class="col l-3 m-3 s-12 news-related">
+			<div class="col l-4 m-4 s-12 news-related">
 				<div class="news-related-wrap">
 					<h3 class="related-title">
 						Bài viết liên quan
@@ -27,10 +27,14 @@
 								class="related-thumb">
 								<img src="<?= base_url() . $item['Image'] ?>">
 							</a>
-							<h4 class="related-heading">
-								<a href="<?= base_url() . 'news/' . ($item['LinkCustom'] != '' ? $item['LinkCustom'] : $item['LinkDefault']) ?>"
-									title=""><?= $item['Name'] ?></a>
-							</h4>
+							<a href="<?= base_url() . 'news/' . ($item['LinkCustom'] != '' ? $item['LinkCustom'] : $item['LinkDefault']) ?>"
+								title="<?= $item['Name'] ?>" class="related-content">
+								<h4 class="related-heading"><?= $item['Name'] ?></h4>
+								<p><?= $item['Description'] ?></p>
+								<p class="related-date">
+									<i class="far fa-calendar-alt"></i><?= $item['Date'] ?>
+								</p>
+							</a>
 						</li>
 						<?php endforeach; ?>
 					</ul>

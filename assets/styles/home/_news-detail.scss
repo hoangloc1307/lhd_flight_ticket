@@ -13,7 +13,7 @@
 		}
 		.img-box {
 			width: 100%;
-			height: auto;
+			height: 400px;
 
 			img {
 				width: 100%;
@@ -23,15 +23,20 @@
 		}
 		.detail {
 			padding: 24px 10px;
-			text-align: justify;
 
 			& * {
 				max-width: 100%;
+				line-height: 1.8;
+				font-family: "Roboto", sans-serif !important;
 			}
 		}
 		.date {
+			text-align: right;
+			i {
+				margin-right: 6px;
+			}
 			padding-top: 24px;
-			color: $cl-grey;
+			color: $cl-grey-2;
 			font-size: $fs-detail;
 		}
 	}
@@ -62,8 +67,8 @@
 
 				.related-thumb {
 					display: block;
-					width: 70px;
-					height: 63px;
+					width: 30%;
+					height: 80px;
 					overflow: hidden;
 					border-radius: 5px;
 
@@ -78,20 +83,37 @@
 						}
 					}
 				}
+				.related-content {
+					width: 70%;
+					display: block;
+					text-decoration: none;
+					padding: 0 12px;
 
-				.related-heading {
-					margin: 0 12px;
-
-					a {
-						display: block;
-						text-decoration: none;
+					.related-heading {
+						font-size: $fs-text;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
 						color: $cl-black;
-						font-weight: 400;
-						font-size: $fs-sub-title;
 
 						&:hover {
 							color: $cl-blue-3;
 						}
+					}
+					p {
+						display: -webkit-box;
+						-webkit-box-orient: vertical;
+						overflow: hidden;
+						-webkit-line-clamp: 2;
+						font-size: $fs-detail;
+						color: $cl-grey-2;
+						margin: 6px 0;
+					}
+					.related-date {
+						i {
+							margin-right: 6px;
+						}
+						color: $cl-black-2;
 					}
 				}
 			}
