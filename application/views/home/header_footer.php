@@ -35,6 +35,7 @@
 					<li><a class="menu-link" href="<?= base_url() ?>news">Bài viết</a></li>
 					<li><a class="menu-link" href="<?= base_url('news/cau-hoi-thuong-gap') ?>">Câu hỏi thường
 							gặp</a></li>
+					<li><a class="menu-link" href="<?= base_url('news/lien-he') ?>">Liên hệ</a></li>
 					<li class="user">
 						<span>
 							<i class="fas fa-user"></i>
@@ -142,23 +143,20 @@
 
 					<div class="col l-3 m-6 s-12">
 						<h4 class="footer-title">
-							Thông tin thêm
+							Thông tin
 						</h4>
 						<ul class="footer-list">
+
 							<li class="footer-item">
-								<a href="<?= base_url('news/dieu-khoan-su-dung') ?>"
-									title="Điều khoản sử dụng">Điều
-									khoản sử dụng</a>
+								<a href="<?= base_url('news/cham-soc-khach-hang') ?>"
+									title="Chăm sóc khách hàng">Chăm sóc khách hàng</a>
 							</li>
 							<li class="footer-item">
-								<a href="<?= base_url('news/chinh-sach-bao-mat') ?>"
-									title="Chính sách bảo mật">Chính
-									sách bảo mật</a>
+								<a href="<?= base_url('news/lien-he') ?>" title="Liên hệ">Liên hệ</a>
 							</li>
 							<li class="footer-item">
-								<a href="<?= base_url('news/huong-dan-dat-ve') ?>"
-									title="Hướng dẫn đạt vé">Hướng dẫn
-									đạt vé</a>
+								<a href="<?= base_url('news/') ?>" title="Tin tức">Tin
+									tức</a>
 							</li>
 						</ul>
 					</div>
@@ -172,10 +170,17 @@
 								<a href="<?= base_url('news/gioi-thieu') ?>" title="Giới thiệu">Giới thiệu</a>
 							</li>
 							<li class="footer-item">
-								<a href="<?= base_url('news/') ?>" title="Khách hàng nói về chúng tôi">Khách
-									hàng nói về
-									chúng tôi</a>
+								<a href="<?= base_url('news/dieu-khoan-su-dung') ?>"
+									title="Điều khoản sử dụng">Điều
+									khoản sử dụng</a>
 							</li>
+							<li class="footer-item">
+								<a href="<?= base_url('news/chinh-sach-bao-mat') ?>"
+									title="Chính sách bảo mật">Chính
+									sách bảo mật</a>
+							</li>
+
+
 						</ul>
 					</div>
 
@@ -185,16 +190,18 @@
 						</h4>
 						<ul class="footer-list">
 							<li class="footer-item">
-								<a href="<?= base_url('news/') ?>" title="Phản hồi">Phản hồi</a>
+								<a href="<?= base_url('news/huong-dan-thanh-toan') ?>"
+									title="Hướng dẫn thanh toán">Hướng dẫn thanh toán</a>
+							</li>
+							<li class="footer-item">
+								<a href="<?= base_url('news/huong-dan-dat-ve') ?>"
+									title="Hướng dẫn đạt vé">Hướng dẫn
+									đạt vé</a>
 							</li>
 							<li class="footer-item">
 								<a href="<?= base_url('news/cau-hoi-thuong-gap') ?>"
 									title="Câu hỏi thường gặp">Câu hỏi
 									thường gặp</a>
-							</li>
-							<li class="footer-item">
-								<a href="<?= base_url('news/') ?>" title="Tư vấn hỗ trợ đặt vé">Tư vấn hỗ trợ
-									đặt vé</a>
 							</li>
 						</ul>
 					</div>
@@ -205,8 +212,8 @@
 						</h4>
 						<ul class="footer-list">
 							<li class="footer-item">
-								<a href="#"
-									title="Đường Nguyễn Khuyến, KP5, Phường Trảng Dài, TP. Biên Hòa, Tỉnh Đồng Nai"><?= $websitesetting['Address'] ?></a>
+								<a href="https://goo.gl/maps/5o7rSsjfB5c4NAUMA"
+									title="<?= $websitesetting['Address'] ?>"><?= $websitesetting['Address'] ?></a>
 							</li>
 						</ul>
 					</div>
@@ -215,14 +222,20 @@
 						<h4 class="footer-title">
 							Hotline
 						</h4>
-						<a href="tel:<?= $websitesetting['Phone'] ?>"><?= $websitesetting['Phone'] ?></a>
+						<a href="tel:<?= $websitesetting['Phone'] ?>">
+							<i class="fas fa-phone-alt"></i>
+							<?= $websitesetting['Phone'] ?>
+						</a>
 					</div>
 
 					<div class="col l-3 m-6 s-12">
 						<h4 class="footer-title">
 							Email
 						</h4>
-						<a href="mailto:<?= $websitesetting['Email'] ?>"><?= $websitesetting['Email'] ?></a>
+						<a href="mailto:<?= $websitesetting['Email'] ?>">
+							<i class="fas fa-envelope"></i>
+							<?= $websitesetting['Email'] ?>
+						</a>
 					</div>
 
 					<div class="col l-3 m-6 s-12">

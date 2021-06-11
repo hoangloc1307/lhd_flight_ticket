@@ -53,6 +53,11 @@ class News extends CI_Controller {
 
         $this->load->view('home/header_footer', $data, FALSE);
     }
+
+    public function Get_Category () {
+        $data_category = $this->News_model->GetNewsCategory();
+        echo json_encode($data_category);
+    }
 }
         
     /* End of file  News.php */
