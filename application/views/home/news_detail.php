@@ -44,3 +44,27 @@
 	</div>
 
 </section>
+
+<script>
+$(document).ready(function() {
+	$(document).scroll(function() {
+		if ($(this).scrollTop() >= $("#news-detail .row").offset().top - $("header").height() &&
+			$(this).scrollTop() <= $("#news-detail .row").offset().top + $("#news-detail .row")
+			.outerHeight() - $(".news-related:last-child").height() - $("header").height()) {
+
+
+			var positiontop = $("#news-detail .row").offset().top;
+			var top = $(this).scrollTop() - positiontop + $("header").height();
+
+
+			$(".news-related:last-child").css({
+				"position": "absolute",
+				"top": `${top}px`,
+				"right": "0"
+			});
+
+
+		}
+	});
+});
+</script>

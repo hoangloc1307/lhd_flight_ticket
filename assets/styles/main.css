@@ -1434,6 +1434,10 @@ header {
   padding: 50px 0;
 }
 
+#news-detail .row {
+  position: relative;
+}
+
 #news-detail .news-detail {
   border-right: 1px solid #dddddd;
 }
