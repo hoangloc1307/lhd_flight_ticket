@@ -48,6 +48,28 @@ class Account extends CI_Controller {
         }
     }
 
+    public function ChangeInfo() {
+        if ($this->input->is_ajax_request()) {
+            $name = $this->input->post('name');
+            $address = $this->input->post('address');
+            $phone = $this->input->post('phone');
+            $email = $this->input->post('email');
+
+            $data = [
+                'Name' => $name,
+                'Address' => $address,
+                'Phone' => $phone
+            ];
+
+            $where = "Email = '" . $email . "'";
+            if ($this->Database_model->UpdateRecordMultiColumn('tbl_customer', $where, $data)) {
+                echo json_encode("Thay đổi thông tin thành công");
+            } else {
+                echo json_encode("Thay đổi thông tin thất bại");
+            }
+        }
+    }
+
     function SendForgetPasswordMail($code, $to) {
         $subject = "Mã xác thực quên mật khẩu";
 

@@ -1482,7 +1482,8 @@ $(document).ready(function() {
 
         if (a == "all") {
             $(".finding-airline__airline li .checkmark").addClass("active");
-            $('.flight-item').css("display", "block");
+            $('#filter-content .result:not(.chose_active)').find('.flight-item').css("display",
+                "block");
         } else {
             $(".finding-airline__airline li")
                 .not(this)
@@ -1490,7 +1491,7 @@ $(document).ready(function() {
                 .removeClass("active");
             $(this).find(".checkmark").addClass("active");
 
-            $('.flight-item').each(function() {
+            $('#filter-content .result:not(.chose_active) .flight-item').each(function() {
                 if ($(this).attr('value') != a) {
                     $(this).css("display", "none");
                 } else {
