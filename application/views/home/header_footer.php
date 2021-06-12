@@ -71,6 +71,9 @@
 		<div class="overlay"></div>
 		<div class="list-mobile">
 			<div class="close">
+				<a class="box-logo" href="<?= base_url() ?>">
+					<img src="<?= base_url() ?>assets/images/logomobile.png" alt="Logo" />
+				</a>
 				<i class="fas fa-times"></i>
 			</div>
 			<div class="title">
