@@ -1179,15 +1179,22 @@ header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin: 0 20px;
 }
 
 .list-mobile ul li {
   margin: 12px 0;
   font-size: 22px;
   font-weight: 600;
+  width: 100%;
+  padding-bottom: 12px;
+}
+
+.list-mobile ul li:not(li:last-child) {
+  border-bottom: 1px solid #f9f9f9;
 }
 
 .list-mobile ul li .menu-link {
@@ -1203,9 +1210,9 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   margin-bottom: 12px;
 }
 
@@ -1216,7 +1223,7 @@ header {
 .list-mobile ul .user span i:last-child {
   -webkit-transition: 0.3s linear;
   transition: 0.3s linear;
-  margin-left: 6px;
+  margin-left: 16px;
 }
 
 .list-mobile ul .user span i:last-child.active {
@@ -1229,6 +1236,7 @@ header {
   overflow: hidden;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
+  margin: 0;
 }
 
 .list-mobile ul .user .menu-user.active {
@@ -1239,6 +1247,7 @@ header {
       -ms-flex-pack: start;
           justify-content: flex-start;
   height: 170px;
+  margin: 0;
 }
 
 .list-mobile ul .user .menu-user a {
