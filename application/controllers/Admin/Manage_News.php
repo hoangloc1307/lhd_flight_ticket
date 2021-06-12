@@ -37,11 +37,14 @@ class Manage_News extends CI_Controller {
 
     public function Add() {
         if (isset($_POST['submit'])) {
-            $target_dir = "assets/images/news/";
-            $target_file = $target_dir . basename($_FILES["image"]["name"]);
-            move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+            // $target_dir = "assets/images/news/";
+            // $target_file = $target_dir . basename($_FILES["image"]["name"]);
+            // move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
 
-            $image = $target_file;
+            // $image = $target_file;
+            $image = $this->input->post('image');
+            $image = str_replace('/baocao', '', $image);
+
             $name = $this->input->post('name');
             $description = $this->input->post('description');
             $content = $this->input->post('content');
@@ -82,21 +85,23 @@ class Manage_News extends CI_Controller {
         $this->load->model('Database_model');
 
         if (isset($_POST['submit'])) {
+            $image = $this->input->post('image');
+            $image = str_replace('/baocao', '', $image);
+
             $name = $this->input->post('name');
             $description = $this->input->post('description');
             $content = $this->input->post('content');
             $linkcustom = $this->input->post('linkcustom');
             $category = $this->input->post('category');
-            $oldfile = $this->input->post('oldfile');
 
-            if (!empty($_FILES["image"]["name"])) {
-                $target_dir = "assets/images/news/";
-                $target_file = $target_dir . basename($_FILES["image"]["name"]);
-                move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
-                $image = $target_file;
-            } else {
-                $image = $oldfile;
-            }
+            // if (!empty($_FILES["image"]["name"])) {
+            //     $target_dir = "assets/images/news/";
+            //     $target_file = $target_dir . basename($_FILES["image"]["name"]);
+            //     move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+            //     $image = $target_file;
+            // } else {
+            //     $image = $oldfile;
+            // }
 
             $update = [
                 'Name' => $name,
