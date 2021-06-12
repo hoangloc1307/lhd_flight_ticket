@@ -10,8 +10,10 @@
                     <img src="<?= base_url() . ($news['Image'] == 'assets/images/news/' ? 'assets/images/no-image.png' : $news['Image']) ?>"
                         alt="">
                     <input type="hidden" name="oldfile" value="<?= $news['Image'] ?>">
+
                 </div>
-                <input id="news-img-input" type="file" name='image'>
+                <input id="news-img-input" type="input" name='image' value="<?= $news['Image'] ?>">
+                <button id="ckfinder_input">Chọn hình ảnh</button>
             </label>
             <label class="news-linkcustom" for="">
                 <div class="news-title">
@@ -67,17 +69,26 @@ $(document).ready(function() {
     var editor = CKEDITOR.replace('news-content');
     CKFinder.setupCKEditor(editor);
 
+    var button1 = document.getElementById('ckfinder_input');
+    button1.onclick = function(e) {
+        e.preventDefault();
+        CKFinder.modal({
+            chooseFiles: true,
+            width: 800,
+            height: 600,
+            onInit: function(finder) {
+                finder.on('files:choose', function(evt) {
+                    var file = evt.data.files.first();
+                    var output = document.getElementById('news-img-input');
+                    output.value = file.getUrl();
 
-    // Show image khi chọn file xong.
-    $("#news-img-input").change(function() {
-        var input = document.getElementById("news-img-input");
-        var fReader = new FileReader();
-        fReader.readAsDataURL(input.files[0]);
-        fReader.onloadend = function(event) {
-            var img = document.querySelector(".news-thumb > img");
-            img.src = event.target.result;
-        }
-    });
+                    // Show image khi chọn file xong.
+                    var img = document.querySelector(".news-thumb > img");
+                    img.src = file.getUrl();
+                });
+            }
+        });
+    };
 
     $('select[name="category"] option').each(function() {
         if ($(this).attr('value') == <?= $news['Category'] ?>) {
