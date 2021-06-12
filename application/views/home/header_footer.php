@@ -81,6 +81,7 @@
 				<li><a class="menu-link" href="<?= base_url('news/gioi-thieu') ?>">Giới thiệu</a></li>
 				<li><a class="menu-link" href="<?= base_url() ?>news">Tin tức</a></li>
 				<li><a class="menu-link" href="<?= base_url() ?>news/cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+				<li><a class="menu-link" href="<?= base_url() ?>news/lien-he">Liên hệ</a></li>
 				<li class="user">
 					<span>
 						<i class="fas fa-user"></i>

@@ -218,11 +218,18 @@ header {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		align-items: center;
+		align-items: flex-start;
+		margin: 0 20px;
 		li {
 			margin: 12px 0;
 			font-size: $fs-small-title;
 			font-weight: 600;
+			width: 100%;
+			padding-bottom: 12px;
+
+			&:not(li:last-child) {
+				border-bottom: 1px solid $cl-white-3;
+			}
 
 			.menu-link {
 				border-radius: 20px;
@@ -234,7 +241,7 @@ header {
 			span {
 				display: flex;
 				align-items: center;
-				justify-content: center;
+				justify-content: flex-start;
 				margin-bottom: 12px;
 
 				p {
@@ -242,7 +249,7 @@ header {
 				}
 				i:last-child {
 					transition: 0.3s linear;
-					margin-left: 6px;
+					margin-left: 16px;
 
 					&.active {
 						transform: rotate(-180deg);
@@ -253,11 +260,13 @@ header {
 				height: 0;
 				overflow: hidden;
 				transition: 0.3s ease-in-out;
+				margin: 0;
 
 				&.active {
 					display: flex !important;
 					justify-content: flex-start;
 					height: 170px;
+					margin: 0;
 				}
 
 				a {
