@@ -18,6 +18,7 @@
 		align-items: center;
 		height: 70px;
 	}
+
 	/*========== End Header ==========*/
 
 	/*========== Home Page ==========*/
@@ -171,6 +172,21 @@
 			height: 150px;
 		}
 	}
+	#news-detail {
+		.news-related {
+			.related-list {
+				.related-item {
+					flex-direction: column;
+					align-items: flex-start;
+					.related-content {
+						.related-date {
+							font-size: $fs-small-text;
+						}
+					}
+				}
+			}
+		}
+	}
 
 	/*========== End News ==========*/
 
@@ -276,10 +292,19 @@
 			margin-right: 12px;
 		}
 	}
+
 	.list-mobile {
 		width: 270px;
-		ul li {
+
+		.title p {
 			font-size: $fs-sub-title;
+		}
+		ul li .menu-link {
+			font-size: $fs-text;
+		}
+
+		ul li {
+			font-size: $fs-text;
 		}
 	}
 	/*========== End Header ==========*/

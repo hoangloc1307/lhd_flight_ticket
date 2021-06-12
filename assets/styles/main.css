@@ -1127,16 +1127,39 @@ header {
   position: fixed;
   right: 0;
   top: 0;
-  width: 320px;
+  width: 380px;
   color: #dddddd;
   z-index: 99;
+  -webkit-box-shadow: 0 0 5px #777777;
+          box-shadow: 0 0 5px #777777;
   display: none;
 }
 
 .list-mobile .close {
-  text-align: right;
-  margin: 12px 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 12px;
   font-size: 24px;
+  margin: 24px 12px;
+}
+
+.list-mobile .close .box-logo {
+  display: block;
+  width: 170px;
+}
+
+.list-mobile .close .box-logo img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .list-mobile .close i {
@@ -1148,23 +1171,11 @@ header {
   font-size: 22px;
   text-transform: uppercase;
   font-weight: 700;
-  color: #f29018;
-  text-shadow: 1px 1px 1px #777777;
+  color: #fff;
   margin: 12px 0;
   padding: 12px 0;
   position: relative;
-}
-
-.list-mobile .title p::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  width: 30px;
-  height: 2px;
-  background: #fff;
+  background: #f29018;
 }
 
 .list-mobile ul {
@@ -1182,7 +1193,7 @@ header {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  margin: 0 20px;
+  margin: 0 12px;
 }
 
 .list-mobile ul li {
@@ -1194,13 +1205,15 @@ header {
 }
 
 .list-mobile ul li:not(li:last-child) {
-  border-bottom: 1px solid #f9f9f9;
+  border-bottom: 1px solid #06527f;
 }
 
 .list-mobile ul li .menu-link {
   border-radius: 20px;
   display: block;
   color: #dddddd;
+  font-weight: 700;
+  text-transform: capitalize;
 }
 
 .list-mobile ul .user span {
@@ -1214,16 +1227,17 @@ header {
       -ms-flex-pack: start;
           justify-content: flex-start;
   margin-bottom: 12px;
+  font-weight: 700;
 }
 
-.list-mobile ul .user span p {
-  padding: 0 12px;
+.list-mobile ul .user span i:first-child {
+  margin-right: 6px;
 }
 
 .list-mobile ul .user span i:last-child {
   -webkit-transition: 0.3s linear;
   transition: 0.3s linear;
-  margin-left: 16px;
+  margin-left: 6px;
 }
 
 .list-mobile ul .user span i:last-child.active {
@@ -1236,7 +1250,7 @@ header {
   overflow: hidden;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
-  margin: 0;
+  margin: 0 0 0 12px;
 }
 
 .list-mobile ul .user .menu-user.active {
@@ -1247,7 +1261,7 @@ header {
       -ms-flex-pack: start;
           justify-content: flex-start;
   height: 170px;
-  margin: 0;
+  margin: 0 0 0 12px;
 }
 
 .list-mobile ul .user .menu-user a {
@@ -6632,6 +6646,18 @@ form .button-submit {
   #news .news-item .news-wrap .img-wrap {
     height: 150px;
   }
+  #news-detail .news-related .related-list .related-item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  #news-detail .news-related .related-list .related-item .related-content .related-date {
+    font-size: 12px;
+  }
   /*========== End News ==========*/
   /*========== Info ==========*/
   .infouser .info-user .info-edit .col:last-of-type {
@@ -6717,8 +6743,14 @@ form .button-submit {
   .list-mobile {
     width: 270px;
   }
-  .list-mobile ul li {
+  .list-mobile .title p {
     font-size: 18px;
+  }
+  .list-mobile ul li .menu-link {
+    font-size: 16px;
+  }
+  .list-mobile ul li {
+    font-size: 16px;
   }
   /*========== End Header ==========*/
   #hero {

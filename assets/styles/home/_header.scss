@@ -177,14 +177,29 @@ header {
 	position: fixed;
 	right: 0;
 	top: 0;
-	width: 320px;
+	width: 380px;
 	color: $cl-grey;
 	z-index: 99;
+	box-shadow: 0 0 5px $cl-grey-2;
 	display: none;
 	.close {
-		text-align: right;
-		margin: 12px 24px;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		margin: 12px;
 		font-size: $fs-title;
+		margin: 24px 12px;
+
+		.box-logo {
+			display: block;
+			width: 170px;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+			}
+		}
+
 		i {
 			padding: 12px;
 		}
@@ -195,22 +210,11 @@ header {
 			font-size: $fs-small-title;
 			text-transform: uppercase;
 			font-weight: 700;
-			color: $cl-orange-3;
-			text-shadow: 1px 1px 1px $cl-grey-2;
+			color: $cl-white-2;
 			margin: 12px 0;
 			padding: 12px 0;
 			position: relative;
-
-			&::after {
-				content: "";
-				position: absolute;
-				bottom: 0;
-				left: 50%;
-				transform: translateX(-50%);
-				width: 30px;
-				height: 2px;
-				background: $cl-white-2;
-			}
+			background: $cl-orange-3;
 		}
 	}
 	ul {
@@ -219,7 +223,7 @@ header {
 		flex-direction: column;
 		justify-content: center;
 		align-items: flex-start;
-		margin: 0 20px;
+		margin: 0 12px;
 		li {
 			margin: 12px 0;
 			font-size: $fs-small-title;
@@ -228,13 +232,15 @@ header {
 			padding-bottom: 12px;
 
 			&:not(li:last-child) {
-				border-bottom: 1px solid $cl-white-3;
+				border-bottom: 1px solid $cl-blue-4;
 			}
 
 			.menu-link {
 				border-radius: 20px;
 				display: block;
 				color: $cl-grey;
+				font-weight: 700;
+				text-transform: capitalize;
 			}
 		}
 		.user {
@@ -243,13 +249,14 @@ header {
 				align-items: center;
 				justify-content: flex-start;
 				margin-bottom: 12px;
+				font-weight: 700;
 
-				p {
-					padding: 0 12px;
+				i:first-child {
+					margin-right: 6px;
 				}
 				i:last-child {
 					transition: 0.3s linear;
-					margin-left: 16px;
+					margin-left: 6px;
 
 					&.active {
 						transform: rotate(-180deg);
@@ -260,13 +267,13 @@ header {
 				height: 0;
 				overflow: hidden;
 				transition: 0.3s ease-in-out;
-				margin: 0;
+				margin: 0 0 0 12px;
 
 				&.active {
 					display: flex !important;
 					justify-content: flex-start;
 					height: 170px;
-					margin: 0;
+					margin: 0 0 0 12px;
 				}
 
 				a {

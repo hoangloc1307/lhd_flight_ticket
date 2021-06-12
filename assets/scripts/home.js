@@ -155,5 +155,10 @@ $(document).ready(function () {
 		$(".list-mobile ul .user .menu-user").toggleClass("active");
 	});
 
+	$(document).on("click", ".overlay", function () {
+		$(this).hide();
+		$(".list-mobile").hide();
+	});
+
 	/*===== End Menu Mobile ===== */
 });
