@@ -418,7 +418,7 @@
 			text-transform: capitalize;
 			font-style: italic;
 			font-weight: 600;
-			padding: 0 12px;
+			padding: 0 50px;
 			position: relative;
 
 			&::before,
@@ -433,12 +433,12 @@
 			&::before {
 				content: "\f10d";
 				top: 0;
-				right: 280px;
+				right: 315px;
 			}
 			&::after {
 				content: "\f10e";
 				top: 10px;
-				right: -10px;
+				right: 25px;
 			}
 		}
 

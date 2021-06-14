@@ -36,7 +36,7 @@
 	}
 }
 
-@media (min-width: 740px) and (max-width: 1023px) {
+@media (min-width: 740px) and (max-width: 768px) {
 	.wide {
 		width: 700px;
 	}
@@ -61,6 +61,16 @@
 			flex: 0 0 100%/12 * $i;
 			max-width: 100%/12 * $i;
 		}
+	}
+}
+@media (min-width: 769px) and (max-width: 991px) {
+	.wide {
+		width: 715px;
+	}
+}
+@media (min-width: 991px) and (max-width: 1023px) {
+	.wide {
+		width: 920px;
 	}
 }
 
