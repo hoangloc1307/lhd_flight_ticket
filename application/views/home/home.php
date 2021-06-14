@@ -18,7 +18,8 @@
 					<div class="way">
 						<label>
 							Điểm đi<br />
-							<input class="choose" type="text" name="forigin" placeholder="Chọn" required />
+							<input class="choose" type="text" name="forigin" placeholder="Chọn" required
+								readonly />
 
 							<div class="way-popup">
 								<div class="header">
@@ -43,7 +44,8 @@
 						<i class="fas fa-random"></i>
 						<label>
 							Điểm đến<br />
-							<input class="choose" type="text" name="fdestination" placeholder="Chọn" required />
+							<input class="choose" type="text" name="fdestination" placeholder="Chọn" required
+								readonly />
 
 							<div class="way-popup way-popup-mobile">
 								<div class="header">

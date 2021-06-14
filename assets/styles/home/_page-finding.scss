@@ -829,9 +829,6 @@
 			.flight-from,
 			.flight-to {
 				.flight-city {
-					overflow: hidden;
-					text-overflow: ellipsis;
-					white-space: nowrap;
 				}
 				.flight-time {
 					font-size: $fs-title;

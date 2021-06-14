@@ -4,7 +4,143 @@
 	/*========== End Home Page ==========*/
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
+	// Home
+	#hero {
+		height: 675px;
+	}
+	.booking-form {
+		h2 {
+			margin-right: 0;
+			font-size: $fs-small-title;
+		}
+		form {
+			.way,
+			.date {
+				label {
+					input {
+						width: 170px;
+					}
+				}
+			}
+			.passenger {
+				.passenger-name {
+					flex-direction: column;
+				}
+			}
+		}
+	}
+	.hero-content {
+		.content {
+			h2 {
+				font-size: 28px;
+			}
+		}
+		.cloud {
+			top: -25vh;
+		}
+	}
+	// End Home
+
+	// Finding
+	.finding {
+		// Step 1
+		.flight-item {
+			.flight-info {
+				.flight-from,
+				.from-to {
+					.flight-city {
+						font-size: $fs-detail;
+					}
+					.flight-time {
+						font-size: $fs-small-title;
+					}
+				}
+
+				.flight-wrap-detail {
+					.flight-detail::before {
+						right: 10px;
+					}
+				}
+			}
+			.flight-box-detail {
+				.flight-detail-item {
+					.detail-img,
+					.detail-from,
+					.detail-to,
+					.detail-flight {
+						padding: 5px;
+					}
+
+					.detail-img {
+						.box-img {
+							width: 85px;
+						}
+					}
+				}
+			}
+		}
+
+		// End Step 1
+
+		// Step 2
+		.finding-detail {
+			.content {
+				.detail-ticket {
+					font-size: $fs-detail;
+
+					.image {
+						width: 70px;
+					}
+				}
+			}
+		}
+		// End Step 2
+	}
+
+	// End Finding
+}
+
+@media (max-width: 992px) {
+	#hero {
+		&::before {
+			background: #f3f4f8;
+		}
+
+		.booking-form {
+			h2 {
+				font-size: $fs-title;
+			}
+			form {
+				.way,
+				.date {
+					label {
+						input {
+							width: 250px;
+							padding: 8px;
+						}
+					}
+				}
+				.passenger {
+					& > div {
+						margin-right: 30px;
+					}
+					.passenger-name {
+						flex-direction: row;
+
+						p:first-child {
+							font-size: $fs-text;
+							font-weight: 700;
+						}
+					}
+				}
+			}
+		}
+
+		.hero-content {
+			display: none;
+		}
+	}
 }
 
 @media (max-width: 768px) {
@@ -25,6 +161,7 @@
 	#hero {
 		&::before {
 			background-image: unset;
+			background: unset;
 		}
 		.booking-form {
 			h2 {
@@ -144,6 +281,17 @@
 				}
 			}
 		}
+		// Step 2
+		.finding-detail {
+			.content {
+				.detail-ticket {
+					.image {
+						width: 100px;
+					}
+				}
+			}
+		}
+		// End Step 2
 	}
 
 	/*========== End Finding Page ==========*/
@@ -166,6 +314,7 @@
 				height: 400px;
 				overflow-y: auto;
 				margin-bottom: 12px;
+				overflow: hidden;
 			}
 		}
 		.news-item .news-wrap .img-wrap {
@@ -175,10 +324,23 @@
 	#news-detail {
 		.news-related {
 			.related-list {
+				overflow: hidden;
+				height: 730px;
+				overflow-y: auto;
+
 				.related-item {
 					flex-direction: column;
 					align-items: flex-start;
+
+					.related-thumb {
+						height: 120px;
+						width: 100%;
+					}
+
 					.related-content {
+						padding: 0;
+						margin-top: 12px;
+						width: 100%;
 						.related-date {
 							font-size: $fs-small-text;
 						}
@@ -266,20 +428,7 @@
 	/*========== End Page Finding ==========*/
 }
 
-@media (max-width: 480px) {
-	/*========== Login Page ==========*/
-	.login-container {
-		margin: 15px;
-
-		.user .img-box {
-			display: none;
-		}
-
-		.form-box {
-			width: 100%;
-		}
-	}
-	/*========== End Login Page ==========*/
+@media (max-width: 576px) {
 	/*========== Header ==========*/
 	.menu-mobile {
 		.logo {
@@ -292,9 +441,8 @@
 			margin-right: 12px;
 		}
 	}
-
 	.list-mobile {
-		width: 270px;
+		width: 320px;
 
 		.title p {
 			font-size: $fs-sub-title;
@@ -307,7 +455,9 @@
 			font-size: $fs-text;
 		}
 	}
+
 	/*========== End Header ==========*/
+
 	#hero {
 		padding: 25px 0;
 		height: 100%;
@@ -393,15 +543,6 @@
 			}
 		}
 	}
-
-	#why,
-	#favorite,
-	#partner {
-		.heading {
-			font-size: $fs-small-title;
-		}
-	}
-
 	#favorite {
 		.block {
 			.image-box {
@@ -425,6 +566,14 @@
 			.col {
 				margin: 12px 0;
 			}
+		}
+	}
+
+	#why,
+	#favorite,
+	#partner {
+		.heading {
+			font-size: $fs-small-title;
 		}
 	}
 
@@ -537,6 +686,10 @@
 					order: 1;
 					.flight-city {
 						font-size: $fs-detail;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						width: 110px;
+						white-space: nowrap;
 					}
 					.flight-time {
 						font-size: $fs-sub-title;
@@ -545,14 +698,17 @@
 
 				.flight-wrap-detail {
 					order: 2;
-					margin: 0 20px;
+					margin: 0 65px;
 
 					.flight-number-code {
 						font-size: $fs-detail;
 					}
 					.flight-detail {
+						padding-right: 0;
+						color: $cl-orange-3;
+						text-decoration: underline;
 						&::before {
-							right: 12px;
+							display: none;
 						}
 					}
 				}
@@ -574,10 +730,10 @@
 					}
 					button {
 						margin-top: 0;
-						width: 75px;
-						height: 47px;
-						line-height: 32px;
-						font-size: $fs-detail;
+						width: 155px;
+						height: 44px;
+						line-height: 29px;
+						font-size: $fs-small-text;
 						overflow: hidden;
 					}
 				}
@@ -596,6 +752,8 @@
 
 						& > div {
 							line-height: 1.6;
+							padding: 5px;
+							width: 50%;
 						}
 						.detail-img {
 							order: 4;
@@ -605,11 +763,20 @@
 						}
 						.detail-from {
 							position: relative;
+
+							span:first-child {
+								display: -webkit-box;
+								-webkit-box-orient: vertical;
+								-webkit-line-clamp: 2;
+								overflow: hidden;
+								white-space: pre-wrap;
+							}
+
 							&::after {
 								position: absolute;
 								content: "\f061";
 								top: 50%;
-								right: -15px;
+								right: 10px;
 								transform: translateY(-50%);
 								font-family: "Font Awesome 5 Free";
 								font-weight: 700;
@@ -618,7 +785,15 @@
 
 						.detail-to {
 							span {
-								justify-content: flex-end;
+								justify-content: flex-start;
+							}
+
+							span:first-child {
+								display: -webkit-box;
+								-webkit-box-orient: vertical;
+								-webkit-line-clamp: 2;
+								overflow: hidden;
+								white-space: pre-wrap;
 							}
 						}
 
@@ -653,6 +828,15 @@
 					.image {
 						width: 85px;
 					}
+				}
+				.total-price {
+					position: fixed;
+					bottom: 0;
+					right: 0;
+					width: 100%;
+					background: rgba($cl-orange-3, 0.9);
+					border-radius: 0;
+					color: $cl-white-2;
 				}
 			}
 		}
@@ -727,15 +911,30 @@
 					padding: 5px;
 					.detail-img {
 						order: 4;
+
 						.box-img {
 							width: 120px;
 						}
 					}
+					.detail-img,
 					.detail-from,
 					.detail-to,
 					.detail-flight {
+						padding: 10px;
+						width: 50%;
 						span {
-							font-size: $fs-small-text;
+							font-size: $fs-detail;
+						}
+					}
+
+					.detail-from,
+					.detail-to {
+						span:fisrt-child {
+							display: -webkit-box;
+							-webkit-box-orient: vertical;
+							white-space: pre-wrap;
+							overflow: hidden;
+							-webkit-line-clamp: 2;
 						}
 					}
 				}
@@ -810,6 +1009,25 @@
 			}
 			.heading-description .date-view {
 				margin-bottom: 30px;
+			}
+		}
+	}
+
+	#news-detail {
+		.news-related {
+			.related-list {
+				height: 325px;
+				.related-item {
+					flex-direction: row;
+
+					.related-thumb {
+						width: 150px;
+						height: 90px;
+					}
+					.related-content {
+						padding-left: 12px;
+					}
+				}
 			}
 		}
 	}
@@ -906,6 +1124,51 @@
 	}
 
 	/*========== End Info ==========*/
+}
+
+@media (max-width: 480px) {
+	/*========== Login Page ==========*/
+	.login-container {
+		margin: 15px;
+
+		.user .img-box {
+			display: none;
+		}
+
+		.form-box {
+			width: 100%;
+		}
+	}
+	/*========== End Login Page ==========*/
+	/*========== Header ==========*/
+
+	.list-mobile {
+		width: 270px;
+	}
+	/*========== End Header ==========*/
+
+	// Finding
+	.finding {
+		.flight-item {
+			.flight-info {
+				.flight-wrap-detail {
+					margin: 0 20px;
+				}
+				.flight-price-choose {
+					button {
+						margin-top: 0;
+						width: 80px;
+						height: 44px;
+						line-height: 29px;
+						font-size: $fs-small-text;
+						overflow: hidden;
+					}
+				}
+			}
+		}
+	}
+
+	// Finding
 }
 
 @media (max-width: 420px) {
