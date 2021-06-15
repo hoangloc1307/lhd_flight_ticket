@@ -220,3 +220,25 @@
 	}
 }
 /*==================== End Xem thêm ====================*/
+
+/*==================== Input, button chọn image ====================*/
+.button-img {
+	padding: 8px 4px;
+	outline: none;
+	border: none;
+	background: $cl-blue-5;
+	color: $cl-white-2;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.input-img {
+	padding: 8px;
+	font-size: $fs-small-text;
+	font-weight: 600;
+	color: $cl-black;
+	border-radius: 5px;
+	border: 1px solid $cl-grey;
+}
+
+/*==================== End Input, button chọn image ====================*/

@@ -27,6 +27,23 @@
 			justify-content: space-between;
 			height: calc(100% - 140px);
 			padding: 10px 0;
+			overflow-y: scroll;
+
+			&::-webkit-scrollbar {
+				width: 4px;
+				background-color: $cl-white-3;
+				display: none;
+			}
+			&::-webkit-scrollbar-thumb {
+				border-radius: 10px;
+				-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+				background-color: $cl-blue-5;
+			}
+			&::-webkit-scrollbar-track {
+				-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+				border-radius: 10px;
+				background-color: $cl-white-3;
+			}
 
 			.links {
 				list-style: none;

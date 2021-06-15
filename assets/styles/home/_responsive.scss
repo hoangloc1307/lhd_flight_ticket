@@ -142,6 +142,19 @@
 		}
 	}
 }
+@media (min-width: 769px) and (max-width: 991px) {
+	.logo h1 {
+		font-size: $fs-small-title;
+	}
+	.menu-pc .links ul li .menu-link {
+		padding: 10px 12px;
+		font-size: $fs-detail;
+	}
+	.booking-form form .way label:last-child .way-popup {
+		right: -145px;
+		left: unset;
+	}
+}
 
 @media (max-width: 768px) {
 	/*========== Header==========*/
