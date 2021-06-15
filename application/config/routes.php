@@ -50,18 +50,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-$route['default_controller'] = 'home';
+$route['default_controller'] = 'Home';
 //Home
-$route['news'] = 'news/view';
-$route['news/(:any)'] = 'news/view/$1';
+$route['news'] = 'News/View';
+$route['news/(:any)'] = 'News/View/$1';
 //Admin
 $route['admin'] = 'admin/admin';
-$route['admin/news'] = 'admin/manage_news';
-$route['admin/news/edit/(:num)'] = 'admin/manage_news/edit/$1';
-$route['admin/news/category'] = 'admin/manage_news/category';
-$route['admin/news/add'] = 'admin/manage_news/add';
-$route['admin/news/delete'] = 'admin/manage_news/delete';
-$route['admin/order'] = 'admin/order/view';
-$route['admin/order/detail/(:any)'] = 'admin/order/view/$1';
+$route['admin/news'] = 'admin/Manage_News';
+$route['admin/news/add'] = 'admin/Manage_News/Add';
+$route['admin/news/edit/(:num)'] = 'admin/Manage_News/Edit/$1';
+$route['admin/news/category'] = 'admin/Manage_News/Category';
+$route['admin/whychooseus'] = 'admin/WhyChooseUs';
+$route['admin/websitesetting'] = 'admin/WebsiteSetting';
+$route['admin/order'] = 'admin/Order/View';
+$route['admin/order/detail/(:any)'] = 'admin/Order/View/$1';
 //404
 $route['404_override'] = 'Error404';

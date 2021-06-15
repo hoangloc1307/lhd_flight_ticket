@@ -40,7 +40,7 @@
 //Fetch
 function fetch() {
     $.ajax({
-        url: "<?= base_url() ?>admin/websitesetting/fetch",
+        url: "<?= base_url('admin/WebsiteSetting/Fetch') ?>",
         dataType: "json",
         success: function(data) {
             $('input[name="address"]').val(data.Address);

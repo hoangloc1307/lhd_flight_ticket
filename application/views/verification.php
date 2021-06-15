@@ -13,7 +13,7 @@
             </div>
 
             <div class="img-box">
-                <img src="<?php echo base_url(); ?>assets/images/verification.png" alt="" />
+                <img src="<?= base_url('assets/images/verification.png') ?>" alt="" />
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@
     <div class="login-container">
         <div class="user signin-box">
             <div class="img-box">
-                <img src="<?php echo base_url(); ?>assets/images/verification.png" alt="" />
+                <img src="<?= base_url('assets/images/verification.png') ?>" alt="" />
             </div>
             <div class="form-box">
                 <form>
@@ -67,7 +67,7 @@ $('.step-3 button').click(function(e) {
             if ($('.step-2 input[name="code"]').val() == '<?= $this->session->tempdata('code') ?>') {
                 $.ajax({
                     type: "POST",
-                    url: "<?= base_url('account/restorepassword') ?>",
+                    url: "<?= base_url('Account/RestorePassword') ?>",
                     data: {
                         password: $('input[name="password"]').val()
                     },
@@ -76,7 +76,7 @@ $('.step-3 button').click(function(e) {
                         toastr["success"](data);
                         <?php unset($_SESSION['email_forget'], $_SESSION['code'], $_SESSION['__ci_vars']); ?>
                         setTimeout(function() {
-                            location.replace("<?= base_url() ?>login");
+                            location.replace("<?= base_url('login') ?>");
                         }, 1500);
                     }
                 });
