@@ -926,6 +926,27 @@ html {
 }
 
 /*==================== End Xem thêm ====================*/
+/*==================== Input, button chọn image ====================*/
+.button-img {
+  padding: 8px 4px;
+  outline: none;
+  border: none;
+  background: #034166;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.input-img {
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+  border-radius: 5px;
+  border: 1px solid #dddddd;
+}
+
+/*==================== End Input, button chọn image ====================*/
 /*==================== Menu PC ====================*/
 header {
   position: -webkit-sticky;
@@ -4878,6 +4899,25 @@ header {
           justify-content: space-between;
   height: calc(100% - 140px);
   padding: 10px 0;
+  overflow-y: scroll;
+}
+
+#admin-page nav .link-list::-webkit-scrollbar {
+  width: 4px;
+  background-color: #f9f9f9;
+  display: none;
+}
+
+#admin-page nav .link-list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #034166;
+}
+
+#admin-page nav .link-list::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f9f9f9;
 }
 
 #admin-page nav .link-list .links {
@@ -6345,6 +6385,25 @@ form .button-submit {
           justify-content: space-between;
   height: calc(100% - 140px);
   padding: 10px 0;
+  overflow-y: scroll;
+}
+
+#admin-page nav .link-list::-webkit-scrollbar {
+  width: 4px;
+  background-color: #f9f9f9;
+  display: none;
+}
+
+#admin-page nav .link-list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #034166;
+}
+
+#admin-page nav .link-list::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f9f9f9;
 }
 
 #admin-page nav .link-list .links {
@@ -6544,6 +6603,20 @@ form .button-submit {
   }
   #hero .hero-content {
     display: none;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 991px) {
+  .logo h1 {
+    font-size: 22px;
+  }
+  .menu-pc .links ul li .menu-link {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  .booking-form form .way label:last-child .way-popup {
+    right: -145px;
+    left: unset;
   }
 }
 
