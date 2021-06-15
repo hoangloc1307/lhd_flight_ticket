@@ -415,7 +415,7 @@ $(document).ready(function() {
             .val()) {
             $.ajax({
                 type: "POST",
-                url: "<?= base_url() ?>account/changepassword",
+                url: "<?= base_url('Account/ChangePassword') ?>",
                 data: {
                     old_password: $('.input-edit[name="old-password"]').val(),
                     new_password: $('.input-edit[name="password"]').val()
@@ -453,7 +453,7 @@ $(document).ready(function() {
         if (name_new != name_old || address_new != address_old || phone_new != phone_old) {
             $.ajax({
                 type: "POST",
-                url: "<?= base_url('account/changeinfo') ?>",
+                url: "<?= base_url('Account/ChangeInfo') ?>",
                 data: {
                     name: name_new,
                     address: address_new,

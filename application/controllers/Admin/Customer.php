@@ -1,8 +1,9 @@
-<?php 
-        
-defined('BASEPATH') OR exit('No direct script access allowed');
-        
-class Customer extends CI_Controller {
+<?php
+
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Customer extends CI_Controller
+{
 
     public function __construct()
     {
@@ -10,22 +11,23 @@ class Customer extends CI_Controller {
         $this->load->model("Database_model");
     }
     public function index()
-    {       
+    {
         $data['view'] = 'admin/customer';
         $data['title'] = 'Khách hàng';
-        $this->load->view('admin/master_layout', $data, FALSE); 
+        $this->load->view('admin/master_layout', $data, FALSE);
     }
 
-    public function fetch() {
+    public function Fetch()
+    {
         if ($this->input->is_ajax_request()) {
-
             $offset = $this->input->post("offset");
             $data = $this->Database_model->GetRecords("tbl_customer", "", "Customer_ID Desc", 10, $offset);
             echo json_encode($data);
         }
     }
 
-    public function Search() {
+    public function Search()
+    {
         if ($this->input->is_ajax_request()) {
             $keyword = $this->input->post("keyword");
             $this->load->model("Database_model");
@@ -41,5 +43,3 @@ class Customer extends CI_Controller {
 }
         
     /* End of file  Customer.php */
-        
-                            

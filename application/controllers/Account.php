@@ -2,15 +2,18 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Account extends CI_Controller {
+class Account extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('Account_model');
-        $this->load->model('Admin/JSON_model');
+        $this->load->model('admin/JSON_model');
         $this->load->model('Database_model');
     }
-    public function index() {
+    public function index()
+    {
         if (!is_null($this->session->userdata('email'))) {
             $data['view'] = 'home/info';
             $data['title'] = 'Thông tin tài khoản';
@@ -29,7 +32,8 @@ class Account extends CI_Controller {
         }
     }
 
-    public function ChangePassword() {
+    public function ChangePassword()
+    {
         if ($this->input->is_ajax_request()) {
             $old_password = $this->input->post('old_password');
             $new_password = $this->input->post('new_password');
@@ -48,7 +52,8 @@ class Account extends CI_Controller {
         }
     }
 
-    public function ChangeInfo() {
+    public function ChangeInfo()
+    {
         if ($this->input->is_ajax_request()) {
             $name = $this->input->post('name');
             $address = $this->input->post('address');
@@ -70,7 +75,8 @@ class Account extends CI_Controller {
         }
     }
 
-    function SendForgetPasswordMail($code, $to) {
+    function SendForgetPasswordMail($code, $to)
+    {
         $subject = "Mã xác thực quên mật khẩu";
 
         $message = "<!DOCTYPE html><html lang='en' style='font-family: Arial, Helvetica, sans-serif;font-size: 14px;'><head></head><body style='margin: 0;padding: 0;box-sizing: border-box;'>";
@@ -97,7 +103,8 @@ class Account extends CI_Controller {
         $this->email->send();
     }
 
-    public function ForgetPassword() {
+    public function ForgetPassword()
+    {
         if (isset($_POST['submit-button'])) {
             $code = create_oder_code();
             $email = $this->input->post('email');
@@ -129,7 +136,8 @@ class Account extends CI_Controller {
         }
     }
 
-    public function RestorePassword() {
+    public function RestorePassword()
+    {
         if ($this->input->is_ajax_request()) {
             $email = $this->session->tempdata('email_forget');
             $password = $this->input->post('password');

@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col l-5 m-12 s-12 booking-form">
 				<h2><i class="fas fa-plane"></i> Xin chào! Bạn muốn đi đâu?</h2>
-				<form action="<?= base_url() ?>finding" method="post">
+				<form action="<?= base_url('finding') ?>" method="post">
 					<div class="type">
 						<label>
 							<input id="one-way" type="radio" name="ftype" value="oneway" checked /> Một chiều
@@ -211,15 +211,15 @@
 					</p>
 				</div>
 				<div class="imgBx">
-					<img src="<?= base_url() ?>assets/images/plane.png" alt="Hero Image" />
+					<img src="<?= base_url('assets/images/plane.png') ?>" alt="Hero Image" />
 				</div>
 				<div class="cloud">
-					<img src="<?= base_url() ?>assets/images/cloud-1.png" alt="cloud" />
-					<img src="<?= base_url() ?>assets/images/cloud-2.png" alt="cloud" />
-					<img src="<?= base_url() ?>assets/images/cloud-3.png" alt="cloud" />
-					<img src="<?= base_url() ?>assets/images/cloud-4.png" alt="cloud" />
-					<img src="<?= base_url() ?>assets/images/cloud-5.png" alt="cloud" />
-					<img src="<?= base_url() ?>assets/images/cloud-6.png" alt="cloud" />
+					<img src="<?= base_url('assets/images/cloud-1.png') ?>" alt="cloud" />
+					<img src="<?= base_url('assets/images/cloud-2.png') ?>" alt="cloud" />
+					<img src="<?= base_url('assets/images/cloud-3.png') ?>" alt="cloud" />
+					<img src="<?= base_url('assets/images/cloud-4.png') ?>" alt="cloud" />
+					<img src="<?= base_url('assets/images/cloud-5.png') ?>" alt="cloud" />
+					<img src="<?= base_url('assets/images/cloud-6.png') ?>" alt="cloud" />
 				</div>
 			</div>
 		</div>
@@ -237,7 +237,7 @@
 			<?php foreach ($hot_places as $item) : ?>
 			<div class="col l-4 m-6 s-12  block">
 				<a
-					href="<?= base_url() . 'news/' . ($item['LinkCustom'] != '' ? $item['LinkCustom'] : $item['LinkDefault']) ?>">
+					href="<?= base_url('news/') . ($item['LinkCustom'] != '' ? $item['LinkCustom'] : $item['LinkDefault']) ?>">
 					<div class="image-box">
 						<h3><?= $item['Name'] ?></h3>
 						<img src="<?= base_url($item['Image']) ?>" alt="<?= $item['Name'] ?>" />
@@ -246,7 +246,7 @@
 						<p><?= $item['Description'] ?></p>
 						<div>
 							<a
-								href="<?= base_url() . 'news/' . ($item['LinkCustom'] != '' ? $item['LinkCustom'] : $item['LinkDefault']) ?>">Xem
+								href="<?= base_url('news/') . ($item['LinkCustom'] != '' ? $item['LinkCustom'] : $item['LinkDefault']) ?>">Xem
 								chi tiết
 								<i class="fas fa-arrow-right"></i>
 							</a>
@@ -273,7 +273,7 @@
 			<div class="col l-3 m-6 s-12">
 				<div class="item">
 					<div class="box-image">
-						<img class="image" src="<?= base_url() . $item["Image"] ?>" alt="<?= $item["Title"] ?>" />
+						<img class="image" src="<?= base_url($item['Image']) ?>" alt="<?= $item["Title"] ?>" />
 					</div>
 					<div class="box-content">
 						<h3 class="title"><?= $item["Title"] ?></h3>

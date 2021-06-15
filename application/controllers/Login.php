@@ -2,21 +2,25 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Login extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('Login_model');
+        $this->load->model('admin/JSON_model');
     }
-    public function index() {
+    public function index()
+    {
         $data['view'] = 'login';
         $data['title'] = 'Đăng nhập';
-        $this->load->model('Admin/JSON_model');
         $data['websitesetting'] = json_decode($this->JSON_model->get('WebsiteSetting')['Text'], true);
         $this->load->view('home/header_footer', $data);
     }
 
-    public function Login() {
+    public function Login()
+    {
         if ($this->input->is_ajax_request()) {
             $email = $this->input->post('email');
             $password = $this->input->post('password');
@@ -28,15 +32,15 @@ class Login extends CI_Controller {
                         'email' => $email,
                         'role' => $account['Role'],
                         'user_links' => [
-                            'Thông tin tài khoản' => base_url() . 'account',
-                            'Đăng xuất' => base_url() . 'login/logout'
+                            'Thông tin tài khoản' => base_url('account'),
+                            'Đăng xuất' => base_url('Login/Logout')
                         ]
                     ];
                     if ($account['Role'] == 1) {
                         // $sess_account['user_links'] = ['Vào trang quản trị' => base_url() . 'admin'] + $sess_account['user_links'];
                         $sess_account['user_links'] = [
-                            'Vào trang quản trị' => base_url() . 'admin',
-                            'Đăng xuất' => base_url() . 'login/logout'
+                            'Vào trang quản trị' => base_url('admin'),
+                            'Đăng xuất' => base_url('Login/Logout')
                         ];
                     }
                     $this->session->set_userdata($sess_account);
@@ -50,12 +54,14 @@ class Login extends CI_Controller {
         }
     }
 
-    public function Logout() {
+    public function Logout()
+    {
         $this->session->sess_destroy();
         redirect(base_url());
     }
 
-    public function Register() {
+    public function Register()
+    {
         if ($this->input->is_ajax_request()) {
             $email = $this->input->post('email');
             $password = $this->input->post('password');

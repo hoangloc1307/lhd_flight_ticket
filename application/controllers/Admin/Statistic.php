@@ -2,13 +2,16 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Statistic extends CI_Controller {
+class Statistic extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('Database_model');
     }
-    public function index() {
+    public function index()
+    {
         $data['view'] = 'admin/statistic';
         $data['title'] = 'Thống kê';
         $data['profit'] = $this->Database_model->StoreProcedures('TongLoiNhuan')[0]['Result'];
@@ -17,7 +20,8 @@ class Statistic extends CI_Controller {
         $this->load->view('admin/master_layout', $data, FALSE);
     }
 
-    public function Filter() {
+    public function Filter()
+    {
         if ($this->input->is_ajax_request()) {
             $status = $this->input->post('status');
             $date_start = $this->input->post('date_start');
@@ -57,7 +61,8 @@ class Statistic extends CI_Controller {
         }
     }
 
-    public function OrderInDay() {
+    public function OrderInDay()
+    {
         if ($this->input->is_ajax_request()) {
             $status = $this->input->post('status');
             $date_start = $this->input->post('date_start');

@@ -76,7 +76,7 @@
 $('.button-fill').click(function() {
     $.ajax({
         type: "POST",
-        url: "<?= base_url('admin/statistic/filter') ?>",
+        url: "<?= base_url('admin/Statistic/Filter') ?>",
         data: {
             status: $('select').val(),
             date_start: $('input[name="date-start"]').val(),
@@ -123,7 +123,7 @@ $('.button-fill').click(function() {
     //Vẽ biểu đồ
     $.ajax({
         type: "POST",
-        url: "<?= base_url('admin/statistic/orderinday') ?>",
+        url: "<?= base_url('admin/Statistic/OrderInDay') ?>",
         data: {
             date_start: $('input[name="date-start"]').val(),
             date_end: $('input[name="date-end"]').val(),

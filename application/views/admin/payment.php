@@ -37,7 +37,7 @@ CKFinder.setupCKEditor(editor);
 function fetch() {
     $.ajax({
         type: "POST",
-        url: "<?= base_url('admin/payment/fetch') ?>",
+        url: "<?= base_url('admin/Payment/Fetch') ?>",
         dataType: "json",
         success: function(data) {
             var txt = "";
@@ -67,7 +67,7 @@ $('.button-submit.add').click(function(e) {
     if ($('input[name="name"]').val() != '') {
         $.ajax({
             type: "POST",
-            url: "<?= base_url('admin/payment/add') ?>",
+            url: "<?= base_url('admin/Payment/Add') ?>",
             data: {
                 name: $('input[name="name"]').val(),
                 content: CKEDITOR.instances['payment-content'].getData()
@@ -96,7 +96,7 @@ $(document).on('click', '.button.delete', function(e) {
     if (cfm == true) {
         $.ajax({
             type: "POST",
-            url: "<?= base_url('admin/payment/delete') ?>",
+            url: "<?= base_url('admin/Payment/Delete') ?>",
             data: {
                 name: $(this).attr('name')
             },
@@ -117,6 +117,7 @@ $(document).on('click', '.button.delete', function(e) {
 $(document).on('click', '.button.edit', function(e) {
     e.preventDefault();
     $('input[name="name"]').val($(this).parents('.item').find('.name').text());
+    $('input[name="name"]').prop("disabled", true);
     CKEDITOR.instances['payment-content'].setData($(this).parent().find('input[type="hidden"]').attr('value'));
     $(document).scrollTop('0');
     $('.button-submit.add').hide();
@@ -127,7 +128,7 @@ $(document).on('click', '.button-submit.update', function(e) {
     e.preventDefault();
     $.ajax({
         type: "POST",
-        url: "<?= base_url('admin/payment/update') ?>",
+        url: "<?= base_url('admin/Payment/Update') ?>",
         data: {
             name: $('input[name="name"]').val(),
             content: CKEDITOR.instances['payment-content'].getData()
@@ -141,6 +142,7 @@ $(document).on('click', '.button-submit.update', function(e) {
                 $('input[name="name"]').val('');
                 $('.button-submit.add').show();
                 $('.button-submit.update').hide();
+                $('input[name="name"]').prop("disabled", false);
             } else {
                 toastr["error"](data);
             }
