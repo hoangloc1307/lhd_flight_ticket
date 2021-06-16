@@ -70,11 +70,13 @@ $(document).ready(function () {
 
 	/* Chọn điểm di, điểm đến */
 	$(document).on("click", ".list-point li", function () {
+		$(this).parents(".way-popup").hide();
 		$(this).parents(".way-popup").prev(".choose").val($(this).text());
-		if ($("input[name='forigin']").val() != "") {
-			// $("input[name='forigin'] .way-popup .header .close").trigger("click");
-			$("input[name='fdestination']").focus();
-		}
+
+		// if ($("input[name='forigin']").val() != "") {
+		// 	// $("input[name='forigin'] .way-popup .header .close").trigger("click");
+		// 	$("input[name='fdestination']").focus();
+		// }
 	});
 	/*===== End ===== */
 

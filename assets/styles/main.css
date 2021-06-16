@@ -257,15 +257,15 @@ html {
   }
 }
 
-@media (min-width: 769px) and (max-width: 991px) {
+@media (min-width: 769px) and (max-width: 991.98px) {
   .wide {
-    width: 715px;
+    width: 720px;
   }
 }
 
-@media (min-width: 991px) and (max-width: 1023px) {
+@media (min-width: 992px) and (max-width: 1023px) {
   .wide {
-    width: 920px;
+    width: 960px;
   }
 }
 
@@ -947,6 +947,495 @@ html {
 }
 
 /*==================== End Input, button chọn image ====================*/
+/*==================== Hotline, Zalo, Mail ====================*/
+/* VỊ TRÍ NÚT */
+#phone {
+  bottom: 0;
+}
+
+#zalo {
+  bottom: 70px;
+}
+
+#facebook {
+  bottom: 140px;
+}
+
+#mail {
+  bottom: 210px;
+}
+
+#messenger {
+  bottom: 280px;
+}
+
+@media (max-width: 480px) {
+  #phone,
+  #zalo,
+  #facebook,
+  #mail,
+  #messenger {
+    bottom: 45px;
+  }
+  #phone {
+    left: 0;
+  }
+  #zalo {
+    left: 70px;
+  }
+  #facebook {
+    left: 140px;
+  }
+  #mail {
+    left: 210px;
+  }
+  #messenger {
+    left: 280px;
+  }
+}
+
+/* CSS MÀU */
+:root {
+  --phone: rgb(210, 19, 14);
+  --phoneopa: rgb(210, 19, 14, 0.5);
+  --facebook: rgb(59, 89, 152);
+  --facebookopa: rgb(59, 89, 152, 0.5);
+  --mail: rgb(223, 75, 56);
+  --mailopa: rgb(223, 75, 56, 0.5);
+  --zalo: rgb(2, 143, 227);
+  --zaloopa: rgb(2, 143, 227, 0.5);
+  --messenger: rgb(2, 143, 227);
+  --messengeropa: rgb(2, 143, 227, 0.5);
+}
+
+#phone a {
+  background: var(--phone);
+  border: 2px #fff solid;
+}
+
+#phone svg path {
+  fill: #fff;
+}
+
+#phone .alo-circle-fill {
+  background-color: var(--phoneopa);
+}
+
+#phone .alo-circle {
+  border-color: var(--phone);
+}
+
+#phone:hover a {
+  background: #ff5722;
+}
+
+#phone:hover svg path {
+  fill: #fff;
+}
+
+#phone:hover .alo-circle-fill {
+  background-color: rgba(255, 87, 34, 0.5);
+}
+
+#phone:hover .alo-circle {
+  border-color: #ff5722;
+}
+
+#facebook a {
+  background: var(--facebook);
+  border: 2px #fff solid;
+}
+
+#facebook svg path {
+  fill: white;
+}
+
+#facebook .alo-circle-fill {
+  background-color: var(--facebookopa);
+}
+
+#facebook .alo-circle {
+  border-color: var(--facebook);
+}
+
+#facebook:hover a {
+  background: #ff5722;
+}
+
+#facebook:hover svg path {
+  fill: #fff;
+}
+
+#facebook:hover .alo-circle-fill {
+  background-color: rgba(255, 87, 34, 0.5);
+}
+
+#facebook:hover .alo-circle {
+  border-color: #ff5722;
+}
+
+#mail a {
+  background: var(--mail);
+  border: 2px #fff solid;
+}
+
+#mail svg path {
+  fill: white;
+}
+
+#mail .alo-circle-fill {
+  background-color: var(--mailopa);
+}
+
+#mail .alo-circle {
+  border-color: var(--mail);
+}
+
+#mail:hover a {
+  background: #ff5722;
+}
+
+#mail:hover svg path {
+  fill: #fff;
+}
+
+#mail:hover .alo-circle-fill {
+  background-color: rgba(255, 87, 34, 0.5);
+}
+
+#mail:hover .alo-circle {
+  border-color: #ff5722;
+}
+
+#zalo svg {
+  background: #fff;
+  padding: 1px;
+}
+
+#zalo svg path {
+  fill: var(--zalo);
+}
+
+#zalo .alo-circle-fill {
+  background-color: var(--zaloopa);
+}
+
+#zalo .alo-circle {
+  border-color: var(--zalo);
+}
+
+#zalo:hover svg {
+  background: #fff;
+}
+
+#zalo:hover svg path {
+  fill: #ff5722;
+}
+
+#zalo:hover .alo-circle-fill {
+  background-color: rgba(255, 87, 34, 0.5);
+}
+
+#zalo:hover .alo-circle {
+  border-color: #ff5722;
+}
+
+#messenger svg {
+  background: #fff;
+  padding: 1px;
+}
+
+#messenger svg path:first-child {
+  fill: var(--messenger);
+}
+
+#messenger .alo-circle-fill {
+  background-color: var(--messengeropa);
+}
+
+#messenger .alo-circle {
+  border-color: var(--messenger);
+}
+
+#messenger:hover svg {
+  background: #fff;
+}
+
+#messenger:hover svg path:first-child {
+  fill: #ff5722;
+}
+
+#messenger:hover .alo-circle-fill {
+  background-color: rgba(255, 87, 34, 0.5);
+}
+
+#messenger:hover .alo-circle {
+  border-color: #ff5722;
+}
+
+/* CSS RIÊNG */
+.support-online.type-01 a {
+  display: block;
+}
+
+.support-online.type-02 a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.support-online.type-01 svg {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+.support-online.type-02 svg {
+  width: 25px;
+  height: 25px;
+}
+
+/* CSS CHUNG */
+.support-online {
+  position: fixed;
+  z-index: 9;
+  left: 10px;
+}
+
+.support-online a {
+  position: relative;
+  text-align: left;
+  margin: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+.support-online svg {
+  text-align: center;
+  line-height: 1.9;
+  position: relative;
+  z-index: 9;
+  -webkit-animation: 1s ease-in-out 0s normal none infinite running Icon-running;
+          animation: 1s ease-in-out 0s normal none infinite running Icon-running;
+}
+
+.alo-circle-fill {
+  width: 60px;
+  height: 60px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  position: absolute;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  border-radius: 100%;
+  border: 2px solid transparent;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  opacity: 0.75;
+}
+
+.alo-circle {
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  position: absolute;
+  background-color: transparent;
+  border-radius: 100%;
+  border: 2px solid rgba(30, 30, 30, 0.4);
+  opacity: 0.5;
+}
+
+.zoomIn {
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+}
+
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+/* ANIMATE */
+
+@-webkit-keyframes Grow {
+  0% {
+    transform: scale(0.1);
+    -ms-transform: scale(0.1);
+    -webkit-transform: scale(0.1);
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+  50% {
+    opacity: 1;
+    filter: alpha(opacity=100);
+  }
+  to {
+    transform: scale(1.8);
+    -ms-transform: scale(1.8);
+    -webkit-transform: scale(1.8);
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+}
+
+@keyframes Grow {
+  0% {
+    transform: scale(0.1);
+    -ms-transform: scale(0.1);
+    -webkit-transform: scale(0.1);
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+  50% {
+    opacity: 1;
+    filter: alpha(opacity=100);
+  }
+  to {
+    transform: scale(1.8);
+    -ms-transform: scale(1.8);
+    -webkit-transform: scale(1.8);
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+}
+
+@-webkit-keyframes Icon-running {
+  0% {
+    -webkit-transform: rotate(0deg) scale(1) skew(1deg);
+            transform: rotate(0deg) scale(1) skew(1deg);
+  }
+  10% {
+    -webkit-transform: rotate(-25deg) scale(1) skew(1deg);
+            transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  20% {
+    -webkit-transform: rotate(25deg) scale(1) skew(1deg);
+            transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  30% {
+    -webkit-transform: rotate(-25deg) scale(1) skew(1deg);
+            transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  40% {
+    -webkit-transform: rotate(25deg) scale(1) skew(1deg);
+            transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  50% {
+    -webkit-transform: rotate(0deg) scale(1) skew(1deg);
+            transform: rotate(0deg) scale(1) skew(1deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg) scale(1) skew(1deg);
+            transform: rotate(0deg) scale(1) skew(1deg);
+  }
+}
+
+@keyframes Icon-running {
+  0% {
+    -webkit-transform: rotate(0deg) scale(1) skew(1deg);
+            transform: rotate(0deg) scale(1) skew(1deg);
+  }
+  10% {
+    -webkit-transform: rotate(-25deg) scale(1) skew(1deg);
+            transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  20% {
+    -webkit-transform: rotate(25deg) scale(1) skew(1deg);
+            transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  30% {
+    -webkit-transform: rotate(-25deg) scale(1) skew(1deg);
+            transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  40% {
+    -webkit-transform: rotate(25deg) scale(1) skew(1deg);
+            transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  50% {
+    -webkit-transform: rotate(0deg) scale(1) skew(1deg);
+            transform: rotate(0deg) scale(1) skew(1deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg) scale(1) skew(1deg);
+            transform: rotate(0deg) scale(1) skew(1deg);
+  }
+}
+
+@-webkit-keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale3d(0.3, 0.3, 0.3);
+    transform: translate(-50%, -50%) scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%) scale3d(0.3, 0.3, 0.3);
+    transform: translate(-50%, -50%) scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes pulse {
+  0%,
+  100% {
+    -webkit-transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.7;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    -webkit-transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.7;
+  }
+}
+
+/*==================== End Hotline, Zalo, Mail ====================*/
 /*==================== Menu PC ====================*/
 header {
   position: -webkit-sticky;
@@ -6606,13 +7095,13 @@ form .button-submit {
   }
 }
 
-@media (min-width: 769px) and (max-width: 991px) {
+@media (min-width: 769px) and (max-width: 991.98px) {
   .logo h1 {
     font-size: 22px;
   }
-  .menu-pc .links ul li .menu-link {
-    padding: 10px 12px;
-    font-size: 14px;
+  .menu-pc .links ul li .menu-link, .menu-pc .links ul li.user {
+    padding: 10px 10px;
+    font-size: 12px;
   }
   .booking-form form .way label:last-child .way-popup {
     right: -145px;
