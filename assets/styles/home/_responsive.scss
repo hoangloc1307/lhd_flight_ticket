@@ -142,13 +142,16 @@
 		}
 	}
 }
-@media (min-width: 769px) and (max-width: 991px) {
+@media (min-width: 769px) and (max-width: 991.98px) {
 	.logo h1 {
 		font-size: $fs-small-title;
 	}
-	.menu-pc .links ul li .menu-link {
-		padding: 10px 12px;
-		font-size: $fs-detail;
+	.menu-pc .links ul li {
+		.menu-link,
+		&.user {
+			padding: 10px 10px;
+			font-size: $fs-small-text;
+		}
 	}
 	.booking-form form .way label:last-child .way-popup {
 		right: -145px;

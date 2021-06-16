@@ -16,7 +16,7 @@
 						</label>
 					</div>
 					<div class="way">
-						<label>
+						<label id="diemdi">
 							Điểm đi<br />
 							<input class="choose" type="text" name="forigin" placeholder="Chọn" required
 								readonly />
@@ -42,7 +42,7 @@
 							</div>
 						</label>
 						<i class="fas fa-random"></i>
-						<label>
+						<label id="diemden">
 							Điểm đến<br />
 							<input class="choose" type="text" name="fdestination" placeholder="Chọn" required
 								readonly />
