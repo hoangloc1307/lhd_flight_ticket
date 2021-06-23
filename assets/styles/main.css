@@ -666,7 +666,7 @@ html {
 .to-top {
   position: fixed;
   right: 15px;
-  bottom: 50px;
+  bottom: 15px;
   width: 50px;
   height: 50px;
   background: #333;
@@ -5423,7 +5423,7 @@ header {
   display: block;
   padding: 10px 15px 10px 40px;
   border-radius: 20px 0 0 20px;
-  margin-left: 15px;
+  margin-left: 5px;
   text-transform: capitalize;
   font-weight: 600;
   letter-spacing: 1px;
@@ -5477,7 +5477,7 @@ header {
 
 #admin-page nav .link-list .links li .sub-links a {
   font-weight: 500;
-  margin-left: 25px;
+  margin-left: 15px;
   letter-spacing: 0px;
   text-transform: unset;
 }
@@ -6909,7 +6909,7 @@ form .button-submit {
   display: block;
   padding: 10px 15px 10px 40px;
   border-radius: 20px 0 0 20px;
-  margin-left: 15px;
+  margin-left: 5px;
   text-transform: capitalize;
   font-weight: 600;
   letter-spacing: 1px;
@@ -6963,7 +6963,7 @@ form .button-submit {
 
 #admin-page nav .link-list .links li .sub-links a {
   font-weight: 500;
-  margin-left: 25px;
+  margin-left: 15px;
   letter-spacing: 0px;
   text-transform: unset;
 }
@@ -7387,6 +7387,9 @@ form .button-submit {
 }
 
 @media (max-width: 576px) {
+  .to-top {
+    bottom: 50px;
+  }
   /*========== Header ==========*/
   .menu-mobile .logo {
     margin-left: 12px;
