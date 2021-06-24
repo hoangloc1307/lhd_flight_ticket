@@ -3927,6 +3927,12 @@ header {
   border: 1px solid #17699a;
 }
 
+.finding .info-customer .box-info .customer-people .date input::before {
+  content: attr(placeholder);
+  color: #777777;
+  margin-right: 12px;
+}
+
 .finding .info-customer .box-info .customer-people .bag {
   display: -webkit-box;
   display: -ms-flexbox;
