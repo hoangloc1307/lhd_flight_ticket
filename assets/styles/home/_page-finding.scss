@@ -555,6 +555,13 @@
 						}
 					}
 				}
+				.date {
+					input::before {
+						content: attr(placeholder);
+						color: $cl-grey-2;
+						margin-right: 12px;
+					}
+				}
 
 				.bag {
 					display: flex;
