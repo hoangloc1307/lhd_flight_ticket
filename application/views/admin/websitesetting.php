@@ -57,7 +57,7 @@ $('#websetting-submit').click(function(e) {
     e.preventDefault();
     $.ajax({
         type: "post",
-        url: "<?= base_url() ?>admin/websitesetting/update",
+        url: "<?= base_url() ?>admin/WebsiteSetting/Update",
         data: {
             address: $('input[name="address"]').val(),
             email: $('input[name="email"]').val(),

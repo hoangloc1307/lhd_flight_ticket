@@ -8,7 +8,7 @@
 	<meta property="og:title" content="LHD Flight Ticket" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="<?= base_url() ?>" />
-	<meta property="og:image:url" content="<?= base_url('assets/images/logomobile.png') ?>" />
+	<meta property="og:image:url" content="<?= base_url('assets/images/logo_icon.png') ?>" />
 	<meta property="og:description"
 		content="Vé máy bay giá rẻ. Mua vé máy bay giá rẻ hãy đến với LHD Flight Ticket." />
 

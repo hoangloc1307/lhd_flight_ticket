@@ -73,8 +73,11 @@ $('.step-3 button').click(function(e) {
                     },
                     dataType: "json",
                     success: function(data) {
-                        toastr["success"](data);
-                        <?php unset($_SESSION['email_forget'], $_SESSION['code'], $_SESSION['__ci_vars']); ?>
+                        if (data == true) {
+                            toastr["success"]('Khôi phục mật khẩu thành công');
+                        } else {
+                            toastr["error"]('Khôi phục mật khẩu thất bại');
+                        }
                         setTimeout(function() {
                             location.replace("<?= base_url('login') ?>");
                         }, 1500);

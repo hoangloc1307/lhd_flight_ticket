@@ -16,7 +16,7 @@
 						</label>
 					</div>
 					<div class="way">
-						<label id="diemdi">
+						<label>
 							Điểm đi<br />
 							<input class="choose" type="text" name="forigin" placeholder="Chọn" required
 								readonly />
@@ -42,7 +42,7 @@
 							</div>
 						</label>
 						<i class="fas fa-random"></i>
-						<label id="diemden">
+						<label>
 							Điểm đến<br />
 							<input class="choose" type="text" name="fdestination" placeholder="Chọn" required
 								readonly />
@@ -277,7 +277,7 @@
 					</div>
 					<div class="box-content">
 						<h3 class="title"><?= $item["Title"] ?></h3>
-						<p title="<?= $item["Content"] ?>"><?= $item["Content"] ?></p>
+						<p><?= $item["Content"] ?></p>
 					</div>
 				</div>
 			</div>
