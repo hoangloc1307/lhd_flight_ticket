@@ -106,6 +106,45 @@ function GetAirlinesImageByIATA(iataCode) {
 		case "SQ":
 			src = "assets/images/partner/singaporeairlines.png";
 			break;
+		case "AA":
+			src = "assets/images/partner/americanairlines.png";
+			break;
+		case "AF":
+			src = "assets/images/partner/airfrance.png";
+			break;
+		case "CI":
+			src = "assets/images/partner/chinaairlines.png";
+			break;
+		case "TR":
+			src = "assets/images/partner/scootair.png";
+			break;
+		case "3K":
+			src = "assets/images/partner/jetstar.png";
+			break;
+		case "OD":
+			src = "assets/images/partner/malindoair.png";
+			break;
+		case "MH":
+			src = "assets/images/partner/malaysiaairlines.png";
+			break;
+		case "CX":
+			src = "assets/images/partner/pacific.png";
+			break;
+		case "RJ":
+			src = "assets/images/partner/jordanianairlines.png";
+			break;
+		case "UO":
+			src = "assets/images/partner/hkexpress.png";
+			break;
+		case "WE":
+			src = "assets/images/partner/challenge.png";
+			break;
+		case "PG":
+			src = "assets/images/partner/bangkokairways.png";
+			break;
+		case "NX":
+			src = "assets/images/partner/airmacau.png";
+			break;
 		default:
 			src = "assets/images/partner/default.png";
 	}

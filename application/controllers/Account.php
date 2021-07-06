@@ -141,12 +141,12 @@ class Account extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $email = $this->session->tempdata('email_forget');
             $password = $this->input->post('password');
-
             $where = "Email = '" . $email . "'";
             if ($this->Database_model->UpdateRecord('tbl_account', $where, 'Password', md5($password))) {
-                echo json_encode("Khôi phục mật khẩu thành công");
+                unset($_SESSION['email_forget'], $_SESSION['code'], $_SESSION['__ci_vars']);
+                echo json_encode(true);
             } else {
-                echo json_encode("Khôi phục mật khẩu thất bại");
+                echo json_encode(false);
             }
         }
     }
