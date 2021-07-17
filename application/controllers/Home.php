@@ -2,20 +2,23 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Home extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
-        $this->load->model('Admin/JSON_model');
+        $this->load->model('admin/JSON_model');
         $this->load->model('Database_model');
     }
-    public function index() {
+    public function index()
+    {
         $data['view'] = 'home/home';
-        $data['title'] = 'Vé máy bay uy tín';
+        $data['title'] = 'Vé Máy Bay Uy Tín';
         if (is_null($this->session->userdata('email'))) {
             $sess_account = [
                 'user_links' => [
-                    'Đăng nhập / Đăng ký' => base_url() . 'login'
+                    'Đăng nhập / Đăng ký' => base_url('login')
                 ]
             ];
             $this->session->set_userdata($sess_account);

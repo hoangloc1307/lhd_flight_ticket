@@ -2,13 +2,16 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Order extends CI_Controller {
+class Order extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('Database_model');
     }
-    public function view($order_id = null) {
+    public function View($order_id = null)
+    {
         if (is_null($order_id)) {
             $data['view'] = 'admin/order';
             $data['title'] = 'Hoá đơn';
@@ -23,7 +26,8 @@ class Order extends CI_Controller {
         $this->load->view('admin/master_layout', $data);
     }
 
-    public function ViewMore() {
+    public function ViewMore()
+    {
         if ($this->input->is_ajax_request()) {
             $offset = $this->input->post('offset');
             $result = $this->Database_model->GetRecords('tbl_order', '', 'Order_ID DESC', '5', $offset);
@@ -31,7 +35,8 @@ class Order extends CI_Controller {
         }
     }
 
-    public function Search() {
+    public function Search()
+    {
         if ($this->input->is_ajax_request()) {
             $keyword = $this->input->post("keyword");
             $this->load->model("Database_model");
@@ -45,7 +50,8 @@ class Order extends CI_Controller {
         }
     }
 
-    function SendBookingSuccessMail($order_code, $order, $to) {
+    function SendBookingSuccessMail($order_code, $order, $to)
+    {
         $subject = "Đặt vé thành công";
 
         $message = '<!DOCTYPE html>';
@@ -83,7 +89,7 @@ class Order extends CI_Controller {
         $message .= '</tr>';
         for ($i = 0; $i < $order["adults"]; $i++) {
             $message .= '<tr>';
-            $message .= '<th style="padding: 6px">Người lớn ' . (int)$i + 1 . '</th>';
+            $message .= '<th style="padding: 6px">Người lớn ' . ($i + 1) . '</th>';
             $message .= '<td style="padding: 6px; font-style: italic; font-weight: 700;">' . $order["adults_names"][$i] . '</td>';
             $message .= '</tr>';
             $message .= '<tr style="border-bottom: 1px solid #ccc">';
@@ -98,7 +104,7 @@ class Order extends CI_Controller {
         if (array_key_exists("children", $order)) {
             for ($i = 0; $i < $order["children"]; $i++) {
                 $message .= '<tr>';
-                $message .= '<th style="padding: 6px">Trẻ em ' . (int)$i + 1 . '</th>';
+                $message .= '<th style="padding: 6px">Trẻ em ' . ($i + 1) . '</th>';
                 $message .= '<td style="padding: 6px; font-style: italic; font-weight: 700;">' . $order["children_names"][$i] . ' (' . $order["children_dob"][$i] . ')</td>';
                 $message .= '</tr>';
                 $message .= '<tr style="border-bottom: 1px solid #ccc">';
@@ -113,7 +119,7 @@ class Order extends CI_Controller {
         if (array_key_exists("infants", $order)) {
             for ($i = 0; $i < $order["infants"]; $i++) {
                 $message .= '<tr>';
-                $message .= '<th style="padding: 6px">Em bé ' . (int)$i + 1 . '</th>';
+                $message .= '<th style="padding: 6px">Em bé ' . ($i + 1) . '</th>';
                 $message .= '<td style="padding: 6px; font-style: italic; font-weight: 700;">' . $order["infants_names"][$i] . ' (' . $order["infants_dob"][$i] . ')</td>';
                 $message .= '</tr>';
                 $message .= '<tr style="border-bottom: 1px solid #ccc">';
@@ -137,12 +143,12 @@ class Order extends CI_Controller {
         $message .= '<tbody>';
         $message .= '<tr>';
         $message .= '<th style="padding: 6px">Điểm đi</th>';
-        $message .= '<td style="padding: 6px">' . city_by_iata($order["origin"]) .'</td>';
+        $message .= '<td style="padding: 6px">' . city_by_iata($order["origin"]) . '</td>';
         $message .= '</tr>';
 
         $message .= '<tr>';
         $message .= '<th style="padding: 6px">Sân bay</th>';
-        $message .= '<td style="padding: 6px">' . airport_by_iata($order["origin"]) . ' ('. $order["origin"]. ')</td>';
+        $message .= '<td style="padding: 6px">' . airport_by_iata($order["origin"]) . ' (' . $order["origin"] . ')</td>';
         $message .= '</tr>';
 
         $message .= '<tr>';
@@ -166,11 +172,11 @@ class Order extends CI_Controller {
         $message .= '</tr>';
         $message .= '<tr>';
         $message .= '<th style="padding: 6px">Ngày đến nơi</th>';
-        $message .= '<td style="padding: 6px">'. $order["departure_landing_date"] .'</td>';
+        $message .= '<td style="padding: 6px">' . $order["departure_landing_date"] . '</td>';
         $message .= '</tr>';
         $message .= '<tr>';
         $message .= '<th style="padding: 6px">Giờ đến nơi</th>';
-        $message .= '<td style="padding: 6px">'. $order["departure_landing_time"] .'</td>';
+        $message .= '<td style="padding: 6px">' . $order["departure_landing_time"] . '</td>';
         $message .= '</tr>';
         $message .= '</tbody>';
         $message .= '</table>';
@@ -208,11 +214,11 @@ class Order extends CI_Controller {
             $message .= '</tr>';
             $message .= '<tr>';
             $message .= '<th style="padding: 6px">Ngày đến nơi</th>';
-            $message .= '<td style="padding: 6px">'. $order["return_landing_date"] .'</td>';
+            $message .= '<td style="padding: 6px">' . $order["return_landing_date"] . '</td>';
             $message .= '</tr>';
             $message .= '<tr>';
             $message .= '<th style="padding: 6px">Giờ đến nơi</th>';
-            $message .= '<td style="padding: 6px">'. $order["return_landing_time"] .'</td>';
+            $message .= '<td style="padding: 6px">' . $order["return_landing_time"] . '</td>';
             $message .= '</tr>';
             $message .= '</tbody>';
             $message .= '</table>';
@@ -282,7 +288,8 @@ class Order extends CI_Controller {
         $this->email->send();
     }
 
-    public function CreateOrder() {
+    public function CreateOrder()
+    {
         if ($this->input->is_ajax_request()) {
             $this->load->model('Database_model');
 
@@ -388,7 +395,8 @@ class Order extends CI_Controller {
         }
     }
 
-    public function SendSuccessPaymentMail($order, $to) {
+    public function SendSuccessPaymentMail($order, $to)
+    {
         $subject = "Thanh toán thành công";
 
         $payment_info = json_decode($order['Payment_Info'], true);
@@ -400,11 +408,11 @@ class Order extends CI_Controller {
         $message .= '<body style="margin: 0; padding: 0; box-sizing: border-box">';
         $message .= '<section>';
         $message .= '<div style="max-width: 100%; background: #fff; border-radius: 6px;">';
-        $message .= '<div style="padding: 24px;background: #17699a; font-size: 24px; color: #fff;">Cảm ơn bạn đã đặt vé</div>';
+        $message .= '<div style="padding: 24px;background: #17699a; font-size: 24px; color: #fff;">Thanh toán thành công</div>';
         $message .= '<div style="padding: 12px; color: #777">';
         $message .= '<div class="greeting">';
         $message .= '<p>Xin chào ' . $payment_info["contact_name"] . '</p>';
-        $message .= '<p> Đơn hàng <span style="color: #f29018">' . $order["Order_Code"] . '</span> đã được đặt thành công và chúng tôi đang xử lý </p>';
+        $message .= '<p> Đơn hàng <span style="color: #f29018">' . $order["Order_Code"] . '</span> đã được thanh toán thành công. </p>';
         $message .= '</div>';
         $message .= '<div class="order-detail">';
 
@@ -429,7 +437,7 @@ class Order extends CI_Controller {
         $message .= '</tr>';
         for ($i = 0; $i < $payment_info["adults"]; $i++) {
             $message .= '<tr>';
-            $message .= '<th style="padding: 6px">Người lớn ' . (int)$i + 1 . '</th>';
+            $message .= '<th style="padding: 6px">Người lớn ' . ($i + 1) . '</th>';
             $message .= '<td style="padding: 6px; font-style: italic; font-weight: 700;">' . $payment_info["adults_names"][$i] . '</td>';
             $message .= '</tr>';
             $message .= '<tr style="border-bottom: 1px solid #ccc">';
@@ -444,7 +452,7 @@ class Order extends CI_Controller {
         if (array_key_exists("children", $payment_info)) {
             for ($i = 0; $i < $payment_info["children"]; $i++) {
                 $message .= '<tr>';
-                $message .= '<th style="padding: 6px">Trẻ em ' . (int)$i + 1 . '</th>';
+                $message .= '<th style="padding: 6px">Trẻ em ' . ($i + 1) . '</th>';
                 $message .= '<td style="padding: 6px; font-style: italic; font-weight: 700;">' . $payment_info["children_names"][$i] . ' (' . $payment_info["children_dob"][$i] . ')</td>';
                 $message .= '</tr>';
                 $message .= '<tr style="border-bottom: 1px solid #ccc">';
@@ -459,7 +467,7 @@ class Order extends CI_Controller {
         if (array_key_exists("infants", $payment_info)) {
             for ($i = 0; $i < $payment_info["infants"]; $i++) {
                 $message .= '<tr>';
-                $message .= '<th style="padding: 6px">Em bé ' . (int)$i + 1 . '</th>';
+                $message .= '<th style="padding: 6px">Em bé ' . ($i + 1) . '</th>';
                 $message .= '<td style="padding: 6px; font-style: italic; font-weight: 700;">' . $payment_info["infants_names"][$i] . ' (' . $payment_info["infants_dob"][$i] . ')</td>';
                 $message .= '</tr>';
                 $message .= '<tr style="border-bottom: 1px solid #ccc">';
@@ -499,7 +507,7 @@ class Order extends CI_Controller {
         $message .= '<th style="padding: 6px">Sân bay</th>';
         $message .= '<td style="padding: 6px">' . airport_by_iata($order["Destination"]) . ' (' . $order["Destination"] . ')</td>';
         $message .= '</tr>';
-        
+
         $message .= '<tr>';
         $message .= '<th style="padding: 6px">Ngày khởi hành</th>';
         $message .= '<td style="padding: 6px">' . $flight_detail["departure_date"] . '</td>';
@@ -510,11 +518,11 @@ class Order extends CI_Controller {
         $message .= '</tr>';
         $message .= '<tr>';
         $message .= '<th style="padding: 6px">Ngày đến nơi</th>';
-        $message .= '<td style="padding: 6px">'. $flight_detail["departure_landing_date"] .'</td>';
+        $message .= '<td style="padding: 6px">' . $flight_detail["departure_landing_date"] . '</td>';
         $message .= '</tr>';
         $message .= '<tr>';
         $message .= '<th style="padding: 6px">Giờ đến nơi</th>';
-        $message .= '<td style="padding: 6px">'. $flight_detail["departure_landing_time"] .'</td>';
+        $message .= '<td style="padding: 6px">' . $flight_detail["departure_landing_time"] . '</td>';
         $message .= '</tr>';
         $message .= '</tbody>';
         $message .= '</table>';
@@ -555,12 +563,12 @@ class Order extends CI_Controller {
 
             $message .= '<tr>';
             $message .= '<th style="padding: 6px">Ngày đến nơi</th>';
-            $message .= '<td style="padding: 6px">'. $flight_detail["return_landing_date"] .'</td>';
+            $message .= '<td style="padding: 6px">' . $flight_detail["return_landing_date"] . '</td>';
             $message .= '</tr>';
 
             $message .= '<tr>';
             $message .= '<th style="padding: 6px">Giờ đến nơi</th>';
-            $message .= '<td style="padding: 6px">'. $flight_detail["return_landing_time"] .'</td>';
+            $message .= '<td style="padding: 6px">' . $flight_detail["return_landing_time"] . '</td>';
             $message .= '</tr>';
             $message .= '</tbody>';
             $message .= '</table>';
@@ -629,7 +637,8 @@ class Order extends CI_Controller {
         $this->email->send();
     }
 
-    public function UpdateStatus() {
+    public function UpdateStatus()
+    {
         if ($this->input->is_ajax_request()) {
             $id = $this->input->post('order_id');
             $where = "Order_ID = " . $id;
@@ -645,7 +654,8 @@ class Order extends CI_Controller {
     }
 
 
-    public function ViewDetailOrder() {
+    public function ViewDetailOrder()
+    {
         $data['view'] = 'admin/order_detail';
         $this->load->view('admin/master_layout', $data);
     }

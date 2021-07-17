@@ -2,26 +2,31 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class WebsiteSetting extends CI_Controller {
+class WebsiteSetting extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('admin/JSON_model');
     }
-    public function index() {
+    public function index()
+    {
         $data['view'] = 'admin/websitesetting';
         $data['title'] = 'Cài đặt website';
 
         $this->load->view('admin/master_layout', $data, FALSE);
     }
 
-    public function Fetch() {
+    public function Fetch()
+    {
         if ($this->input->is_ajax_request()) {
             echo $this->JSON_model->get("WebsiteSetting")['Text'];
         }
     }
 
-    public function Update() {
+    public function Update()
+    {
         if ($this->input->is_ajax_request()) {
             $address = $this->input->post('address');
             $email = $this->input->post('email');

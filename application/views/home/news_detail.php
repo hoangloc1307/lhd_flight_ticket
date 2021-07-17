@@ -6,7 +6,7 @@
 					<?= $news['Name'] ?>
 				</h1>
 				<div class="img-box">
-					<img src="<?= base_url() . $news['Image'] ?>">
+					<img src="<?= base_url($news['Image']) ?>">
 				</div>
 				<div class="detail">
 					<?= $news['Content'] ?>
@@ -23,11 +23,11 @@
 					<ul class="related-list">
 						<?php foreach ($related_news as $item) : ?>
 						<li class="related-item">
-							<a href="<?= base_url() . 'news/' . ($item['LinkCustom'] != '' ? $item['LinkCustom'] : $item['LinkDefault']) ?>"
+							<a href="<?= base_url('news/' . ($item['LinkCustom'] != '' ? $item['LinkCustom'] : $item['LinkDefault'])) ?>"
 								class="related-thumb">
-								<img src="<?= base_url() . $item['Image'] ?>">
+								<img src="<?= base_url($item['Image']) ?>">
 							</a>
-							<a href="<?= base_url() . 'news/' . ($item['LinkCustom'] != '' ? $item['LinkCustom'] : $item['LinkDefault']) ?>"
+							<a href="<?= base_url('news/' . ($item['LinkCustom'] != '' ? $item['LinkCustom'] : $item['LinkDefault'])) ?>"
 								title="<?= $item['Name'] ?>" class="related-content">
 								<h4 class="related-heading"><?= $item['Name'] ?></h4>
 								<p><?= $item['Description'] ?></p>
@@ -48,7 +48,9 @@
 <script>
 $(document).ready(function() {
 	$(document).scroll(function() {
-		if ($(this).scrollTop() >= $("#news-detail .row").offset().top - $("header").height() &&
+		if ($(window).width() >= 768 && $(this).scrollTop() >= $("#news-detail .row").offset()
+			.top - $(
+				"header").height() &&
 			$(this).scrollTop() <= $("#news-detail .row").offset().top + $("#news-detail .row")
 			.outerHeight() - $(".news-related:last-child").height() - $("header").height()) {
 
@@ -60,7 +62,8 @@ $(document).ready(function() {
 			$(".news-related:last-child").css({
 				"position": "absolute",
 				"top": `${top}px`,
-				"right": "0"
+				"right": "0",
+				"width": "100%"
 			});
 
 

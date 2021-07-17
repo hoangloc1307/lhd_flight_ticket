@@ -86,7 +86,7 @@ $(document).ready(function() {
             $('.loader-container').removeClass('hide');
             $.ajax({
                 type: "POST",
-                url: "<?= base_url() ?>admin/order/updatestatus",
+                url: "<?= base_url('admin/Order/Updatestatus') ?>",
                 data: {
                     order_id: $(this).attr('value')
                 },
@@ -110,7 +110,7 @@ $(document).ready(function() {
         e.preventDefault();
         $.ajax({
             type: "POST",
-            url: "<?= base_url('admin/order/viewmore') ?>",
+            url: "<?= base_url('admin/Order/Viewmore') ?>",
             data: {
                 offset: myObj['offset']
             },
@@ -153,7 +153,7 @@ $(document).ready(function() {
                     }
                     txt += "</div>";
                     txt += "<div class='col l-1'>";
-                    txt += "<span>" + payment_info['total_price'] + "</span>";
+                    txt += "<span>" + data[i]['Price'] + "</span>";
                     txt += "</div>";
                     txt += "<div class='col l-4'>";
                     for (var j in flight_detail['flight_detail']) {
@@ -162,7 +162,7 @@ $(document).ready(function() {
                             ] +
                             flight_detail['flight_detail'][j]['number'] +
                             ' ' +
-                            flight_detail['flight_detail'][j]['date'] + ' ' +
+                            flight_detail['flight_detail'][j]['departure_date'] + ' ' +
                             flight_detail[
                                 'flight_detail'][j]['from'] + ' ' +
                             flight_detail[
@@ -201,7 +201,7 @@ $(document).ready(function() {
         if ($('.search-form input').val() != '') {
             $.ajax({
                 type: "POST",
-                url: "<?= base_url('admin/order/search') ?>",
+                url: "<?= base_url('admin/Order/Search') ?>",
                 data: {
                     keyword: $('.search-form input').val()
                 },
@@ -250,7 +250,7 @@ $(document).ready(function() {
                                         'number'
                                     ] + ' ' +
                                     flight_detail['flight_detail'][j][
-                                        'date'
+                                        'departure_date'
                                     ] + ' ' +
                                     flight_detail[
                                         'flight_detail'][j]['from'] + ' ' +

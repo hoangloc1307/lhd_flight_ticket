@@ -29,7 +29,7 @@
 //Fetch
 function fetch(offset) {
     $.ajax({
-        url: "<?= base_url() ?>admin/manage_news/fetch/",
+        url: "<?= base_url('admin/Manage_News/Fetch') ?>",
         dataType: "json",
         type: 'post',
         data: {
@@ -86,7 +86,7 @@ $(document).on('click', '.button.delete', function(e) {
     var cfr = confirm("Bạn muốn xoá bài viết này?");
     if (cfr == true) {
         $.ajax({
-            url: '<?= base_url() ?>admin/news/delete',
+            url: "<?= base_url('admin/Manage_News/Delete') ?>",
             type: 'post',
             dataType: 'json',
             data: {
@@ -110,7 +110,7 @@ $(document).on('click', '.search-form button', function(e) {
     if ($(".search-form input").val().length > 0) {
         $.ajax({
             type: "post",
-            url: "<?= base_url() ?>admin/Manage_News/Search",
+            url: "<?= base_url('admin/Manage_News/Search') ?>",
             data: {
                 keyword: $(".search-form input").val()
             },
@@ -140,12 +140,15 @@ $(document).on('click', '.search-form button', function(e) {
                             '</div>';
                         item += '<div class="col l-1 action">';
                         item +=
-                            '<a href="#" class="button edit"><i class="fas fa-edit"></i></a>';
+                            '<a href="<?= base_url('admin/news/edit/') ?>' + data[i].News_ID +
+                            '" class="button edit"><i class="fas fa-edit"></i></a>';
                         item += '<a href="#" class="button delete" value="' + data[i]
                             .News_ID +
                             '"><i class="fas fa-trash"></i></a>';
                         item += '</div>';
                         item += '</div>';
+
+
                     }
                 } else {
                     item += '<div class="empty">' + data + '</div>';

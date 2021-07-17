@@ -2,12 +2,16 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Finding extends CI_Controller {
+class Finding extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
+        $this->load->model('admin/JSON_model');
     }
-    public function index() {
+    public function index()
+    {
         if (isset($_POST['search-flight'])) {
             $api_key = 'RC6NqrKRWls95AuEi0Ukv2nTGSAd9tSy';
             $api_secret = 'dWcLwAsq8o0zIyJS';
@@ -150,7 +154,7 @@ class Finding extends CI_Controller {
                 if ($type == 'roundtrip') {
                     $data['flight_data2'] = $response_back;
                 }
-                $this->load->model('Admin/JSON_model');
+
                 $data['websitesetting'] = json_decode($this->JSON_model->get('WebsiteSetting')['Text'], true);
                 $data['payment_method'] = json_decode($this->JSON_model->get('PaymentMethod')['Text'], true);
                 $this->load->view('home/header_footer', $data);
@@ -160,7 +164,8 @@ class Finding extends CI_Controller {
         }
     }
 
-    public function GetLuggage() {
+    public function GetLuggage()
+    {
         $luggage['VJ'] = [
             '7kg' => 0,
             '15kg' => 140000,
@@ -188,6 +193,9 @@ class Finding extends CI_Controller {
             '35kg' => 650000,
             '40kg' => 750000
         ];
+        $luggage['OTHER'] = [
+            '7kg' => 0
+        ];
 
         if ($this->input->is_ajax_request()) {
             $iata = $this->input->post('iata');
@@ -201,6 +209,8 @@ class Finding extends CI_Controller {
                 case 'VN':
                     echo json_encode($luggage['VN']);
                     break;
+                default:
+                    echo json_encode($luggage['OTHER']);
             }
         }
     }

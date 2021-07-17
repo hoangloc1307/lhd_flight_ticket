@@ -2,13 +2,15 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Partner extends CI_Controller {
-
-    public function __construct() {
+class Partner extends CI_Controller
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('admin/JSON_model');
     }
-    public function index() {
+    public function index()
+    {
         $data['view'] = 'admin/partner';
         $data['title'] = 'Đối tác';
         $partner = $this->JSON_model->get('Partner');
@@ -17,13 +19,15 @@ class Partner extends CI_Controller {
         $this->load->view('admin/master_layout', $data, FALSE);
     }
 
-    public function Add() {
+    public function Add()
+    {
         if ($this->input->is_ajax_request()) {
             $name = $this->input->post('name');
+            $image = $this->input->post('image');
 
-            $target_dir = "assets/images/partner/";
-            $target_file = $target_dir . basename($_FILES["image"]["name"]);
-            move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+            // $target_dir = "assets/images/partner/";
+            // $target_file = $target_dir . basename($_FILES["image"]["name"]);
+            // move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
 
             $partner = $this->JSON_model->get('Partner');
             $partner = json_decode($partner['Text'], true);
@@ -43,7 +47,7 @@ class Partner extends CI_Controller {
             if (!$isExists) {
                 $data = [
                     'Name' => $name,
-                    'Image' => $target_file
+                    'Image' => $image
                 ];
 
                 array_push($partner, $data);
@@ -58,7 +62,8 @@ class Partner extends CI_Controller {
         }
     }
 
-    public function Delete() {
+    public function Delete()
+    {
         if ($this->input->is_ajax_request()) {
             $name = $this->input->post('name');
             $partner = $this->JSON_model->get('Partner');

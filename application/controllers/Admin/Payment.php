@@ -2,19 +2,23 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Payment extends CI_Controller {
+class Payment extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('admin/JSON_model');
     }
-    public function index() {
+    public function index()
+    {
         $data['view'] = 'admin/payment';
         $data['title'] = 'Phương thức thanh toán';
         $this->load->view('admin/master_layout', $data, FALSE);
     }
 
-    public function Add() {
+    public function Add()
+    {
         if ($this->input->is_ajax_request()) {
             $name = $this->input->post('name');
             $content = $this->input->post('content');
@@ -52,13 +56,15 @@ class Payment extends CI_Controller {
         }
     }
 
-    public function Fetch() {
+    public function Fetch()
+    {
         $payment_method = $this->JSON_model->get('PaymentMethod');
         $payment_method = json_decode($payment_method['Text'], true);
         echo json_encode($payment_method);
     }
 
-    public function Delete() {
+    public function Delete()
+    {
         if ($this->input->is_ajax_request()) {
             $name = $this->input->post('name');
             $payment_method = $this->JSON_model->get('PaymentMethod');
@@ -77,7 +83,8 @@ class Payment extends CI_Controller {
         }
     }
 
-    public function Update() {
+    public function Update()
+    {
         if ($this->input->is_ajax_request()) {
             $name = $this->input->post('name');
             $content = $this->input->post('content');

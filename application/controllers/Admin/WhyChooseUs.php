@@ -19,25 +19,15 @@ class WhyChooseUs extends CI_Controller
         $this->load->view('admin/master_layout', $data, FALSE);
     }
 
-    public function edit()
+    public function Edit()
     {
         $datas = [];
 
         $title = $this->input->post('title');
         $content = $this->input->post('content');
-        $oldfile = $this->input->post('oldfile');
+        $image = $this->input->post('image');
 
-        $target_dir = "assets/images/whychooseus/";
-        $image = [];
-        for ($i = 0; $i < count($_FILES["image"]["name"]); $i++) {
-            $target_file = $target_dir . basename($_FILES["image"]["name"][$i]);
-            if (empty($_FILES["image"]["name"][$i])) {
-                $image[$i] = $oldfile[$i];
-            } else {
-                move_uploaded_file($_FILES["image"]["tmp_name"][$i], $target_file);
-                $image[$i] = $target_file;
-            }
-
+        for ($i = 0; $i < 4; $i++) {
             $data = [
                 'Title' => $title[$i],
                 'Content' => $content[$i],
@@ -48,7 +38,7 @@ class WhyChooseUs extends CI_Controller
 
         $datas = json_encode($datas);
         $this->JSON_model->edit("WhyChooseUs", $datas);
-        redirect(base_url() . 'admin/whychooseus');
+        redirect(base_url('admin/whychooseus'));
     }
 }
         
