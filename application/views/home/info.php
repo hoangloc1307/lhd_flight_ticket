@@ -411,37 +411,37 @@ $(document).ready(function() {
 		$(this).attr('style', 'display: none;');
 	});
 
-	//Bấm nút xác nhận đổi mật khẩu
-	$(document).on('click', '.change-password', function(e) {
-		e.preventDefault();
-		if ($('.input-edit[name="password"]').val() == $('.input-edit[name="cfm-password"]')
-			.val()) {
-			$.ajax({
-				type: "POST",
-				url: "<?= base_url('Account/ChangePassword') ?>",
-				data: {
-					old_password: $('.input-edit[name="old-password"]').val(),
-					new_password: $('.input-edit[name="password"]').val()
-				},
-				dataType: "json",
-				success: function(response) {
-					if (response == "Đổi mật khẩu thành công") {
-						$('.change-password').attr('style', 'display: none;');
-						$('.button-password').attr('style', 'display: block;');
-						$('form.password input').each(function() {
-							$(this).val('');
-							$(this).prop("disabled", true)
-						});
-						toastr["success"](response);
-					} else {
-						toastr["error"](response);
-					}
-				}
-			});
-		} else {
-			toastr["error"]("Xác nhận mật khẩu không khớp");
-		}
-	});
+    //Bấm nút xác nhận đổi mật khẩu
+    $(document).on('click', '.change-password', function(e) {
+        e.preventDefault();
+        if ($('.input-edit[name="password"]').val() == $('.input-edit[name="cfm-password"]')
+            .val()) {
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('Account/ChangePassword') ?>",
+                data: {
+                    old_password: $('.input-edit[name="old-password"]').val(),
+                    new_password: $('.input-edit[name="password"]').val()
+                },
+                dataType: "json",
+                success: function(response) {
+                    if (response == "Đổi mật khẩu thành công") {
+                        $('.change-password').attr('style', 'display: none;');
+                        $('.button-password').attr('style', 'display: block;');
+                        $('form.password input').each(function() {
+                            $(this).val('');
+                            $(this).prop("disabled", true)
+                        });
+                        toastr["success"](response);
+                    } else {
+                        toastr["error"](response);
+                    }
+                }
+            });
+        } else {
+            toastr["error"]("Xác nhận mật khẩu không khớp");
+        }
+    });
 
 	//Bấm nút lưu thông tin
 	$(document).on('click', '.change-info', function() {
@@ -453,26 +453,26 @@ $(document).ready(function() {
 		var phone_old = $('input[name="phone_old"]').val();
 		var email = $('input[name="email"]').val();
 
-		if (name_new != name_old || address_new != address_old || phone_new != phone_old) {
-			$.ajax({
-				type: "POST",
-				url: "<?= base_url('Account/ChangeInfo') ?>",
-				data: {
-					name: name_new,
-					address: address_new,
-					phone: phone_new,
-					email: email
-				},
-				dataType: "json",
-				success: function(data) {
-					if (data == "Thay đổi thông tin thành công") {
-						toastr["success"](data);
-					} else {
-						toastr["error"](data);
-					}
-				}
-			});
-		}
+        if (name_new != name_old || address_new != address_old || phone_new != phone_old) {
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('Account/ChangeInfo') ?>",
+                data: {
+                    name: name_new,
+                    address: address_new,
+                    phone: phone_new,
+                    email: email
+                },
+                dataType: "json",
+                success: function(data) {
+                    if (data == "Thay đổi thông tin thành công") {
+                        toastr["success"](data);
+                    } else {
+                        toastr["error"](data);
+                    }
+                }
+            });
+        }
 
 	});
 

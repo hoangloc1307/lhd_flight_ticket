@@ -32,8 +32,8 @@ $config['authentication'] = function () {
 /*============================ License Key ============================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
-$config['licenseName'] = 'thuctap.timtho.com.vn';
-$config['licenseKey']  = 'BR8RSQ9LQSXT7RXJNLW48J1GQC6HH';
+$config['licenseName'] = 'localhost';
+$config['licenseKey']  = 'QYTY3CF5KQFK6LYFEMUA4FCV39LH1';
 
 /*============================ CKFinder Internal Directory ============================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_privateDir
