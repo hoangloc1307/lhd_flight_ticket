@@ -8,7 +8,7 @@ class Home extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Admin/JSON_model');
+        $this->load->model('admin/JSON_model');
         $this->load->model('Database_model');
     }
     public function index()
