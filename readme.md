@@ -5,4 +5,4 @@ We using:
 * Backend: PHP, CodeIgniter 3.
 * Database: MySQL, flight data from [Amadeus](https://developers.amadeus.com/), airport data from [VietJetAir](https://www.vietjetair.com/).
 ***
-Demo: http://thuctap.timtho.com.vn/
+Demo: https://lhd-flight-ticket.herokuapp.com/
