@@ -23,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://hoangloc1307.github.io/lhd_flight_ticket/';
+$config['base_url'] = 'https://lhd-flight-ticket.herokuapp.com/';
 
 /*
 |--------------------------------------------------------------------------
