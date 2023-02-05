@@ -89,6 +89,8 @@ switch (ENVIRONMENT)
 		exit(1); // EXIT_ERROR
 }
 
+ini_set('error_reporting', E_ALL & ~E_DEPRECATED);
+
 /*
  *---------------------------------------------------------------
  * SYSTEM DIRECTORY NAME
